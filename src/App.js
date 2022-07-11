@@ -8,13 +8,13 @@ import Copyright from "./core/components/copy-right/copy-right";
 import ScrollButton from "./core/components/scroll-button/scroll-button";
 import View from "./setup/routes-manager/view";
 import TeamSingle from "./app/pages/team-single/team-single";
-
+import Faq from './app/pages/faq/faq.jsx'
 
 function App() {
   
   return (
     <div className="App">
-      <Nav />
+      {/* <Nav />
       <Header />
       <Router>
         <View></View>
@@ -22,7 +22,8 @@ function App() {
       <FooterCarousel />
       <PageFooter />
       <Copyright />
-      <ScrollButton />
+      <ScrollButton /> */}
+      <Faq></Faq>
     </div>
   );
 }

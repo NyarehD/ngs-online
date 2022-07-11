@@ -1,0 +1,183 @@
+@import "../../../style/mixin.module"
+@import "../../../style/variable.module"
+
+.faqCon
+    margin-bottom: 100px
+    width: 90%
+    margin: auto
+
+.faqBtnGp
+    display: flex
+    // margin-left: 5%
+
+.btnItem
+    list-style: none
+    margin-right: 3px
+    color: #c280bf
+    background-color: #f7f6fb
+    cursor: pointer
+
+.btnLink
+    font-size: 12px
+    font-weight: 500
+    letter-spacing: 0.4em
+    line-height: 1.6em
+    min-width: 250px
+    padding: 30px 10px
+    text-align: center
+    text-transform: uppercase
+    text-decoration: none
+    border-radius: 5px 5px 0 0
+    transition: all 1s ease-in-out
+    &:hover
+        color: #007aff
+
+@mixin flex_between()
+    display: flex
+    justify-content: space-between
+
+.cardCon
+    width: 100%
+    height: 100%
+    background-color: #fff
+    color: #7f7f7f
+    border: 1px solid #ededed
+    box-shadow: 0 0px 10px 0px rgb(0 0 0 / 5%)
+    padding: 40px 60px 40px 90px
+
+.tabContent div
+    box-shadow: none
+    border-radius: none
+
+//Form
+.askTitle
+    margin: 30px 50px
+    color: #4c4c4c !important
+    opacity: 1 !important
+
+.form_input_container2
+    display: block
+    width: 90%
+    margin: auto
+
+.form_input2
+    margin: 0 15px 15px 0
+    transition: all 0.4s
+    background-color: transparent
+    border: 1px solid #ededed
+    border-radius: 2px
+    box-shadow: 0 0px 10px 0px rgb(0 0 0 / 5%)
+    color: #7f7f7f
+    font-size: 12px
+    height: 60px
+    letter-spacing: 0.1em
+    padding-bottom: 9px
+    padding-left: 20px
+    padding-right: 20px
+    padding-top: 9px
+    width: 100%
+    &:focus
+        box-shadow: none
+
+.form_textarea2
+    background-color: transparent
+    border: 1px solid #ededed
+    border-radius: 2px
+    box-shadow: 0 0px 10px 0px rgb(0 0 0 / 5%)
+    color: #7f7f7f
+    font-size: 12px
+    letter-spacing: 0.1em
+    padding-bottom: 9px
+    padding-left: 20px
+    padding-right: 20px
+    padding-top: 9px
+    width: 100%
+    &:focus
+        box-shadow: none
+
+.active
+    background-image: -webkit-linear-gradient(left, #5b83cd 0%, #c280bf 100%)
+    background-image: linear-gradient(to right, #5b83cd 0%, #c280bf 100%)
+    color: #fff
+    border-radius: 5px 5px 0 0
+
+.form_button2
+    color: #fff
+    border-radius: 4px
+    border: 0
+    width: 260px
+    height: 60px
+    margin: 30px 50px
+    background: linear-gradient(to right, #5b83cd 0%, #c280bf 100%)
+    cursor: pointer
+    &:focus
+        box-shadow: 0 0 3px 0 rgb(100 100 100 / 75%)
+    &:active
+        transform: translateY(2px)
+    &::before
+        content: "ASK A QUESTION"
+        font-family: Poppins, "san-serif"
+        border-radius: 4px
+        padding: 0 !important
+        line-height: 60px
+        color: #fff
+        background: transparent
+        transition: all .35s ease .1s
+    &:hover
+        &::before
+            background: #fff
+            color: #4c4c4c
+
+// @media (max-width:820px)
+// .address_list_container
+//     margin: 20px 0px
+
+@media (max-width:$break_point-s)
+    .contact_container
+        width: 100%
+    .faqBtnGp
+        display: flex
+        flex-direction: column
+    .btnLink
+        font-size: 10px
+    .cardCon
+        width: 100%
+        padding: 20px 40px 20px 40px
+
+@media (min-width:$break_point-s)
+    .contact_container
+        width: $max-width-s
+    .form_input_container2
+        @include flex_between
+    .form_input
+        width: 49%
+
+@media (max-width:$break_point-md)
+    .contact_container
+        width: $max-width-md
+    .faqBtnGp
+        display: flex
+        flex-wrap: wrap
+    .btnLink
+        font-size: 10px
+    .cardCon
+        width: 100%
+        padding: 40px 60px 40px 60px
+
+@media (min-width:$break_point-lg)
+    .contact_container
+        width: $max-width-lg
+        @include flex_between
+    .contact_form_container
+        width: 60%
+        margin-bottom: 0px
+    .address_list_container
+        width: 40%
+
+@media (min-width:$break_point-xl)
+    .contact_container
+        width: $max-width-xl
+
+@media (min-width:$break_point-xxl)
+    .contact_container
+        width: $max-width-xxl
