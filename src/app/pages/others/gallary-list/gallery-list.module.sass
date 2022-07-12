@@ -1,0 +1,164 @@
+$textPink:#c280bf
+$textBlue:#2165a9
+$imageHoverBlue:rgba(91, 131, 205, 0.6)
+$cardLinkText:#5b83cd
+$linkHover:pointer
+$tagFontSize:0.8rem
+
+.tag 
+    -webkit-appearance: none
+    -moz-appearance: none
+    appearance: none
+
+.tagText
+    font-size: 12px
+    font-weight: 500
+    line-height: 30px
+    letter-spacing: 0.2em
+
+@media only screen and (min-width: 1000px)
+    .tagText
+        line-height: 20px
+        margin: 0 20px
+        padding: 10px
+    .basicLinkColor
+        margin: 0 20px
+        padding: 10px
+        line-height: 20px
+
+.textPink 
+    color: #{$textPink}
+    font-size: #{$tagFontSize}
+    margin: 10px 0
+    &:hover
+        color: #{$textBlue}
+        cursor: #{$linkHover}
+
+.textBlue 
+    color: #{$textBlue}
+    font-size: #{$tagFontSize}
+    margin: 10px 0
+    &:hover
+        color: #{$textPink}
+        cursor: #{$linkHover}
+
+.basicLinkColor
+    color: #{$cardLinkText}
+    font-size: 12px
+    font-weight: 500
+    letter-spacing: 0.2em
+    &:hover
+        cursor: #{$linkHover}
+
+.basicLinkColorHover
+    &:hover
+        color: #{$cardLinkText}
+        cursor: #{$linkHover}
+
+.card
+    left:0 !important
+    text-align: center
+    // height: max-content
+    
+.imageContainer
+    position: relative
+
+.imageContainerBg
+    position: absolute
+    top:0
+    z-index: 5
+    transition: all 0.2s linear
+    height: 100%
+    width: 100%
+    &:hover
+        background: #{$imageHoverBlue}
+    &:hover .imageZoomInIcon
+        top: calc(50% - 20px)
+        opacity: 1
+
+.imageZoomInIcon
+    position: absolute
+    opacity: 0
+    top:20px
+    left: 50%
+    transform: translateX(-50%)
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0s
+    &:hover
+        cursor: #{$linkHover}
+        background: #4672c5
+
+.image 
+    width: 100%
+    height:30vh
+    
+.imageZoomInIcon
+    width: 20px
+    height: 20px
+    padding: 15px
+    color: white
+    background: #{$textPink}
+
+.tagsContainer
+    display: flex
+    box-sizing: content-box !important
+    align-content: center
+    justify-content: center
+    width: 100%
+    height: 50px
+    flex-wrap: wrap
+
+.tagItem
+    display: flex
+    align-items: center
+    justify-content: center
+    padding: 0 15px
+    height: 100%
+
+@media only screen and (max-width: 500px)
+    .tagItem
+        text-align: center
+        vertical-align: center
+        width: max-content
+        padding: 10px
+        height: 100%
+
+.loadMore
+    text-align: center
+    margin-bottom: 50px
+
+.loadMoreLink
+    display: inline-flex
+    width: 185px
+    height: 66px
+    background-image: linear-gradient(to right, #5b83cd 0%, #c280bf 100%)
+    border-radius: 4px
+    align-items: center
+    justify-content: center
+
+.loadMoreText
+    background-color: #ffffff00
+    font-size: 0.8rem
+    display: inline-flex
+    width: 180px
+    height: 60px
+    z-index: 5
+    background: white
+    align-items: center
+    justify-content: center
+    color: $textPink
+    transition: color .15s ease-in-out,background-color .15s ease-in-out
+    &:hover
+        color: white
+        background: linear-gradient(to right, #5b83cd 0%, #c280bf 100%)
+    
+.img
+    animation: moveScale 0.2s linear
+
+@keyframes moveScale
+    0%
+        transform: scale(0.6)
+    50%
+        transform: scale(0.8)
+    100%
+        transform: scale(1)
+           
