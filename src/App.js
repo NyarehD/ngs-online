@@ -14,16 +14,16 @@ function App() {
   
   return (
     <div className="App">
-      {/* <Nav />
-      <Header />
+       <Nav />
+       <Header />
       <Router>
         <View></View>
       </Router>
-      <FooterCarousel />
+      {/*<FooterCarousel />
       <PageFooter />
       <Copyright />
       <ScrollButton /> */}
-      <Faq></Faq>
+      {/* <Faq></Faq> */}
     </div>
   );
 }

@@ -107,7 +107,7 @@ const MyFaq = () => {
           <Typography>{w.Q}</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>{w.A}</Typography>
+          <Typography color="textSecondary">{w.A}</Typography>
         </AccordionDetails>
       </Accordion>
     </div>
