@@ -6,11 +6,13 @@ import Error from '../../app/pages/error/error'
 import Contact from '../../app/pages/contact/contact'
 import Event from '../../app/pages/event/event'
 import TeamSingle from '../../app/pages/team-single/team-single'
+import Blog from '../../app/pages/blog/blog'
 
 function View() {
   return (
     <Routes>
-        <Route index element={<Home />} ></Route>
+        <Route path='/home' element={<Home />} ></Route>
+        <Route index element={<Blog />} ></Route>
         <Route path='/about' element={<About />} ></Route>
         <Route path='/contact' element={<Contact />} ></Route>
         <Route path='/event-list' element={<Event />} ></Route>

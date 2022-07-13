@@ -110,12 +110,6 @@ $textColor2: #4c4c4c
   margin: 0
   box-sizing: border-box
 
-body
-  font-family: Poppins, "san-serif"
-  color: $textColor
-
-h4
-  color: $textColor2
 
 a
   color: $textColor2
@@ -126,6 +120,8 @@ li
   list-style-type: none
 
 .container
+  font-family: Poppins, "san-serif"
+  color: $textColor
   @include make-container()
   @include make-container-max-widths()
   background-color: #fff
@@ -155,13 +151,14 @@ li
 .fa_youtube_play
   background-color: #e52d27
 
-h4.widget_title
+widget_title
   font-size: 30px
   letter-spacing: 7px
   line-height: 1
   margin-bottom: 26px !important
   text-transform: uppercase
   font-weight: 700
+  color: $textColor2
 
 .widget_social_buttons
   margin-top: 20px
