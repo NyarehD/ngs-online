@@ -9,9 +9,14 @@ import portf_6 from "../../../assets/event/06.jpg";
 import portf_7 from "../../../assets/event/07.jpg";
 import portf_8 from "../../../assets/event/08.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCalendarDays, faClock, faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faCalendarDays, faClock, faSearch , faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
-const Event = () => {
+import HeaderCarousel from "../../../core/components/header-carousel/header-carousel";
+import HeaderStyle from '../../../core/components/header/header.module.sass'
+
+
+const Event = (eventContent) => {
+  const data = eventContent.eventContent
   const portfolio = [
     {
       id: 1,
@@ -220,54 +225,70 @@ const Event = () => {
     </ul>
   ));
   return (
-    <div className={eventStyle.container}>
-      <div className={eventStyle.left}>
-        <div className={eventStyle.items}> {EventItems} </div>
-        <div className={eventStyle.btns}>
-          <button>
-            <span>&#60;</span>
-          </button>
-          <button>1</button>
-          <button className={eventStyle.active}>2</button>
-          <button>3</button>
-          <button>
-            <span>&#62;</span>
-          </button>
+    <div>
+      <section className={HeaderStyle.box}>
+        <HeaderCarousel />
+        <div className={HeaderStyle.bannerContent}>
+          <h1 className={HeaderStyle.mainHeader}>{data.mainHeader}</h1>
+          <div className={HeaderStyle.breakCrumb}>
+            <ol className={HeaderStyle.breakCrumbLists}>
+              <li className={HeaderStyle.breakCrumbList}><a href="/" className={HeaderStyle.link}>{data.firstBreakCrumb}</a></li>
+              <li className={HeaderStyle.breakCrumbList} ><FontAwesomeIcon className={HeaderStyle.icon} icon={faAngleRight} ></FontAwesomeIcon></li>
+              <li className={HeaderStyle.breakCrumbList} >{data.secondBreakCrumb}</li>
+            </ol>
+          </div>
         </div>
-      </div>
-      <div className={eventStyle.right}>
-        <div className={eventStyle.search}>
-          <h2 className={eventStyle.title}>Search</h2>
-          <form action="" className={eventStyle.form_event}>
-            <input type="search" placeholder="Search Keyword" />
-            <button className={eventStyle.btnSearch}>
-              <FontAwesomeIcon icon={faSearch} />
+      </section>
+
+      <div className={eventStyle.container}>
+        <div className={eventStyle.left}>
+          <div className={eventStyle.items}> {EventItems} </div>
+          <div className={eventStyle.btns}>
+            <button>
+              <span>&#60;</span>
             </button>
-          </form>
+            <button>1</button>
+            <button className={eventStyle.active}>2</button>
+            <button>3</button>
+            <button>
+              <span>&#62;</span>
+            </button>
+          </div>
         </div>
-        <div className={eventStyle.about}>
-          <h2 className={eventStyle.title}>About</h2>
-          <p className={eventStyle.item_text}>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, At accusam aliquyam diam diam
-            dolore dolores duo eirmos.
-          </p>
-        </div>
-        <div className={eventStyle.readDiv}>
-          <span className={eventStyle.readBtn}>
-            <span>Read More</span>
-          </span>
-        </div>
-        <div className={eventStyle.categories}>
-          <h2 className={eventStyle.title}>Categories</h2>
-          {EventCategories}
-        </div>
-        <div className={eventStyle.recent_portfolio}>
-          <h2 className={eventStyle.title}>Recent Portfolio</h2>
-          <div className={eventStyle.photo}>{photos}</div>
-        </div>
-        <div className={eventStyle.tag_cloud}>
-          <h2 className={eventStyle.title}>Tags</h2>
-          <div className={eventStyle.tags_cloud_items}>{tag}</div>
+        <div className={eventStyle.right}>
+          <div className={eventStyle.search}>
+            <h2 className={eventStyle.title}>Search</h2>
+            <form action="" className={eventStyle.form_event}>
+              <input type="search" placeholder="Search Keyword" />
+              <button className={eventStyle.btnSearch}>
+                <FontAwesomeIcon icon={faSearch} />
+              </button>
+            </form>
+          </div>
+          <div className={eventStyle.about}>
+            <h2 className={eventStyle.title}>About</h2>
+            <p className={eventStyle.item_text}>
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, At accusam aliquyam diam diam
+              dolore dolores duo eirmos.
+            </p>
+          </div>
+          <div className={eventStyle.readDiv}>
+            <span className={eventStyle.readBtn}>
+              <span>Read More</span>
+            </span>
+          </div>
+          <div className={eventStyle.categories}>
+            <h2 className={eventStyle.title}>Categories</h2>
+            {EventCategories}
+          </div>
+          <div className={eventStyle.recent_portfolio}>
+            <h2 className={eventStyle.title}>Recent Portfolio</h2>
+            <div className={eventStyle.photo}>{photos}</div>
+          </div>
+          <div className={eventStyle.tag_cloud}>
+            <h2 className={eventStyle.title}>Tags</h2>
+            <div className={eventStyle.tags_cloud_items}>{tag}</div>
+          </div>
         </div>
       </div>
     </div>

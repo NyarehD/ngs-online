@@ -6,8 +6,14 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
-const MyFaq = () => {
+import HeaderStyle from '../../../core/components/header/header.module.sass'
+import HeaderCarousel from "../../../core/components/header-carousel/header-carousel";
+
+const MyFaq = (faqContent) => {
+  const data = faqContent.faqContent
   const [index, setIndex] = useState(0);
 
   const QAA = [
@@ -107,7 +113,7 @@ const MyFaq = () => {
           <Typography>{w.Q}</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>{w.A}</Typography>
+          <Typography color="textSecondary">{w.A}</Typography>
         </AccordionDetails>
       </Accordion>
     </div>
@@ -115,6 +121,20 @@ const MyFaq = () => {
 
   return (
     <>
+      <section className={HeaderStyle.box}>
+        <HeaderCarousel />
+        <div className={HeaderStyle.bannerContent}>
+          <h1 className={HeaderStyle.mainHeader}>{data.mainHeader}</h1>
+          <div className={HeaderStyle.breakCrumb}>
+            <ol className={HeaderStyle.breakCrumbLists}>
+              <li className={HeaderStyle.breakCrumbList}><a href="/" className={HeaderStyle.link}>{data.firstBreakCrumb}</a></li>
+              <li className={HeaderStyle.breakCrumbList} ><FontAwesomeIcon className={HeaderStyle.icon} icon={faAngleRight} ></FontAwesomeIcon></li>
+              <li className={HeaderStyle.breakCrumbList} >{data.secondBreakCrumb}</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
       <div className={style.faqCon}>
         <ul className={style.faqBtnGp}>
           <li

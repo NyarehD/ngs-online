@@ -1,86 +1,104 @@
 import React from "react";
-import NavStyle from "./nav.module.sass";
+import { useState } from "react";
+import Headerstyle from "./nav.module.sass";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faPhone,
-  faEnvelope,
-  faComment,
   faUser,
+  faLock,
+  faLocationDot,
+  faPhone,
 } from "@fortawesome/free-solid-svg-icons";
+import {
+  faFacebookF,
+  faTwitter,
+  faGoogle,
+} from "@fortawesome/free-brands-svg-icons";
 
 function Nav() {
+  const [fix, setFix] = useState(false);
+
+  const setFixedSidebar = () => {
+    if (window.scrollY >= 65) {
+      setFix(true);
+    } else {
+      setFix(false);
+    }
+  };
+
+  window.addEventListener("scroll", setFixedSidebar);
   return (
-    <nav className={NavStyle.navContainer}>
-      <div className={NavStyle.leftside}>
-        <ul>
+    <div>
+      <div className={Headerstyle.header}>
+        <h5>
+          <strong>
+            Welcome to our site! Check our services and gain success!
+          </strong>
+        </h5>
+        <div className={Headerstyle.register}>
           <li>
-            <span>
-              <FontAwesomeIcon
-                icon={faPhone}
-                className={NavStyle.phoneIcon}
-              ></FontAwesomeIcon>{" "}
-            </span>
-
-            <span>
-              {" "}
-              <a href="#" className={NavStyle.text}>
-                800 - 123-45-67
-              </a>{" "}
-            </span>
+            <FontAwesomeIcon icon={faUser} className={Headerstyle.icon} />
+            LOGIN
           </li>
-
           <li>
-            <span>
-              <FontAwesomeIcon
-                icon={faEnvelope}
-                className={NavStyle.penIcon}
-              ></FontAwesomeIcon>{" "}
-            </span>
-
-            <span>
-              {" "}
-              <a href="#" className={NavStyle.text}>
-                MAXICOM@EXAMPLE.COM
-              </a>{" "}
-            </span>
+            <FontAwesomeIcon icon={faLock} className={Headerstyle.icon} />
+            REGISTER
           </li>
-        </ul>
+          <div className={Headerstyle.icons}>
+            <span className={Headerstyle.faFacebookF}>
+              {" "}
+              <FontAwesomeIcon icon={faFacebookF} />{" "}
+            </span>
+            <span className={Headerstyle.faTwitter}>
+              {" "}
+              <FontAwesomeIcon icon={faTwitter} />
+            </span>
+            <span className={Headerstyle.faGoogle}>
+              {" "}
+              <FontAwesomeIcon icon={faGoogle} />
+            </span>
+          </div>
+        </div>
       </div>
 
-      <div className={NavStyle.rightside}>
-        <ul>
-          <li>
-            <span>
+      <div className={Headerstyle.logo}>
+        <div
+          className={
+            fix
+              ? `${Headerstyle.LogoName} ${Headerstyle.stickyBar}`
+              : `${Headerstyle.LogoName}`
+          }
+        >
+          <span>
+            <strong>VS</strong>group
+          </span>
+        </div>
+
+        <div className={Headerstyle.location}>
+          <div className={Headerstyle.hours}>
+            <div className={Headerstyle.icon}>
               <FontAwesomeIcon
-                icon={faComment}
-                className={NavStyle.commentIcon}
-              ></FontAwesomeIcon>
-            </span>
+                className={Headerstyle.faLocationDot}
+                icon={faLocationDot}
+              />
+            </div>
+            <div>
+              <h2>Open Hours</h2>
+              <p>Mon-Fri: 9-17; Sat: 9-20, Sun: Off</p>
+            </div>
+          </div>
 
-            <span>
-              <a href="#" className={NavStyle.text}>
-                REQUEST A QUOTE
-              </a>
-            </span>
-          </li>
-
-          <li>
-            <span>
-              <FontAwesomeIcon
-                icon={faUser}
-                className={NavStyle.userIcon}
-              ></FontAwesomeIcon>{" "}
-            </span>
-
-            <span>
-              <a href="#" className={NavStyle.text}>
-                LOGIN IN / SIGN UP
-              </a>
-            </span>
-          </li>
-        </ul>
+          <div className={Headerstyle.address}>
+            <div className={Headerstyle.icon}>
+              <FontAwesomeIcon className={Headerstyle.faPhone} icon={faPhone} />
+            </div>
+            <div>
+              <h2>+959-123456789</h2>
+              <p>Some Street, 123, Your City</p>
+            </div>
+          </div>
+        </div>
       </div>
-    </nav>
+    </div>
   );
 }
 

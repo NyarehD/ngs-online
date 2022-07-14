@@ -2,7 +2,10 @@ import react, { useState } from 'react'
 import IsoTopeGrid from 'react-isotope'
 import galleryListStyle from './gallery-list.module.sass'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import HeaderStyle from '../../../../core/components/header/header.module.sass'
+import HeaderCarousel from "../../../../core/components/header-carousel/header-carousel";
 
 import image1 from '../../../../assets/gallery-list/01.jpg'
 import image2 from '../../../../assets/gallery-list/02.jpg'
@@ -129,7 +132,8 @@ function getLayouts(width){
             return [0, 0, 0]
     }
 }
-export default function GalleryList(){
+export default function GalleryList(galleryList){
+    const data = galleryList.galleryList
     const [filters, updateFilters] = useState(defaultFilters)
     const [tag, setTag] = useState('ALL')
     const [[columns, unitWidth, unitHeight], setLayout] = useState(getLayouts(window.innerWidth))
@@ -154,43 +158,59 @@ export default function GalleryList(){
         );
       };
     return(
-        <div className={galleryListStyle.container}>
-            <div className={galleryListStyle.tagsContainer}>
-
-            {filters.map(filter => (
-                <div className={galleryListStyle.tagItem} key={filter.label}>
-                    <input className={galleryListStyle.tag} type='checkBox' id={filter.label} value={filter.label} onChange={onFilter} checked={filter.isChecked}/>
-                    <label htmlFor={filter.label} className={tag === filter.label ?galleryListStyle.basicLinkColor:galleryListStyle.tagText}>{filter.label}</label>
+        <div>
+            <section className={HeaderStyle.box}>
+                <HeaderCarousel />
+                <div className={HeaderStyle.bannerContent}>
+                <h1 className={HeaderStyle.mainHeader}>{data.mainHeader}</h1>
+                <div className={HeaderStyle.breakCrumb}>
+                    <ol className={HeaderStyle.breakCrumbLists}>
+                    <li className={HeaderStyle.breakCrumbList}><a href="/" className={HeaderStyle.link}>{data.firstBreakCrumb}</a></li>
+                    <li className={HeaderStyle.breakCrumbList} ><FontAwesomeIcon className={HeaderStyle.icon} icon={faAngleRight} ></FontAwesomeIcon></li>
+                    <li className={HeaderStyle.breakCrumbList} >{data.secondBreakCrumb}</li>
+                    </ol>
                 </div>
-                
-                ))}
-            </div>
-            <div style={{height:((unitHeight + 20) * Math.ceil(CardLayOut.length/columns)) +'px',marginLeft:'-8px'}}>
+                </div>
+            </section>
 
-                <IsoTopeGrid gridLayout={CardLayOut} unitWidth={unitWidth - 15} unitHeight={unitHeight} filters={filters} noOfCols={columns}>
-                    {CardLayOut.map(card => (
-                        <div key={card.id} className={galleryListStyle.card}>
-                            <div style={{position:'relative',width:'100%',height:unitHeight - 80 + 'px',zIndex:5}}>
-                                <div className={galleryListStyle.imageContainerBg}> 
-                                    <FontAwesomeIcon icon={faSearch} className={galleryListStyle.imageZoomInIcon}></FontAwesomeIcon>
+            <div className={galleryListStyle.container}>
+                <div className={galleryListStyle.tagsContainer}>
+
+                {filters.map(filter => (
+                    <div className={galleryListStyle.tagItem} key={filter.label}>
+                        <input className={galleryListStyle.tag} type='checkBox' id={filter.label} value={filter.label} onChange={onFilter} checked={filter.isChecked}/>
+                        <label htmlFor={filter.label} className={tag === filter.label ?galleryListStyle.basicLinkColor:galleryListStyle.tagText}>{filter.label}</label>
+                    </div>
+                    
+                    ))}
+                </div>
+                <div style={{height:((unitHeight + 20) * Math.ceil(CardLayOut.length/columns)) +'px',marginLeft:'-8px'}}>
+
+                    <IsoTopeGrid gridLayout={CardLayOut} unitWidth={unitWidth - 15} unitHeight={unitHeight} filters={filters} noOfCols={columns}>
+                        {CardLayOut.map(card => (
+                            <div key={card.id} className={galleryListStyle.card}>
+                                <div style={{position:'relative',width:'100%',height:unitHeight - 80 + 'px',zIndex:5}}>
+                                    <div className={galleryListStyle.imageContainerBg}> 
+                                        <FontAwesomeIcon icon={faSearch} className={galleryListStyle.imageZoomInIcon}></FontAwesomeIcon>
+                                    </div>
+                                    <img  style={{width:'100%',height:unitHeight - 80 + 'px'}} className={galleryListStyle.img} src={card.image}/>
                                 </div>
-                                <img  style={{width:'100%',height:unitHeight - 80 + 'px'}} className={galleryListStyle.img} src={card.image}/>
+                                <p className={card.tag.some(tagName => tagName === tag) ? galleryListStyle.textPink:galleryListStyle.textBlue}>
+                                    {card.tag}
+                                </p>
+                                <h2 className={galleryListStyle.basicLinkColorHover}>
+                                    {card.title}
+                                </h2>
                             </div>
-                            <p className={card.tag.some(tagName => tagName === tag) ? galleryListStyle.textPink:galleryListStyle.textBlue}>
-                                {card.tag}
-                            </p>
-                            <h2 className={galleryListStyle.basicLinkColorHover}>
-                                {card.title}
-                            </h2>
-                        </div>
-                    )
-                    )}
-                </IsoTopeGrid>
-            </div>
-            <div className={galleryListStyle.loadMore}>
-                <a href='#' className={galleryListStyle.loadMoreLink}>
-                    <span className={galleryListStyle.loadMoreText}>LOAD MORE</span>
-                </a>
+                        )
+                        )}
+                    </IsoTopeGrid>
+                </div>
+                <div className={galleryListStyle.loadMore}>
+                    <a href='#' className={galleryListStyle.loadMoreLink}>
+                        <span className={galleryListStyle.loadMoreText}>LOAD MORE</span>
+                    </a>
+                </div>
             </div>
         </div>
     )

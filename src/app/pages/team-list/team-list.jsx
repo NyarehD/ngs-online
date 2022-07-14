@@ -6,8 +6,11 @@ import {
   faYoutube,
   faInstagram,
 } from "@fortawesome/free-brands-svg-icons";
+import {faAngleRight} from "@fortawesome/free-solid-svg-icons";
 import { useSpring, animated } from "react-spring";
 import { BrowserRouter, Route, Routes, NavLink } from "react-router-dom";
+import HeaderStyle from '../../../core/components/header/header.module.sass'
+import HeaderCarousel from "../../../core/components/header-carousel/header-carousel";
 
 import img01 from "../../../assets/team-list/01.jpg";
 import img02 from "../../../assets/team-list/02.jpg";
@@ -19,7 +22,9 @@ import img07 from "../../../assets/team-list/07.jpg";
 
 import teamListStyle from "./team-list.module.sass";
 
-export default function TeamList() {
+export default function TeamList(teamListContent) {
+  const data = teamListContent.teamListContent
+
   const teams = [
     {
       id: 1,
@@ -608,72 +613,86 @@ export default function TeamList() {
       );
     });
   };
+
   return (
-    // <BrowserRouter>
-    <section>
-      <div className={teamListStyle.container}>
-        <div className={teamListStyle.menuList}>
-          <div className={teamListStyle.lists}>
-            <nav>
-              <NavLink
-                style={({ isActive }) => {
-                  return {
-                    color: isActive ? "#0056b3" : "",
-                    textDecoration: "none",
-                  };
-                }}
-                to={`/all`}
-                className={teamListStyle.links}
-              >
-                All
-              </NavLink>
-              {team}
-            </nav>
+    <div>
+      <section className={HeaderStyle.box}>
+        <HeaderCarousel />
+        <div className={HeaderStyle.bannerContent}>
+          <h1 className={HeaderStyle.mainHeader}>{data.mainHeader}</h1>
+          <div className={HeaderStyle.breakCrumb}>
+            <ol className={HeaderStyle.breakCrumbLists}>
+              <li className={HeaderStyle.breakCrumbList}><a href="/" className={HeaderStyle.link}>{data.firstBreakCrumb}</a></li>
+              <li className={HeaderStyle.breakCrumbList} ><FontAwesomeIcon className={HeaderStyle.icon} icon={faAngleRight} ></FontAwesomeIcon></li>
+              <li className={HeaderStyle.breakCrumbList} >{data.secondBreakCrumb}</li>
+            </ol>
           </div>
         </div>
-        <div className={teamListStyle.teamList}>
-          <Routes>
-            <Route path="*" element={<Alldev />} />
-            <Route path="team-list/design" element={<Design />} />
-            <Route path="team-list/frontend" element={<Frontend />} />
-            <Route path="team-list/backend" element={<Backend />} />
-            <Route path="team-list/mobile" element={<Mobile />} />
-            <Route path="team-list/network" element={<Network />} />
-          </Routes>
-
-        </div>
-        <div className={teamListStyle.parent_container}>
-            <div className={teamListStyle.child_container}>
-                <p className={teamListStyle.children_p}>
-                We see ourselves as much more than just a studio, but as a
-                family of like-minded, kind and talented people who love to
-                collaborate and make awesome sh*t together.
-                </p>
-                <p className={teamListStyle.children_p}>
-                We’re definitely close-knit, but not in a weird, creepy kind of
-                way. We genuinely like each other and like to spend time
-                together, whether it's for a quick cappuccino break in the
-                studio or a night out at the latest gallery or museum opening.
-                </p>
-                <p className={teamListStyle.children_p}>
-                While we love what we do, we know that life is about more than
-                work and that we each have one beyond Bolden. We value healthy
-                boundaries and will never ask you to work late or bother you on
-                weekends (unless it’s for something fun).
-                </p>
-                <p className={teamListStyle.children_p}>
-                Expecting a delivery and need to work from home? Kid’s sick and
-                need to jet? No problem! We’ve always had a flexible approach to
-                working from home and totally understand if you need to stay in
-                or things come up. Life happens.
-                </p>
-                <button className={teamListStyle.children_button}>
-                Go to Events-Right Page
-                </button>
+      </section>
+      <section>
+        <div className={teamListStyle.container}>
+          <div className={teamListStyle.menuList}>
+            <div className={teamListStyle.lists}>
+              <nav>
+                <NavLink
+                  style={({ isActive }) => {
+                    return {
+                      color: isActive ? "#0056b3" : "",
+                      textDecoration: "none",
+                    };
+                  }}
+                  to={`/all`}
+                  className={teamListStyle.links}
+                >
+                  All
+                </NavLink>
+                {team}
+              </nav>
             </div>
+          </div>
+          <div className={teamListStyle.teamList}>
+            <Routes>
+              <Route path="*" element={<Alldev />} />
+              <Route path="team-list/design" element={<Design />} />
+              <Route path="team-list/frontend" element={<Frontend />} />
+              <Route path="team-list/backend" element={<Backend />} />
+              <Route path="team-list/mobile" element={<Mobile />} />
+              <Route path="team-list/network" element={<Network />} />
+            </Routes>
+
+          </div>
+          <div className={teamListStyle.parent_container}>
+              <div className={teamListStyle.child_container}>
+                  <p className={teamListStyle.children_p}>
+                  We see ourselves as much more than just a studio, but as a
+                  family of like-minded, kind and talented people who love to
+                  collaborate and make awesome sh*t together.
+                  </p>
+                  <p className={teamListStyle.children_p}>
+                  We’re definitely close-knit, but not in a weird, creepy kind of
+                  way. We genuinely like each other and like to spend time
+                  together, whether it's for a quick cappuccino break in the
+                  studio or a night out at the latest gallery or museum opening.
+                  </p>
+                  <p className={teamListStyle.children_p}>
+                  While we love what we do, we know that life is about more than
+                  work and that we each have one beyond Bolden. We value healthy
+                  boundaries and will never ask you to work late or bother you on
+                  weekends (unless it’s for something fun).
+                  </p>
+                  <p className={teamListStyle.children_p}>
+                  Expecting a delivery and need to work from home? Kid’s sick and
+                  need to jet? No problem! We’ve always had a flexible approach to
+                  working from home and totally understand if you need to stay in
+                  or things come up. Life happens.
+                  </p>
+                  <button className={teamListStyle.children_button}>
+                  Go to Events-Right Page
+                  </button>
+              </div>
+          </div>
         </div>
-      </div>
-    </section>
-    // </BrowserRouter>
+      </section>
+    </div>
   );
 }

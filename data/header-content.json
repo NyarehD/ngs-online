@@ -1,0 +1,110 @@
+{
+    "header-content": [
+      {
+        "home": [
+          {
+            "mainHeader": "vertical solutions",
+            "subMainHeader" : "group",
+            "subHeader": "end to end web development service",
+            "firstButton": "about",
+            "secondButton": "contact us"
+          }
+        ],
+        "teamList": [
+          {
+            "mainHeader": "team list",
+            "firstBreakCrumb": "home",
+            "secondBreakCrumb": "team"
+          }
+        ],
+        "teamSingle": [
+          {
+            "mainHeader": "Team Single",
+            "firstBreakCrumb": "home",
+            "secondBreakCrumb": "team",
+            "thirdBreakCrumb": "team single"
+          }
+        ],
+        "eventList": [
+          {
+            "mainHeader": "event list",
+            "firstBreakCrumb": "home",
+            "secondBreakCrumb": "event list"
+          }
+        ],
+        "eventSingle": [
+          {
+            "mainHeader": "event",
+            "firstBreakCrumb": "home",
+            "secondBreakCrumb": "event list",
+            "thirdBreakCrumb": "event"
+          }
+        ],
+        "about": [
+          {
+            "mainHeader": "about",
+            "firstBreakCrumb": "home",
+            "secondBreakCrumb": "about"
+          }
+        ],
+        "contact": [
+          {
+            "mainHeader": "contact",
+            "firstBreakCrumb": "home",
+            "secondBreakCrumb": "contact"
+          }
+        ],
+        "blogList": [
+          {
+            "mainHeader": "blog list",
+            "firstBreakCrumb": "home",
+            "secondBreakCrumb": "blog list"
+          }
+        ],
+        "blogSingle": [
+          {
+            "mainHeader": "blog",
+            "firstBreakCrumb": "home",
+            "secondBreakCrumb": "blog list",
+            "thirdBreakCrumb": "blog"
+          }
+        ],
+        "faq": [
+          {
+            "mainHeader": "faq",
+            "firstBreakCrumb": "home",
+            "secondBreakCrumb": "faq"
+          }
+        ],
+        "galleryList": [
+          {
+            "mainHeader": "gallery list",
+            "firstBreakCrumb": "home",
+            "secondBreakCrumb": "gallery list"
+          }
+        ],
+        "termsOfUse": [
+          {
+            "mainHeader": "terms of use",
+            "firstBreakCrumb": "home",
+            "secondBreakCrumb": "terms of use"
+          }
+        ],
+        "login": [
+          {
+            "mainHeader": "login",
+            "firstBreakCrumb": "home",
+            "secondBreakCrumb": "login"
+          }
+        ],
+        "register": [
+          {
+            "mainHeader": "register",
+            "firstBreakCrumb": "home",
+            "secondBreakCrumb": "register"
+          }
+        ]
+      }
+    ]
+}
+  
