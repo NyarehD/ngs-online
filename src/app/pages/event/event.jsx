@@ -235,6 +235,7 @@ const Event = () => {
           </button>
         </div>
       </div>
+
       <div className={eventStyle.right}>
         <div className={eventStyle.search}>
           <h2 className={eventStyle.title}>Search</h2>
