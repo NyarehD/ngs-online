@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import HomeStyle from "./home.module.sass";
-
+import HeaderStyle from '../../../core/components/header/header.module.sass'
+import { useTransition , animated } from "react-spring";
 
 import img1 from "../../../assets/home-gallary/01.jpg";
 import img2 from "../../../assets/home-gallary/02.jpg";
@@ -8,9 +9,28 @@ import img3 from "../../../assets/home-gallary/03.jpg";
 import img4 from "../../../assets/home-gallary/04.jpg";
 import img5 from "../../../assets/home-gallary/05.jpg";
 import img6 from "../../../assets/home-gallary/06.jpg";
+import HeaderCarousel from "../../../core/components/header-carousel/header-carousel";
 
-function home() {
+function Home(homeContent) {
   let Images = [img1, img2, img3, img4, img5, img6];
+  let data = homeContent.homeContent;
+  const [visiable , setVisiable] = useState(false)
+  
+  useState(()=>{
+    data ? setVisiable(true) : console.log("no data and no animation")
+  },[])
+
+  const mainHeader = useTransition(visiable,{
+    from : { x : 800 , y : 0 ,opacity : 0},
+    enter : {x : 0 , y : 0 , opacity : 1},
+    delay : 500
+  });
+
+  const secondHeader = useTransition(visiable,{
+    from : { x : -400 ,y : 0 , opacity : 0},
+    enter : { x : 0 , y : 0 , opacity : 1},
+    delay : 500
+  })
 
   const postData = [
     {
@@ -51,29 +71,62 @@ function home() {
     },
   ];
 
+  
+
   return (
     <div>
-        <div  className={HomeStyle.container} >
-          <div className={HomeStyle.row}>
-            {postData.map((post ,index)=>(
+      <section className={HeaderStyle.box}>
+        <HeaderCarousel className={HeaderStyle.carousel} />
+        <div className={HeaderStyle.bannerContent}>
 
-                      <div key={index} className={HomeStyle.card}>
-                          <div className={HomeStyle.imageBox}>
-                            <img className={HomeStyle.img} src={post.img} alt="" />
-                            <a href="/service" className={HomeStyle.link}> 
-                            </a>
-                          </div>
-                          <div className={HomeStyle.textBox}>
-                              <h2 className={HomeStyle.title} >{post.title}</h2>
-                              <p className={HomeStyle.description} >{post.description}</p>
-                          </div>
-                      </div>
+          <h1 className={HeaderStyle.headerContent}>
+            {mainHeader((style ,item) =>
+              item ? <animated.span style={style} className={HeaderStyle.mainHeader}>{data.mainHeader}</animated.span> : ''
+            )}
 
-            ))}
-          </div>
+            {secondHeader((style , item) =>
+              item ? <animated.span style={style} className={HeaderStyle.subMainHeader} >{data.subMainHeader}</animated.span> : ''
+            )}
+          </h1>
+
+          <h3 className={HeaderStyle.secondHeader}>{data.subHeader}</h3>
+
+          <a href="/about" className={HeaderStyle.homeButton}>
+            <span className={HeaderStyle.custom}>
+              {data.firstButton}
+              <i className={HeaderStyle.customDash}></i>
+            </span>
+          </a>
+
+          <a href="/contact" className={HeaderStyle.homeButton}>
+            <span className={HeaderStyle.custom}>
+              {data.secondButton}
+              <i className={HeaderStyle.customDash}></i>
+            </span>
+          </a>
+          
         </div>
+      </section>
+
+      <div  className={HomeStyle.container} >
+        <div className={HomeStyle.row}>
+          {postData.map((post ,index)=>(
+            <div key={index} className={HomeStyle.card}>
+                <div className={HomeStyle.imageBox}>
+                  <img className={HomeStyle.img} src={post.img} alt="" />
+                  <a href="/service" className={HomeStyle.link}> 
+                  </a>
+                </div>
+                <div className={HomeStyle.textBox}>
+                    <h2 className={HomeStyle.title} >{post.title}</h2>
+                    <p className={HomeStyle.description} >{post.description}</p>
+                </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
 
-export default home;
+export default Home;

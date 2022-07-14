@@ -1,4 +1,10 @@
 import React from "react";
+import aboutStyles from "./about.module.sass";
+import HeaderStyle from '../../../core/components/header/header.module.sass'
+import HeaderCarousel from "../../../core/components/header-carousel/header-carousel";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
+
 import image0 from "../../../assets/about-image.png";
 import image from "../../../assets/team_slide_01.jpg";
 import image2 from "../../../assets/team_slide_02.jpg";
@@ -10,8 +16,10 @@ import icon3 from "../../../assets/icon/icon3.jpg";
 import icon4 from "../../../assets/icon/icon4.jpg";
 import icon5 from "../../../assets/icon/icon5.jpg";
 import icon6 from "../../../assets/icon/icon6.jpg";
-import aboutStyles from "./about.module.sass";
-function About() {
+
+function About(aboutContent) {
+  const data = aboutContent.aboutContent
+
   const cards = [
     {
       photo: icon1,
@@ -59,6 +67,20 @@ function About() {
   ));
   return (
     <div>
+      <section className={HeaderStyle.box}>
+        <HeaderCarousel />
+        <div className={HeaderStyle.bannerContent}>
+          <h1 className={HeaderStyle.mainHeader}>{data.mainHeader}</h1>
+          <div className={HeaderStyle.breakCrumb}>
+            <ol className={HeaderStyle.breakCrumbLists}>
+              <li className={HeaderStyle.breakCrumbList}><a href="/" className={HeaderStyle.link}>{data.firstBreakCrumb}</a></li>
+              <li className={HeaderStyle.breakCrumbList} ><FontAwesomeIcon className={HeaderStyle.icon} icon={faAngleRight} ></FontAwesomeIcon></li>
+              <li className={HeaderStyle.breakCrumbList} >{data.secondBreakCrumb}</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
       <section className={aboutStyles.about_intro}>
         <div className={aboutStyles.container}>
           <div className={aboutStyles.about_info}>
@@ -110,7 +132,7 @@ function About() {
                 document.getElementById("image").src = image;
               }}
             >
-              <h1>
+              <h1 className={aboutStyles.nameList}>
                 Ronald May <span className={aboutStyles.role}>Founder</span>
               </h1>
             </li>
@@ -119,7 +141,7 @@ function About() {
                 document.getElementById("image").src = image2;
               }}
             >
-              <h1>
+              <h1 className={aboutStyles.nameList}>
                 Natalie Thomas <span className={aboutStyles.role}>Trader</span>
               </h1>
             </li>
@@ -128,7 +150,7 @@ function About() {
                 document.getElementById("image").src = image3;
               }}
             >
-              <h1>
+              <h1 className={aboutStyles.nameList}>
                 Frank Farjado <span className={aboutStyles.role}>Manager</span>
               </h1>
             </li>
@@ -137,7 +159,7 @@ function About() {
                 document.getElementById("image").src = image4;
               }}
             >
-              <h1>
+              <h1 className={aboutStyles.nameList}>
                 Helen Freeman <span className={aboutStyles.role}>Support</span>
               </h1>
             </li>

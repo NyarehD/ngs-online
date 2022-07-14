@@ -7,7 +7,6 @@ import { faBars, faX } from "@fortawesome/free-solid-svg-icons";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
-import Typography from "@mui/material/Typography";
 
 function Header() {
   const [index, setIndex] = useState(0);
@@ -44,43 +43,43 @@ function Header() {
             className={`${index === 0 ? `${Style.navActive}` : ``}`}
             onClick={() => setIndex(0)}
           >
-            <a>Home</a>
+            <a href="/" >Home</a>
           </li>
           <li
             className={`${index === 1 ? `${Style.navActive}` : ``}`}
             onClick={() => setIndex(1)}
           >
-            <a>Team</a>
+            <a href="/team-list" >Team</a>
           </li>
           <li
             className={`${index === 2 ? `${Style.navActive}` : ``}`}
             onClick={() => setIndex(2)}
           >
-            <a>Event</a>
+            <a href="/event-list" >Event</a>
           </li>
           <li
             className={`${index === 3 ? `${Style.navActive}` : ``}`}
             onClick={() => setIndex(3)}
           >
-            <a>About</a>
+            <a href="/about" >About</a>
           </li>
           <li
             className={`${index === 4 ? `${Style.navActive}` : ``}`}
             onClick={() => setIndex(4)}
           >
-            <a>Contact</a>
+            <a href="/contact" >Contact</a>
           </li>
           <li
             className={`${index === 5 ? `${Style.navActive}` : ``}`}
             onClick={() => setIndex(5)}
           >
-            <a>Blog</a>
+            <a href="/blog" >Blog</a>
           </li>
           <li
             className={`${index === 6 ? `${Style.navActive}` : ``}`}
             onClick={() => setIndex(6)}
           >
-            <a>Faq</a>
+            <a href="/faq" >Faq</a>
           </li>
           <li>
             <a
@@ -102,10 +101,10 @@ function Header() {
               }}
             >
               <MenuItem onClick={handleClose}>
-                <a href="">GALLERY</a>
+                <a href="/gallery">GALLERY</a>
               </MenuItem>
               <MenuItem onClick={handleClose}>
-                <a href="">TERM OF USE</a>
+                <a href="/term-of-use">TERM OF USE</a>
               </MenuItem>
             </Menu>
           </li>
@@ -137,25 +136,25 @@ function Header() {
       <div className={Style.asideBar} id="asidebar">
         <ul>
           <li>
-            <a href="">Home</a>
+            <a href="/">Home</a>
           </li>
           <li>
-            <a href="">Team</a>
+            <a href="/team">Team</a>
           </li>
           <li>
-            <a href="">Event</a>
+            <a href="/event">Event</a>
           </li>
           <li>
-            <a href="">About</a>
+            <a href="/about">About</a>
           </li>
           <li>
-            <a href="">Contact</a>
+            <a href="/contact">Contact</a>
           </li>
           <li>
-            <a href="">Blog</a>
+            <a href="/blog">Blog</a>
           </li>
           <li>
-            <a href="">Faq</a>
+            <a href="/faq">Faq</a>
           </li>
           <li>
             <Accordion className={Style.asideAccordion}>
@@ -168,25 +167,23 @@ function Header() {
               </AccordionSummary>
               <AccordionDetails className={Style.asideAccordion}>
                 <li>
-                  <a href="">Gallery</a>
+                  <a href="/gallery">Gallery</a>
                 </li>
                 <li>
-                  <a href="">Terms Of Use</a>
+                  <a href="/terms-of-use">Terms Of Use</a>
                 </li>
                 <li className={Style.loginSignUp}>
-                  <a href="">Login</a>
+                  <a href="/login">Login</a>
                 </li>
                 <li className={Style.loginSignUp}>
-                  <a href="">Sign up</a>
+                  <a href="/sign-up">Sign up</a>
                 </li>
               </AccordionDetails>
             </Accordion>
           </li>
         </ul>
       </div>
-      <section className={Style.page_title}>
-        <div className={Style.bannerContent}></div>
-      </section>
+      
     </>
   );
 }
