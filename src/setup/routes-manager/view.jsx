@@ -8,6 +8,7 @@ import Event from '../../app/pages/event/event'
 import TeamSingle from '../../app/pages/team-single/team-single'
 import TeamList from '../../app/pages/team-list/team-list'
 import GalleryList from '../../app/pages/others/gallary-list/gallery-list'
+import MyFaq from '../../app/pages/faq/faq'
 
 function View() {
   return (
@@ -19,6 +20,7 @@ function View() {
         <Route path='/team-list' element={<TeamList />} ></Route>
         <Route path='/team-single' element={<TeamSingle />} ></Route>
         <Route path='/gallery' element={<GalleryList />} ></Route>
+        <Route path='/faq' element={<MyFaq />} ></Route>
         <Route path='*' element={<Error />}></Route>
     </Routes>
   )
