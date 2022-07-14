@@ -108,6 +108,11 @@ function Home(homeContent) {
         </div>
       </section>
 
+      <div className={HomeStyle.aboutContainer}>
+        <p className={HomeStyle.aboutPara}>We expertise in All Web Design and Development! We develop websites on test servers where you can see the progress of the sites and experience them in real time.</p>
+        <button className={HomeStyle.aboutButton}><a className={HomeStyle.aboutLink} href='/about'> Read More </a></button>
+      </div>
+
       <div  className={HomeStyle.container} >
         <div className={HomeStyle.row}>
           {postData.map((post ,index)=>(
