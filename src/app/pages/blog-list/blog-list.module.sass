@@ -15,10 +15,11 @@
     border-radius: 4px
     background-image: linear-gradient(to right, #5b83cd 0%, #c280bf 100%)
     span 
+        border-radius: 4px
         background: #fff
         color: #c280bf
         transition: all 0.3s
-        padding:1rem 2.5rem
+        padding:1rem 2.6rem
     &:hover
         span 
             background: transparent
@@ -36,7 +37,7 @@
     color: #4c4c4c
     .blogList_left_container
         width: 100%
-        padding: 0 10px
+        padding: 0 15px
         .blog
             background-color: #f7f6fb
             margin-bottom: 30px
@@ -127,7 +128,28 @@
                                 color: #8073b2
                         &:last-child 
                             margin-left: 10px
-                    
+        .pagination_container
+            margin: 50px 0
+            .pagination_item
+                border: 2px solid #ededed
+                border-radius: 5px !important
+                color: #808080
+                display: inline-block
+                line-height: inherit
+                margin-right: 4px
+                min-width: 3em
+                padding: 0.5em 1.2em
+                text-align: center
+                cursor: pointer
+                &:hover
+                    background-color: transparent
+                    border-color: #c280bf
+            .active
+                    background-color: transparent
+                    border-color: #c280bf
+
+
+
     .blogList_right_container 
         width: 100%
         padding: 0 10px
@@ -279,6 +301,8 @@
                 justify-content: space-between
             .blogButton 
                 margin-bottom: 0px
+            .pagination_container
+                margin:0px 0
         .blogList_right_container 
             padding: 0 30px
         

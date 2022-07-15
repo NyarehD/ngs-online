@@ -6,8 +6,8 @@ import Error from "../../app/pages/error/error";
 import Contact from "../../app/pages/contact/contact";
 import Event from "../../app/pages/event/event";
 import TeamSingle from "../../app/pages/team-single/team-single";
-import Blog from "../../app/pages/blog/blog";
-import BlogList from "../../app/pages/blog-list/blog-list";
+// import Blog from "../../app/pages/blog/blog";
+import BlogList from "../../app/pages/blog-list/blog_list";
 
 function View() {
   return (
