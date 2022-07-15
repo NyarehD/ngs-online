@@ -110,11 +110,9 @@ const EventSingleRight = () => {
                 <div className={eventSingleStyle.search}>
                     <h2 className={eventSingleStyle.title}>Search</h2>
                     <form action="" className={eventSingleStyle.form_event}>
-                        <input type="search" placeholder="Search Keyword"/>
+                        <input type='text' placeholder="Search Keyword"/>
                         <button className={eventSingleStyle.btnSearch}>
-                            <span>
-                                <FontAwesomeIcon icon={faSearch}></FontAwesomeIcon>
-                            </span>
+                            <FontAwesomeIcon icon={faSearch}></FontAwesomeIcon>
                         </button>
                     </form>
                 </div>
