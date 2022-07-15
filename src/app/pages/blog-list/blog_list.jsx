@@ -69,32 +69,31 @@ const Blog = ({ post }) => {
 };
 
 const BlogContainer = ({ togglePosts, currentPosts, pageNumber, paginate, currentPostsByTag,currentPage }) => {
-  useEffect(() => {
-    console.log(togglePosts);
-  }, [togglePosts]);
   return (
     <div className={BlogListStyle.blogList_left_container}>
+
+      {/* start Blog Post */}
       {togglePosts
         ? currentPostsByTag?.map((post, i) => <Blog key={i} post={post} />)
         : currentPosts?.map((post, i) => <Blog key={i} post={post} />)}
-      <nav>
+      {/* end Blog Post */}
+
+      {/*start pagination */}
+      <nav className={BlogListStyle.pagination_Section}>
         <ul  className={BlogListStyle.pagination_container}>
           {pageNumber?.map((num) => (
-            <li
-              key={num}
-              className={`${BlogListStyle.pagination_item} ${currentPage==num&&BlogListStyle.active}`}
-              onClick={() => paginate(num)}
-            >
+            <li key={num}className={`${BlogListStyle.pagination_item} ${currentPage==num&&BlogListStyle.active}`} onClick={() => paginate(num)}>
               {num}
             </li>
           ))}
         </ul>
       </nav>
+      {/*end pagination */}
+
+
     </div>
   );
 };
-
-
 
 const BlogHelperContainer = ({ posts, fetchByTag, setTogglePosts }) => {
   const toggle = (tagId) => {
@@ -103,6 +102,8 @@ const BlogHelperContainer = ({ posts, fetchByTag, setTogglePosts }) => {
   };
   return (
     <div className={BlogListStyle.blogList_right_container}>
+
+      {/* search  */}
       <div className={`${BlogListStyle.search} ${BlogListStyle.mb}`}>
         <h2 className={BlogListStyle.headertag}>Search</h2>
         <form action="" className={BlogListStyle.form_search}>
@@ -118,6 +119,7 @@ const BlogHelperContainer = ({ posts, fetchByTag, setTogglePosts }) => {
         </form>
       </div>
 
+      {/* aboout  */}
       <div className={`${BlogListStyle.about} ${BlogListStyle.mb}`}>
         <h2 className={BlogListStyle.headertag}>About US</h2>
         <p className={`${BlogListStyle.defaultP} ${BlogListStyle.mb}`}>
@@ -129,6 +131,7 @@ const BlogHelperContainer = ({ posts, fetchByTag, setTogglePosts }) => {
         </button>
       </div>
 
+      {/* category  */}
       <div className={`${BlogListStyle.category_container} ${BlogListStyle.mb}`}>
         <h2 className={BlogListStyle.headertag}>Categories</h2>
         <ul className={BlogListStyle.categories}>
@@ -144,10 +147,6 @@ const BlogHelperContainer = ({ posts, fetchByTag, setTogglePosts }) => {
             <a href="#">Internet Provider three </a>
             <span>(9)</span>
           </li>
-          {/* <li className={BlogListStyle.category}>
-            <a href="#">Internet Provider </a>
-            <span>(12)</span>
-          </li> */}
         </ul>
       </div>
 
@@ -231,6 +230,7 @@ const BlogHelperContainer = ({ posts, fetchByTag, setTogglePosts }) => {
           </a>
         </div>
       </div>
+
     </div>
   );
 };
@@ -241,62 +241,59 @@ function BlogList() {
   const [currentPage, setCurrentPage] = useState(1);
   const [postPerPage] = useState(5);
   const [togglePosts, setTogglePosts] = useState(false);
-  const fetchBlogs = async () => {
-    // const response = await fetch("http://localhost:9000/blog-posts");
-    const response = await api.get("/blog-posts");
-    console.log({ response });
-    // const resData = await response.json();
-    const resData = await response.data;
 
-    setPosts(resData);
-    console.log({ resData });
-  };
+ 
 
+  // start fetch api insturction 
   const fetchByTag = async (tagId) => {
-    // const response = await fetch(`http://localhost:9000/blog-posts?tagId=${tagId}`);
-    const response = await api.get("/blog-posts");
-    // const resData = await response.json();
-    const resData = await response.data;
-    setPostsByTag(resData);
-    console.log(resData);
+    const response = await api.get(`/blog-posts?tagId=${tagId}`);
+    setPostsByTag(response.data);
   };
-
   useEffect(() => {
+   const fetchBlogs = async () => {
+    const response = await api.get("/blog-posts");
+    setPosts(response.data);
+  };
     fetchBlogs();
   }, []);
+  // end fetch api insturction 
 
+
+  // start pagination instruction 
   const indexOfLastPost = currentPage * postPerPage;
   const indexOfFirstPost = indexOfLastPost - postPerPage;
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
   const currentPostsByTag = postsByTag.slice(indexOfFirstPost, indexOfLastPost);
-
   const pageNumber = [];
-
-  for (let i = 1; i <= Math.ceil(posts.length / postPerPage); i++) {
+        //--->for dynamic pagination by tag name 
+  const paginationLength = togglePosts ? postsByTag.length / postPerPage:posts.length / postPerPage;
+  
+  console.log({paginationLength});
+  
+  for (let i = 1; i <= Math.ceil(paginationLength); i++) {
     pageNumber.push(i);
   }
-
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
+   // end pagination instruction 
 
+
+
+   const BlogContainerPorps = {
+    togglePosts, currentPosts, pageNumber, paginate, currentPostsByTag,currentPage
+  }
+  const BlogHelperContainerProps = {
+        setTogglePosts,posts,fetchByTag,postsByTag,
+  }
 
   return (
     <div className={BlogListStyle.bloglist_container}>
       <BlogContainer
-        togglePosts={togglePosts}
-        setTogglePosts={setTogglePosts}
-        currentPosts={currentPosts}
-        currentPostsByTag={currentPostsByTag}
-        pageNumber={pageNumber}
-        paginate={paginate}
-        currentPage={currentPage}
+        {...BlogContainerPorps}
       />
       <BlogHelperContainer
-        setTogglePosts={setTogglePosts}
-        posts={posts}
-        fetchByTag={fetchByTag}
-        postsByTag={postsByTag}
+        {...BlogHelperContainerProps}
       />
     </div>
   );
