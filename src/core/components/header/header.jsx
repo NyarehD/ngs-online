@@ -33,82 +33,84 @@ function Header() {
 
   return (
     <>
-      <div
-        className={
-          fix ? `${Style.container} ${Style.stickyBar}` : `${Style.container}`
-        }
-      >
-        <ul>
-          <li
-            className={`${index === 0 ? `${Style.navActive}` : ``}`}
-            onClick={() => setIndex(0)}
-          >
-            <a href="/" >Home</a>
-          </li>
-          <li
-            className={`${index === 1 ? `${Style.navActive}` : ``}`}
-            onClick={() => setIndex(1)}
-          >
-            <a href="/team-list" >Team</a>
-          </li>
-          <li
-            className={`${index === 2 ? `${Style.navActive}` : ``}`}
-            onClick={() => setIndex(2)}
-          >
-            <a href="/event-list" >Event</a>
-          </li>
-          <li
-            className={`${index === 3 ? `${Style.navActive}` : ``}`}
-            onClick={() => setIndex(3)}
-          >
-            <a href="/about" >About</a>
-          </li>
-          <li
-            className={`${index === 4 ? `${Style.navActive}` : ``}`}
-            onClick={() => setIndex(4)}
-          >
-            <a href="/contact" >Contact</a>
-          </li>
-          <li
-            className={`${index === 5 ? `${Style.navActive}` : ``}`}
-            onClick={() => setIndex(5)}
-          >
-            <a href="/blog" >Blog</a>
-          </li>
-          <li
-            className={`${index === 6 ? `${Style.navActive}` : ``}`}
-            onClick={() => setIndex(6)}
-          >
-            <a href="/faq" >Faq</a>
-          </li>
-          <li>
-            <a
-              id="basic-button"
-              aria-controls={open ? "basic-menu" : undefined}
-              aria-haspopup="true"
-              aria-expanded={open ? "true" : undefined}
-              onClick={handleClick}
+      <div className={Style.containerNav}>
+        <div
+          className={
+            fix ? `${Style.container} ${Style.stickyBar}` : `${Style.container}`
+          }
+        >
+          <ul>
+            <li
+              className={`${index === 0 ? `${Style.navActive}` : ``}`}
+              onClick={() => setIndex(0)}
             >
-              OTHERS
-            </a>
-            <Menu
-              id="basic-menu"
-              anchorEl={anchorEl}
-              open={open}
-              onClose={handleClose}
-              MenuListProps={{
-                "aria-labelledby": "basic-button",
-              }}
+              <a href="/">Home</a>
+            </li>
+            <li
+              className={`${index === 1 ? `${Style.navActive}` : ``}`}
+              onClick={() => setIndex(1)}
             >
-              <MenuItem onClick={handleClose}>
-                <a href="/gallery">GALLERY</a>
-              </MenuItem>
-              <MenuItem onClick={handleClose}>
-                <a href="/term-of-use">TERM OF USE</a>
-              </MenuItem>
-            </Menu>
-          </li>
-        </ul>
+              <a href="/team-list">Team</a>
+            </li>
+            <li
+              className={`${index === 2 ? `${Style.navActive}` : ``}`}
+              onClick={() => setIndex(2)}
+            >
+              <a href="/event-list">Event</a>
+            </li>
+            <li
+              className={`${index === 3 ? `${Style.navActive}` : ``}`}
+              onClick={() => setIndex(3)}
+            >
+              <a href="/about">About</a>
+            </li>
+            <li
+              className={`${index === 4 ? `${Style.navActive}` : ``}`}
+              onClick={() => setIndex(4)}
+            >
+              <a href="/contact">Contact</a>
+            </li>
+            <li
+              className={`${index === 5 ? `${Style.navActive}` : ``}`}
+              onClick={() => setIndex(5)}
+            >
+              <a href="/blog">Blog</a>
+            </li>
+            <li
+              className={`${index === 6 ? `${Style.navActive}` : ``}`}
+              onClick={() => setIndex(6)}
+            >
+              <a href="/faq">Faq</a>
+            </li>
+            <li>
+              <a
+                id="basic-button"
+                aria-controls={open ? "basic-menu" : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? "true" : undefined}
+                onClick={handleClick}
+              >
+                OTHERS
+              </a>
+              <Menu
+                id="basic-menu"
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                MenuListProps={{
+                  "aria-labelledby": "basic-button",
+                }}
+              >
+                <MenuItem onClick={handleClose}>
+                  <a href="/gallery">GALLERY</a>
+                </MenuItem>
+                <MenuItem onClick={handleClose}>
+                  <a href="/term-of-use">TERM OF USE</a>
+                </MenuItem>
+              </Menu>
+            </li>
+          </ul>
+        </div>
         <button className={Style.btnAppointment}></button>
       </div>
       <div className={Style.asideMenu}>
@@ -183,7 +185,6 @@ function Header() {
           </li>
         </ul>
       </div>
-      
     </>
   );
 }

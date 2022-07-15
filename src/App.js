@@ -19,10 +19,10 @@ function App() {
       <Router>
         <View></View>
       </Router>
-      {/*<FooterCarousel />
+      <FooterCarousel />
       <PageFooter />
       <Copyright />
-      <ScrollButton /> */}
+      <ScrollButton />
       {/* <Faq></Faq> */}
     </div>
   );

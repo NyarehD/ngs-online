@@ -61,19 +61,22 @@
 .logo
     padding: 2%
     display: flex
-    align-items: center
-    width: 100%
-    justify-content: space-between
-
 .LogoName
+    Width: 100%
+    background: #fff
+    text-align: center
+    z-index: 10
+    padding: 10px 0px
+.LogoName span
+    display: inline-block
     border: 3px solid #253b80
     color: #253b80
     text-align: center
     text-transform: uppercase
     letter-spacing: 10px
     padding: 0.5% 2%
-    margin-right: 5%
-    z-index: 3
+    z-index: 6
+    background: #fff
 
 .location
     display: flex
@@ -101,8 +104,8 @@
 @media (max-width:$break_point-lg)
     .stickyBar
         position: fixed
-        top: 5px
-        left: 500px
+        top: -5px
+        left: -1px
     .register
         margin: 0
         padding: 0
@@ -140,16 +143,7 @@
     .LogoName
         margin: 0 auto
 
-@media screen and (max-width:820px)
-    .stickyBar
-        position: fixed
-        top: 5px
-        left: 350px
 @media (max-width:$break_point-s)
-    .stickyBar
-        position: fixed
-        top: 5px
-        left: 200px
     .register
         margin: 0
         padding: 0
