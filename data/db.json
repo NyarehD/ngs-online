@@ -1,0 +1,24 @@
+{
+    "blog-single" : [
+        {
+            "date" : 17,
+            "month" : "OCT",
+            "year": 2022,
+            "authorRole": "admin",
+            "comment" : 45,
+            "like" : 36,
+            "views": 280,
+            "title" : "First Sample Page with Image",
+            "body" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin et ni slet dolor. Etiam sollicitudin efficitur magna eu sollicitudin. Vestibul umet nusi dolores est dui tu emet impecus",
+            "tag" : ["internet" , "cable" , "iptv"],
+            "postImage" :[
+                "/asset/blog/01.jpg",
+                "/asset/blog/02.jpg",
+                "/asset/blog/03.jpg",
+                "/asset/blog/04.jpg",
+                "/asset/blog/05.jpg"
+            ],
+            "authorImg" : "/asset/blog/author-bio.jpg"
+        } 
+    ]
+}
