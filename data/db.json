@@ -1,24 +1,121 @@
 {
-    "blog-single" : [
-        {
-            "date" : 17,
-            "month" : "OCT",
-            "year": 2022,
-            "authorRole": "admin",
-            "comment" : 45,
-            "like" : 36,
-            "views": 280,
-            "title" : "First Sample Page with Image",
-            "body" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin et ni slet dolor. Etiam sollicitudin efficitur magna eu sollicitudin. Vestibul umet nusi dolores est dui tu emet impecus",
-            "tag" : ["internet" , "cable" , "iptv"],
-            "postImage" :[
-                "/asset/blog/01.jpg",
-                "/asset/blog/02.jpg",
-                "/asset/blog/03.jpg",
-                "/asset/blog/04.jpg",
-                "/asset/blog/05.jpg"
-            ],
-            "authorImg" : "/asset/blog/author-bio.jpg"
-        } 
-    ]
+  "header-content": {
+    "home": {
+      "mainHeader": "vertical solutions",
+      "subMainHeader": "group",
+      "subHeader": "end to end web development service",
+      "firstButton": "about",
+      "secondButton": "contact us"
+    },
+    "teamList": {
+      "mainHeader": "team list",
+      "firstBreakCrumb": "home",
+      "secondBreakCrumb": "team"
+    },
+    "teamSingle": {
+      "mainHeader": "Team Single",
+      "firstBreakCrumb": "home",
+      "secondBreakCrumb": "team",
+      "thirdBreakCrumb": "team single"
+    },
+    "eventList": {
+      "mainHeader": "event list",
+      "firstBreakCrumb": "home",
+      "secondBreakCrumb": "event list"
+    },
+    "eventSingle": {
+      "mainHeader": "event",
+      "firstBreakCrumb": "home",
+      "secondBreakCrumb": "event list",
+      "thirdBreakCrumb": "event"
+    },
+    "about": {
+      "mainHeader": "about",
+      "firstBreakCrumb": "home",
+      "secondBreakCrumb": "about"
+    },
+    "contact": {
+      "mainHeader": "contact",
+      "firstBreakCrumb": "home",
+      "secondBreakCrumb": "contact"
+    },
+    "blogList": {
+      "mainHeader": "blog list",
+      "firstBreakCrumb": "home",
+      "secondBreakCrumb": "blog list"
+    },
+    "blogSingle": {
+      "mainHeader": "blog",
+      "firstBreakCrumb": "home",
+      "secondBreakCrumb": "blog list",
+      "thirdBreakCrumb": "blog"
+    },
+    "faq": {
+      "mainHeader": "faq",
+      "firstBreakCrumb": "home",
+      "secondBreakCrumb": "faq"
+    },
+    "galleryList": {
+      "mainHeader": "gallery list",
+      "firstBreakCrumb": "home",
+      "secondBreakCrumb": "gallery list"
+    },
+    "termsOfUse": {
+      "mainHeader": "terms of use",
+      "firstBreakCrumb": "home",
+      "secondBreakCrumb": "terms of use"
+    },
+    "login": {
+      "mainHeader": "login",
+      "firstBreakCrumb": "home",
+      "secondBreakCrumb": "login"
+    },
+    "register": {
+      "mainHeader": "register",
+      "firstBreakCrumb": "home",
+      "secondBreakCrumb": "register"
+    }
+  },
+
+  "blog-single": {
+    "id": 1,
+    "date": 17,
+    "month": "OCT",
+    "year": 2022,
+    "authorRole": "admin",
+    "NOComment": 62,
+    "like": 41,
+    "views": 281,
+    "title": " Donec laoreet tortor sed mollis leo maximus. Sed semper pelat est esque libero et semper tempurus invidunt.",
+    "para01": "At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor amet consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.",
+    "para02": "Labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.",
+    "para03": "Nullam tincidunt porta nulla, id condimentum mi iaculis a. Nulla aliquam aliquet magna, eu tincidunt est pellentesque sed. Praesent auctor mauris at ipsum posuere varius. Ut id diam vehicula, sagittis dui non, pulvinar velit. Phasellus in nulla et nisl congue elementum eget sed nunc. Donec magna augue, egestas vestibulum magna at, posuere eleifend quam.",
+    "para04": "Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr.",
+    "para05": "Quisque vehicula vestibulum mattis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed blandit dui ut semper tincidunt. Phasellus rutrum neque in metus lobortis rutrum.",
+    "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin et ni slet dolor. Etiam sollicitudin efficitur magna eu sollicitudin. Vestibul umet nusi dolores est dui tu emet impecus",
+    "lists": [
+      "Consetetur sadipscing elitr, sed diam nonumy",
+      "Eirmod tempor invidunt ut labore",
+      "Sed diam voluptua. At vero eos accusam"
+    ],
+    "quoteTitle": "Gregory D, Grey, Client",
+    "quote": " We had hughesnet for ages and were completely unhappy with it. We switched to MaxiCom and have never looked back. We are much much happier!",
+    "tag": [
+      "internet",
+      "cable",
+      "iptv"
+    ],
+    "mainImage": "/blog/06.jpg",
+    "postImage": [
+      "/blog/02.jpg",
+      "/blog/03.jpg",
+      "/blog/04.jpg"
+    ],
+    "authorImg": "/blog/author-bio.jpg",
+    "comments": {
+      "authorName": "zaw myo naing",
+      "authorEmail": "zaw@gmail.com",
+      "commentText": "11111"
+    }
+  }
 }
