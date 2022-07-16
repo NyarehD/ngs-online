@@ -11,6 +11,7 @@ import TeamSingle from '../../app/pages/team-single/team-single'
 import TeamList from '../../app/pages/team-list/team-list'
 import GalleryList from '../../app/pages/others/gallary-list/gallery-list'
 import MyFaq from '../../app/pages/faq/faq'
+import EventSingle from "../../app/pages/event-single/event-single";
 
 function View() {
 
@@ -20,21 +21,24 @@ function View() {
   const [eventContent , setEventContent] = useState({})
   const [teamListContent , setTeamListContent] = useState({})
   const [faqContent , setFaqContent] = useState({})
-  const [galleryList , setGalleryList] = useState({})
+  const [galleryListContent , setGalleryListContent] = useState({})
+  const [eventSingleContent , setEventSingleContent] = useState({})
+  const [teamSingleContent , setTeamSingleContent] = useState({})
 
   useEffect( () => {
     const fetchData = async () =>{
       try{
         const response = await api.get('/header-content');
-        const data = response.data[0]
-        setHomeContent(data.home[0])
-        setAboutContent(data.about[0])
-        setContactContent(data.contact[0])
-        setEventContent(data.eventList[0])
-        setTeamListContent(data.teamList[0])
-        setFaqContent(data.faq[0])
-        setGalleryList(data.galleryList[0])
-
+        const data = response.data
+        setHomeContent(data.home)
+        setAboutContent(data.about)
+        setContactContent(data.contact)
+        setEventContent(data.eventList)
+        setTeamListContent(data.teamList)
+        setFaqContent(data.faq)
+        setGalleryListContent(data.galleryList)
+        setEventSingleContent(data.eventSingle)
+        setTeamSingleContent(data.teamSingle)
       } catch(err){
         console.log(`Error : ${err}`)
       }
@@ -48,10 +52,11 @@ function View() {
         <Route index element={<Home homeContent={homeContent} />} ></Route>
         <Route path='/about' element={<About aboutContent={aboutContent} />} ></Route>
         <Route path='/contact' element={<Contact contactContent={contactContent} />} ></Route>
-        <Route path='/team-list' element={<TeamList teamListContent={teamListContent} />} ></Route>
+        <Route path='/team-list' element={<TeamList teamListContent={teamListContent} />}></Route>
+        <Route path='/team-single' element={<TeamSingle teamSingleContent={teamSingleContent} />} ></Route>
         <Route path='/event-list' element={<Event eventContent={eventContent} />} ></Route>
-        <Route path='/team-single' element={<TeamSingle />} ></Route>
-        <Route path='/gallery' element={<GalleryList galleryList={galleryList} />} ></Route>
+        <Route path='/event-single' element={<EventSingle eventSingleContent={eventSingleContent} />} ></Route>
+        <Route path='/gallery' element={<GalleryList galleryListContent={galleryListContent} />} ></Route>
         <Route path='/faq' element={<MyFaq faqContent={faqContent} />} ></Route>
         <Route path='*' element={<Error />}></Route>
     </Routes>
