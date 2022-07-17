@@ -7,13 +7,16 @@ import PageFooter from "./core/components/page-footer/page-footer";
 import Copyright from "./core/components/copy-right/copy-right";
 import ScrollButton from "./core/components/scroll-button/scroll-button";
 import View from "./setup/routes-manager/view";
-import TeamSingle from "./app/pages/team-single/team-single";
+// import TeamSingle from "./app/pages/team-single/team-single";
+
+import Blog from "./app/pages/blog/blog-single";
 
 
 function App() {
   
   return (
     <div className="App">
+      {/* <Blog/> */}
       <Nav />
       <Header />
       <Router>

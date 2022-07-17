@@ -1,10 +1,12 @@
 import React,{useState, useEffect} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import { CommentSection } from 'react-comments-section'
+import 'react-comments-section/dist/index.css'
 
 import {faCalendarDays, faUserLarge, faEye, faComments, faHeart, faBasketball, faReply, faEnvelope, faPenToSquare} from "@fortawesome/free-solid-svg-icons"
 import {faFacebookF, faTwitter, faGooglePlusG, faInstagram, faYoutube, faLinkedinIn} from "@fortawesome/free-brands-svg-icons"
 import api from "../../../api/blog-single"
-import BlogStyle from "./blog.module.sass"
+import BlogStyle from "./blog-single.module.sass"
 import quote from "../../../assets/blog/quote-icon.png"
 import relateImg01 from "../../../assets/blog/related-post01.jpg"
 import relateImg02 from "../../../assets/blog/related-post02.jpg"
@@ -14,12 +16,43 @@ import comment03 from "../../../assets/blog/comment-03.jpg"
 
 export default function Blog(){
 
+    const data =[
+        {
+            userId: '02b',
+            comId: '017',
+            fullName: 'Chloe Denverou',
+            userProfile: '#',
+            avatarUrl: 'https://ui-avatars.com/api/name=Chloe%20Denverou',
+            text: 'I think you have a point🤔',
+            replies: [
+                {
+                  userId: '02a',
+                  comId: '013',
+                  userProfile: '#',
+                  fullName: 'Dean Whales',
+                  avatarUrl: 'https://ui-avatars.com/api/name=Dean%20Whales',
+                  text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,'
+                }
+              ]
+          },
+          {
+            userId: '03b',
+            comId: '018',
+            fullName: 'Amelia Brynne',
+            userProfile: '#',
+            avatarUrl: 'https://ui-avatars.com/api/name=Amelia%20Brynne',
+            text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elit',
+            replies: []
+        }
+      ]
+
     const [blog, setBlog]=useState()
     const [like, setLike]=useState(false)
     const [likeCount, setLikeCount]=useState(0)
     const [nOComment, setNOComment]=useState(0)
     const [comments, setComments]=useState({authorName:"",authorEmail:"",commentText:""})
     const [isBoxInput, setIsBoxInput]=useState(true)
+    const [userId, setuserId]=useState(true)
 
 
     //Retrieve data from api
@@ -88,6 +121,9 @@ export default function Blog(){
         await api.post(`/blog-single/`, useData)
     }
     
+    const onSubmitAction = (data) => {
+        console.log('this comment was posted!',data)
+    }
 
     if(blog){
         console.log("I GOT DATA (^=^)")
@@ -391,7 +427,7 @@ export default function Blog(){
                     <div className={BlogStyle.comment_section}>
                     <div className={BlogStyle.comment_area}>
                             <h2 className={BlogStyle.comment_title}>Comments</h2>
-                            <ol className={BlogStyle.comment_list}>
+                            {/* <ol className={BlogStyle.comment_list}>
                                 <li className={BlogStyle.comment}>
                                     <article className={BlogStyle.comment_body}>
                                         <footer className={BlogStyle.comment_meta}>
@@ -518,15 +554,15 @@ export default function Blog(){
                                     </article>
                                 </li>
                             </ol>
-                            <h2 className={BlogStyle.comment_title}>Leave Your Comment</h2>
+                            <h2 className={BlogStyle.comment_title}>Leave Your Comment</h2> */}
                             <div id="respond" className={BlogStyle.comment_response}>
-                                <form 
+                                {/* <form 
                                     action="#"
                                     id="comment_form"
                                     className={BlogStyle.comment_form}
                                 >
                                     <div className={BlogStyle.response_name}>
-                                        {/* <label htmlFor="author" className={BlogStyle.response_name_label}>Name</label> //hidden lavel */}
+                                        <label htmlFor="author" className={BlogStyle.response_name_label}>Name</label> //hidden lavel
                                         <FontAwesomeIcon
                                             icon={faUserLarge}
                                             className={BlogStyle.response_name_icon}
@@ -546,7 +582,7 @@ export default function Blog(){
                                         />
                                     </div>
                                     <div className={BlogStyle.response_email}>
-                                        {/* <label htmlFor="email" className={BlogStyle.response_email_label}>Email</label> //hidden lavel */}
+                                        <label htmlFor="email" className={BlogStyle.response_email_label}>Email</label> //hidden lavel
                                         <FontAwesomeIcon
                                             icon={faEnvelope}
                                             className={BlogStyle.response_email_icon}
@@ -566,7 +602,7 @@ export default function Blog(){
                                         />
                                     </div>
                                     <div className={BlogStyle.response_comment}>
-                                        {/* <label htmlFor="comment" className={BlogStyle.response_comment_label}>Comment</label> //hidden lavel */}
+                                        <label htmlFor="comment" className={BlogStyle.response_comment_label}>Comment</label> //hidden lavel
                                         <FontAwesomeIcon
                                             icon={faPenToSquare}
                                             className={BlogStyle.response_comment_icon}
@@ -596,7 +632,90 @@ export default function Blog(){
                                             <span className={BlogStyle.form_submit_text}>Submit</span>
                                         </button>
                                     </div>
-                                </form>
+                                </form> */}
+                                  <CommentSection
+                                    currentUser={userId ? {
+                                        currentUserId: '01a',
+                                        currentUserImg:'https://ui-avatars.com/api/name=John%20Hellion',
+                                        currentUserProfile:'#',
+                                        currentUserFullName: 'John Hellion'
+                                    }:null}
+                                    // advancedInput={true}
+                                    // commentsCount={8}
+                                    hrStyle={{ border: '0.5px solid #4c4c4c' }}
+                                    titleStyle={{ 
+                                        color: '#4c4c4c',
+                                        fontSize: '1.7vw',
+                                        fontweight: '500',
+                                        marginBottom:'20px',
+                                        fontFamily: 'poppins, sans-serif'
+                                        
+                                    }}
+                                    customImg={comment01}
+                                    inputStyle={{ 
+                                        border:'none',
+                                        borderRadius: '5px', 
+                                        outLine:"none",
+                                        backgroundColor:'#fff',
+                                        margin:'0 10px',
+                                        padding: '20px',
+                                        fontFamily: 'poppins, sans-serif'
+                                        // boxShadow:'0 0 5px 1px rgba(0,0,0,0.05)' 
+                                    }}
+                                    formStyle={{ backgroundColor: 'transparent' }}
+                                    submitBtnStyle={{
+                                        border: '0',
+                                        backgroundImage: 'linear-gradient(to right, #5b83cd 0%, #c280bf 100%)',
+                                        padding: '2px',
+                                        borderRadius: '5px',
+                                        height:'50px',
+                                        width:'100px',
+                                        color:'#eee',
+                                        fontSize:'1vw',
+                                        fontWeight:'500',
+                                        fontFamily: 'poppins, sans-serif',
+                                        letterSpacing:'0',
+                                        textTransform:'uppercase',
+                                        boxShadow:'0 0 3px 0px #c280bf, 0 0 5px 0px #5b83cd',
+                                        transition:'0.2s'
+                                    }}
+                                    cancelBtnStyle={{
+                                        border: '2px solid linear-gradient(to right, #5b83cd 0%, #c280bf 100%)',
+                                        padding: '2px',
+                                        borderRadius: '5px',
+                                        height:'50px',
+                                        width:'100px',
+                                        color: '#4c4c4c',
+                                        fontSize:'1vw',
+                                        fontWeight:'500',
+                                        fontFamily: 'poppins, sans-serif',
+                                        letterSpacing:'0',
+                                        textTransform:'uppercase',
+                                        boxShadow:'0 0 1px 0px #c280bf, 0 0 1px 0px #5b83cd',
+                                        transition:'0.2s'
+                                    }}
+                                    replyInputStyle={{ 
+                                        border:'none',
+                                        borderRadius: '5px', 
+                                        outLine:"none",
+                                        backgroundColor:'#fff',
+                                        margin:'0 10px',
+                                        padding: '20px',
+                                        fontFamily: 'poppins, sans-serif'
+                                    }}
+                                    // overlayStyle={{ backgroundColor: '#0f0d29', color: 'white' }}
+                                    logIn={{
+                                        loginLink: 'http://localhost:3000/',
+                                        signupLink: 'http://localhost:3000/'
+                                    }}
+                                    commentData={data}
+                                    customNoComment={() => "Be the first to Comment!"}
+                                    onDeleteAction={() => alert('Are you sure?')}
+                                    onReplyAction={() => alert('Reply was posted')}
+                                    onEditAction={() => alert('Reply was edited!')}
+                                    onSubmitAction={()=>onSubmitAction(data)}
+
+                                />
                             </div>
                     </div>
                     </div>
