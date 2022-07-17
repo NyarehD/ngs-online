@@ -132,8 +132,8 @@ function getLayouts(width){
             return [0, 0, 0]
     }
 }
-export default function GalleryList(galleryList){
-    const data = galleryList.galleryList
+export default function GalleryList(galleryListContent){
+    const data = galleryListContent.galleryListContent
     const [filters, updateFilters] = useState(defaultFilters)
     const [tag, setTag] = useState('ALL')
     const [[columns, unitWidth, unitHeight], setLayout] = useState(getLayouts(window.innerWidth))
