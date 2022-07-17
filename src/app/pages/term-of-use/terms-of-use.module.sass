@@ -1,0 +1,70 @@
+@mixin defaultFont()
+    font-size: 16px
+    font-weight: 300
+    line-height: 30px
+
+.container
+    width: 80%
+    margin: 8rem auto
+
+.firstPara
+    display: flex
+    align-items: flex-start
+
+.firstPara , .secondPara , .thirdPara , .fouthPara
+    margin-bottom: 4rem
+
+.header
+    color: #4c4c4c
+    font-size: 30px
+    margin-bottom: 1.5rem
+    font-weight: 700
+    letter-spacing: 1px
+    line-height: 1.5
+
+.description
+    color: #7f7f7f
+    @include defaultFont()
+
+.imageContent
+    text-align: center
+    
+.listItems
+    list-style-type: list
+    color: #4c4c4c
+    @include defaultFont()
+    margin: 1rem auto
+    
+.listItem
+    display: flex
+    align-items: center
+    padding: 4px 0
+
+.icon
+    font-size: 5px
+    color: #c280bf
+    margin-right: .8rem
+
+@media screen and (max-width : 990px)
+    .container
+        width: 90%
+        margin: 4rem auto
+
+    .firstPara
+        flex-wrap: wrap
+
+@media screen and (min-width: 1600px)
+    .container
+        width: 70%
+
+
+@media screen and (min-width: 1800px)
+    .container
+        width: 60%
+
+    .header
+        font-size: 40px
+    
+    .description
+        font-size: 20px
+        line-height: 32px
