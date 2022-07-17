@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState ,useEffect } from "react";
 import { BrowserRouter as Router } from "react-router-dom"
 import Nav from "./core/components/nav/nav";
 import Header from "./core/components/header/header";
@@ -7,22 +7,51 @@ import PageFooter from "./core/components/page-footer/page-footer";
 import Copyright from "./core/components/copy-right/copy-right";
 import ScrollButton from "./core/components/scroll-button/scroll-button";
 import View from "./setup/routes-manager/view";
-import TeamSingle from "./app/pages/team-single/team-single";
-import Faq from './app/pages/faq/faq.jsx'
+import api from './api/header-content'
+import Preload from "./core/components/preload/preload";
 
 function App() {
+
+  const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    setLoading(true)
+    
+    // const fetchData = async () =>{
+    //   const response = await api.get('/header-content')
+    //   if(response && response.data){
+    //     setLoading(false)
+    //   }
+    // }
+
+    // fetchData()
+
+    setTimeout(() => {
+      setLoading(false)
+    }, 1000)
+    
+  }, [])
+  
   
   return (
     <div className="App">
-      <Nav />
-      <Header />
-      <Router>
-        <View></View>
-      </Router>
-      <FooterCarousel />
-      <PageFooter />
-      <Copyright />
-      <ScrollButton />
+      { loading ? 
+
+          <Preload />
+        
+        :
+          <div>
+            <Nav />
+            <Header />
+            <Router>
+              <View></View>
+            </Router>
+            <FooterCarousel />
+            <PageFooter />
+            <Copyright />
+            <ScrollButton />
+          </div>
+      }
     </div>
   );
 }
