@@ -7,6 +7,7 @@ import { faBars, faX } from "@fortawesome/free-solid-svg-icons";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
+import { Link } from "react-router-dom";
 
 function Header() {
   const [index, setIndex] = useState(0);
@@ -22,7 +23,7 @@ function Header() {
   const [fix, setFix] = useState(false);
 
   const setFixedSidebar = () => {
-    if (window.scrollY >= 65) {
+    if (window.scrollY >= 180) {
       setFix(true);
     } else {
       setFix(false);
@@ -38,7 +39,7 @@ function Header() {
           fix ? `${Style.container} ${Style.stickyBar}` : `${Style.container}`
         }
       >
-        <ul>
+        {/* <ul>
           <li
             className={`${index === 0 ? `${Style.navActive}` : ``}`}
             onClick={() => setIndex(0)}
@@ -108,7 +109,80 @@ function Header() {
               </MenuItem>
             </Menu>
           </li>
+        </ul> */}
+
+        <ul>
+          <li
+            className={`${index === 0 ? `${Style.navActive}` : ``}`}
+            onClick={() => setIndex(0)}
+          >
+            <Link type="button" to={"/"} >Home</Link>
+          </li>
+          <li
+            className={`${index === 1 ? `${Style.navActive}` : ``}`}
+            onClick={() => setIndex(1)}
+          >
+            <Link type="button" to={"/team-list"}>Team</Link>
+          </li>
+          <li
+            className={`${index === 2 ? `${Style.navActive}` : ``}`}
+            onClick={() => setIndex(2)}
+          >
+            <Link type="button" to={"/event-list"}>Event</Link>
+          </li>
+          <li
+            className={`${index === 3 ? `${Style.navActive}` : ``}`}
+            onClick={() => setIndex(3)}
+          >
+            <Link type="button" to={"/about"}>About</Link>
+          </li>
+          <li
+            className={`${index === 4 ? `${Style.navActive}` : ``}`}
+            onClick={() => setIndex(4)}
+          >
+            <Link type="button" to={"/contact"}>Contact</Link>
+          </li>
+          <li
+            className={`${index === 5 ? `${Style.navActive}` : ``}`}
+            onClick={() => setIndex(5)}
+          >
+            <Link type="button" to={"/blog"}>Blog</Link>
+          </li>
+          <li
+            className={`${index === 6 ? `${Style.navActive}` : ``}`}
+            onClick={() => setIndex(6)}
+          >
+            <Link type="button" to={"/faq"} >Faq</Link>
+          </li>
+          <li>
+            <a
+              id="basic-button"
+              aria-controls={open ? "basic-menu" : undefined}
+              aria-haspopup="true"
+              aria-expanded={open ? "true" : undefined}
+              onClick={handleClick}
+            >
+              OTHERS
+            </a>
+            <Menu
+              id="basic-menu"
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              MenuListProps={{
+                "aria-labelledby": "basic-button",
+              }}
+            >
+              <MenuItem onClick={handleClose}>
+                <a href="/gallery">GALLERY</a>
+              </MenuItem>
+              <MenuItem onClick={handleClose}>
+                <a href="/term-of-use">TERM OF USE</a>
+              </MenuItem>
+            </Menu>
+          </li>
         </ul>
+
         <button className={Style.btnAppointment}></button>
       </div>
       <div className={Style.asideMenu}>

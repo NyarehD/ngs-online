@@ -11,6 +11,7 @@ import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
 import HeaderStyle from '../../../core/components/header/header.module.sass'
 import HeaderCarousel from "../../../core/components/header-carousel/header-carousel";
+import { Link } from "react-router-dom";
 
 const MyFaq = (faqContent) => {
   const data = faqContent.faqContent
@@ -127,7 +128,7 @@ const MyFaq = (faqContent) => {
           <h1 className={HeaderStyle.mainHeader}>{data.mainHeader}</h1>
           <div className={HeaderStyle.breakCrumb}>
             <ol className={HeaderStyle.breakCrumbLists}>
-              <li className={HeaderStyle.breakCrumbList}><a href="/" className={HeaderStyle.link}>{data.firstBreakCrumb}</a></li>
+              <li className={HeaderStyle.breakCrumbList}><Link type="button" to={"/faq"} className={HeaderStyle.link}>{data.firstBreakCrumb}</Link></li>
               <li className={HeaderStyle.breakCrumbList} ><FontAwesomeIcon className={HeaderStyle.icon} icon={faAngleRight} ></FontAwesomeIcon></li>
               <li className={HeaderStyle.breakCrumbList} >{data.secondBreakCrumb}</li>
             </ol>
@@ -244,3 +245,76 @@ const MyFaq = (faqContent) => {
 };
 
 export default MyFaq;
+
+
+{/* <ul>
+          <li
+            className={`${index === 0 ? `${Style.navActive}` : ``}`}
+            onClick={() => setIndex(0)}
+          >
+            <Link type="button" to={"/"} >Home</Link>
+          </li>
+          <li
+            className={`${index === 1 ? `${Style.navActive}` : ``}`}
+            onClick={() => setIndex(1)}
+          >
+            <Link type="button" to={"/team-list"}>Team</Link>
+          </li>
+          <li
+            className={`${index === 2 ? `${Style.navActive}` : ``}`}
+            onClick={() => setIndex(2)}
+          >
+            <Link type="button" to={"/event-list"}>Event</Link>
+          </li>
+          <li
+            className={`${index === 3 ? `${Style.navActive}` : ``}`}
+            onClick={() => setIndex(3)}
+          >
+            <Link type="button" to={"/about"}>About</Link>
+          </li>
+          <li
+            className={`${index === 4 ? `${Style.navActive}` : ``}`}
+            onClick={() => setIndex(4)}
+          >
+            <Link type="button" to={"/contact"}>Contact</Link>
+          </li>
+          <li
+            className={`${index === 5 ? `${Style.navActive}` : ``}`}
+            onClick={() => setIndex(5)}
+          >
+            <Link type="button" to={"/blog"}>Blog</Link>
+          </li>
+          <li
+            className={`${index === 6 ? `${Style.navActive}` : ``}`}
+            onClick={() => setIndex(6)}
+          >
+            <Link type="button" to={"/faq"} >Faq</Link>
+          </li>
+          <li>
+            <a
+              id="basic-button"
+              aria-controls={open ? "basic-menu" : undefined}
+              aria-haspopup="true"
+              aria-expanded={open ? "true" : undefined}
+              onClick={handleClick}
+            >
+              OTHERS
+            </a>
+            <Menu
+              id="basic-menu"
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              MenuListProps={{
+                "aria-labelledby": "basic-button",
+              }}
+            >
+              <MenuItem onClick={handleClose}>
+                <a href="/gallery">GALLERY</a>
+              </MenuItem>
+              <MenuItem onClick={handleClose}>
+                <a href="/term-of-use">TERM OF USE</a>
+              </MenuItem>
+            </Menu>
+          </li>
+        </ul> */}

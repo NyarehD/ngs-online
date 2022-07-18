@@ -13,6 +13,7 @@ import icon6 from "../../../assets/icon/icon6.jpg";
 import aboutStyles from "./about.module.sass";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import { NavLink } from "react-router-dom"
 
 import HeaderStyle from "../../../core/components/header/header.module.sass";
 import HeaderCarousel from "../../../core/components/header-carousel/header-carousel";
@@ -140,9 +141,9 @@ function About(aboutContent) {
           <div className={HeaderStyle.breakCrumb}>
             <ol className={HeaderStyle.breakCrumbLists}>
               <li className={HeaderStyle.breakCrumbList}>
-                <a href="/" className={HeaderStyle.link}>
+                <NavLink to="/about" className={HeaderStyle.link}>
                   {data.firstBreakCrumb}
-                </a>
+                </NavLink>
               </li>
               <li className={HeaderStyle.breakCrumbList}>
                 <FontAwesomeIcon

@@ -19,6 +19,7 @@ import image9 from '../../../../assets/gallery-list/09.jpg'
 import image10 from '../../../../assets/gallery-list/10.jpg'
 import image11 from '../../../../assets/gallery-list/11.jpg'
 import image12 from '../../../../assets/gallery-list/12.jpg'
+import { Link } from 'react-router-dom'
 const defaultFilters = [
     {"label":'ALL',"isChecked":true},
     {"label":'VOIP',"isChecked":false},
@@ -165,7 +166,7 @@ export default function GalleryList(galleryListContent){
                 <h1 className={HeaderStyle.mainHeader}>{data.mainHeader}</h1>
                 <div className={HeaderStyle.breakCrumb}>
                     <ol className={HeaderStyle.breakCrumbLists}>
-                    <li className={HeaderStyle.breakCrumbList}><a href="/" className={HeaderStyle.link}>{data.firstBreakCrumb}</a></li>
+                    <li className={HeaderStyle.breakCrumbList}><Link type="button" to={"/gallery"} className={HeaderStyle.link}>{data.firstBreakCrumb}</Link></li>
                     <li className={HeaderStyle.breakCrumbList} ><FontAwesomeIcon className={HeaderStyle.icon} icon={faAngleRight} ></FontAwesomeIcon></li>
                     <li className={HeaderStyle.breakCrumbList} >{data.secondBreakCrumb}</li>
                     </ol>

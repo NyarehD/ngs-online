@@ -8,7 +8,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import {faAngleRight} from "@fortawesome/free-solid-svg-icons";
 import { useSpring, animated } from "react-spring";
-import { BrowserRouter, Route, Routes, NavLink } from "react-router-dom";
+import { BrowserRouter, Route, Routes, NavLink, Link } from "react-router-dom";
 import HeaderStyle from '../../../core/components/header/header.module.sass'
 import HeaderCarousel from "../../../core/components/header-carousel/header-carousel";
 
@@ -622,7 +622,7 @@ export default function TeamList(teamListContent) {
           <h1 className={HeaderStyle.mainHeader}>{data.mainHeader}</h1>
           <div className={HeaderStyle.breakCrumb}>
             <ol className={HeaderStyle.breakCrumbLists}>
-              <li className={HeaderStyle.breakCrumbList}><a href="/" className={HeaderStyle.link}>{data.firstBreakCrumb}</a></li>
+              <li className={HeaderStyle.breakCrumbList}><Link type="button" to={"/team-list"} className={HeaderStyle.link}>{data.firstBreakCrumb}</Link></li>
               <li className={HeaderStyle.breakCrumbList} ><FontAwesomeIcon className={HeaderStyle.icon} icon={faAngleRight} ></FontAwesomeIcon></li>
               <li className={HeaderStyle.breakCrumbList} >{data.secondBreakCrumb}</li>
             </ol>

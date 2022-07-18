@@ -15,8 +15,8 @@ function App() {
   return (
     <div className="App">
       <Nav />
-      <Header />
       <Router>
+        <Header />
         <View></View>
       </Router>
       <FooterCarousel />

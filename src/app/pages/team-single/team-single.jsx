@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from"@fortawesome/react-fontawesome";
 import { faUser, faEnvelope, faPhone, faLink, faPenToSquare , faAngleRight } from"@fortawesome/free-solid-svg-icons";
 import HeaderCarousel from "../../../core/components/header-carousel/header-carousel";
 import HeaderStyle from '../../../core/components/header/header.module.sass'
+import { Link } from 'react-router-dom';
 
 function teamSingle(teamSingleContent) {
     const data = teamSingleContent.teamSingleContent
@@ -16,7 +17,7 @@ function teamSingle(teamSingleContent) {
                     <h1 className={HeaderStyle.mainHeader}>{data.mainHeader}</h1>
                     <div className={HeaderStyle.breakCrumb}>
                         <ol className={HeaderStyle.breakCrumbLists}>
-                            <li className={HeaderStyle.breakCrumbList}><a href="/" className={HeaderStyle.link}>{data.firstBreakCrumb}</a></li>
+                            <li className={HeaderStyle.breakCrumbList}><Link type="button" to={"/team-single"} className={HeaderStyle.link}>{data.firstBreakCrumb}</Link></li>
                             <li className={HeaderStyle.breakCrumbList} ><FontAwesomeIcon className={HeaderStyle.icon} icon={faAngleRight} ></FontAwesomeIcon></li>
                             <li className={HeaderStyle.breakCrumbList}><a href="/" className={HeaderStyle.link}>{data.secondBreakCrumb}</a></li>
                             <li className={HeaderStyle.breakCrumbList} ><FontAwesomeIcon className={HeaderStyle.icon} icon={faAngleRight} ></FontAwesomeIcon></li>
