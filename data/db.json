@@ -76,15 +76,14 @@
       "secondBreakCrumb": "register"
     }
   },
-
   "blog-single": {
     "id": 1,
     "date": 17,
     "month": "OCT",
     "year": 2022,
     "authorRole": "admin",
-    "NOComment": 62,
-    "like": 41,
+    "like": 42,
+    "NOComment": 5,
     "views": 281,
     "title": " Donec laoreet tortor sed mollis leo maximus. Sed semper pelat est esque libero et semper tempurus invidunt.",
     "para01": "At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor amet consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.",
@@ -94,28 +93,97 @@
     "para05": "Quisque vehicula vestibulum mattis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed blandit dui ut semper tincidunt. Phasellus rutrum neque in metus lobortis rutrum.",
     "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin et ni slet dolor. Etiam sollicitudin efficitur magna eu sollicitudin. Vestibul umet nusi dolores est dui tu emet impecus",
     "lists": [
-      "Consetetur sadipscing elitr, sed diam nonumy",
-      "Eirmod tempor invidunt ut labore",
-      "Sed diam voluptua. At vero eos accusam"
+      {
+        "id": 1,
+        "content": "Consetetur sadipscing elitr, sed diam nonumy"
+      },
+      {
+        "id": 2,
+        "content": "Eirmod tempor invidunt ut labore"
+      },
+      {
+        "id": 3,
+        "content": "Sed diam voluptua. At vero eos accusam"
+      }
     ],
     "quoteTitle": "Gregory D, Grey, Client",
     "quote": " We had hughesnet for ages and were completely unhappy with it. We switched to MaxiCom and have never looked back. We are much much happier!",
     "tag": [
-      "internet",
-      "cable",
-      "iptv"
+      {
+        "id": 1,
+        "tagIext": "internet"
+      },
+      {
+        "id": 2,
+        "tagIext": "cable"
+      },
+      {
+        "id": 3,
+        "tagIext": "iptv"
+      }
     ],
     "mainImage": "/blog/06.jpg",
     "postImage": [
-      "/blog/02.jpg",
-      "/blog/03.jpg",
-      "/blog/04.jpg"
+      {
+        "id": 1,
+        "img": "/blog/02.jpg"
+      },
+      {
+        "id": 2,
+        "img": "/blog/03.jpg"
+      },
+      {
+        "id": 3,
+        "img": "/blog/04.jpg"
+      }
     ],
     "authorImg": "/blog/author-bio.jpg",
-    "comments": {
-      "authorName": "zaw myo naing",
-      "authorEmail": "zaw@gmail.com",
-      "commentText": "11111"
-    }
+    "comments": [
+      {
+        "id": "2gi0m89ue",
+        "body": "Now. Comment Section works in displaying number of comments, can add comments, can reply comments, can edit comments, can delete comments",
+        "parentId": null,
+        "userId": "3",
+        "username": "Johan Browning",
+        "authorImg": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEBLAEsAAD/4QCARXhpZgAASUkqAAgAAAAGABIBAwABAAAAAAAAABoBBQABAAAAVgAAABsBBQABAAAAXgAAACgBAwABAAAAAgAAABMCAwABAAAA//8AAGmHBAABAAAAZgAAAAAAAAAsAQAAAQAAACwBAAABAAAAAQAAkAIAAAAAAAAAAAAAAAAA/+EDL2h0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8APD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMwNjcgNzkuMTU3NzQ3LCAyMDE1LzAzLzMwLTIzOjQwOjQyICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ0MgMjAxNSAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUFGREY1QjUwRTk4MTFFOTlFM0FDQ0M0OURBQTg4QUYiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUFGREY1QjYwRTk4MTFFOTlFM0FDQ0M0OURBQTg4QUYiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QUZERjVCMzBFOTgxMUU5OUUzQUNDQzQ5REFBODhBRiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QUZERjVCNDBFOTgxMUU5OUUzQUNDQzQ5REFBODhBRiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pv/sABFEdWNreQABAAQAAAA8AAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCABkAGQDASIAAhEBAxEB/8QAGQAAAwEBAQAAAAAAAAAAAAAAAAECAwQF/8QAFgEBAQEAAAAAAAAAAAAAAAAAAAEC/9oADAMBAAIQAxAAAAH2gBS84URlNdF8mydNZaajAAAaaJy1xlww6MM7W2OidW3PtrNtFjAGmic9c83HLfObxps03x21iwLAApNCiozc4uJqaKL0m9ZYFgAUnMLO4lhWpqaGVc1rLEWMQXLUTNzKhsltiYWCFTEGiCEgUYIwAQVCCACv/8QAGhABAQADAQEAAAAAAAAAAAAAAQAQETAgYP/aAAgBAQABBQLwtu3b4stu3DHBnJHBmcER7ZnBEcHwdT5P/8QAFBEBAAAAAAAAAAAAAAAAAAAAUP/aAAgBAwEBPwFH/8QAFBEBAAAAAAAAAAAAAAAAAAAAUP/aAAgBAgEBPwFH/8QAFBABAAAAAAAAAAAAAAAAAAAAcP/aAAgBAQAGPwIp/8QAGhABAQEBAQEBAAAAAAAAAAAAAQAQESAwQP/aAAgBAQABPyHVwaUg+2WTDMo9O7DOcenBhc+OcCFyHwmcNyCEemZnAhHpmdIj0zNy5EemZzlyI9u8uXPpz8DO/wD/2gAMAwEAAgADAAAAEALykyMMFJFAZpAFBwDKVPFD7dQFPBl5joDDHtyyz0MPwIX4I/f/xAAYEQEBAQEBAAAAAAAAAAAAAAABACARMP/aAAgBAwEBPxCIJMkSTgiZwRM4Lss57d8//8QAGBEBAQEBAQAAAAAAAAAAAAAAAQAgERD/2gAIAQIBAT8QmWHLMMYZiMMxGHwjPLmHf//EABoQAQEBAQEBAQAAAAAAAAAAAAEAEBEgITD/2gAIAQEAAT8QxcuGh2wPLLLhfe+10ukvLOU5vb7bjjw5OicOHL5HhyNF+76aHhwYRn6vtkY8PlubBjwynlIIx9GWRMIcn4BNBCM7dxwlzQgYt27jNy5cwFyZbt3GcIjwV2G//9k=",
+        "createdAt": "2022-07-18T09:26:31.250Z"
+      },
+      {
+        "id": "1",
+        "body": "First comment",
+        "username": "Jack",
+        "authorImg": "./blog/comment-03.jpg",
+        "userId": "1",
+        "parentId": null,
+        "createdAt": "2021-08-16T23:00:33.010+02:00"
+      },
+      {
+        "id": "2",
+        "body": "Second comment",
+        "username": "John",
+        "authorImg": "./blog/comment-02.jpg",
+        "userId": "2",
+        "parentId": null,
+        "createdAt": "2021-08-16T23:00:33.010+02:00"
+      },
+      {
+        "id": "3",
+        "body": "First comment first child",
+        "username": "John",
+        "authorImg": "./blog/comment-02.jpg",
+        "userId": "2",
+        "parentId": "1",
+        "createdAt": "2021-08-16T23:00:33.010+02:00"
+      },
+      {
+        "id": "4",
+        "body": "Second comment second child",
+        "username": "Jack",
+        "authorImg": "./blog/comment-01.jpg",
+        "userId": "2",
+        "parentId": "2",
+        "createdAt": "2021-08-16T23:00:33.010+02:00"
+      }
+    ]
   }
 }

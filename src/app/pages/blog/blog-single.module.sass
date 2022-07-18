@@ -436,242 +436,101 @@ body
                 font-weight: 700
                 color: $blogTitleColor
                 margin-bottom: 30px
-            .comment_list
-                border-bottom: 1px solid #ebeaeb
-                border-top: 1px solid #ebeaeb
-                list-style: none
-                margin-bottom: 30px
-                .comment
-                    .comment_body
-                        margin-bottom: 3px
-                        margin-left: 70px
-                        margin-top: 40px
-                        padding: 10px 0 20px 40px
-                        position: relative
-                        @include frameSize(500px)
-                            margin-left: 20px
-                            margin-top:20px
-                            padding: 10px 0 10px 10px
 
-                        .comment_meta
-                            margin-bottom: -3px
-                            font-size: 1.3vw
-                            .comment_author
-                                width: 100%
-                                font-size: 1.3vw
-                                display: flex
-                                justify-content: space-between
-                                align-items: center
-                                .comment_author_img
-                                    border: 5px solid #fff
-                                    border-radius: 50%
-                                    left: -70px
-                                    width: 80px
-                                    height: 80px
-                                    position: absolute
-                                    top: -1px
-                                    margin-right: 20px  
-                                    @include frameSize(768px)
-                                        width: 65px
-                                        height: 65px
-                                    @include frameSize(500px)
-                                        left: -50px
-                                        max-width: 50px
-                                        max-height: 50px
-                                        top: -1px
-                                        margin-right: 5px  
-                                .comment_author_details
-                                    display: flex
-                                    @include frameSize(550px)
-                                        flex-direction: column
-                                        align-items: flex-end
-                                        justify-content: space-between
-                                    .comment_author_name
-                                        color: $blogTitleColor
-                                        font-size: 1.2vw
-                                        font-weight: 500
-                                        text-decoration: none
-                                        margin-right: 10px
-                                        transition: 0.2s
-                                        &:hover
-                                            color: $reactionColor
-                                    .comment_metadata
-                                        .metadata_links
-                                            &::before
-                                                color: #4c4c4c
-                                                content: "\25Cf"
-                                                font-size: 1.3vw
-                                                font-family: "FontAwesome"
-                                                padding: 0 7px
-                                                position: relative
-                                                top: 0px
-                                            .metadata_date
-                                                font-size: 1.2vw
-                                                font-weight: 400
-                                                color: $purpleColor
-                                                &:hover
-                                                    color: $reactionColor
-                                .reply
-                                    justify-self: right
-                                    .reply_icon
-                                        border-color: $blogTitleColor
-                                        color: $blogTitleColor
-                                        font-size: 1.2vw
-                                        transition: 0.2s
-                                        &:hover
-                                            color: $purpleColor
-                                        @include frameSize(768px)
-                                             font-size: 1.5vw
-                                             float: right
-                                        
-                        .comment_content
-                            margin: 10px 0
-                            color: $blogTextColor
-                            font-size: 1.2vw
-                    .reply_comment
-                        border-bottom: 1px solid #ebeaeb
-                        border-top: 1px solid #ebeaeb
-                        list-style: none
-                        padding-left: 10px
-                        .comment
-                            .comment_body
-                                @include frameSize(500px)
-                                    margin: 0
-                                .comment_meta
-                                    .comment_author
-                                        .comment_author_img
-                                            left: -45px
-                                            max-width: 60px
-                                            max-height: 60px
-                                            @include frameSize(500px)
-                                                left: -30px
-                                                max-width: 40px
-                                                max-height: 40px
-            .comment_response
-                .comment_form
-                    display: flex
-                    flex-wrap: wrap
-                    justify-content: space-between
-                    align-items: center
-                    margin-top: 20px 0
-                    height: 100%
-                    width: 100%
-                    .response_name
-                        margin-bottom: 20px
-                        position: relative
-                        width: 50%
-                        padding-right: 20px
-                        @include frameSize(768px)
-                            width: 100%
+            // .comment_response
+            //     .comment_form
+            //         display: flex
+            //         flex-wrap: wrap
+            //         justify-content: space-between
+            //         align-items: center
+            //         margin-top: 20px 0
+            //         height: 100%
+            //         width: 100%
+            //         .response_name
+            //             margin-bottom: 20px
+            //             position: relative
+            //             width: 50%
+            //             padding-right: 20px
+            //             @include frameSize(768px)
+            //                 width: 100%
                         
-                        // .response_name_label //hiden
-                        //     position: absolute
-                        .response_name_icon
-                            position: absolute
-                            font-size: 1.2vw
-                            color: $reactionColor
-                            border-color: $reactionColor
-                            left: 5%
-                            top: 35%
-                            text-align: center
-                            width: 1em
+            //             // .response_name_label //hiden
+            //             //     position: absolute
+            //             .response_name_icon
+            //                 position: absolute
+            //                 font-size: 1.2vw
+            //                 color: $reactionColor
+            //                 border-color: $reactionColor
+            //                 left: 5%
+            //                 top: 35%
+            //                 text-align: center
+            //                 width: 1em
                             
-                        .response_name_input
-                            border: none
-                            border-radius: 5px
-                            box-shadow: 0  0 10px 1px rgba(0, 0, 0, 0.07)
-                            padding: 9px 20px 9px 60px
-                            outline: none
-                            width: 100%
-                            height: 20%
-                            color: $blogTextColor
-                            font-size: 1vw
-                            font-weight: 400
+            //             .response_name_input
+            //                 border: none
+            //                 border-radius: 5px
+            //                 box-shadow: 0  0 10px 1px rgba(0, 0, 0, 0.07)
+            //                 padding: 9px 20px 9px 60px
+            //                 outline: none
+            //                 width: 100%
+            //                 height: 20%
+            //                 color: $blogTextColor
+            //                 font-size: 1vw
+            //                 font-weight: 400
 
-                    .response_email
-                        margin-bottom: 20px
-                        position: relative
-                        width: 50%
-                        padding-right: 20px
-                        @include frameSize(768px)
-                            width: 100%
-                        // .response_email_label //hidden
-                        .response_email_icon
-                            position: absolute
-                            font-size: 1.2vw
-                            color: $reactionColor
-                            border-color: $reactionColor
-                            left: 5%
-                            top: 35%
-                            text-align: center
-                            width: 1em
-                        .response_email_input
-                            border: none
-                            border-radius: 5px
-                            box-shadow: 0  0 10px 1px rgba(0, 0, 0, 0.07)
-                            padding: 9px 20px 9px 60px
-                            outline: none
-                            width: 100%
-                            height: 20%
-                            color: $blogTextColor
-                            font-size: 1vw
-                            font-weight: 400
-                    .response_comment
-                        margin-bottom: 20px
-                        position: relative
-                        width: 100%
-                        padding-right: 20px
-                        // .response_comment_label
-                        .response_comment_icon
-                            position: absolute
-                            font-size: 1.2vw
-                            color: $reactionColor
-                            border-color: $reactionColor
-                            left: 3%
-                            top: 5%
-                            text-align: center
-                            width: 1em
-                        .response_comment_input
-                            border: none
-                            border-radius: 5px
-                            outline: none
-                            box-shadow: 0  0 10px 1px rgba(0, 0, 0, 0.07)
-                            padding: 9px 20px 9px 60px
-                            width: 100%
-                            height: 20%
-                            color: $blogTextColor
-                            font-size: 1vw
-                            font-weight: 400
-                    .form_submit
-                        .form_submit_btn
-                            border: 0
-                            color: #eee
-                            outline: none
-                            background-image: linear-gradient(to right, #5b83cd 0%, #c280bf 100%)
-                            width: 175px
-                            height: 60px
-                            padding: 2px
-                            border-radius: 5px
-                            cursor: pointer
-                            transition: 0.3s
-
-                            .form_submit_text
-                                align-items: center
-                                border-radius: 4px
-                                -webkit-box-align: center
-                                -webkit-box-pack: center
-                                display: flex
-                                font-size: 1vw
-                                font-weight: 500
-                                height: 100%
-                                justify-content: center
-                                letter-spacing: 0
-                                text-transform: uppercase
-                                box-shadow:  0 0 3px 1px #c280bf, 0 0 5px 1px #5b83cd    
-                                transition: 0.3s
-                                width: 100%
-                                &:hover
-                                    color: $blogTitleColor
-                                    background-color: #fff
+            //         .response_email
+            //             margin-bottom: 20px
+            //             position: relative
+            //             width: 50%
+            //             padding-right: 20px
+            //             @include frameSize(768px)
+            //                 width: 100%
+            //             // .response_email_label //hidden
+            //             .response_email_icon
+            //                 position: absolute
+            //                 font-size: 1.2vw
+            //                 color: $reactionColor
+            //                 border-color: $reactionColor
+            //                 left: 5%
+            //                 top: 35%
+            //                 text-align: center
+            //                 width: 1em
+            //             .response_email_input
+            //                 border: none
+            //                 border-radius: 5px
+            //                 box-shadow: 0  0 10px 1px rgba(0, 0, 0, 0.07)
+            //                 padding: 9px 20px 9px 60px
+            //                 outline: none
+            //                 width: 100%
+            //                 height: 20%
+            //                 color: $blogTextColor
+            //                 font-size: 1vw
+            //                 font-weight: 400
+            //         .response_comment
+            //             margin-bottom: 20px
+            //             position: relative
+            //             width: 100%
+            //             padding-right: 20px
+            //             // .response_comment_label
+            //             .response_comment_icon
+            //                 position: absolute
+            //                 font-size: 1.2vw
+            //                 color: $reactionColor
+            //                 border-color: $reactionColor
+            //                 left: 3%
+            //                 top: 5%
+            //                 text-align: center
+            //                 width: 1em
+            //             .response_comment_input
+            //                 border: none
+            //                 border-radius: 5px
+            //                 outline: none
+            //                 box-shadow: 0  0 10px 1px rgba(0, 0, 0, 0.07)
+            //                 padding: 9px 20px 9px 60px
+            //                 width: 100%
+            //                 height: 20%
+            //                 color: $blogTextColor
+            //                 font-size: 1vw
+            //                 font-weight: 400
                                 
                             
