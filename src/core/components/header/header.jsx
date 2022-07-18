@@ -7,10 +7,10 @@ import { faBars, faX } from "@fortawesome/free-solid-svg-icons";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 function Header() {
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState("");
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -19,6 +19,9 @@ function Header() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const locationPath = useLocation()
+  console.log(locationPath)
 
   const [fix, setFix] = useState(false);
 
@@ -113,54 +116,53 @@ function Header() {
 
         <ul>
           <li
-            className={`${index === 0 ? `${Style.navActive}` : ``}`}
             onClick={() => setIndex(0)}
           >
-            <Link type="button" to={"/"} >Home</Link>
+            <Link className={`${index === 0 ? `${Style.navActive}` : ``}`} type="button" to={"/"} >Home</Link>
           </li>
           <li
-            className={`${index === 1 ? `${Style.navActive}` : ``}`}
+            
             onClick={() => setIndex(1)}
           >
-            <Link type="button" to={"/team-list"}>Team</Link>
+            <Link className={`${index === 1 ? `${Style.navActive}` : ``}`}type="button" to={"/team-list"}>Team</Link>
           </li>
           <li
-            className={`${index === 2 ? `${Style.navActive}` : ``}`}
+            
             onClick={() => setIndex(2)}
           >
-            <Link type="button" to={"/event-list"}>Event</Link>
+            <Link className={`${index === 2 ? `${Style.navActive}` : ``}`}type="button" to={"/event-list"}>Event</Link>
           </li>
           <li
-            className={`${index === 3 ? `${Style.navActive}` : ``}`}
+            
             onClick={() => setIndex(3)}
           >
-            <Link type="button" to={"/about"}>About</Link>
+            <Link className={`${index === 3 ? `${Style.navActive}` : ``}`}type="button" to={"/about"}>About</Link>
           </li>
           <li
-            className={`${index === 4 ? `${Style.navActive}` : ``}`}
+            
             onClick={() => setIndex(4)}
           >
-            <Link type="button" to={"/contact"}>Contact</Link>
+            <Link className={`${index === 4 ? `${Style.navActive}` : ``}`}type="button" to={"/contact"}>Contact</Link>
           </li>
           <li
-            className={`${index === 5 ? `${Style.navActive}` : ``}`}
+            
             onClick={() => setIndex(5)}
           >
-            <Link type="button" to={"/blog"}>Blog</Link>
+            <Link className={`${index === 5 ? `${Style.navActive}` : ``}`}type="button" to={"/blog"}>Blog</Link>
           </li>
           <li
-            className={`${index === 6 ? `${Style.navActive}` : ``}`}
             onClick={() => setIndex(6)}
           >
-            <Link type="button" to={"/faq"} >Faq</Link>
+            <Link className={`${index === 6 ? `${Style.navActive}` : ``}`}type="button" to={"/faq"} >Faq</Link>
           </li>
-          <li>
-            <a
+          <li >
+            <a 
               id="basic-button"
               aria-controls={open ? "basic-menu" : undefined}
               aria-haspopup="true"
               aria-expanded={open ? "true" : undefined}
               onClick={handleClick}
+              className={`${(locationPath.pathname === "/gallery" || locationPath.pathname === "/terms-of-use") ? `${Style.navActive}` : ''}`}
             >
               OTHERS
             </a>
@@ -177,7 +179,7 @@ function Header() {
                 <a href="/gallery">GALLERY</a>
               </MenuItem>
               <MenuItem onClick={handleClose}>
-                <a href="/term-of-use">TERM OF USE</a>
+                <a href="/terms-of-use">TERM OF USE</a>
               </MenuItem>
             </Menu>
           </li>
