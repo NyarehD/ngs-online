@@ -68,13 +68,13 @@ const Blog = ({ post }) => {
   );
 };
 
-const BlogContainer = ({ togglePosts, currentPosts, pageNumber, paginate, currentPostsByTag,currentPage }) => {
+const BlogContainer = ({ togglePosts, currentPosts, pageNumber, paginate, currentPostsByFilter,currentPage }) => {
   return (
     <div className={BlogListStyle.blogList_left_container}>
 
       {/* start Blog Post */}
       {togglePosts
-        ? currentPostsByTag?.map((post, i) => <Blog key={i} post={post} />)
+        ? currentPostsByFilter?.map((post, i) => <Blog key={i} post={post} />)
         : currentPosts?.map((post, i) => <Blog key={i} post={post} />)}
       {/* end Blog Post */}
 
@@ -95,11 +95,31 @@ const BlogContainer = ({ togglePosts, currentPosts, pageNumber, paginate, curren
   );
 };
 
-const BlogHelperContainer = ({ posts, fetchByTag, setTogglePosts }) => {
-  const toggle = (tagId) => {
-    fetchByTag(tagId);
-    setTogglePosts(true);
+const BlogHelperContainer = ({ posts, setPostsByFilter, filterByTag,setTogglePosts,setCurrentPage,filterByCategory,tags,categroies }) => {
+  
+  const showPostByCategroy = (filterName) => {
+    const data = filterByCategory(filterName);
+    showFilterPostProcess(data);
   };
+
+  const showPostByTag = (tagName) => {
+    const data = filterByTag(tagName);
+    showFilterPostProcess(data);
+  }
+
+  const showFilterPostProcess = (data) => {
+    setPostsByFilter(data);
+    setCurrentPage(1)
+    setTogglePosts(true);
+  }
+
+
+  // generate Cat Name and no of post with that cat name 
+  const categroiesWithNoOfPost = categroies.map(cat => {
+    const noOfPost = filterByCategory(cat);
+    return {catName:cat,noOfPost:noOfPost.length}
+  })
+
   return (
     <div className={BlogListStyle.blogList_right_container}>
 
@@ -119,34 +139,17 @@ const BlogHelperContainer = ({ posts, fetchByTag, setTogglePosts }) => {
         </form>
       </div>
 
-      {/* aboout  */}
-      <div className={`${BlogListStyle.about} ${BlogListStyle.mb}`}>
-        <h2 className={BlogListStyle.headertag}>About US</h2>
-        <p className={`${BlogListStyle.defaultP} ${BlogListStyle.mb}`}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo necessitatibus id ipsum
-          cupiditate saepe doloremque quisquam velit numquam reprehenderit rerum!
-        </p>
-        <button className={BlogListStyle.blogButton}>
-          <span>Read More</span>
-        </button>
-      </div>
-
       {/* category  */}
       <div className={`${BlogListStyle.category_container} ${BlogListStyle.mb}`}>
         <h2 className={BlogListStyle.headertag}>Categories</h2>
         <ul className={BlogListStyle.categories}>
-          <li className={BlogListStyle.category} onClick={() => toggle(1)}>
-            <a href="#">Internet Provider one </a>
-            <span>(9)</span>
+          {categroiesWithNoOfPost.map((category,index) => (
+            <li key={index} className={BlogListStyle.category} onClick={()=>showPostByCategroy(category.catName)}>
+              <span>{ category.catName}</span>
+            <span>{category.noOfPost}</span>
           </li>
-          <li className={BlogListStyle.category} onClick={() => toggle(2)}>
-            <a href="#">Internet Provider two </a>
-            <span>(9)</span>
-          </li>
-          <li className={BlogListStyle.category} onClick={() => toggle(3)}>
-            <a href="#">Internet Provider three </a>
-            <span>(9)</span>
-          </li>
+          ))} 
+          
         </ul>
       </div>
 
@@ -213,21 +216,11 @@ const BlogHelperContainer = ({ posts, fetchByTag, setTogglePosts }) => {
       <div className={`${BlogListStyle.tag_cloud_container} ${BlogListStyle.mb}`}>
         <h2 className={BlogListStyle.headertag}>Tags</h2>
         <div className={BlogListStyle.tag_clouds}>
-          <a href="#" className={BlogListStyle.tag_cloud}>
-            Cable
-          </a>
-          <a href="#" className={BlogListStyle.tag_cloud}>
-            IpTv
-          </a>
-          <a href="#" className={BlogListStyle.tag_cloud}>
-            Internet
-          </a>
-          <a href="#" className={BlogListStyle.tag_cloud}>
-            Provider Service
-          </a>
-          <a href="#" className={BlogListStyle.tag_cloud}>
-            Router Setup
-          </a>
+          {tags.map((tag,index)=>(
+            <span key={index} className={BlogListStyle.tag_cloud} onClick={()=>showPostByTag(tag)}>
+            {tag}
+          </span>
+          ))}
         </div>
       </div>
 
@@ -237,36 +230,58 @@ const BlogHelperContainer = ({ posts, fetchByTag, setTogglePosts }) => {
 
 function BlogList() {
   const [posts, setPosts] = useState([]);
-  const [postsByTag, setPostsByTag] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [postPerPage] = useState(5);
   const [togglePosts, setTogglePosts] = useState(false);
 
+  const [postsByFilter, setPostsByFilter] = useState([]);
+  const [tags, setTags] = useState([]);
+  const [categroies,setCategories] = useState([])
+
+
+   //start filter function By tag or category  
+  const filterByCategory = (categoryName) => {
+    const filterByCategoryPost = posts.filter(post => post.category === categoryName);
+    return filterByCategoryPost;
+  }
+
+  const filterByTag = (tagName) => {
+    const filterByTagPosts = posts.filter((post) => post.tag.includes(tagName));
+    return filterByTagPosts;
+  }
+    //end filter function By tag or category
  
+    
+    // start fetch api insturction 
+    const fetchData = async (url, set) => {
+     try {
+       const { data } = await api.get(url);
+       set(data);
+     } catch (error) {
+      console.log({error})
+     }
+    }
+  // end fetch api insturction
 
-  // start fetch api insturction 
-  const fetchByTag = async (tagId) => {
-    const response = await api.get(`/blog-posts?tagId=${tagId}`);
-    setPostsByTag(response.data);
-  };
+
+
+
   useEffect(() => {
-   const fetchBlogs = async () => {
-    const response = await api.get("/blog-posts");
-    setPosts(response.data);
-  };
-    fetchBlogs();
-  }, []);
-  // end fetch api insturction 
+    fetchData('/blog-posts', setPosts);
+    fetchData(`/tags`, setTags);
+    fetchData(`/categories`,setCategories)
+  }, [])
 
+  console.log({ categroies,posts,tags });
 
   // start pagination instruction 
   const indexOfLastPost = currentPage * postPerPage;
   const indexOfFirstPost = indexOfLastPost - postPerPage;
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
-  const currentPostsByTag = postsByTag.slice(indexOfFirstPost, indexOfLastPost);
+  const currentPostsByFilter = postsByFilter.slice(indexOfFirstPost, indexOfLastPost);
   const pageNumber = [];
         //--->for dynamic pagination by tag name 
-  const paginationLength = togglePosts ? postsByTag.length / postPerPage:posts.length / postPerPage;
+  const paginationLength = togglePosts ? postsByFilter.length / postPerPage:posts.length / postPerPage;
   
   console.log({paginationLength});
   
@@ -276,15 +291,17 @@ function BlogList() {
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
-   // end pagination instruction 
+   // end pagination instruction
 
 
+  console.log({ postsByFilter });
+  
 
    const BlogContainerPorps = {
-    togglePosts, currentPosts, pageNumber, paginate, currentPostsByTag,currentPage
+    togglePosts, currentPosts, pageNumber, paginate, currentPostsByFilter,currentPage
   }
   const BlogHelperContainerProps = {
-        setTogglePosts,posts,fetchByTag,postsByTag,
+        setTogglePosts,posts,setPostsByFilter,setCurrentPage,tags,categroies,filterByCategory,filterByTag
   }
 
   return (
