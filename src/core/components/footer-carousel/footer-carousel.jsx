@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import Slider from "react-slick";
 import FooterCarouselStyle from "./footer-carousel.module.sass";
-import {
-  MdOutlineKeyboardArrowLeft,
-  MdOutlineKeyboardArrowRight,
-} from "react-icons/md";
+// import {
+//   MdOutlineKeyboardArrowLeft,
+//   MdOutlineKeyboardArrowRight,
+// } from "react-icons";
 
 //Import Image
 import Img1 from "../../../assets/footer-carousel/01.jpg";
@@ -67,9 +67,9 @@ export default function SimpleSlider() {
           toggleArrow ? "" : FooterCarouselStyle.hidden
         } `}
       >
-        <MdOutlineKeyboardArrowRight
+        {/* <MdOutlineKeyboardArrowRight
           onClick={onClick}
-        ></MdOutlineKeyboardArrowRight>
+        ></MdOutlineKeyboardArrowRight> */}
       </div>
     );
   }
@@ -83,9 +83,9 @@ export default function SimpleSlider() {
           toggleArrow ? "" : FooterCarouselStyle.hidden
         }`}
       >
-        <MdOutlineKeyboardArrowLeft
+        {/* <MdOutlineKeyboardArrowLeft
           onClick={onClick}
-        ></MdOutlineKeyboardArrowLeft>
+        ></MdOutlineKeyboardArrowLeft> */}
       </div>
     );
   }

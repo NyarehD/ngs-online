@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState } from "react";
 import Headerstyle from "./nav.module.sass";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -13,8 +13,10 @@ import {
   faTwitter,
   faGoogle,
 } from "@fortawesome/free-brands-svg-icons";
+import { Context } from '../../../App'
 
 function Nav() {
+  const [value, setValue] = useContext(Context)
   const [fix, setFix] = useState(false);
 
   const setFixedSidebar = () => {
@@ -27,8 +29,9 @@ function Nav() {
 
   window.addEventListener("scroll", setFixedSidebar);
   return (
-    <div>
-      <div className={Headerstyle.header}>
+    <div >
+      <button onClick={_ => setValue({...value, mode:value.mode === 'light'?'dark':'light'})}>Change THeme</button>
+      <div className={value.mode === 'light'?Headerstyle.headerLight:Headerstyle.headerDark}>
         <h5>
           <strong>
             Welcome to our site! Check our services and gain success!
