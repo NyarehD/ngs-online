@@ -31,7 +31,7 @@ function Nav() {
   return (
     <div >
       <button onClick={_ => setValue({...value, mode:value.mode === 'light'?'dark':'light'})}>Change THeme</button>
-      <div className={value.mode === 'light'?Headerstyle.headerLight:Headerstyle.headerDark}>
+      <div className={`${Headerstyle.header} ${value.mode!=='light'?Headerstyle.headerDark:""}`}>
         <h5>
           <strong>
             Welcome to our site! Check our services and gain success!
