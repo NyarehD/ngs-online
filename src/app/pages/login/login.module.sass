@@ -17,11 +17,17 @@
 .contentHeader
     margin-bottom: 2rem
 
-.usernameInputSection , .passwordInputSection 
-    position: relative
+.form
+    display: flex
+    // flex-direction: column
+    flex-wrap: wrap
 
-.usernameInput , .passwordInput 
-    width: 100% !important
+.usernameInputSection , .passwordInputSection , .fullnameInputSection, .phoneNumberInputSection , .eMailInputSection , .confirmPasswordInputSection , .submitButtonSection
+    position: relative
+    // width: 50%
+
+.usernameInput , .passwordInput  , .fullnameInput , .phoneNumberInput , .eMailInput , .confirmPasswordInput , .submitButton
+    width: 250px 
     padding: 17px
     outline:0
     font-size: 13px
@@ -31,6 +37,7 @@
     border-radius:2px
     background-color: transparent
     margin-bottom: 1rem
+    margin-right: 1rem
 
 .icon
     position: absolute
@@ -65,7 +72,10 @@
             width: 100%
         
 
-@media screen  and (max-width: 997px)
+@media screen and (max-width : 547px)
+    .usernameInput , .passwordInput  , .fullnameInput , .phoneNumberInput , .eMailInput , .confirmPasswordInput , .submitButton
+        width: 280px 
+
     .row
         flex-wrap: wrap
 
@@ -73,7 +83,45 @@
         width: 100%
 
     .image
+        text-align: center
+
+    
+    .form
+        justify-content: center
+
+
+@media screen and (max-width : 997px)
+    .row
+        flex-wrap: wrap
+
+    .content , .image
+        width: 100%
+
+    .image
+        text-align: center
         order: 1
     .content
         order: 2
         margin: 2rem auto
+
+    .usernameInput , .passwordInput  , .fullnameInput , .phoneNumberInput , .eMailInput , .confirmPasswordInput , .submitButton
+        width: 280px 
+    
+    .form
+        justify-content: center
+
+@media screen and (max-width : 1200px)
+    .usernameInput , .passwordInput  , .fullnameInput , .phoneNumberInput , .eMailInput , .confirmPasswordInput , .submitButton
+        width: 300px 
+        
+@media screen and (min-width : 1540px)
+    .usernameInput , .passwordInput  , .fullnameInput , .phoneNumberInput , .eMailInput , .confirmPasswordInput , .submitButton
+        width: 400px 
+
+@media screen and (min-width : 1680px)
+    .usernameInput , .passwordInput  , .fullnameInput , .phoneNumberInput , .eMailInput , .confirmPasswordInput , .submitButton
+        width: 320px 
+
+@media screen and (min-width : 1780px)
+    .usernameInput , .passwordInput  , .fullnameInput , .phoneNumberInput , .eMailInput , .confirmPasswordInput , .submitButton
+        width: 350px 
