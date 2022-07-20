@@ -30,7 +30,6 @@ function Nav() {
   window.addEventListener("scroll", setFixedSidebar);
   return (
     <div >
-      <button onClick={_ => setValue({...value, mode:value.mode === 'light'?'dark':'light'})}>Change THeme</button>
       <div className={`${Headerstyle.header} ${value.mode!=='light'?Headerstyle.headerDark:""}`}>
         <h5>
           <strong>

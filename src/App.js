@@ -19,7 +19,7 @@ const theme = {
     'color':'white',
     'background':'black',
   },
-  'mode':'light'
+  mode: 'light'
 }
 
 export const Context = createContext(theme)
@@ -28,7 +28,7 @@ function App() {
   const [mode , setMode] = useState(Context)
   return (
     <Context.Provider value={[mode, setMode]}>
-      <div className="App">
+      <div className={`App ${mode.mode!=='light'?"darkMode":""}`}>
         <Nav />
         <Router>
           <Header />
