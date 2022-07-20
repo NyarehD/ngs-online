@@ -25,7 +25,7 @@ const theme = {
 export const Context = createContext(theme)
 
 function App() {
-  const [mode , setMode] = useState(Context)
+  const [mode , setMode] = useState(Context._currentValue)
   return (
     <Context.Provider value={[mode, setMode]}>
       <div className={`App ${mode.mode!=='light'?"darkMode":""}`}>
