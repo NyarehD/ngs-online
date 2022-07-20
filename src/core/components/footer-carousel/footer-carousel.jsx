@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import Slider from "react-slick";
 import FooterCarouselStyle from "./footer-carousel.module.sass";
-import {
-  MdOutlineKeyboardArrowLeft,
-  MdOutlineKeyboardArrowRight,
-} from "react-icons/md";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faAngleRight , faAngleLeft} from '@fortawesome/free-solid-svg-icons'
 
 //Import Image
 import Img1 from "../../../assets/footer-carousel/01.jpg";
@@ -67,9 +65,9 @@ export default function SimpleSlider() {
           toggleArrow ? "" : FooterCarouselStyle.hidden
         } `}
       >
-        <MdOutlineKeyboardArrowRight
+        <FontAwesomeIcon icon={faAngleRight}
           onClick={onClick}
-        ></MdOutlineKeyboardArrowRight>
+        ></FontAwesomeIcon>
       </div>
     );
   }
@@ -83,9 +81,9 @@ export default function SimpleSlider() {
           toggleArrow ? "" : FooterCarouselStyle.hidden
         }`}
       >
-        <MdOutlineKeyboardArrowLeft
+        <FontAwesomeIcon icon={faAngleLeft}
           onClick={onClick}
-        ></MdOutlineKeyboardArrowLeft>
+        ></FontAwesomeIcon>
       </div>
     );
   }
