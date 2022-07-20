@@ -130,22 +130,22 @@ function teamSingle(teamSingleContent) {
                 <form  className={TeamSingleStyle.row}>
 
                     <div className={`${TeamSingleStyle.col_xs_12} ${TeamSingleStyle.col_md_6} ${TeamSingleStyle.col_lg_6} ${TeamSingleStyle.group}`}>      
-                        <input type="text" name="fullname"  id="name" placeholder='FULL NAME' ></input>
+                        <input className={TeamSingleStyle.input} type="text" name="fullname"  id="name" placeholder='FULL NAME' ></input>
                         <label for="name" className={TeamSingleStyle.label}><FontAwesomeIcon icon={faUser} className={TeamSingleStyle.icon}></FontAwesomeIcon></label>    
                     </div>
                     <div className={`${TeamSingleStyle.col_xs_12} ${TeamSingleStyle.col_md_6} ${TeamSingleStyle.col_lg_6} ${TeamSingleStyle.group}`} >      
-                        <input type="text" name="email"id="name" placeholder='EMAIL ADDRESS' required="email"></input>
+                        <input className={TeamSingleStyle.input} type="text" name="email"id="name" placeholder='EMAIL ADDRESS' required="email"></input>
                         <label for="name" className={TeamSingleStyle.label}><FontAwesomeIcon icon={faEnvelope} className={TeamSingleStyle.icon}></FontAwesomeIcon></label>
                     </div>      
                     
 
                     <div className={`${TeamSingleStyle.col_xs_12} ${TeamSingleStyle.col_md_6} ${TeamSingleStyle.col_lg_6} ${TeamSingleStyle.group}`}>      
-                        <input type="tel"  name="phone" id="number" placeholder='YOUR PHONE' required="phone"></input>
+                        <input className={TeamSingleStyle.input} type="tel"  name="phone" id="number" placeholder='YOUR PHONE' required="phone"></input>
                         <label for="name" className={TeamSingleStyle.label}><FontAwesomeIcon icon={faPhone} className={TeamSingleStyle.icon}></FontAwesomeIcon></label>
                     </div>
 
                     <div className={`${TeamSingleStyle.col_xs_12} ${TeamSingleStyle.col_md_6} ${TeamSingleStyle.col_lg_6} ${TeamSingleStyle.group}`}>      
-                        <input type="text" name="topic" id="name" placeholder='YOUR TOPIC'></input>
+                        <input className={TeamSingleStyle.input} type="text" name="topic" id="name" placeholder='YOUR TOPIC'></input>
                         <label for="name" className={TeamSingleStyle.label}><FontAwesomeIcon icon={faLink} className={TeamSingleStyle.icon}></FontAwesomeIcon></label>
                     </div>
 

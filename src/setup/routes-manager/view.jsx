@@ -12,6 +12,7 @@ import TeamList from '../../app/pages/team-list/team-list'
 import GalleryList from '../../app/pages/others/gallary-list/gallery-list'
 import MyFaq from '../../app/pages/faq/faq'
 import EventSingle from "../../app/pages/event-single/event-single";
+import Login from '../../app/pages/login/login'
 
 function View() {
 
@@ -24,6 +25,7 @@ function View() {
   const [galleryListContent , setGalleryListContent] = useState({})
   const [eventSingleContent , setEventSingleContent] = useState({})
   const [teamSingleContent , setTeamSingleContent] = useState({})
+  const [loginContent , setLoginContent] = useState({})
 
   useEffect( () => {
     const fetchData = async () =>{
@@ -39,6 +41,7 @@ function View() {
         setGalleryListContent(data.galleryList)
         setEventSingleContent(data.eventSingle)
         setTeamSingleContent(data.teamSingle)
+        setLoginContent(data.login)
       } catch(err){
         console.log(`Error : ${err}`)
       }
@@ -58,6 +61,7 @@ function View() {
         <Route path='/event-single' element={<EventSingle eventSingleContent={eventSingleContent} />} ></Route>
         <Route path='/gallery' element={<GalleryList galleryListContent={galleryListContent} />} ></Route>
         <Route path='/faq' element={<MyFaq faqContent={faqContent} />} ></Route>
+        <Route path='/login' element={<Login loginContent={loginContent} />} ></Route>
         <Route path='*' element={<Error />}></Route>
     </Routes>
   )
