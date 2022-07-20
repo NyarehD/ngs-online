@@ -19,6 +19,7 @@ $tagFontSize:0.8rem
     font-weight: 500
     line-height: 30px
     letter-spacing: 0.2em
+    cursor: pointer
 
 @media only screen and (min-width: 1000px)
     .tagText
@@ -140,7 +141,6 @@ $tagFontSize:0.8rem
     justify-content: center
 
 .loadMoreText
-    background-color: #ffffff00
     font-size: 0.8rem
     display: inline-flex
     width: 180px
@@ -150,7 +150,7 @@ $tagFontSize:0.8rem
     align-items: center
     justify-content: center
     color: $textPink
-    transition: color .15s ease-in-out,background-color .15s ease-in-out
+    transition: color .5s ease-in-out, background-color .5s ease-in-out
     &:hover
         color: white
         background: linear-gradient(to right, #5b83cd 0%, #c280bf 100%)
@@ -165,4 +165,17 @@ $tagFontSize:0.8rem
         transform: scale(0.8)
     100%
         transform: scale(1)
-           
+
+// Dark mode
+.darkMode
+    background-color: #4c4c4c
+    color: white
+    .tag
+        border: none
+    .basicLinkColorHover
+        &:hover
+            color: #{cardLinkText}
+            cursor: #{$linkHover}
+    .loadMoreText
+        background-color: #4c4c4c
+        color: white
