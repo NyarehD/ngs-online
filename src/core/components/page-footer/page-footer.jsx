@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, {useContext} from "react";
 import {
   faFacebookF,
   faTwitter,
@@ -8,10 +8,12 @@ import {
 import { faEnvelope, faMapMarker } from "@fortawesome/free-solid-svg-icons";
 
 import pageFooterStyles from "./page-footer.module.sass";
+import {Context} from "../../../App";
 
 const PageFooter = () => {
+  const [value, setValue] = useContext(Context)
   return (
-    <div className={pageFooterStyles.container}>
+    <div className={`${pageFooterStyles.container} ${value.mode!=='light'?pageFooterStyles.containerDark:""}`}>
       <div className={pageFooterStyles.row}>
         <div
           className={`${pageFooterStyles.col_xs_12} ${pageFooterStyles.col_md_6} ${pageFooterStyles.col_lg_3}`}

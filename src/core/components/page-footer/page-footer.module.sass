@@ -3,13 +3,14 @@
 $grid-columns: 12
 $grid-gutter-width: 30px
 
-$container-max-widths: (sm: 540px,md: 720px,lg: 960px,xl: 1140px,xxl: 1200px)
-$grid-breakpoints: ("xs": 0,"sm": 576px,"md": 768px,"lg": 992px,"xl": 1200px,"xxl": 1300px)
+$container-max-widths: (sm: 540px, md: 720px, lg: 960px, xl: 1140px, xxl: 1200px)
+$grid-breakpoints: ("xs": 0, "sm": 576px, "md": 768px, "lg": 992px, "xl": 1200px, "xxl": 1300px)
 
 $primaryColor: #5b83cd
 $secondaryColor: #c280bf
 $textColor: #212529
 $textColor2: #4c4c4c
+$textColorDarkMode: #fff
 
 @mixin make-container()
   width: 100%
@@ -45,27 +46,27 @@ $textColor2: #4c4c4c
     color: $color2
 
 @mixin xs
-  @media (min-width: map-get($grid-breakpoints,"xs"))
+  @media (min-width: map-get($grid-breakpoints, "xs"))
     @content
 
 @mixin sm
-  @media (min-width: map-get($grid-breakpoints,"sm"))
+  @media (min-width: map-get($grid-breakpoints, "sm"))
     @content
 
 @mixin md
-  @media (min-width: map-get($grid-breakpoints,"md"))
+  @media (min-width: map-get($grid-breakpoints, "md"))
     @content
 
 @mixin lg
-  @media (min-width: map-get($grid-breakpoints,"lg"))
+  @media (min-width: map-get($grid-breakpoints, "lg"))
     @content
 
 @mixin xl
-  @media (min-width: map-get($grid-breakpoints,"xl"))
+  @media (min-width: map-get($grid-breakpoints, "xl"))
     @content
 
 @mixin breakpoints($bp: 0)
-  @media (min-width: map-get($grid-breakpoints,$bp))
+  @media (min-width: map-get($grid-breakpoints, $bp))
     @content
 
 .col
@@ -178,6 +179,7 @@ h4.widget_title
   line-height: 26px
   padding-bottom: 9px
   padding-top: 9px
+
   &:last-child
     border: none
 
@@ -218,11 +220,13 @@ h4.widget_title
   letter-spacing: 0.2em
   text-transform: uppercase
   color: $primaryColor
+
   &:hover
     color: $secondaryColor
 
   &:last-child
     color: $secondaryColor
+
     &:hover
       color: $primaryColor
 
@@ -233,3 +237,16 @@ h4.widget_title
 
 .small_text
   margin: 10px 0
+// Dark mode
+.containerDark
+  background-color: #666
+  color: $textColorDarkMode
+
+  h4, a
+    color: $textColorDarkMode
+
+  .links .cat_item a
+    @include hoverColor($textColorDarkMode, $primaryColor)
+
+  .services_links .cat_item a
+    @include hoverColor($textColorDarkMode, $secondaryColor)
