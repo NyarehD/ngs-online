@@ -12,9 +12,8 @@ import TeamList from '../../app/pages/team-list/team-list'
 import GalleryList from '../../app/pages/others/gallary-list/gallery-list'
 import MyFaq from '../../app/pages/faq/faq'
 import EventSingle from "../../app/pages/event-single/event-single";
-import Blog from "../../app/pages/blog/blog";
+import Blog from "../../app/pages/blog/blog-single";
 import BlogList from "../../app/pages/blog-list/blog_list";
-
 function View() {
 
   const [homeContent , setHomeContent] = useState({})
@@ -27,6 +26,7 @@ function View() {
   const [eventSingleContent , setEventSingleContent] = useState({})
   const [teamSingleContent , setTeamSingleContent] = useState({})
   const [blogListContent , setBlogListContent] = useState({})
+  const [blogContent , setBlogConetent] = useState({})
   
 
   useEffect( () => {
@@ -44,6 +44,7 @@ function View() {
         setEventSingleContent(data.eventSingle)
         setTeamSingleContent(data.teamSingle)
         setBlogListContent(data.blogList)
+        setBlogConetent(data.blogSingle)
       } catch(err){
         console.log(`Error : ${err}`)
       }
@@ -64,6 +65,7 @@ function View() {
         <Route path='/gallery' element={<GalleryList galleryListContent={galleryListContent} />} ></Route>
         <Route path='/faq' element={<MyFaq faqContent={faqContent} />} ></Route>
         <Route path='/blog' element={<BlogList blogListContent={blogListContent} />} ></Route>
+        <Route path='/blog/single' element={<Blog blogContent={blogContent} />} ></Route>
         <Route path='*' element={<Error />}></Route>
     </Routes>
   );

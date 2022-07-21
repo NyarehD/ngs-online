@@ -11,6 +11,7 @@ import View from "./setup/routes-manager/view";
 function App() {
   return (
     <div className="App">
+      {/* <Blog/> */}
       <Nav />
       <Router>
         <Header />

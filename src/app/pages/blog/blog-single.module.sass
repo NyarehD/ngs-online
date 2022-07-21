@@ -1,0 +1,536 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900")
+
+@mixin frameSize($width)
+    @media screen and (max-width:$width)
+        @content
+
+$reactionColor: #5b83cd
+$blogTitleColor: #4c4c4c
+$blogTextColor: #7f7f7f
+$purpleColor: #c280bf
+
+
+body
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+    font-family: "poppins", sans-serif
+
+.container
+    width: 100%
+    max-width: 1200px
+    margin: 0 auto
+    padding: 160px 100px 130px 100px
+    @include frameSize(700px)
+        padding: 10px !important
+    @include frameSize(550px)
+        padding: 0px !important // still a bug
+    .content
+        height: auto
+        width: 100%
+        background-color:  #f7f6fb
+
+        display: flex
+        flex-direction: column
+        justify-content: center
+        .main_photo
+            width: 100%
+            margin-bottom: 40px
+            .main_photo_img
+                width: 100%
+                border-radius: 5px 5px 0 0
+        .post_content
+            padding: 0 50px
+            .reaction
+                width: 90%
+                margin-bottom: 40px
+                display: flex
+                justify-content: space-between
+                align-items: center
+                @include frameSize(800px)
+                    width: 100%
+                    display: grid
+                    grid-template-columns: repeat(3,1fr)
+                @include frameSize(700px)
+                    display: grid
+                    grid-template-columns: repeat(2,1fr)
+                @include frameSize(600px)
+                    display: grid
+                    grid-template-columns: repeat(1,1fr)
+                    
+                .react_links
+                    font-weight: 500
+                    letter-spacing: 0.1em
+                    text-transform: uppercase
+                    text-decoration: none
+                    .react_icon
+                        margin-right: 10px
+                        // font-size: 0.8vw
+                        font-size: 12px
+                        color: $reactionColor
+                    .react_title
+                        // font-size: 0.8vw
+                        font-size: 8px
+                        color: #4c4c4c
+                        transition: 0.2s
+                        &:hover
+                            color: $reactionColor
+            .main_blog
+                color: $blogTextColor
+                .blog_title
+                    color: $blogTitleColor
+                    font-size: 1.5vw
+                    font-weight: 500
+                    margin: 20px 0
+                .blog_body_text
+                    margin-bottom: 20px
+                    // font-size: 12px
+                    font-size: 1.2vw
+                .blog_list
+                    .blog_list_items
+                        font-size: 1.2vw
+                        letter-spacing: 1px
+                        padding: 3px 0
+                        color: $blogTitleColor
+                        list-style: none
+                        &::before
+                            color: $purpleColor
+                            content: "\25CF"
+                            font-size: 1.2vw
+                            padding-right: 10px
+                .post_gallery
+                    margin: 43px 0 29px
+                    display: grid
+                    grid-template-columns: repeat(3, 1fr)
+                    gap: 20px
+                    @include frameSize(950px)
+                        grid-template-columns: repeat(2, 1fr)
+                    @include frameSize(800px)
+                        grid-template-columns: repeat(1, 1fr)
+                    .post_gallery_image
+                        border-radius: 5px
+                        width: 210px
+                        height: 190px
+                        margin-bottom: 20px
+                        @include frameSize(800px)
+                            width: 100%
+                            height: 100%
+                .block_quote
+                    margin: 0
+                    .media
+                        display: flex
+                        justify-content: center
+                        align-items: flex-start
+                        .quote
+                            .quote_content
+                                margin: 20px
+                                width: 65px
+                                height: 65px
+                                border-radius: 50%
+                                background-image: linear-gradient(to right, #5b83cd 0%, #c280bf 100%)
+                                display: flex
+                                justify-content: center
+                                align-items: center
+                                .quote_content_img
+                                    width: 20px
+                        .media_body
+                            .quote_title
+                                font-size: 0.9vw
+                                font-weight: 500
+                                text-transform: uppercase
+                                letter-spacing: 0.42em
+                                color: $purpleColor !important
+                                margin-bottom: 35px
+                            .quote_text
+                                font-size: 1.4vw
+                                font-weight: 300
+                                font-style: italic
+                                color: $blogTitleColor
+                                letter-spacing: 1px
+                                line-height: 1.5
+                                margin-bottom: 35px
+            .blog_reaction
+                display: flex
+                justify-content: space-between
+                align-items: center
+                text-transform: uppercase
+                font-size: 0.9vw
+                font-weight: 500
+                margin: 40px 0
+                @include frameSize(700px)
+                    flex-direction: column
+                    justify-content: space-between
+                .blog_tags
+                    display: flex
+                    align-items: center
+                    justify-content: space-between
+                    @include frameSize(700px)
+                        align-self: flex-start
+                    .tags_span
+                        letter-spacing: 0.2em
+                        color: $blogTitleColor
+                        margin-right: 20px
+                    .tag_items
+                        display: grid
+                        grid-template-columns: repeat(3,1fr)
+                        gap: 5px
+                        .tags_item
+                            color: $purpleColor
+                            text-decoration: none
+                            margin-left: 10px
+                            &:hover
+                                color: $blogTitleColor
+                            &::after
+                                content: ","
+                                color: $blogTitleColor
+
+                .blog_react
+                    letter-spacing: 0.2em
+                    @include frameSize(700px)
+                        margin-top: 20px
+                        align-self: flex-end
+                    .blog_react_like
+                        color: $purpleColor
+                        cursor: pointer
+                        .blog_react_icon
+                            margin-right: 10px
+                        .blog_react_text
+                            &:hover
+                                color: $reactionColor
+        .social
+            display: grid
+            grid-template-columns: repeat(6,1fr)
+            @include frameSize(768px)
+                grid-template-columns: repeat(3,1fr)
+            margin-bottom: 25px 
+            &:first-child
+                border-radius: 0 0 0 5px 
+
+            &:last-child
+                margin: 0
+                border-radius: 0 0 5px 0
+            .social_media_links_facebook
+                text-decoration: none
+                width: 100%
+                text-align: center
+                padding: 20px 40px
+                margin: 0 1px 0 0
+                border-radius: 0 0 0 5px //maybe change later
+                color: #fff
+                font-size: 15px
+                transition:0.2s
+                background-color: #3b5998
+                &:hover
+                    background-color: #5b83cd
+                @include frameSize(768px)
+                    border-radius: 0
+            .social_media_links_twitter
+                text-decoration: none
+                width: 100%
+                text-align: center
+                padding: 20px 40px
+                margin: 0 1px 0 0
+                color: #fff
+                font-size: 15px
+                transition:0.2s
+                background-color: #55acee
+                &:hover
+                    background-color: #85caff
+            .social_media_links_google
+                text-decoration: none
+                width: 100%
+                text-align: center
+                padding: 20px 40px
+                margin: 0 1px 0 0
+                color: #fff
+                font-size: 15px
+                transition:0.2s
+                background-color: #dd4b39
+                &:hover
+                    background-color: #fc6551
+            .social_media_links_instagram
+                text-decoration: none
+                width: 100%
+                text-align: center
+                padding: 20px 40px
+                margin: 0 1px 0 0
+                color: #fff
+                font-size: 15px
+                transition:0.2s
+                background-color: #e4405f
+                &:hover
+                    background-color: #ff6a85
+                @include frameSize(768px)
+                    border-radius: 0 0 0 5px
+            .social_media_links_youtube
+                text-decoration: none
+                width: 100%
+                text-align: center
+                padding: 20px 40px
+                margin: 0 1px 0 0
+                color: #fff
+                font-size: 15px
+                transition:0.2s
+                background-color: #e52d27
+                &:hover
+                    background-color: #ff6560
+            .social_media_links_dribble
+                text-decoration: none
+                width: 100%
+                text-align: center
+                padding: 20px 40px
+                border-radius: 0 0 5px 0 //mar be change later
+                margin: 0               //mar be change later
+                color: #fff
+                font-size: 15px
+                transition:0.2s
+                background-color: #ea4c8d
+                &:hover
+                    background-color: #ff83b7
+    .author_bio
+        .author_bio_content
+            display: flex
+            align-items: center
+            @include frameSize(1000px)
+                flex-direction: column
+                align-items: center
+            .author_profile
+                margin: auto
+                padding: 40px
+                margin-right: 35px
+                @include frameSize(1000px)
+                    margin: auto
+                .author_profile_img
+                    width: 270px
+                    height: 270px
+                    border: 10px solid #fff
+                    box-shadow: 0 0 10px 0 rgb(0 0 0  /20%)
+                    border-radius: 50%
+            .author_content
+                display: flex
+                flex-direction: column
+                justify-content: space-around
+                align-items: flex-start
+                padding: 20px
+                @include frameSize(1000px)
+                    align-items: center
+                .author_role
+                    color: $purpleColor
+                    font-size: 0.9vw
+                    font-weight: 500
+                    letter-spacing: 0.2em
+                    text-transform: uppercase
+                    margin-bottom: 10px
+                .author_name
+                    text-decoration: none
+                    color: $blogTitleColor
+                    font-weight: 600
+                    font-size: 1.6vw
+                    letter-spacing: 0.1em
+                    transition: 0.2s
+                    margin-bottom: 15px
+                    &:hover
+                        color: $reactionColor
+                .author_bio_text
+                    color: $blogTextColor
+                    line-height: 2em
+                    font-size: 1.2vw
+                    margin-bottom: 15px
+                    @include frameSize(1000px)
+                        text-align: center
+                .author_social
+                    width: 30%
+                    display: flex
+                    justify-content: space-between
+                    text-align: center
+                    .author_social_facebook
+                        font-size: 1.05vw
+                        color: #3b5998
+                        &:hover
+                            color: #5b83cd
+                    .author_social_twitter
+                        font-size: 1.05vw
+                        color:#55acee
+                        &:hover
+                            color: #85caff
+                    .author_social_google
+                        font-size: 1.05vw
+                        color: #dd4b39
+                        &:hover
+                            color: #fc6551
+                    .author_social_youtube
+                        font-size: 1.05vw
+                        color: #e52d27
+                        &:hover
+                            color: #ff6560
+                    .author_social_linkedin
+                        font-size: 1.05vw
+                        color:  #0976b4
+                        &:hover
+                            color:  #31a3e6
+    .related_posts
+        width: 100%
+        margin-bottom: 40px
+        .title
+            color: $blogTitleColor
+            font-size:2.5vw
+            letter-spacing: 0
+            line-height: 1
+            margin-bottom: 40px
+            text-transform: none
+        .relatedPost
+            margin: 0
+            padding: 0
+            width: 100%
+            display: grid
+            grid-template-columns: repeat(2, 1fr)
+            gap: 50px 20px
+            @include frameSize(760px )
+                grid-template-columns: repeat(1, 1fr)
+            .relatedPost_item
+                width: 100%
+                display: flex
+                flex-direction: column
+                align-items: flex-start
+                margin: auto
+                @include frameSize(760px )
+                    align-items: center
+                .relatedPost_link
+                    width: 100%
+                    text-decoration: none
+                    color: $blogTextColor
+                    .relatedPost_image
+                        width: 100%
+                        height: auto
+                        margin-bottom: 10px
+                        transition: 0.2s
+                        &:hover
+                            opacity: 0.85
+                    .relatedPost_description
+                        color: $blogTitleColor
+                        font-size: 1.2vw
+                        font-weight: 500
+                        margin-bottom: 10px
+                        transition: 0.2s
+                        &:hover
+                            color: $reactionColor
+                    .relatedPost_postedOn
+                        color: $purpleColor
+                        font-size: 1.2vw
+                        font-weight: 500
+                        margin-bottom: 10px
+                        &:hover
+                            color: $reactionColor
+    .comment_section
+        height: auto
+        width: 100%
+        background-color:  #f7f6fb
+        border-radius: 5px
+        .comment_area
+            display: flex
+            flex-direction: column
+            justify-content: center
+            padding: 55px 50px  
+            .comment_title
+                font-size: 2.2vw
+                font-weight: 700
+                color: $blogTitleColor
+                margin-bottom: 30px
+
+            // .comment_response
+            //     .comment_form
+            //         display: flex
+            //         flex-wrap: wrap
+            //         justify-content: space-between
+            //         align-items: center
+            //         margin-top: 20px 0
+            //         height: 100%
+            //         width: 100%
+            //         .response_name
+            //             margin-bottom: 20px
+            //             position: relative
+            //             width: 50%
+            //             padding-right: 20px
+            //             @include frameSize(768px)
+            //                 width: 100%
+                        
+            //             // .response_name_label //hiden
+            //             //     position: absolute
+            //             .response_name_icon
+            //                 position: absolute
+            //                 font-size: 1.2vw
+            //                 color: $reactionColor
+            //                 border-color: $reactionColor
+            //                 left: 5%
+            //                 top: 35%
+            //                 text-align: center
+            //                 width: 1em
+                            
+            //             .response_name_input
+            //                 border: none
+            //                 border-radius: 5px
+            //                 box-shadow: 0  0 10px 1px rgba(0, 0, 0, 0.07)
+            //                 padding: 9px 20px 9px 60px
+            //                 outline: none
+            //                 width: 100%
+            //                 height: 20%
+            //                 color: $blogTextColor
+            //                 font-size: 1vw
+            //                 font-weight: 400
+
+            //         .response_email
+            //             margin-bottom: 20px
+            //             position: relative
+            //             width: 50%
+            //             padding-right: 20px
+            //             @include frameSize(768px)
+            //                 width: 100%
+            //             // .response_email_label //hidden
+            //             .response_email_icon
+            //                 position: absolute
+            //                 font-size: 1.2vw
+            //                 color: $reactionColor
+            //                 border-color: $reactionColor
+            //                 left: 5%
+            //                 top: 35%
+            //                 text-align: center
+            //                 width: 1em
+            //             .response_email_input
+            //                 border: none
+            //                 border-radius: 5px
+            //                 box-shadow: 0  0 10px 1px rgba(0, 0, 0, 0.07)
+            //                 padding: 9px 20px 9px 60px
+            //                 outline: none
+            //                 width: 100%
+            //                 height: 20%
+            //                 color: $blogTextColor
+            //                 font-size: 1vw
+            //                 font-weight: 400
+            //         .response_comment
+            //             margin-bottom: 20px
+            //             position: relative
+            //             width: 100%
+            //             padding-right: 20px
+            //             // .response_comment_label
+            //             .response_comment_icon
+            //                 position: absolute
+            //                 font-size: 1.2vw
+            //                 color: $reactionColor
+            //                 border-color: $reactionColor
+            //                 left: 3%
+            //                 top: 5%
+            //                 text-align: center
+            //                 width: 1em
+            //             .response_comment_input
+            //                 border: none
+            //                 border-radius: 5px
+            //                 outline: none
+            //                 box-shadow: 0  0 10px 1px rgba(0, 0, 0, 0.07)
+            //                 padding: 9px 20px 9px 60px
+            //                 width: 100%
+            //                 height: 20%
+            //                 color: $blogTextColor
+            //                 font-size: 1vw
+            //                 font-weight: 400
+                                
+                            
