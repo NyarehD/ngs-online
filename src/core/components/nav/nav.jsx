@@ -14,6 +14,7 @@ import {
   faGoogle,
 } from "@fortawesome/free-brands-svg-icons";
 
+
 function Nav() {
   const [fix, setFix] = useState(false);
 
@@ -35,13 +36,17 @@ function Nav() {
           </strong>
         </h5>
         <div className={Headerstyle.register}>
-          <li>
-            <FontAwesomeIcon icon={faUser} className={Headerstyle.icon} />
-            LOGIN
+          <li >
+            <a href="/login">
+              <FontAwesomeIcon icon={faUser} className={Headerstyle.icon} />
+              LOGIN
+            </a>
           </li>
-          <li>
-            <FontAwesomeIcon icon={faLock} className={Headerstyle.icon} />
-            REGISTER
+          <li >
+            <a href="/register">
+              <FontAwesomeIcon icon={faLock} className={Headerstyle.icon} />
+              REGISTER
+            </a>
           </li>
           <div className={Headerstyle.icons}>
             <span className={Headerstyle.faFacebookF}>

@@ -21,7 +21,6 @@ function Header() {
   };
 
   const locationPath = useLocation()
-  console.log(locationPath)
 
   const [fix, setFix] = useState(false);
 
