@@ -266,18 +266,7 @@ const Event = (eventContent) => {
               </button>
             </form>
           </div>
-          <div className={eventStyle.about}>
-            <h2 className={eventStyle.title}>About</h2>
-            <p className={eventStyle.item_text}>
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, At accusam aliquyam diam diam
-              dolore dolores duo eirmos.
-            </p>
-          </div>
-          <div className={eventStyle.readDiv}>
-            <span className={eventStyle.readBtn}>
-              <span>Read More</span>
-            </span>
-          </div>
+          
           <div className={eventStyle.categories}>
             <h2 className={eventStyle.title}>Categories</h2>
             {EventCategories}

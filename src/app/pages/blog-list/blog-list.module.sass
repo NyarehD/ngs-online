@@ -1,0 +1,343 @@
+@import '../../../style/variable.module'
+.mb 
+    margin-bottom: 40px
+
+.headertag 
+    font-weight: 700
+    line-height: 1
+    margin-bottom: 1.2em
+
+.blogButton 
+    margin-bottom: 20px
+    width: 160px
+    height: 55px
+    border: 0
+    border-radius: 4px
+    background-image: linear-gradient(to right, #5b83cd 0%, #c280bf 100%)
+    span 
+        border-radius: 4px
+        background: #fff
+        color: #c280bf
+        transition: all 0.3s
+        padding:1rem 2.6rem
+    &:hover
+        span 
+            background: transparent
+            color: #fff
+    &:focus 
+        box-shadow: 0 0 3px 0 rgb(100 100 100 / 75%)
+    &:active 
+        transform: translateY(2px)
+                       
+
+.bloglist_container
+    padding: 80px 0px
+    width: 100%
+    margin: 0 auto
+    color: #4c4c4c
+    .blogList_left_container
+        width: 100%
+        padding: 0 15px
+        .blog
+            background-color: #f7f6fb
+            margin-bottom: 30px
+            border-radius: 10px
+            overflow: hidden
+            .imageSection
+                width: 100%
+                position: relative
+                .authorImage
+                    display: none
+                    position: absolute
+                    bottom: -12%
+                    right: 10%
+                    border-radius: 50%
+                    overflow: hidden
+                    width: 100px
+                    height: 100px
+                    border: 5px solid #ffffff6f
+                    box-shadow: 0 0 10px 0 #000003
+                img
+                    width:100%
+            .contentSection 
+                padding: 30px 35px
+                text-align: center
+                .date
+                    text-decoration: none
+                    border-radius: 5px
+                    font-weight: bolder
+                    height: 80px
+                    text-align: center
+                    text-transform: uppercase
+                    width: 80px
+                    display: none
+                    color: #fff
+                    background-image: linear-gradient(to right, #5b83cd 0%, #c280bf 100%)
+                    font-size: 210%
+                    padding: 10px
+                    line-height: 70%
+                    margin-right: 20px
+                    span
+                        font-size: 60%
+                .header
+                    .tagList
+                        color: #5b83cd
+                        .i 
+                            margin-right: 10px
+                        .tag
+                            color: inherit
+                            text-transform: uppercase
+                            text-decoration: none
+                            font-size: 80%
+                            &:hover
+                                color: #c280bf
+                                cursor: pointer
+                                transition: 400ms   
+                            &::after
+                                content: ","
+                            &:last-child::after
+                                content: ""
+                    .title
+                        a 
+                            font-size: 35px
+                            font-weight: bolder
+                            color: #4c4c4c
+                            text-decoration: none
+                            &:hover
+                                color: #5b83cd
+                .defaultP
+                    margin-top: 2rem
+                    font-weight: 200
+                    line-height: 150%
+                    color: #7f7f7f
+                .blogFooter
+                    display: block
+                    margin-top: 30px
+                    text-align: center
+                     
+                    .reaction 
+                        color: #8073b2
+                        font-size: 80%
+                        .icons 
+                            margin-right: 10px
+                        a 
+                            text-decoration: none
+                            color: #000
+                            font-size: 90%
+                            &:hover 
+                                color: #8073b2
+                        &:last-child 
+                            margin-left: 10px
+        .pagination_container
+            margin: 50px 0
+            .pagination_item
+                border: 2px solid #ededed
+                border-radius: 5px !important
+                color: #808080
+                display: inline-block
+                line-height: inherit
+                margin-right: 4px
+                min-width: 3em
+                padding: 0.5em 1.2em
+                text-align: center
+                cursor: pointer
+                &:hover
+                    background-color: transparent
+                    border-color: #c280bf
+            .active
+                    background-color: transparent
+                    border-color: #c280bf
+
+
+
+    .blogList_right_container 
+        width: 100%
+        padding: 0 10px
+        .search
+            .form_search
+                position: relative
+                width: 100%
+            
+            .search_box 
+                border-radius: 5px
+                width: 100%
+                outline: none
+                background-color: transparent
+                border: 1px solid #ededed
+                border-radius: 2px
+                box-shadow: 0 0px 10px 0px rgb(0 0 0 / 5%)
+                color: #7f7f7f
+                font-size: 12px
+                height: 60px
+                letter-spacing: 0.1em
+                padding-bottom: 9px
+                padding-left: 20px
+                padding-right: 20px
+                padding-top: 9px
+                &:focus 
+                    box-shadow: none
+            
+            .btnSearch 
+                background-color: #477db3
+                border-radius: 0 5px 5px 0px
+                height: 60px
+                border: none
+                opacity: 1
+                padding-left: 10px
+                padding-right: 10px
+                position: absolute
+                right: 0
+                text-align: center
+                top: 0
+                width: 60px
+                color: #fff
+                font-size: 20px
+                &:hover 
+                    opacity: 0.5
+        
+        
+        .category 
+            padding: 15px 0
+            display: flex
+            color: #808080
+            justify-content: space-between
+            border-bottom: 1px solid #e1e1e1
+            a 
+                text-decoration: none
+                color: inherit
+                font-weight: 200
+        
+        .recent_post 
+            display: flex
+            margin-bottom: 15px
+            align-items: center
+        
+            .recent_post_header 
+                a 
+                    text-decoration: none
+                    color: inherit
+                    font-size: inherit
+                    font-weight: 600
+                    line-height: 1.2
+                    margin-bottom: 0.5rem
+                    display: block
+                    text-transform: none
+                    &:hover 
+                        color: #5b83cd
+        
+            .recent_post_img 
+                width: 100px
+                height: 100px
+                border-radius: 10px
+                margin-right: 15px
+            
+            .recent_post_date 
+                color: #c280bf
+                line-height: 1.4
+                margin-bottom: 0.5em
+                font-weight: 600
+        
+        .portfolio_photos 
+            width: 100%
+        
+            .portfolio_photo 
+                display: inline-block
+                margin: 5px
+                img 
+                    width: 100px
+                    height: 100px
+                    border-radius: 10px
+        
+        .tag_clouds 
+            width: 100%
+        
+            .tag_cloud 
+                text-decoration: none
+                border: 1px solid rgba(76, 76, 76, 0.1)
+                border-radius: 1px
+                box-shadow: 0 0px 10px 0px rgb(0 0 0 / 5%)
+                color: #c280bf
+                display: inline-block
+                font-size: 12px !important
+                font-weight: 500
+                margin: 0 0 10px 5px
+                padding: 15px 25px
+                text-align: center
+                text-transform: uppercase
+                transition: all 0.4s
+                &:hover 
+                    background: #c280bf
+                    color: #fff
+
+
+
+
+@media (max-width: $break_point-s)
+    .bloglist_container
+        width: 100%
+  
+
+@media (min-width: $break_point-s)
+    .bloglist_container
+        width: $max-width-s
+  
+
+@media (min-width: $break_point-md)
+    .bloglist_container
+        width: $max-width-md
+        .blogList_left_container
+            .authorImage 
+                display: block !important
+            .contentSection 
+                text-align: left !important 
+                padding: 50px
+            .blogtHeader 
+                display: flex
+            .date 
+                display: block !important
+            .blogFooter 
+                display: flex !important
+                align-items: center
+                justify-content: space-between
+            .blogButton 
+                margin-bottom: 0px
+            .pagination_container
+                margin:0px 0
+        .blogList_right_container 
+            padding: 0 30px
+        
+  
+  
+  
+
+@media (min-width: $break_point-lg)
+    .bloglist_container 
+        width: $max-width-lg
+        display: flex
+        .blogList_left_container 
+            width: 60%
+        .blogList_right_container 
+            width: 40%
+            padding: 0 30px
+            .portfolio_photos 
+                width: 360px
+  
+
+@media (min-width: $break_point-xl) 
+    .bloglist_container 
+        width: $max-width-xl
+  
+
+@media (min-width: $break_point-xxl) 
+    .bloglist_container 
+        width: $max-width-xxl
+  
+
+
+        
+                            
+                        
+
+
+
+

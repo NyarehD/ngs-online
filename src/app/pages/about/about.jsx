@@ -174,7 +174,7 @@ function About(aboutContent) {
                 document.getElementById("image").src = image;
               }}
             >
-              <h1>
+              <h1 className={aboutStyles.header} >
                 Ronald May <span className={aboutStyles.role}>Founder</span>
               </h1>
             </li>
@@ -183,7 +183,7 @@ function About(aboutContent) {
                 document.getElementById("image").src = image2;
               }}
             >
-              <h1>
+              <h1 className={aboutStyles.header} >
                 Natalie Thomas <span className={aboutStyles.role}>Trader</span>
               </h1>
             </li>
@@ -192,7 +192,7 @@ function About(aboutContent) {
                 document.getElementById("image").src = image3;
               }}
             >
-              <h1>
+              <h1 className={aboutStyles.header} >
                 Frank Farjado <span className={aboutStyles.role}>Manager</span>
               </h1>
             </li>
@@ -201,7 +201,7 @@ function About(aboutContent) {
                 document.getElementById("image").src = image4;
               }}
             >
-              <h1>
+              <h1 className={aboutStyles.header} >
                 Helen Freeman <span className={aboutStyles.role}>Support</span>
               </h1>
             </li>
