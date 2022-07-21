@@ -3,10 +3,10 @@ import { createPortal } from "react-dom";
 import ModalStyle from "./modal.module.sass";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faMagnifyingGlassMinus,
-  faMagnifyingGlassPlus,
-  faCompress,
-  faExpand,
+  // faMagnifyingGlassMinus,
+  // faMagnifyingGlassPlus,
+  // faCompress,
+  // faExpand,
   faXmark,
   faArrowLeft,
   faArrowRight,
@@ -70,15 +70,15 @@ function Modal({ toggleHandler, ModalData, currentImageID }) {
             </span>
           </div>
           <div className={ModalStyle.image_helper_action}>
-            <span className={ModalStyle.zoom_icon_container}>
+            {/* <span className={ModalStyle.zoom_icon_container}>
               <FontAwesomeIcon
                 onClick={() => setZoomIn((pre) => !pre)}
                 icon={zoomIn ? faMagnifyingGlassMinus : faMagnifyingGlassPlus}
               />
-            </span>
-            <span>
+            </span> */}
+            {/* <span>
               <FontAwesomeIcon icon={expand ? faCompress : faExpand} />
-            </span>
+            </span> */}
             <span>
               <FontAwesomeIcon icon={faXmark} onClick={() => toggleHandler()} />
             </span>

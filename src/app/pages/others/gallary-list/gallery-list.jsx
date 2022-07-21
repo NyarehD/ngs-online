@@ -277,6 +277,7 @@ export default function GalleryList(galleryListContent) {
           </a>
         </div>
       </div>
+  
       {toggleModal && (
         <Modal ModalData={ModalData} currentImageID={currentImgId} toggleHandler={toggleHandler} />
       )}
