@@ -108,7 +108,7 @@ function Header() {
                 <a href="/gallery">GALLERY</a>
               </MenuItem>
               <MenuItem onClick={handleClose}>
-                <a href="/term-of-use">TERM OF USE</a>
+                <a href="/terms-of-use">TERMS OF USE</a>
               </MenuItem>
             </Menu>
           </li>

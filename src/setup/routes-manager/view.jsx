@@ -14,6 +14,8 @@ import MyFaq from '../../app/pages/faq/faq'
 import EventSingle from "../../app/pages/event-single/event-single";
 import Blog from "../../app/pages/blog/blog-single";
 import BlogList from "../../app/pages/blog-list/blog_list";
+import TermsOfUse from '../../app/pages/term-of-use/terms-of-use'
+
 function View() {
 
   const [homeContent , setHomeContent] = useState({})
@@ -27,7 +29,7 @@ function View() {
   const [teamSingleContent , setTeamSingleContent] = useState({})
   const [blogListContent , setBlogListContent] = useState({})
   const [blogContent , setBlogConetent] = useState({})
-  
+  const [termsOfUseContent ,setTermsOfUseContent] = useState({})
 
   useEffect( () => {
     const fetchData = async () =>{
@@ -45,6 +47,7 @@ function View() {
         setTeamSingleContent(data.teamSingle)
         setBlogListContent(data.blogList)
         setBlogConetent(data.blogSingle)
+        setTermsOfUseContent(data.termsOfUse)
       } catch(err){
         console.log(`Error : ${err}`)
       }
@@ -66,6 +69,7 @@ function View() {
         <Route path='/faq' element={<MyFaq faqContent={faqContent} />} ></Route>
         <Route path='/blog' element={<BlogList blogListContent={blogListContent} />} ></Route>
         <Route path='/blog/single' element={<Blog blogContent={blogContent} />} ></Route>
+        <Route path='/terms-of-use' element={<TermsOfUse termsOfUseContent={termsOfUseContent} />}></Route>
         <Route path='*' element={<Error />}></Route>
     </Routes>
   );
