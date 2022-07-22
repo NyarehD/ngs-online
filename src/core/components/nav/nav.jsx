@@ -42,12 +42,6 @@ function Nav() {
               LOGIN
             </a>
           </li>
-          <li >
-            <a href="/register">
-              <FontAwesomeIcon icon={faLock} className={Headerstyle.icon} />
-              REGISTER
-            </a>
-          </li>
           <div className={Headerstyle.icons}>
             <span className={Headerstyle.faFacebookF}>
               {" "}
