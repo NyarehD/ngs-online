@@ -601,6 +601,11 @@ export default function TeamList(teamListContent) {
     const transition = useSpring({
       from: { opacity: 0, transform: `scale(0.5)` },
       to: { opacity: 1, transform: " scale(1)" },
+      delay: 50,
+      config: { duration: 250 },
+      leave: { x: 0, y: 0, width: 50, height: 50, opacity: 0 },
+    });
+    return teamSelect.map((dev) => {
 
       const sendData = () => {
         navigate('team-single',
