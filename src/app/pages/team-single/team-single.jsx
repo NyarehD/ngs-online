@@ -5,9 +5,11 @@ import { FontAwesomeIcon } from"@fortawesome/react-fontawesome";
 import { faUser, faEnvelope, faPhone, faLink, faPenToSquare , faAngleRight } from"@fortawesome/free-solid-svg-icons";
 import HeaderCarousel from "../../../core/components/header-carousel/header-carousel";
 import HeaderStyle from '../../../core/components/header/header.module.sass'
-import { Link } from 'react-router-dom';
+import { useLocation as Location, Link } from 'react-router-dom';
 
 function teamSingle(teamSingleContent) {
+    const { state } = Location();
+
     const data = teamSingleContent.teamSingleContent
   return (
     <div className="">
@@ -39,7 +41,7 @@ function teamSingle(teamSingleContent) {
             <div className={`${TeamSingleStyle.divider-20} ${TeamSingleStyle.displaySmBlock} ${TeamSingleStyle.displayLgNone}`}></div>
                 
                 <div className={TeamSingleStyle.itemContent}>
-                <h4>Dean Whales</h4>
+                <h4>{state.name}</h4>
                 <div className={TeamSingleStyle.socialIconContainer}>
                     <a href="#" className={TeamSingleStyle.facebook}>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" fill="#3b5998">
@@ -69,7 +71,7 @@ function teamSingle(teamSingleContent) {
                             <tbody>
                                 <tr>
                                     <th scope="row">Occupation:</th>
-                                    <td>Senior Executive</td>
+                                    <td>{state.role}</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Experience:</th>
