@@ -67,8 +67,8 @@ function View() {
         <Route index element={<Home homeContent={homeContent} />} ></Route>
         <Route path='/about' element={<About aboutContent={aboutContent} />} ></Route>
         <Route path='/contact' element={<Contact contactContent={contactContent} />} ></Route>
-        <Route path='/team-list' element={<TeamList teamListContent={teamListContent} />}></Route>
-        <Route path='/team-single' element={<TeamSingle teamSingleContent={teamSingleContent} />} ></Route>
+        <Route path='/team-list/*' element={<TeamList teamListContent={teamListContent} />}></Route>
+        <Route path='/team-list/team-single' element={<TeamSingle teamSingleContent={teamSingleContent} />} ></Route>
         <Route path='/event-list' element={<Event eventContent={eventContent} />} ></Route>
         <Route path='/event-single' element={<EventSingle eventSingleContent={eventSingleContent} />} ></Route>
         <Route path='/gallery' element={<GalleryList galleryListContent={galleryListContent} />} ></Route>
