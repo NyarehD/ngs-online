@@ -2,7 +2,7 @@ import React,{useState, useEffect} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import Comments from "./comments";
 
-import {faCalendarDays, faUserLarge, faEye, faComments, faHeart, faBasketball} from "@fortawesome/free-solid-svg-icons"
+import {faCalendarDays, faUserLarge, faEye, faComments, faHeart, faBasketball, faEnvelope} from "@fortawesome/free-solid-svg-icons"
 import {faFacebookF, faTwitter, faGooglePlusG, faInstagram, faYoutube, faLinkedinIn} from "@fortawesome/free-brands-svg-icons"
 import api from "../../../api/blog-single"
 import BlogStyle from "./blog-single.module.sass"
@@ -17,6 +17,8 @@ export default function Blog(){
     const [likeCount, setLikeCount]=useState(0)
     const [viewCount, setViewCount]=useState(0)
     const [nOComment, setNOComment]=useState(0)
+
+
 
 
     //Retrieve data from api
@@ -348,91 +350,8 @@ export default function Blog(){
                     </div>
                     <div className={BlogStyle.comment_section}>
                         <div className={BlogStyle.comment_area}>
-                                <h2 className={BlogStyle.comment_title}>Comments</h2>
-
-                                <Comments currentUserId="1" setNOComment={setNOComment}/>
-
-                                {/* 
-                                <h2 className={BlogStyle.comment_title}>Leave Your Comment</h2>
-                                <div id="respond" className={BlogStyle.comment_response}>
-                                    <form 
-                                        action="#"
-                                        id="comment_form"
-                                        className={BlogStyle.comment_form}
-                                    >
-                                        <div className={BlogStyle.response_name}>
-                                            <label htmlFor="author" className={BlogStyle.response_name_label}>Name</label> //hidden lavel
-                                            <FontAwesomeIcon
-                                                icon={faUserLarge}
-                                                className={BlogStyle.response_name_icon}
-                                                htmlFor="author"
-                                            >
-                                            </FontAwesomeIcon>
-                                            <input 
-                                                type="text" 
-                                                id="author"
-                                                name="authorName"
-                                                size={30}
-                                                maxLength="245"
-                                                required="required"
-                                                placeholder="Full Name"
-                                                className={BlogStyle.response_name_input}
-                                                onChange={changeCommentsHandler}
-                                            />
-                                        </div>
-                                        <div className={BlogStyle.response_email}>
-                                            <label htmlFor="email" className={BlogStyle.response_email_label}>Email</label> //hidden lavel
-                                            <FontAwesomeIcon
-                                                icon={faEnvelope}
-                                                className={BlogStyle.response_email_icon}
-                                            >
-                                            </FontAwesomeIcon>
-                                            <input 
-                                                type="email" 
-                                                id="email"
-                                                name="authorEmail"
-                                                size="30"
-                                                maxLength="100"
-                                                aria-required="true"
-                                                required="required"
-                                                placeholder="E-mail"
-                                                className={BlogStyle.response_email_input}
-                                                onChange={changeCommentsHandler}
-                                            />
-                                        </div>
-                                        <div className={BlogStyle.response_comment}>
-                                            <label htmlFor="comment" className={BlogStyle.response_comment_label}>Comment</label> //hidden lavel
-                                            <FontAwesomeIcon
-                                                icon={faPenToSquare}
-                                                className={BlogStyle.response_comment_icon}
-                                            >
-                                            </FontAwesomeIcon>
-                                            <textarea 
-                                                id="comment"
-                                                name="commentText"
-                                                cols="45"
-                                                rows="8"
-                                                maxLength="65525"
-                                                aria-required="true"
-                                                required="required"
-                                                placeholder="Your Comment"
-                                                className={BlogStyle.response_comment_input}
-                                                onChange={changeCommentsHandler}
-                                            >
-                                            </textarea>
-                                        </div>
-                                        <div className={BlogStyle.form_submit}>
-                                            <button 
-                                                type="submit" 
-                                                className={BlogStyle.form_submit_btn}
-                                                disabled={isBoxInput? true: ""}
-                                                onClick={addCommentsHandler}
-                                            >
-                                                <span className={BlogStyle.form_submit_text}>Submit</span>
-                                            </button>
-                                        </div>
-                                    </form>
-                                </div> */}
+                            <h2 className={BlogStyle.comment_title}>Comments</h2>
+                            <Comments currentUserId="1" setNOComment={setNOComment}/>
                         </div>
                     </div>
                 </div>

@@ -49,7 +49,7 @@ const SingleComment=({
                 {isEditing && (
                     <CommentForm 
                         submitLabel="Update" 
-                        hasCancelBtn 
+                        hasCancelBtn ="true"
                         initialText={comment.body}
                         handleSubmit={(text)=>updateComment(text, comment.id)}
                         handleCancel={()=>setActiveComment(null)}
