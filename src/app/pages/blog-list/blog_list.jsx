@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import BlogListStyle from "./blog-list.module.sass";
 import Image from "../../../assets/event/01.jpg";
 import api from "../../../api/mockApi";
@@ -8,6 +8,7 @@ import {NavLink} from "react-router-dom"
 
 import HeaderStyle from "../../../core/components/header/header.module.sass";
 import HeaderCarousel from "../../../core/components/header-carousel/header-carousel";
+import {Context} from "../../../App";
 
 const Blog = ({post}) => {
     return (<div className={BlogListStyle.blog}>
@@ -152,7 +153,7 @@ const BlogHelperContainer = ({
             <ul className={BlogListStyle.categories}>
                 {categroiesWithNoOfPost.map((category, index) => (<li key={index} className={BlogListStyle.category}
                                                                       onClick={() => showPostByCategroy(category.catName)}>
-                    <span>{category.catName}</span>
+                    <a>{category.catName}</a>
                     <span>{category.noOfPost}</span>
                 </li>))}
 
@@ -242,6 +243,9 @@ function BlogList(blogListContent) {
 
     const data = blogListContent.blogListContent
 
+    // Dark mode
+    const [darkMode, setDarkMode]=useContext(Context)
+
     //start filter function By tag or category
     const filterByCategory = (categoryName) => {
         return posts.filter(post => post.category === categoryName);
@@ -328,9 +332,7 @@ function BlogList(blogListContent) {
                 </div>
             </div>
         </section>
-        <div className={BlogListStyle.bloglist_container}>
-
-
+        <div className={`${BlogListStyle.blogListContainer} ${darkMode.mode!=="light"?BlogListStyle.blogListContainerDarkMode:""}`}>
             <BlogContainer
                 {...BlogContainerPorps}
             />
