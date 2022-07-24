@@ -8,6 +8,8 @@ import {
   faLocationDot,
   faPhone,
   faSortDown,
+  faBars,
+  faX,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebookF,
@@ -15,6 +17,9 @@ import {
   faGoogle,
 } from "@fortawesome/free-brands-svg-icons";
 
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
@@ -62,14 +67,14 @@ function Nav() {
   return (
     <div>
       <div className={Headerstyle.header}>
-        <h5>
+        <h3>
           <strong>
             Welcome to our site! Check our services and gain success!
           </strong>
-        </h5>
+        </h3>
 
         <div className={Headerstyle.register}>
-          <FormControl sx={{ m: 1, minWidth: 'auto' }}>
+          <FormControl sx={{ m: 1, minWidth: "auto" }}>
             <Select
               value={language}
               onChange={handleChange}
@@ -143,6 +148,89 @@ function Nav() {
             </div>
           </div>
         </div>
+      </div>
+
+      <div
+        className={
+          fix
+            ? `${Headerstyle.asideMenu} ${Headerstyle.menuOnStickyBar} `
+            : `${Headerstyle.asideMenu}`
+        }
+      >
+        <FontAwesomeIcon
+          icon={faBars}
+          className={Headerstyle.open}
+          id="open"
+          onClick={() => {
+            document.getElementById("asidebar").style.display = "block";
+            document.getElementById("open").style.display = "none";
+            document.getElementById("close").style.display = "block";
+          }}
+        ></FontAwesomeIcon>
+      </div>
+      <div className={Headerstyle.asideBar} id="asidebar">
+        <div className={Headerstyle.closeContainer}>
+          <div className={Headerstyle.closeButton}>
+            <FontAwesomeIcon
+              icon={faX}
+              className={Headerstyle.close}
+              id="close"
+              onClick={() => {
+                document.getElementById("asidebar").style.display = "none";
+                document.getElementById("open").style.display = "block";
+                document.getElementById("close").style.display = "none";
+              }}
+            ></FontAwesomeIcon>
+          </div>
+        </div>
+        <ul>
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a href="/team">Team</a>
+          </li>
+          <li>
+            <a href="/event">Event</a>
+          </li>
+          <li>
+            <a href="/about">About</a>
+          </li>
+          <li>
+            <a href="/contact">Contact</a>
+          </li>
+          <li>
+            <a href="/blog">Blog</a>
+          </li>
+          <li>
+            <a href="/faq">Faq</a>
+          </li>
+          <li>
+            <Accordion className={Headerstyle.asideAccordion}>
+              <AccordionSummary
+                className={Headerstyle.asideAccordion}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+              >
+                <li className={Headerstyle.asideOthers}>OTHERS</li>
+              </AccordionSummary>
+              <AccordionDetails className={Headerstyle.asideAccordion}>
+                <li>
+                  <a href="/gallery">Gallery</a>
+                </li>
+                <li>
+                  <a href="/terms-of-use">Terms Of Use</a>
+                </li>
+                <li className={Headerstyle.loginSignUp}>
+                  <a href="/login">Login</a>
+                </li>
+                <li className={Headerstyle.loginSignUp}>
+                  <a href="/sign-up">Sign up</a>
+                </li>
+              </AccordionDetails>
+            </Accordion>
+          </li>
+        </ul>
       </div>
     </div>
   );
