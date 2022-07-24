@@ -92,16 +92,11 @@ function Header() {
               aria-expanded={open ? "true" : undefined}
               onClick={handleClick}
             >
-              OTHERS
-            </a>
-            <Menu
-              id="basic-menu"
-              anchorEl={anchorEl}
-              open={open}
-              onClose={handleClose}
-              MenuListProps={{
-                "aria-labelledby": "basic-button",
-              }}
+              <a href="/">Home</a>
+            </li>
+            <li
+              className={`${index === 1 ? `${Style.navActive}` : ``}`}
+              onClick={() => setIndex(1)}
             >
               <MenuItem onClick={handleClose}>
                 <a href="/gallery">GALLERY</a>
@@ -258,7 +253,6 @@ function Header() {
           </li>
         </ul>
       </div>
-      
     </>
   );
 }
