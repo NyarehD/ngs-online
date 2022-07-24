@@ -7,6 +7,7 @@ import {
   faLock,
   faLocationDot,
   faPhone,
+  faSortDown,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebookF,
@@ -14,9 +15,20 @@ import {
   faGoogle,
 } from "@fortawesome/free-brands-svg-icons";
 
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import mmFlag from "../../../assets/flag/mm.png";
+import usFlag from "../../../assets/flag/us.gif";
 
 function Nav() {
   const [fix, setFix] = useState(false);
+  const [language, setLanguage] = useState("");
+
+  const handleChange = (e) => {
+    setLanguage(e.target.value);
+  };
 
   const setFixedSidebar = () => {
     if (window.scrollY >= 65) {
@@ -24,6 +36,26 @@ function Nav() {
     } else {
       setFix(false);
     }
+  };
+
+  const myanmarLanguage = () => {
+    return (
+      <div className={Headerstyle.selectContainer}>
+        <img className={Headerstyle.flag} src={mmFlag} alt="Myanmar Flag" />
+        <span className={Headerstyle.language}>Myanmar</span>
+        {/* <FontAwesomeIcon className={Headerstyle.icon} icon={faSortDown} /> */}
+      </div>
+    );
+  };
+
+  const englishLanguage = () => {
+    return (
+      <div className={Headerstyle.selectContainer}>
+        <img className={Headerstyle.flag} src={usFlag} alt="US Flag" />
+        <span className={Headerstyle.language}>English</span>
+        {/* <FontAwesomeIcon className={Headerstyle.icon} icon={faSortDown} /> */}
+      </div>
+    );
   };
 
   window.addEventListener("scroll", setFixedSidebar);
@@ -35,17 +67,26 @@ function Nav() {
             Welcome to our site! Check our services and gain success!
           </strong>
         </h5>
+
         <div className={Headerstyle.register}>
-          <li >
+          <FormControl sx={{ m: 1, minWidth: 'auto' }}>
+            <Select
+              value={language}
+              onChange={handleChange}
+              id="demo-simple-select-autowidth"
+              autoWidth
+              displayEmpty
+              inputProps={{ "aria-label": "Without label" }}
+            >
+              <MenuItem value={"myanmar"}>{myanmarLanguage()}</MenuItem>
+              <MenuItem value={""}>{englishLanguage()}</MenuItem>
+            </Select>
+          </FormControl>
+
+          <li>
             <a href="/login">
               <FontAwesomeIcon icon={faUser} className={Headerstyle.icon} />
               LOGIN
-            </a>
-          </li>
-          <li >
-            <a href="/register">
-              <FontAwesomeIcon icon={faLock} className={Headerstyle.icon} />
-              REGISTER
             </a>
           </li>
           <div className={Headerstyle.icons}>
