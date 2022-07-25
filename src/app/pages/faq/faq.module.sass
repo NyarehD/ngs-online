@@ -7,15 +7,18 @@
     margin: 8rem auto 4rem auto
 
 .faqBtnGp
-    display: flex
+    display: grid
+    grid-template-columns: repeat(4,1fr)
     // margin-left: 5%
+    // flex-wrap: wrap
 
 .btnItem
     list-style: none
-    margin-right: 3px
     color: #c280bf
     background-color: #f7f6fb
     cursor: pointer
+    &:hover
+        color: #007aff
 
 .btnLink
     font-size: 12px
@@ -28,9 +31,7 @@
     text-transform: uppercase
     text-decoration: none
     border-radius: 5px 5px 0 0
-    transition: all 1s ease-in-out
-    &:hover
-        color: #007aff
+    transition: all 0.2s ease-in-out
 
 @mixin flex_between()
     display: flex
@@ -57,7 +58,7 @@
 
 .form_input_container2
     display: block
-    width: 90%
+    width: 100%
 
 .form_input2
     margin: 0 15px 15px 0
@@ -98,13 +99,13 @@
     background-image: -webkit-linear-gradient(left, #5b83cd 0%, #c280bf 100%)
     background-image: linear-gradient(to right, #5b83cd 0%, #c280bf 100%)
     color: #fff
-    border-radius: 5px 5px 0 0
+    // border-radius: 5px 5px 0 0
 
 .form_button2
     color: #fff
     border-radius: 4px
     border: 0
-    width: 260px
+    width: 200px
     height: 60px
     margin: 30px 0
     background: linear-gradient(to right, #5b83cd 0%, #c280bf 100%)
@@ -117,7 +118,7 @@
         content: "ASK A QUESTION"
         font-family: Poppins, "san-serif"
         border-radius: 4px
-        padding: 0 !important
+        padding: 18px 41px !important
         line-height: 60px
         color: #fff
         background: transparent
@@ -138,14 +139,18 @@
 @media (max-width:$break_point-s)
     .contact_container
         width: 100%
-    .faqBtnGp
-        display: flex
-        flex-direction: column
     .btnLink
         font-size: 10px
     .cardCon
         width: 100%
         padding: 20px 40px 20px 40px
+@media (max-width:1250px)
+    .faqBtnGp
+        grid-template-columns: repeat(2,1fr)
+@media (max-width:631px)
+    .faqBtnGp
+        grid-template-columns: repeat(1,1fr)
+
 
 @media (min-width:$break_point-s)
     .contact_container
@@ -155,12 +160,10 @@
     .form_input
         width: 49%
 
-@media (max-width:$break_point-md)
+@media (max-width:$break_point-lg)
     .contact_container
         width: $max-width-md
-    .faqBtnGp
-        display: flex
-        flex-wrap: wrap
+
     .btnLink
         font-size: 10px
     .cardCon

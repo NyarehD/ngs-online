@@ -204,23 +204,30 @@ const MyFaq = (faqContent) => {
               className={style.form_input2}
               type="text"
               placeholder="FULL NAME"
+              required="required"
+
             />
             <input
               className={style.form_input2}
               type="text"
               placeholder="PHONE NUMBER"
+              required="required"
             />
           </div>
           <div className={style.form_input_container2}>
             <input
               className={style.form_input2}
-              type="text"
+              type="email"
               placeholder="EMAIL"
+              required="required"
+
             />
             <input
               className={style.form_input2}
               type="text"
               placeholder="SUBJECT"
+              required="required"
+
             />
           </div>
           <div className={style.form_input_container2}>
@@ -229,6 +236,7 @@ const MyFaq = (faqContent) => {
               cols="30"
               rows="10"
               placeholder="YOUR MESSAGE"
+              required="required"
             />
           </div>
 

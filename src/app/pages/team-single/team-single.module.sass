@@ -1,13 +1,21 @@
 @import "../../../core/components/page-footer/page-footer.module"
 
+
+@mixin frameSize($width)
+    @media screen and (max-width:$width)
+        @content
+
+
 .teamSingleMemberPhoto
-    max-width: 100%
-    max-height: 100%
-    object-fit: cover
+    width: 100%
+    height: 100%
+    object-fit: cover 
+    @include frameSize(768px )
     
 .socialIconContainer
     margin-top: 43px
     letter-spacing: 0
+    display: flex
     a
         margin-right: 13px
         border-radius: 50%
@@ -31,36 +39,31 @@
     width: 85%
     max-width: 100%
     margin-bottom: 1rem
+    background-color: #fff
+    text-align: left
 
-.link-a
+.link_a a
     color:#7f7f7f
+    &:hover
+        color: #55acee
 
 .table th
     color:#4c4c4c
     font-weight: 500
 
-    
-.table th,
-.table td 
+.table th, .table td 
   padding: 0.75rem
   vertical-align: top
   border-top: 1px solid #eceeef
-
-.table thead th 
-  vertical-align: bottom
-  border-bottom: 2px solid #eceeef
+.table td 
+  color:#7f7f7f
 
 .table tbody + tbody 
   border-top: 2px solid #eceeef
 
-.table .table 
-  background-color: #fff
-
-    
 @media screen and (max-width: 480px)
     .displaySmBlock
         display: block
-
 
 @media screen and (max-width: 780px)
     .displayLgNone
@@ -107,7 +110,6 @@
 //Sass by Ma Yee Mon
 
 
-
 .personalExperience
     font-family: "poppins", sans-serif
     height: 100vh
@@ -116,25 +118,27 @@
     align-items: center
 
 .container
-    width: 75%
+    width: 100%
+    max-width: 1200px
+    margin: 0 auto
+    padding: 160px 15px 130px
 
-    // background-color: yellow
-.personalExperience .personalExperienceContainer .content p
-    color: #7f7f7f
-    font-size: 17px
-    font-weight: 300
-    line-height: 2
 
 .content
     margin-top:50px
-    h5
+    .content_title
+        color:#4c4c4c
         font-size: 23px
         margin-bottom: 24px
         font-weight: 700
         letter-spacing: 1px
         line-height: 1.5
         word-break: break-word
-    p
+    .content_text
+        font-size: 17px
+        font-weight: 300
+        line-height: 2
+        color: #7f7f7f
         margin-bottom: 10px
         margin-top: 0
         display: block
@@ -145,195 +149,198 @@
 
 
     // background-color: hotpink
-.personalExperience .personalExperienceContainer .content h3
-    color: #444040
-    font-weight: bolder
-    letter-spacing: 1px
-    line-height: 1.5
+// .personalExperience .personalExperienceContainer .content h3
+//     color: #444040
+//     font-weight: bolder
+//     letter-spacing: 1px
+//     line-height: 1.5
 
 
-.contentpart2
-    display: flex
+// .contentpart2
+//     display: flex
 
-.contentpart2 .left
-    width: 60%
-    margin-right: 50px
+// .contentpart2 .left
+//     width: 60%
+//     margin-right: 50px
 
-.contentpart2 .left p
-    color: #363232
-    font-size: 14px
-    font-weight: 800
-    letter-spacing: 0.2em
-    text-transform: uppercase
-    margin-bottom: 20px
-    position: relative
+// .contentpart2 .left p
+//     color: #363232
+//     font-size: 14px
+//     font-weight: 800
+//     letter-spacing: 0.2em
+//     text-transform: uppercase
+//     margin-bottom: 20px
+//     position: relative
 
-.contentpart2 .left span
-    position: absolute
-    right: 0
+// .contentpart2 .left span
+//     position: absolute
+//     right: 0
 
-.contentpart2 .left .progress
-    width: 100%
-    height: 4px
-    background: #e5e5e5
-    margin-bottom: 20px
-    position: relative
+// .contentpart2 .left .progress
+//     width: 100%
+//     height: 4px
+//     background: #e5e5e5
+//     margin-bottom: 20px
+//     position: relative
 
-.contentpart2 .left .progress::before
-    content: ''
-    height: 100%
+// .contentpart2 .left .progress::before
+//     content: ''
+//     height: 100%
 
-    position: absolute
-    left: 0
-    top: 0
-    background-color: red
+//     position: absolute
+//     left: 0
+//     top: 0
+//     background-color: red
 
-.contentpart2 .left .pg1::before
-    content: ''
-    width: 93%
-    background-color: #ff497c
+// .contentpart2 .left .pg1::before
+//     content: ''
+//     width: 93%
+//     background-color: #ff497c
 
-.contentpart2 .left .pg2::before
-    content: ''
-    width: 90%
-    background-color: #a0ce4e
+// .contentpart2 .left .pg2::before
+//     content: ''
+//     width: 90%
+//     background-color: #a0ce4e
 
-.contentpart2 .left .pg3::before
-    content: ''
-    width: 98%
-    background-color: #00bea3
+// .contentpart2 .left .pg3::before
+//     content: ''
+//     width: 98%
+//     background-color: #00bea3
 
-.contentpart2 .left .pg4::before
-    content: ''
-    width: 93%
-    background-color: #f1894c
+// .contentpart2 .left .pg4::before
+//     content: ''
+//     width: 93%
+//     background-color: #f1894c
 
-.contentpart2 .right
-    width: 40%
-    p
-        margin-bottom: 10px
-        line-height: 2
+// .contentpart2 .right
+//     width: 40%
+//     p
+//         margin-bottom: 10px
+//         line-height: 2
 
-.body .container .contentpart2 .right p
-    line-height: 2
-    color: #7f7f7f
-    font-size: 17px
-    font-weight: 300
-    word-spacing: 1px
-    margin: 0px 0px 10px 0px
-    padding: 0
+// .body .container .contentpart2 .right p
+//     line-height: 2
+//     color: #7f7f7f
+//     font-size: 17px
+//     font-weight: 300
+//     word-spacing: 1px
+//     margin: 0px 0px 10px 0px
+//     padding: 0
 
-@media screen and (max-width:990px)
-    .contentpart2
-        display: block
+// @media screen and (max-width:990px)
+//     .contentpart2
+//         display: block
 
-    .contentpart2 .left
-        width: 100%
-        margin-bottom: 30px
+//     .contentpart2 .left
+//         width: 100%
+//         margin-bottom: 30px
 
-    .contentpart2 .right
-        width: 100%
-
-
-
-.contactTitle
-    font-size: 24px
-    margin-bottom: 23px
-    margin-top: 43px
-
-form
-    width: 100%
-    max-width: 1000px
-    border: none
-
-    button
-        margin: 0
-        padding: 0
-
-
-.group
-    position: relative
-    margin-bottom: 20px
-
-.input
-    width: 100% !important
-    padding: 17px
-    outline:0
-    border: 2px solid #eee
-    font-size: 13px
-    padding-left: 50px
-    border: 2px solid #ededed
-    border-radius:2px
-    color: #f8f9fa
-
-
-textarea
-    width: 100%
-    height: 30vh
-    padding: 16px
-    outline:0
-    border: 2px solid #eee
-    font-size: 13px
-    padding-left: 50px
-    font-weight: 300
-    color: #f8f9fa
-
-
-.label
-    height: 100%
-    position: absolute
-    left: 20px
-    top: 0
-    padding: 18px
-    padding-left: 30px
-    color: #4c4c4c
-    font-size: 12px
-    font-weight: 500
-    letter-spacing: 0.2em
+//     .contentpart2 .right
+//         width: 100%
 
 
 
-  
-.teamSingleButton
-    border: 0
-    color: #eee
-    outline: none
-    background-image: linear-gradient(to right, #5b83cd 0%, #c280bf 100%)
-    width: 175px
-    height: 60px
-    border-radius: 5px
-    padding: 2px
-    margin-top: 30px
-    padding: 0
-    &::before
-        content: 'Submit'
-        text-transform: uppercase
-        display: block
-        padding: 1rem
-        margin: .2rem
-        border-radius: 5px
+// .contactTitle
+//     font-size: 24px
+//     margin-bottom: 23px
+//     margin-top: 43px
 
-    
-.teamSingleButton:hover
-    // color: rgb(51, 50,50)
-    // background-image: none
-    // background-color: transparent
-    // // border-image-repeat: repeat
-    // border: 10px solid
-    // border-image-slice: 1
-    // border-width: 5px
-    // border-image-source: linear-gradient(to right, #5b83cd 0%, #c280bf 100%) 1 100%
-    &::before
-        background-color: white
-        color: rgb(51, 50 ,50 )
+// form
+//     width: 100%
+//     max-width: 1000px
+//     border: none
 
-.icon
-    color: #c280bf
-    margin-right: px
-    font-size:13px
+//     button
+//         margin: 0
+//         padding: 0
 
 
-.group
-    width: 49%
+// .group
+//     position: relative
+//     margin-bottom: 20px
+
+// .input
+//     width: 100% !important
+//     padding: 17px
+//     outline:0
+//     border: 2px solid #eee
+//     font-size: 13px
+//     padding-left: 50px
+//     border: 2px solid #ededed
+//     border-radius:2px
+//     color: #f8f9fa
+
+
+// textarea
+//     width: 100%
+//     height: 30vh
+//     padding: 16px
+//     outline:0
+//     border: 2px solid #eee
+//     font-size: 13px
+//     padding-left: 50px
+//     font-weight: 300
+//     color: #f8f9fa
+
+
+// .label
+//     height: 100%
+//     position: absolute
+//     left: 20px
+//     top: 0
+//     padding: 18px
+//     padding-left: 30px
+//     color: #4c4c4c
+//     font-size: 12px
+//     font-weight: 500
+//     letter-spacing: 0.2em
+
+
+// .submitFormButton
+//     border: 0
+//     color: #eee
+//     outline: none
+//     background-image: linear-gradient(to right, #5b83cd 0%, #c280bf 100%)
+//     width: 150px
+//     height: 50px
+//     margin-right: 20px
+//     padding: 2px
+//     border-radius: 5px
+//     cursor: pointer
+//     transition: 0.3s
+//     &:disabled
+//         opacity: 0.7
+//         cursor: default
+//         .form_submit_text
+//             &:hover
+//                 color: #eee
+//                 background: none
+//     .form_submit_text
+//         align-items: center
+//         border-radius: 4px
+//         -webkit-box-align: center
+//         -webkit-box-pack: center
+//         display: flex
+//         font-size: 1vw
+//         font-weight: 500
+//         height: 100%
+//         justify-content: center
+//         letter-spacing: 0
+//         text-transform: uppercase
+//         box-shadow:  0 0 3px 1px #c280bf, 0 0 5px 1px #5b83cd    
+//         transition: 0.3s
+//         width: 100%
+//         &:hover
+//             color: #4c4c4c
+//             background-color: #fff
+
+// .icon
+//     color: #c280bf
+//     margin-right: px
+//     font-size:13px
+
+
+// .group
+//     width: 49%
 
 

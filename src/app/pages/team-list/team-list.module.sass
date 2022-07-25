@@ -32,7 +32,6 @@ body
     width: 100%
     max-width: 1200px
     margin: 0 auto
-    margin: 0 auto
     padding: 160px 15px 130px
     .heighttest
         height: 100vh
@@ -48,10 +47,14 @@ body
         margin-bottom: 35px
         .lists
             width: 70%
-            nav
+            .nav_lists
                 display: grid
-                grid-template-columns: repeat(7, 1fr)
+                grid-template-columns: repeat(6, 1fr)
                 gap: 1rem 1.5rem
+                @include frameSize(1000px)
+                    grid-template-columns: repeat(3, 1fr)
+                @include frameSize(500px)
+                    grid-template-columns: repeat(1, 1fr)
             .links
                 text-decoration: none
                 color: #4c4c4c 
@@ -66,14 +69,16 @@ body
                     color: #0056b3
 
     .teamList
+        margin: auto
         width: 100%
         display: grid
         grid-template-columns: repeat(4, 1fr)
-        gap: 1.5rem 0
+        gap: 1.5rem 2rem
         text-align: center
+        flex-wrap: wrap
         @include frameSize(1200px)
             grid-template-columns: repeat(3, 1fr) !important
-        @include frameSize(800px)
+        @include frameSize(820px)
             grid-template-columns: repeat(2, 1fr) !important
         @include frameSize(500px)
             grid-template-columns: repeat(1, 1fr) !important
@@ -85,6 +90,9 @@ body
             border-radius: 25px
             background-color: #f7f6fb
             margin: 0 20px
+            @include frameSize(1200px)
+                width: 320px
+                height: 450px
             &:hover
                 .developer_media
                     .hover
@@ -100,6 +108,8 @@ body
                     width: 100%
                     height: 250px
                     border-radius: 25px
+                    @include frameSize(1200px)
+                        height: 320px
                 //hover background opacity
                 .hover
                     position: absolute
@@ -110,6 +120,8 @@ body
                     z-index: 9
                     // transition: 0.3s
                     -webkit-transition: 0.3s
+                    @include frameSize(1200px)
+                        height: 320px
                 .dev_social_icons
                     width: 160px
                     position: absolute
@@ -183,17 +195,37 @@ body
     margin-bottom: 50px
 
 .children_p
-    font-size: 1.175rem
+    font-size: 1rem
+    color: #7f7f7f  
     margin-bottom: 3.5rem
 
 .children_button 
-    background-color: #c280bf 
-    padding: 20px 
-    font-weight: 700 
-    color: white 
-    border-radius: 5px 
-    text-decoration: none
-    transition: all 0.15s
     border: 0
-    &:hover
-        color: #5b83cd
+    color: #eee
+    outline: none
+    background-image: linear-gradient(to right, #5b83cd 0%, #c280bf 100%)
+    width: 220px
+    height: 50px
+    margin-right: 20px
+    padding: 2px
+    border-radius: 5px
+    cursor: pointer
+    transition: 0.3s
+    .children_button_text
+        align-items: center
+        border-radius: 4px
+        -webkit-box-align: center
+        -webkit-box-pack: center
+        display: flex
+        font-size: 1vw
+        font-weight: 500
+        height: 100%
+        justify-content: center
+        letter-spacing: 0
+        text-transform: uppercase
+        box-shadow:  0 0 3px 1px #c280bf, 0 0 5px 1px #5b83cd    
+        transition: 0.3s
+        width: 100%
+        &:hover
+            color: #4c4c4c
+            background-color: #fff
