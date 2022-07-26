@@ -37,73 +37,6 @@ function Header() {
           fix ? `${Style.container} ${Style.stickyBar}` : `${Style.container}`
         }
       >
-        {/* <ul>
-          <li
-            className={`${index === 0 ? `${Style.navActive}` : ``}`}
-            onClick={() => setIndex(0)}
-          >
-            <a href="/" >Home</a>
-          </li>
-          <li
-            className={`${index === 1 ? `${Style.navActive}` : ``}`}
-            onClick={() => setIndex(1)}
-          >
-            <a href="/team-list" >Team</a>
-          </li>
-          <li
-            className={`${index === 2 ? `${Style.navActive}` : ``}`}
-            onClick={() => setIndex(2)}
-          >
-            <a href="/event-list" >Event</a>
-          </li>
-          <li
-            className={`${index === 3 ? `${Style.navActive}` : ``}`}
-            onClick={() => setIndex(3)}
-          >
-            <a href="/about" >About</a>
-          </li>
-          <li
-            className={`${index === 4 ? `${Style.navActive}` : ``}`}
-            onClick={() => setIndex(4)}
-          >
-            <a href="/contact" >Contact</a>
-          </li>
-          <li
-            className={`${index === 5 ? `${Style.navActive}` : ``}`}
-            onClick={() => setIndex(5)}
-          >
-            <a href="/blog" >Blog</a>
-          </li>
-          <li
-            className={`${index === 6 ? `${Style.navActive}` : ``}`}
-            onClick={() => setIndex(6)}
-          >
-            <a href="/faq" >Faq</a>
-          </li>
-          <li>
-            <a
-              id="basic-button"
-              aria-controls={open ? "basic-menu" : undefined}
-              aria-haspopup="true"
-              aria-expanded={open ? "true" : undefined}
-              onClick={handleClick}
-            >
-              <a href="/">Home</a>
-            </li>
-            <li
-              className={`${index === 1 ? `${Style.navActive}` : ``}`}
-              onClick={() => setIndex(1)}
-            >
-              <MenuItem onClick={handleClose}>
-                <a href="/gallery">GALLERY</a>
-              </MenuItem>
-              <MenuItem onClick={handleClose}>
-                <a href="/terms-of-use">TERMS OF USE</a>
-              </MenuItem>
-            </Menu>
-          </li>
-        </ul> */}
-
         <ul>
           <li
             onClick={() => setIndex(0)}
@@ -111,7 +44,6 @@ function Header() {
             <Link className={`${index === 0 ? `${Style.navActive}` : ``}`} type="button" to={"/"} >Home</Link>
           </li>
           <li
-            
             onClick={() => setIndex(1)}
           >
             <Link className={`${index === 1 ? `${Style.navActive}` : ``}`}type="button" to={"/team-list"}>Team</Link>
