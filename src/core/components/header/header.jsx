@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Style from "./header.module.sass";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -8,9 +8,11 @@ import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import { Link, useLocation } from "react-router-dom";
+import { Context } from "../../../App";
 
 function Header() {
   const [index, setIndex] = useState("");
+  const [value] = useContext(Context)
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -38,7 +40,7 @@ function Header() {
     <>
       <div
         className={
-          fix ? `${Style.container} ${Style.stickyBar}` : `${Style.container}`
+          fix ? `${Style.container} ${Style.stickyBar} ${value.mode !== "light"?Style.containerDark:""}` : `${Style.container} ${value.mode !== "light"?Style.containerDark:""}`
         }
       >
         {/* <ul>

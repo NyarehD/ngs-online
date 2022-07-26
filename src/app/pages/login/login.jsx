@@ -5,11 +5,14 @@ import HeaderCarousel from "../../../core/components/header-carousel/header-caro
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight , faUser , faLock } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router-dom";
+import { Context } from "../../../App";
 
 import loginImage from "../../../assets/login/login.png";
+import { useContext } from "react";
 
 function Login(loginContent) {
   const data = loginContent.loginContent;
+  const [value, setValue] = useContext(Context)
   return (
     <div>
       <section className={HeaderStyle.box}>
@@ -37,30 +40,31 @@ function Login(loginContent) {
         </div>
       </section>
 
+      {/* .usernameInputDark , .passwordInputDark  , .fullnameInputDark , .phoneNumberInputDark , .eMailInputDark , .confirmPasswordInputDark , .submitButtonDark */}
       <div className={LoginStyle.container}>
         <div className={LoginStyle.row}>
-          <div className={LoginStyle.content}>
-            <h2 className={LoginStyle.contentHeader}>Login Form</h2>
+          <div className={value.mode === "light" ? LoginStyle.content : LoginStyle.contentDark}>
+            <h2 className={`${LoginStyle.contentHeader} ${value.mode === 'dark'?LoginStyle.darkText:''}`}>Login Form</h2>
             <form action="">
                 <div className={LoginStyle.usernameInputSection}>
                     <FontAwesomeIcon icon={faUser} className={LoginStyle.icon} />
-                    <input className={LoginStyle.usernameInput} type="text" placeholder="USER NAME" />
+                    <input className={value.mode === "light" ? LoginStyle.usernameInput : LoginStyle.usernameInputDark} type="text" placeholder="USER NAME" />
                 </div>
                 <div className={LoginStyle.passwordInputSection}>
                     <FontAwesomeIcon icon={faLock} className={LoginStyle.icon} />
-                    <input className={LoginStyle.passwordInput} type="password" name="" placeholder="PASSWORD" id="" />
+                    <input className={value.mode === "light" ? LoginStyle.passwordInput : LoginStyle.passwordInputDark} type="password" name="" placeholder="PASSWORD" id="" />
                 </div>
 
                 <div className={LoginStyle.submitButtonSection}>
-                    <button className={LoginStyle.submitButton}>
-                      <span className={LoginStyle.loginSpan}>Login</span>
+                    <button className={value.mode === "light" ? LoginStyle.submitButton : LoginStyle.submitButtonDark}>
+                      <span className={value.mode === "light" ? LoginStyle.loginSpan : LoginStyle.loginSpanDark}>Login</span>
                     </button>
                 </div>
             </form>
           </div>
 
-          <div className={LoginStyle.image}>
-            <img src={loginImage} alt="" />
+          <div className={LoginStyle.imageCon}>
+            <img src={loginImage} className={LoginStyle.image} alt="" />
           </div>
         </div>
       </div>

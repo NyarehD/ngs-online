@@ -1,32 +1,62 @@
 .container
-    width: 90%
-    height: fit-content
-    margin: 4rem auto
+    width: 100%
+    // height: fit-content
+    height: 850px
+    // margin: 4rem 0
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: center
 
 .row
+    width: 100%
+    height: 460px
     display: flex
     align-items: center
+    justify-content: center
 
-.content , .image
-    width: 50%
+// .content , .imageCon
+//     width: 50%
+//     height: 70%
 
-.content 
+.content, .imageCon, .contentDark
+    width: 40%
+    height: 100%
+
+.image
+    width: 100%
+    height: 100%
+    border-radius: 0 7px 7px 0
+
+.content, .contentDark
+    display: flex
+    flex-direction: column
+    justify-content: center
     background-color: #f7f6fb
-    padding: 2rem
+    padding: 0 3rem
+    border-radius: 7px 0 0 7px
+
+.contentDark
+    background-color: rgba(255, 255, 255, 0.1)
 
 .contentHeader
     margin-bottom: 2rem
 
-.form
-    display: flex
+.darkText
+    color: #fff
+// .form
+//     display: flex
+//     align-items: center
+//     justify-content: center
     // flex-direction: column
-    flex-wrap: wrap
+    // flex-wrap: wrap
 
 .usernameInputSection , .passwordInputSection , .fullnameInputSection, .phoneNumberInputSection , .eMailInputSection , .confirmPasswordInputSection , .submitButtonSection
     position: relative
     // width: 50%
 
-.usernameInput , .passwordInput  , .fullnameInput , .phoneNumberInput , .eMailInput , .confirmPasswordInput , .submitButton
+.usernameInput , .passwordInput  , .fullnameInput , .phoneNumberInput , .eMailInput , .confirmPasswordInput,
+.usernameInputDark , .passwordInputDark  , .fullnameInputDark , .phoneNumberInputDark , .eMailInputDark , .confirmPasswordInputDark
     width: 350px 
     padding: 17px
     outline:0
@@ -34,10 +64,19 @@
     padding-left: 50px
     border: 1px solid #ededed
     box-shadow: 0 0px 10px 0px rgb(0 0 0 / 5%)
-    border-radius:2px
+    border-radius: 5px
     background-color: transparent
     margin-bottom: 1rem
     margin-right: 1rem
+
+.usernameInputDark, .passwordInputDark  , .fullnameInputDark , .phoneNumberInputDark , .eMailInputDark , .confirmPasswordInputDark
+    background-color: #3f3f3f
+    border-color: #454545
+    color: #fff
+
+.usernameInputDark, .passwordInputDark  , .fullnameInputDark , .phoneNumberInputDark , .eMailInputDark , .confirmPasswordInputDark
+    &::placeholder
+        color: #fff
 
 .icon
     position: absolute
@@ -45,10 +84,11 @@
     left: 28px
     color: #5b83cd 
 
-.submitButtonSection
+// .submitButtonSection
 
-.submitButton
+.submitButton, .submitButtonDark
     background-image: linear-gradient(to right, #5b83cd 0%, #c280bf 100%)
+    font-size: 13px
     color: #f7f6fb
     cursor: pointer
     border: 0
@@ -57,11 +97,11 @@
     height: 60px
     padding: 2px
     text-transform: uppercase
-    width: 180px
+    width: 180px !important
     &:hover
-        .loginSpan
+        .loginSpan, .loginSpanDark
             color: #4c4c4c
-            background-color: #fff
+            background-color: #f7f6fb
             align-items: center
             border-radius: 4px
             display: flex
@@ -70,45 +110,78 @@
             letter-spacing: 0
             transition: background 0.5s ease
             width: 100%
+
+.submitButtonDark
+    &:hover
+        .loginSpanDark
+            color: #fff
+            background-color: #333
         
 
 @media screen and (max-width : 547px)
-    .usernameInput , .passwordInput  , .fullnameInput , .phoneNumberInput , .eMailInput , .confirmPasswordInput , .submitButton
-        width: 280px 
+    // .usernameInput , .passwordInput  , .fullnameInput , .phoneNumberInput , .eMailInput , .confirmPasswordInput , .submitButton
+    //     width: 280px 
 
     .row
-        flex-wrap: wrap
+        width: 90%
+        height: 550px
+        display: flex
+        flex-direction: column
+        flex-wrap: nowrap !important
 
-    .content , .image
+    .content , .imageCon, .contentDark
         width: 100%
 
+    .content, .contentDark
+        padding: 1.5rem
+        border-radius: 7px 7px 0 0
+
     .image
-        text-align: center
+        border-radius: 0 0 7px 7px
 
     
-    .form
-        justify-content: center
+    // .form
+    //     justify-content: center
 
 
 @media screen and (max-width : 997px)
-    .row
-        flex-wrap: wrap
+    // .row
+    //     flex-wrap: wrap
 
-    .content , .image
+    // .content , .image
+    //     width: 100%
+
+    // .image
+    //     text-align: center
+    //     order: 1
+    // .content
+    //     order: 2
+    //     margin: 2rem auto
+
+    // .usernameInput , .passwordInput  , .fullnameInput , .phoneNumberInput , .eMailInput , .confirmPasswordInput , .submitButton
+    //     width: 280px 
+    
+    // .form
+    //     justify-content: center
+
+    .container
+        height: 900px
+
+    .row
+        width: 90%
+        height: 800px
+        display: flex
+        flex-direction: column
+        flex-wrap: nowrap !important
+
+    .content , .imageCon, .contentDark
         width: 100%
 
-    .image
-        text-align: center
-        order: 1
-    .content
-        order: 2
-        margin: 2rem auto
+    .content, .contentDark
+        border-radius: 7px 7px 0 0
 
-    .usernameInput , .passwordInput  , .fullnameInput , .phoneNumberInput , .eMailInput , .confirmPasswordInput , .submitButton
-        width: 280px 
-    
-    .form
-        justify-content: center
+    .image
+        border-radius: 0 0 7px 7px
 
 @media screen and (max-width : 1200px)
     .usernameInput , .passwordInput  , .fullnameInput , .phoneNumberInput , .eMailInput , .confirmPasswordInput , .submitButton

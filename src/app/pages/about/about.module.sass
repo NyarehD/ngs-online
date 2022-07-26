@@ -3,77 +3,84 @@
 body
     margin: 0
     padding: 0
+
 .about_intro
-    background-color: #fff
-    color: #4c4c4c
+    color: #7f7f7f
     font-family: "poppins", sans-serif
     padding: 10px
     margin-bottom: 50px
-    .container
-        margin:  0
-        padding: 20px
-        margin: 4rem auto
-        .about_info
+
+.container
+    margin: 0
+    padding: 20px
+    margin: 4rem auto
+.about_info
+    width: 100%
+    display: flex
+    justify-content: space-around
+    align-items: center
+.about_image
+    margin-right: 20px
+    max-width: 700px
+    img
+        max-width: 500px
+        margin-right: 30px
+.item_content
+    max-width: 650px
+.content_titleLight
+    color: #7f7f7f
+    width: 100%
+    font-size: 24px
+    text-transform: uppercase
+    letter-spacing: 0.2em
+    margin-bottom: 10px
+    font-weight: 400 !important
+
+.content_titleDark
+    @extend .content_titleLight
+    color: #fff
+
+.content_name
+    width: 100%
+    font-size: 40px
+    font-weight: 700
+    line-height: 1
+    margin-bottom: 50px
+    margin-top: 20px
+    .content_service
+        width: 100%
+        font-weight: 500
+        font-size: 20px
+        font-style: italic
+        margin: 0
+        .content_description
             width: 100%
-            display: flex
-            justify-content: space-around
-            align-items: center
-            .about_image
-                margin-right: 20px
-                max-width: 700px
-                img
-                    max-width: 500px
-                    margin-right: 30px
-            .item_content
-                max-width: 650px
-                .content_title
-                    width: 100%
-                    font-size: 24px
-                    font-weight: 200
-                    text-transform: uppercase
-                    letter-spacing: 0.2em
-                    margin-bottom: 10px
-                .content_name
-                    width: 100%
-                    font-size: 40px
-                    font-weight: 700
-                    line-height: 1
-                    margin-bottom: 50px
-                    margin-top: 20px
-                .content_service
-                    width: 100%
-                    font-weight: 500
-                    font-size: 20px
-                    font-style: italic
-                    margin: 0
-                .content_description
-                    width: 100%
-                    color: #7f7f7f
-                    font-size: 1.5vw
-                    line-height: 1.5em
-                    margin: 7px 0 23px
-                .content_list
-                    width: 100%
-                    display: flex
-                    font-size: 1.2vw
+            color: #7f7f7f
+            font-size: 1.5vw
+            line-height: 1.5em
+            margin: 7px 0 23px
+            .content_list
+                width: 100%
+                display: flex
+                font-size: 1.2vw
                     // flex-wrap: wrap
-                    justify-content: flex-start
-                    align-items: center
-                    .servise_list
-                        display: grid
-                        grid-template-columns: repeat(2,1fr)
-                        gap: 0.3rem
+                justify-content: flex-start
+                align-items: center
+                .servise_list
+                    display: grid
+                    grid-template-columns: repeat(2,1fr)
+                    gap: 0.3rem
+                    color: #4c4c4c
+                    list-style: none
+                    margin: 20px 0
+                    padding: 0
+                    li
+                        font-size: 16px
+                        padding: 2px 0
+                        font-weight: 300
+                        position: relative
                         color: #4c4c4c
-                        list-style: none
-                        margin: 20px 0
-                        padding: 0
-                        li
-                            font-size: 16px
-                            padding: 2px 0
-                            font-weight: 300
-                            position: relative
-                            color: #4c4c4c
-                            margin-right: 10px
+                        margin-right: 10px
                     .servise_list li:before
                         color: #c280bf
                         content: "\25CF"
@@ -91,6 +98,9 @@ body
     background: linear-gradient(to bottom, #4b8ba0, #ab709f)
     color: white
     text-align: center
+
+.darkTheme
+    color: #fff
 
 .card
     padding: 0 30px
@@ -120,7 +130,7 @@ body
     align-items: center
     justify-content: center
     background-color: #fff
-    border-radius: 50%  
+    border-radius: 50%
     border: 10px solid #a0a0a060
 
 .card .image img
@@ -130,25 +140,27 @@ body
 
 .imageBox
     position: relative
+    margin-block: -13px
 
 img
     width: 100%
 
 .name
     position: absolute
-    top : 35%
-    left : 10%
+    top: 35%
+    left: 10%
     font-size: 1.2rem
     text-transform: uppercase
 .name ul li
     cursor: pointer
-.header
-    color: #00000074
-    letter-spacing: 8px
-    opacity: 0.3
-    display: inline-block
-    &:hover
-        opacity: 1
+    h1
+        color: #00000074
+        letter-spacing: 8px
+        opacity: 0.3
+        display: inline-block
+        transition: 0.2s
+        &:hover
+            opacity: 1
 
 .role
     display: inline
@@ -160,7 +172,6 @@ img
         letter-spacing: 30px
         opacity: 0.4
 
-    
 @media screen and (max-width:1300px)
     .name
         margin-top: -350px

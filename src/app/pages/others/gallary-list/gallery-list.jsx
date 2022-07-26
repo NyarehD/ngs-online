@@ -1,4 +1,4 @@
-import react, { useState } from 'react'
+import react, {useContext, useState} from 'react'
 import IsoTopeGrid from 'react-isotope'
 import galleryListStyle from './gallery-list.module.sass'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -20,6 +20,7 @@ import image10 from '../../../../assets/gallery-list/10.jpg'
 import image11 from '../../../../assets/gallery-list/11.jpg'
 import image12 from '../../../../assets/gallery-list/12.jpg'
 import { Link } from 'react-router-dom'
+import {Context} from "../../../../App";
 const defaultFilters = [
     {"label":'ALL',"isChecked":true},
     {"label":'VOIP',"isChecked":false},
@@ -138,6 +139,7 @@ export default function GalleryList(galleryListContent){
     const [filters, updateFilters] = useState(defaultFilters)
     const [tag, setTag] = useState('ALL')
     const [[columns, unitWidth, unitHeight], setLayout] = useState(getLayouts(window.innerWidth))
+    const [darkMode, setDarkMode]=useContext(Context)
     const onFilter = event => {
         const {
           target: { value, checked }
@@ -159,7 +161,7 @@ export default function GalleryList(galleryListContent){
         );
       };
     return(
-        <div>
+        <div className={`${darkMode.mode!=='light'?galleryListStyle.darkMode:""}`}>
             <section className={HeaderStyle.box}>
                 <HeaderCarousel />
                 <div className={HeaderStyle.bannerContent}>
@@ -182,7 +184,7 @@ export default function GalleryList(galleryListContent){
                         <input className={galleryListStyle.tag} type='checkBox' id={filter.label} value={filter.label} onChange={onFilter} checked={filter.isChecked}/>
                         <label htmlFor={filter.label} className={tag === filter.label ?galleryListStyle.basicLinkColor:galleryListStyle.tagText}>{filter.label}</label>
                     </div>
-                    
+
                     ))}
                 </div>
                 <div style={{height:((unitHeight + 20) * Math.ceil(CardLayOut.length/columns)) +'px',marginLeft:'-8px'}}>
@@ -191,7 +193,7 @@ export default function GalleryList(galleryListContent){
                         {CardLayOut.map(card => (
                             <div key={card.id} className={galleryListStyle.card}>
                                 <div style={{position:'relative',width:'100%',height:unitHeight - 80 + 'px',zIndex:5}}>
-                                    <div className={galleryListStyle.imageContainerBg}> 
+                                    <div className={galleryListStyle.imageContainerBg}>
                                         <FontAwesomeIcon icon={faSearch} className={galleryListStyle.imageZoomInIcon}></FontAwesomeIcon>
                                     </div>
                                     <img  style={{width:'100%',height:unitHeight - 80 + 'px'}} className={galleryListStyle.img} src={card.image}/>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useState, createContext } from "react";
 import eventStyle from "./event.module.sass";
 import portf_1 from "../../../assets/event/01.jpg";
 import portf_2 from "../../../assets/event/02.jpg";
@@ -9,15 +9,22 @@ import portf_6 from "../../../assets/event/06.jpg";
 import portf_7 from "../../../assets/event/07.jpg";
 import portf_8 from "../../../assets/event/08.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCalendarDays, faClock, faSearch , faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCalendarDays,
+  faClock,
+  faSearch,
+  faAngleRight,
+} from "@fortawesome/free-solid-svg-icons";
 
 import HeaderCarousel from "../../../core/components/header-carousel/header-carousel";
-import HeaderStyle from '../../../core/components/header/header.module.sass'
+import HeaderStyle from "../../../core/components/header/header.module.sass";
 import { Link } from "react-router-dom";
-
+import { Context } from "../../../App";
 
 const Event = (eventContent) => {
-  const data = eventContent.eventContent
+  const [value, setValue] = useContext(Context);
+  const data = eventContent.eventContent;
+  const theme = value.mode === 'dark'? eventStyle.darkTheme : ''
   const portfolio = [
     {
       id: 1,
@@ -173,7 +180,13 @@ const Event = (eventContent) => {
         </div>
 
         <div className="">
-          <h4 className={eventStyle.datetime}>
+          <h4
+            className={
+              value.mode === "light"
+                ? eventStyle.datetime
+                : eventStyle.datetimeDark
+            }
+          >
             <span>
               <span className={eventStyle.icon}>
                 <FontAwesomeIcon icon={faCalendarDays} />
@@ -220,22 +233,53 @@ const Event = (eventContent) => {
   const EventCategories = categories.map((category) => (
     <ul>
       <li className={eventStyle.listCategory} key={category.index}>
-        <span className={eventStyle.listItem}>{category.name}</span>
-        <span className={eventStyle.listItem}>({category.amount})</span>
+        <span
+          className={
+            value.mode === "light"
+              ? eventStyle.listItem
+              : eventStyle.listItemDrak
+          }
+        >
+          {category.name}
+        </span>
+        <span
+          className={
+            value.mode === "light"
+              ? eventStyle.listItem
+              : eventStyle.listItemDark
+          }
+        >
+          ({category.amount})
+        </span>
       </li>
     </ul>
   ));
   return (
-    <div>
+    <div className={theme}>
       <section className={HeaderStyle.box}>
         <HeaderCarousel />
         <div className={HeaderStyle.bannerContent}>
           <h1 className={HeaderStyle.mainHeader}>{data.mainHeader}</h1>
           <div className={HeaderStyle.breakCrumb}>
             <ol className={HeaderStyle.breakCrumbLists}>
-              <li className={HeaderStyle.breakCrumbList}><Link type="button" to={"/event-list"} className={HeaderStyle.link}>{data.firstBreakCrumb}</Link></li>
-              <li className={HeaderStyle.breakCrumbList} ><FontAwesomeIcon className={HeaderStyle.icon} icon={faAngleRight} ></FontAwesomeIcon></li>
-              <li className={HeaderStyle.breakCrumbList} >{data.secondBreakCrumb}</li>
+              <li className={HeaderStyle.breakCrumbList}>
+                <Link
+                  type="button"
+                  to={"/event-list"}
+                  className={HeaderStyle.link}
+                >
+                  {data.firstBreakCrumb}
+                </Link>
+              </li>
+              <li className={HeaderStyle.breakCrumbList}>
+                <FontAwesomeIcon
+                  className={HeaderStyle.icon}
+                  icon={faAngleRight}
+                ></FontAwesomeIcon>
+              </li>
+              <li className={HeaderStyle.breakCrumbList}>
+                {data.secondBreakCrumb}
+              </li>
             </ol>
           </div>
         </div>
@@ -245,13 +289,13 @@ const Event = (eventContent) => {
         <div className={eventStyle.left}>
           <div className={eventStyle.items}> {EventItems} </div>
           <div className={eventStyle.btns}>
-            <button>
+            <button className={theme}>
               <span>&#60;</span>
             </button>
-            <button>1</button>
-            <button className={eventStyle.active}>2</button>
-            <button>3</button>
-            <button>
+            <button className={theme}>1</button>
+            <button className={`${eventStyle.active} ${theme}`}>2</button>
+            <button className={theme}>3</button>
+            <button className={theme}>
               <span>&#62;</span>
             </button>
           </div>
@@ -259,14 +303,25 @@ const Event = (eventContent) => {
         <div className={eventStyle.right}>
           <div className={eventStyle.search}>
             <h2 className={eventStyle.title}>Search</h2>
-            <form action="" className={eventStyle.form_event}>
-              <input type="search" placeholder="Search Keyword" />
+            <form action="" className={`${eventStyle.form_event} ${theme}`}>
+              <input className={`${eventStyle.placeholder} ${theme}`} type="search" placeholder="Search Keyword" />
               <button className={eventStyle.btnSearch}>
                 <FontAwesomeIcon icon={faSearch} />
               </button>
             </form>
           </div>
-          
+          <div className={eventStyle.about}>
+            <h2 className={eventStyle.title}>About</h2>
+            <p className={eventStyle.item_text}>
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, At
+              accusam aliquyam diam diam dolore dolores duo eirmos.
+            </p>
+          </div>
+          <div className={eventStyle.readDiv}>
+            <span type='button' className={eventStyle.readBtn}>
+              <span>Read More</span>
+            </span>
+          </div>
           <div className={eventStyle.categories}>
             <h2 className={eventStyle.title}>Categories</h2>
             {EventCategories}

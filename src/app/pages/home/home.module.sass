@@ -16,6 +16,9 @@
     line-height: 1.8rem
     color: #7f7f7f
 
+.darkTheme
+    color: #fff
+
 .aboutButton
     background-image: linear-gradient(to right, #5b83cd 0%, #c280bf 100%)
     border: none
@@ -36,11 +39,14 @@
         background-color: transparent
         color: #fff
 
+.darkButton
+    @extend .aboutLink
+    background-color: #4c4c4c
+    color: #fff
 
 .container
     margin: 8rem auto
     width: 70%
-
 
 .row
     display: flex
@@ -48,7 +54,8 @@
     flex-wrap: wrap
     justify-content: space-evenly
 
-.card 
+.card, .cardDark
+    background-color: #f7f6fb
     max-width: 370px
     max-height: 480px
     width: auto
@@ -60,6 +67,10 @@
         .imageBox
             .link
                 opacity: 0.4
+
+.cardDark
+    background-color: rgba(255, 255, 255, 0.05)
+    color: #fff
 
 .imageBox
     position: relative
@@ -78,31 +89,27 @@
         height: 100% - 2%
         opacity: 0
 
-
-
-
-
 .textBox
     padding: 2.5rem
     overflow: hidden
-    background-color: #f7f6fb
     margin-top: -10px
 
-    
     .title
         text-transform: uppercase
         text-align: center
         margin-bottom: 1rem
 
-    .description
+    .description, .descriptionDark
         color: #7f7f7f
         font-weight: 300
         text-align: center
         height: 100px
         margin: auto
 
+    .descriptionDark
+        color: #c1c1c1
 
-@media screen and (max-width : 1740px) 
+@media screen and (max-width : 1740px)
 
     .container
         width: 80%
@@ -112,7 +119,7 @@
     .container
         width: 90%
 
-@media screen and (max-width : 1400px) 
+@media screen and (max-width : 1400px)
 
     .container
         width: 95%
@@ -138,8 +145,6 @@
         max-width: 330px
         max-height: 460px
 
-    
-
 @media screen  and (max-width : 858px)
 
     .container
@@ -148,7 +153,6 @@
     .card
         max-width: 330px
         max-height: 430px
-
 
 @media screen  and (max-width : 735px)
 

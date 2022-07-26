@@ -3,6 +3,9 @@
   @media screen and (max-width: $width)
   @content
 
+.darkTheme
+  color: #fff !important
+
 .container
   display: flex
   justify-content: center
@@ -14,17 +17,6 @@
   font-size: 24px
   font-weight: 700
 
-.listCategory
-  margin: 15px auto
-  border-bottom: 1px solid #00000023
-  display: flex
-  justify-content: space-between
-  padding: 010px
-  align-items: center
-
-  .listItem
-    color: #00000080
-    margin-bottom: 5px
 
 .right
   width: 30%
@@ -53,62 +45,66 @@
       background: #fff
       color: black
 
-.article
-  background-color: #f7f6fb
+.articleTopImg
+  width: 100%
+  border-radius: 10px
 
-  .articleTopImg
-    width: 100%
-    border-radius: 10px
+.itemContent
+  padding: 60px
 
-  .itemContent
-    padding: 60px
+  .metaItems
+    text-align: center
+    margin-bottom: 20px
 
-    .metaItems
-      text-align: center
-      margin-bottom: 20px
+    .data
+      margin: 0 20px 0 10px
 
-      .data
-        margin: 0 20px 0 10px
+  hr
+    margin: 40px 0 32px
 
-    hr
-      margin: 40px 0 32px
-
-    .content
-      p
-        margin-bottom: 15px
-        font-weight: 300
-
-      &:not(.excerpt)
-        font-size: 16px
-        letter-spacing: 0.5px
-        line-height: 30px
-        color: #7f7f7f
-
-    .excerpt
-      font-size: 20px
+  .content
+    p
+      margin-bottom: 15px
       font-weight: 300
-      color: #000
 
-    .styledList
-      position: relative
-      list-style: none
-      margin: 0 0 10px
-      padding-left: 1.2em
+    &:not(.excerpt)
+      font-size: 16px
+      letter-spacing: 0.5px
+      line-height: 30px
+      color: #7f7f7f
+    
+  .content .darkTheme 
+    p
+      color: #fff 
 
-      li::before
-        font-family: FontAwesome, "poppins", sans-serif
-        content: "\f054"
-        position: absolute
-        left: 0
+  .excerpt
+    font-size: 20px
+    font-weight: 300
+    color: #000
+
+  .styledList
+    position: relative
+    list-style: none
+    margin: 0 0 10px
+    padding-left: 1.2em
+
+    li::before
+      font-family: FontAwesome, "poppins", sans-serif
+      content: "\f054"
+      position: absolute
+      left: 0
 
 .comments
   margin-top: 75px
   padding: 50px 60px
-  background-color: #f7f6fb
+  background-color: transparent!important
 
   .commentsTitle
-    color: #4c4c4c
+    color: #7f7f7f
     font-size: 30px
+  
+  .commentsTitle.darkTheme
+    color: #fff
 
   .commentList
     margin-top: 30px
@@ -138,6 +134,8 @@
           b
             .commentNameLink
               font-weight: 500
+            .commentNameLink .darkTheme
+              color: #fff
 
             .commentMetadata
               a::before
@@ -153,6 +151,9 @@
             color: #7f7f7f
             line-height: 30px
             font-weight: 300
+          
+          .commentText.darkTheme
+            color: #fff
 
         .replyIcon
           svg:hover
@@ -172,6 +173,8 @@
     color: #4c4c4c
     margin-top: 50px
     font-size: 30px
+  .commentReplyTitle.darkTheme
+    color: #fff
 
   .commentResponse
     .commentForm
@@ -196,7 +199,8 @@
         input
           width: 100%
           padding-left: 60px
-          color: black
+          color: #7f7f7f 
+          background: transparent
 
       .formTextArea
         position: relative
@@ -209,16 +213,18 @@
           color: #5b83cd
 
         textarea
-          color: black
+          color: #7f7f7f
           width: 100%
+          background: transparent
 
       .formSubmit
         @extend .fancyButton
-
+        border: none
+  
 
 .form_event
   display: flex
-  border: 1px solid #00000017
+  border: 1px solid #7f7f7f
   width: 100%
   margin: 20px 0
   border-radius: 5px
@@ -241,7 +247,6 @@
   width: 90%
   margin: 40px 0
 
-
   .itemText
     margin: 30px 0
     font-weight: 300
@@ -255,6 +260,7 @@
 
   .readBtn
     @extend .fancyButton
+    border: none
 
 .recentPortfolio
   width: 100%
@@ -339,21 +345,25 @@
   padding: 150px 0
 
 .title
-  color: #4c4c4c
+  color: #7f7f7f
   font-size: 24px
   font-weight: 700
 
+.title.darkTheme
+  color: #fff
+
 .listCategory
   margin: 15px auto
-  border-bottom: 1px solid #00000023
+  border-bottom: 1px solid #7f7f7f
   display: flex
   justify-content: space-between
   padding: 010px
   align-items: center
-
   .listItem
-    color: #00000080
+    color: #000
     margin-bottom: 5px
+  .listItem .darkTheme
+    color: #fff
 
 .right
   width: 30%
@@ -369,7 +379,6 @@
   padding: 18px 2px
   background: linear-gradient(to right, #5b83cd 0%, #c280bf 100%)
   color: #fff
-  border: 3px solid
   border-radius: 5px
 
   span
@@ -383,7 +392,7 @@
       color: black
 
 .article
-  background-color: #f7f6fb
+  background-color: transparent
   margin-bottom: 70px
   border-radius: 5px
 
@@ -417,8 +426,11 @@
 
     .excerpt
       font-size: 20px
-      font-weight: 300
-      color: #000
+      font-weight: 500!important
+      color: #7f7f7f
+
+    .excerpt.darkTheme
+      color: #fff
 
     .styledList
       position: relative
@@ -439,8 +451,11 @@
   border-radius: 5px
 
   .commentsTitle
-    color: #4c4c4c
+    color: #7f7f7f
     font-size: 30px
+
+  .commentsTitle.darkTheme
+    color: #fff
 
   .commentList
     margin-top: 30px
@@ -470,10 +485,12 @@
           b
             .commentNameLink
               font-weight: 500
+              color: #7f7f7f
+            .commentNameLink .darkTheme
+              color: #fff
 
             .commentMetadata
               a::before
-                color: #4c4c4c
                 content: "o"
                 margin: 0 10px
 
@@ -485,6 +502,9 @@
             color: #7f7f7f
             line-height: 30px
             font-weight: 300
+
+          .commentText.darkTheme
+            color: #fff
 
         .replyIcon
           svg:hover
@@ -504,6 +524,9 @@
     color: #4c4c4c
     margin-top: 50px
     font-size: 30px
+
+  .commentReplyTitle.darkTheme
+    color: #fff
 
   .commentResponse
     .commentForm
@@ -547,7 +570,6 @@
       .formSubmit
         @extend .fancyButton
 
-
 .form_event
   display: flex
   width: 100%
@@ -573,7 +595,6 @@
   width: 90%
   margin: 40px 0
 
-
   .itemText
     margin: 30px 0
     font-weight: 300
@@ -582,11 +603,13 @@
     &:hover
       opacity: 1
 
-.readDiv
-  margin-bottom: 50px
+.placeholder
+  color: #000
 
-  .readBtn
-    @extend .fancyButton
+.placeholder.darkTheme
+  color: #fff
+  &::placeholder
+    color: #ffffff80
 
 .recentPortfolio
   width: 100%
@@ -679,7 +702,7 @@
   .recentPortfolio
     .photo
       grid-template-columns: repeat(4, 1fr)
-    justify-content: center
+      justify-content: center
   .left
     width: 80%
     margin: auto

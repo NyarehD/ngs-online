@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebookF,
@@ -21,181 +21,182 @@ import img06 from "../../../assets/team-list/06.jpg";
 import img07 from "../../../assets/team-list/07.jpg";
 
 import teamListStyle from "./team-list.module.sass";
+import { Context } from "../../../App";
 
+const teams = [
+  {
+    id: 1,
+    name: "Design",
+    team: "design",
+  },
+  {
+    id: 2,
+    name: "Frontend",
+    team: "frontend",
+  },
+  {
+    id: 3,
+    name: "BackendDatabaseQc",
+    team: "backend",
+  },
+  {
+    id: 4,
+    name: "Mobile",
+    team: "mobile",
+  },
+  {
+    id: 5,
+    name: "Network",
+    team: "network",
+  },
+];
+const designTeam = [
+  {
+    id: 1,
+    name: "Deam Whales",
+    role: "Design Team Leader",
+    img: img02,
+    facebook: "facebook",
+    twitter: "twitter",
+    youtube: "youtube",
+    instagram: "instagram",
+    detail_link: "#",
+  },
+
+  {
+    id: 2,
+    name: "Jamie Brant",
+    role: "SENIOR DESIGNER",
+    img: img07,
+    facebook: "facebook",
+    twitter: "twitter",
+    youtube: "youtube",
+    instagram: "instagram",
+    detail_link: "#",
+  },
+  {
+    id: 3,
+    name: "Lesia Travis",
+    role: "SENIOR UI/UX DESIGNER",
+    img: img01,
+    facebook: "facebook",
+    twitter: "twitter",
+    youtube: "youtube",
+    instagram: "instagram",
+    detail_link: "#",
+  },
+];
+const frontendTeam = [
+  {
+    id: 1,
+    name: "Jamie Brant",
+    role: "Frontend Team Leader",
+    img: img03,
+    facebook: "facebook",
+    twitter: "twitter",
+    youtube: "youtube",
+    instagram: "instagram",
+    detail_link: "#",
+  },
+  {
+    id: 2,
+    name: "Dean Whales",
+    role: "Senior Developer",
+    img: img02,
+    facebook: "facebook",
+    twitter: "twitter",
+    youtube: "youtube",
+    instagram: "instagram",
+    detail_link: "#",
+  },
+  {
+    id: 3,
+    name: "Jamie Brant",
+    role: "MID SENIOR DEVELOPER",
+    img: img05,
+    facebook: "facebook",
+    twitter: "twitter",
+    youtube: "youtube",
+    instagram: "instagram",
+    detail_link: "#",
+  },
+];
+
+const backendTeam = [
+  {
+    id: 1,
+    name: "Amelia Brynne",
+    role: "BACKEND Team Leader",
+    img: img03,
+    facebook: "facebook",
+    twitter: "twitter",
+    youtube: "youtube",
+    instagram: "instagram",
+    detail_link: "#",
+  },
+  {
+    id: 2,
+    name: "Lark Laverne",
+    role: "DATABASE MANAGEMENT LEADER",
+    img: img04,
+    facebook: "facebook",
+    twitter: "twitter",
+    youtube: "youtube",
+    instagram: "instagram",
+    detail_link: "#",
+  },
+  {
+    id: 3,
+    name: "Jackson Janey",
+    role: "DATABASE MANAGEMENT LEADER",
+    img: img06,
+    facebook: "facebook",
+    twitter: "twitter",
+    youtube: "youtube",
+    instagram: "instagram",
+    detail_link: "#",
+  },
+  {
+    id: 4,
+    name: "Lark Laverne",
+    role: "DATABASE MANAGEMENT LEADER",
+    img: img01,
+    facebook: "facebook",
+    twitter: "twitter",
+    youtube: "youtube",
+    instagram: "instagram",
+    detail_link: "#",
+  },
+];
+const mobileTeam = [
+  {
+    id: 1,
+    name: "Lesia Travis",
+    role: "MOBILE Team Leader",
+    img: img04,
+    facebook: "facebook",
+    twitter: "twitter",
+    youtube: "youtube",
+    instagram: "instagram",
+    detail_link: "#",
+  },
+];
+const networtTeam = [
+  {
+    id: 1,
+    name: "Jackson Janey",
+    role: "SYSTEM NETWORK ENGINEER",
+    img: img05,
+    facebook: "facebook",
+    twitter: "twitter",
+    youtube: "youtube",
+    instagram: "instagram",
+    detail_link: "#",
+  },
+];
 export default function TeamList(teamListContent) {
   const data = teamListContent.teamListContent
-
-  const teams = [
-    {
-      id: 1,
-      name: "Design",
-      team: "design",
-    },
-    {
-      id: 2,
-      name: "Frontend",
-      team: "frontend",
-    },
-    {
-      id: 3,
-      name: "BackendDatabaseQc",
-      team: "backend",
-    },
-    {
-      id: 4,
-      name: "Mobile",
-      team: "mobile",
-    },
-    {
-      id: 5,
-      name: "Network",
-      team: "network",
-    },
-  ];
-  const designTeam = [
-    {
-      id: 1,
-      name: "Deam Whales",
-      role: "Design Team Leader",
-      img: img02,
-      facebook: "facebook",
-      twitter: "twitter",
-      youtube: "youtube",
-      instagram: "instagram",
-      detail_link: "#",
-    },
-
-    {
-      id: 2,
-      name: "Jamie Brant",
-      role: "SENIOR DESIGNER",
-      img: img07,
-      facebook: "facebook",
-      twitter: "twitter",
-      youtube: "youtube",
-      instagram: "instagram",
-      detail_link: "#",
-    },
-    {
-      id: 3,
-      name: "Lesia Travis",
-      role: "SENIOR UI/UX DESIGNER",
-      img: img01,
-      facebook: "facebook",
-      twitter: "twitter",
-      youtube: "youtube",
-      instagram: "instagram",
-      detail_link: "#",
-    },
-  ];
-  const frontendTeam = [
-    {
-      id: 1,
-      name: "Jamie Brant",
-      role: "Frontend Team Leader",
-      img: img03,
-      facebook: "facebook",
-      twitter: "twitter",
-      youtube: "youtube",
-      instagram: "instagram",
-      detail_link: "#",
-    },
-    {
-      id: 2,
-      name: "Dean Whales",
-      role: "Senior Developer",
-      img: img02,
-      facebook: "facebook",
-      twitter: "twitter",
-      youtube: "youtube",
-      instagram: "instagram",
-      detail_link: "#",
-    },
-    {
-      id: 3,
-      name: "Jamie Brant",
-      role: "MID SENIOR DEVELOPER",
-      img: img05,
-      facebook: "facebook",
-      twitter: "twitter",
-      youtube: "youtube",
-      instagram: "instagram",
-      detail_link: "#",
-    },
-  ];
-
-  const backendTeam = [
-    {
-      id: 1,
-      name: "Amelia Brynne",
-      role: "BACKEND Team Leader",
-      img: img03,
-      facebook: "facebook",
-      twitter: "twitter",
-      youtube: "youtube",
-      instagram: "instagram",
-      detail_link: "#",
-    },
-    {
-      id: 2,
-      name: "Lark Laverne",
-      role: "DATABASE MANAGEMENT LEADER",
-      img: img04,
-      facebook: "facebook",
-      twitter: "twitter",
-      youtube: "youtube",
-      instagram: "instagram",
-      detail_link: "#",
-    },
-    {
-      id: 3,
-      name: "Jackson Janey",
-      role: "DATABASE MANAGEMENT LEADER",
-      img: img06,
-      facebook: "facebook",
-      twitter: "twitter",
-      youtube: "youtube",
-      instagram: "instagram",
-      detail_link: "#",
-    },
-    {
-      id: 4,
-      name: "Lark Laverne",
-      role: "DATABASE MANAGEMENT LEADER",
-      img: img01,
-      facebook: "facebook",
-      twitter: "twitter",
-      youtube: "youtube",
-      instagram: "instagram",
-      detail_link: "#",
-    },
-  ];
-  const mobileTeam = [
-    {
-      id: 1,
-      name: "Lesia Travis",
-      role: "MOBILE Team Leader",
-      img: img04,
-      facebook: "facebook",
-      twitter: "twitter",
-      youtube: "youtube",
-      instagram: "instagram",
-      detail_link: "#",
-    },
-  ];
-  const networtTeam = [
-    {
-      id: 1,
-      name: "Jackson Janey",
-      role: "SYSTEM NETWORK ENGINEER",
-      img: img05,
-      facebook: "facebook",
-      twitter: "twitter",
-      youtube: "youtube",
-      instagram: "instagram",
-      detail_link: "#",
-    },
-  ];
+  const [value] = useContext(Context)
 
   const [teamSelect, setTeamSelect] = useState(designTeam);
   useEffect(() => {
@@ -218,7 +219,7 @@ export default function TeamList(teamListContent) {
     });
     return designTeam.map((dev) => {
       return (
-        <animated.div className={teamListStyle.developer} style={transition}>
+        <animated.div className={`${teamListStyle.developer} ${value.mode === 'light'?teamListStyle.light:teamListStyle.dark}`} style={transition}>
           <div className={teamListStyle.developer_media}>
             <a href={dev.detail_link}>
               <img src={dev.img} alt="" className={teamListStyle.dev_img} />
@@ -260,7 +261,7 @@ export default function TeamList(teamListContent) {
             </a>
           </div>
           <div className={teamListStyle.developer_content}>
-            <a href="#" className={teamListStyle.dev_name}>
+            <a href="#" className={`${teamListStyle.dev_name} ${value.mode === 'light'?teamListStyle.lightName:teamListStyle.darkName}`}>
               <h5>{dev.name}</h5>
             </a>
             <p className={teamListStyle.dev_role}>{dev.role}</p>
@@ -279,7 +280,7 @@ export default function TeamList(teamListContent) {
     });
     return frontendTeam.map((dev) => {
       return (
-        <animated.div className={teamListStyle.developer} style={transition}>
+        <animated.div className={`${teamListStyle.developer} ${value.mode === 'light'?teamListStyle.light:teamListStyle.dark}`} style={transition}>
           <div className={teamListStyle.developer_media}>
             <a href={dev.detail_link}>
               <img src={dev.img} alt="" className={teamListStyle.dev_img} />
@@ -321,7 +322,7 @@ export default function TeamList(teamListContent) {
             </a>
           </div>
           <div className={teamListStyle.developer_content}>
-            <a href="#" className={teamListStyle.dev_name}>
+            <a href="#" className={`${teamListStyle.dev_name} ${value.mode === 'light'?teamListStyle.lightName:teamListStyle.darkName}`}>
               <h5>{dev.name}</h5>
             </a>
             <p className={teamListStyle.dev_role}>{dev.role}</p>
@@ -340,7 +341,7 @@ export default function TeamList(teamListContent) {
     });
     return backendTeam.map((dev) => {
       return (
-        <animated.div className={teamListStyle.developer} style={transition}>
+        <animated.div className={`${teamListStyle.developer} ${value.mode === 'light'?teamListStyle.light:teamListStyle.dark}`} style={transition}>
           <div className={teamListStyle.developer_media}>
             <a href={dev.detail_link}>
               <img src={dev.img} alt="" className={teamListStyle.dev_img} />
@@ -382,7 +383,7 @@ export default function TeamList(teamListContent) {
             </a>
           </div>
           <div className={teamListStyle.developer_content}>
-            <a href="#" className={teamListStyle.dev_name}>
+            <a href="#" className={`${teamListStyle.dev_name} ${value.mode === 'light'?teamListStyle.lightName:teamListStyle.darkName}`}>
               <h5>{dev.name}</h5>
             </a>
             <p className={teamListStyle.dev_role}>{dev.role}</p>
@@ -402,7 +403,7 @@ export default function TeamList(teamListContent) {
     });
     return mobileTeam.map((dev) => {
       return (
-        <animated.div className={teamListStyle.developer} style={transition}>
+        <animated.div className={`${teamListStyle.developer} ${value.mode === 'light'?teamListStyle.light:teamListStyle.dark}`} style={transition}>
           <div className={teamListStyle.developer_media}>
             <a href={dev.detail_link}>
               <img src={dev.img} alt="" className={teamListStyle.dev_img} />
@@ -444,7 +445,7 @@ export default function TeamList(teamListContent) {
             </a>
           </div>
           <div className={teamListStyle.developer_content}>
-            <a href="#" className={teamListStyle.dev_name}>
+            <a href="#" className={`${teamListStyle.dev_name} ${value.mode === 'light'?teamListStyle.lightName:teamListStyle.darkName}`}>
               <h5>{dev.name}</h5>
             </a>
             <p className={teamListStyle.dev_role}>{dev.role}</p>
@@ -464,7 +465,7 @@ export default function TeamList(teamListContent) {
     });
     return networtTeam.map((dev) => {
       return (
-        <animated.div className={teamListStyle.developer} style={transition}>
+        <animated.div className={`${teamListStyle.developer} ${value.mode === 'light'?teamListStyle.light:teamListStyle.dark}`} style={transition}>
           <div className={teamListStyle.developer_media}>
             <a href={dev.detail_link}>
               <img src={dev.img} alt="" className={teamListStyle.dev_img} />
@@ -506,7 +507,7 @@ export default function TeamList(teamListContent) {
             </a>
           </div>
           <div className={teamListStyle.developer_content}>
-            <a href="#" className={teamListStyle.dev_name}>
+            <a href="#" className={`${teamListStyle.dev_name} ${value.mode === 'light'?teamListStyle.lightName:teamListStyle.darkName}`}>
               <h5>{dev.name}</h5>
             </a>
             <p className={teamListStyle.dev_role}>{dev.role}</p>
@@ -538,13 +539,13 @@ export default function TeamList(teamListContent) {
       <NavLink
         style={({ isActive }) => {
           return {
-            color: isActive ? "#0056b3" : "",
+            color: isActive ? "#0056b3" : value.mode === 'light'? '#000000':'#fff',
             textDecoration: "none",
           };
         }}
         to={`/${team.team}`}
         key={team.id}
-        className={teamListStyle.links}
+        className={`${teamListStyle.links} ${value.mode === 'light'?teamListStyle.lightLink:teamListStyle.darkLink}`}
       >
         {team.name}
       </NavLink>
@@ -562,7 +563,7 @@ export default function TeamList(teamListContent) {
     });
     return teamSelect.map((dev) => {
       return (
-        <animated.div className={teamListStyle.developer} style={transition}>
+        <animated.div className={`${teamListStyle.developer} ${value.mode === 'light'?teamListStyle.light:teamListStyle.dark}`} style={transition}>
           <div className={teamListStyle.developer_media}>
             <a href={dev.detail_link}>
               <img src={dev.img} alt="" className={teamListStyle.dev_img} />
@@ -604,7 +605,7 @@ export default function TeamList(teamListContent) {
             </a>
           </div>
           <div className={teamListStyle.developer_content}>
-            <a href="#" className={teamListStyle.dev_name}>
+            <a href="#" className={`${teamListStyle.dev_name} ${value.mode === 'light'?teamListStyle.lightName:teamListStyle.darkName}`}>
               <h5>{dev.name}</h5>
             </a>
             <p className={teamListStyle.dev_role}>{dev.role}</p>
@@ -629,7 +630,7 @@ export default function TeamList(teamListContent) {
           </div>
         </div>
       </section>
-      <section>
+      <section className={value.mode === 'light'?teamListStyle.light:teamListStyle.dark}>
         <div className={teamListStyle.container}>
           <div className={teamListStyle.menuList}>
             <div className={teamListStyle.lists}>
@@ -637,12 +638,12 @@ export default function TeamList(teamListContent) {
                 <NavLink
                   style={({ isActive }) => {
                     return {
-                      color: isActive ? "#0056b3" : "",
+                      color: true ? "#0056b3" : value.mode === 'light'? '#000000':'#fff',
                       textDecoration: "none",
                     };
                   }}
                   to={`/all`}
-                  className={teamListStyle.links}
+                  className={`${teamListStyle.links} ${value.mode === 'light'?teamListStyle.lightLink:teamListStyle.darkLink}`}
                 >
                   All
                 </NavLink>
@@ -662,7 +663,7 @@ export default function TeamList(teamListContent) {
 
           </div>
           <div className={teamListStyle.parent_container}>
-              <div className={teamListStyle.child_container}>
+              <div className={`${teamListStyle.child_container} ${value.mode === 'dark'?teamListStyle.darkThemeText:''}`}>
                   <p className={teamListStyle.children_p}>
                   We see ourselves as much more than just a studio, but as a
                   family of like-minded, kind and talented people who love to

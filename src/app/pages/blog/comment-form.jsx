@@ -6,7 +6,8 @@ const CommentForm=({
     handleSubmit,
     hasCancelBtn=false,
     initialText= "",
-    handleCancel
+    handleCancel,
+    themeStyle
 })=>{
 
     const [text, setText]=useState(initialText)
@@ -19,7 +20,8 @@ const CommentForm=({
     return(
         <form onSubmit={onSubmit}>
             <textarea 
-                className={CommentStyle.commentFormTextarea}
+                placeholder="Leave Your Comment"
+                className={`${CommentStyle.commentFormTextarea} ${themeStyle?.InputBox}`}
                 value={text}
                 onChange={(e)=>setText(e.target.value)}
             />

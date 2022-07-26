@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from "react";
 import TeamSingleStyle from './team-single.module.sass'
 import TeamSinglePhoto from '../../../assets/team-single-photo.jpg';
 import { FontAwesomeIcon } from"@fortawesome/react-fontawesome";
@@ -6,11 +6,14 @@ import { faUser, faEnvelope, faPhone, faLink, faPenToSquare , faAngleRight } fro
 import HeaderCarousel from "../../../core/components/header-carousel/header-carousel";
 import HeaderStyle from '../../../core/components/header/header.module.sass'
 import { Link } from 'react-router-dom';
+import { Context } from '../../../App';
 
-function teamSingle(teamSingleContent) {
+export default function TeamSingle(teamSingleContent) {
+    const [value, setValue] = useContext(Context)
     const data = teamSingleContent.teamSingleContent
+    const themeClass = value.mode === 'light'?TeamSingleStyle.light:TeamSingleStyle.dark
   return (
-    <div className="">
+    <div className={themeClass}>
         <section className={HeaderStyle.box}>
                 <HeaderCarousel />
                 <div className={HeaderStyle.bannerContent}>
@@ -27,9 +30,8 @@ function teamSingle(teamSingleContent) {
                 </div>
             </section>
 
-        <div className={TeamSingleStyle.container}>
+        <div className={`${TeamSingleStyle.container} ${themeClass}`}>
         <div className={TeamSingleStyle.row}>
-            
             <div className={`${TeamSingleStyle.col_xs_12} ${TeamSingleStyle.col_md_6} ${TeamSingleStyle.col_lg_6}`}>          
             <img src={TeamSinglePhoto} className={TeamSingleStyle.teamSingleMemberPhoto} alt="" />
             </div>
@@ -68,84 +70,99 @@ function teamSingle(teamSingleContent) {
                 <table className={`${TeamSingleStyle.table} ${TeamSingleStyle.teamTable}`}>
                             <tbody>
                                 <tr>
-                                    <th scope="row">Occupation:</th>
-                                    <td>Senior Executive</td>
+                                    <th scope="row" className={`${TeamSingleStyle.info} ${themeClass}`}>Occupation:</th>
+                                    <td class={`${TeamSingleStyle.info} ${themeClass}`}>Senior Executive</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">Experience:</th>
-                                    <td>9 Years</td>
+                                    <th scope="row" className={`${TeamSingleStyle.info} ${themeClass}`}>Experience:</th>
+                                    <td class={`${TeamSingleStyle.info} ${themeClass}`}>9 Years</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">Email:</th>
-                                    <td class="link-a">
-                                        <a href="#">deanwhales@MaxiCom.com</a>
+                                    <th scope="row" className={`${TeamSingleStyle.info} ${themeClass}`}>Email:</th>
+                                    <td>
+                                        <a href="#" class={`${TeamSingleStyle.linkEmail} ${themeClass}`}>deanwhales@MaxiCom.com</a>
                                     </td>
                                 </tr>
-                                <tr class="border-bottom">
-                                    <th scope="row">Location:</th>
-                                    <td>Westmond, MA</td>
+                                <tr class="border-bottom" className={`${TeamSingleStyle.info} ${themeClass}`}>
+                                    <th scope="row" className={`${TeamSingleStyle.info} ${themeClass}`}>Location:</th>
+                                    <td class={`${TeamSingleStyle.info} ${themeClass}`}>Westmond, MA</td>
                                 </tr>
                                 <tr>
-                                    <th>Phone:</th>
-                                    <td>012-985-624</td>
+                                    <th className={`${TeamSingleStyle.info} ${themeClass}`}>Phone:</th>
+                                    <td class={`${TeamSingleStyle.info} ${themeClass}`}>012-985-624</td>
                                 </tr>
                             </tbody>
                     </table>
             </div>
         </div>
-        <div className={TeamSingleStyle.PersonalExperience}>
-        <div className={TeamSingleStyle.personalExperienceContainer}>
+        <h1 className={`${TeamSingleStyle.personalExperinceHeader} ${TeamSingleStyle.personalExperince} ${themeClass}`}>Personal Experience</h1>
+        <div className={`${TeamSingleStyle.personalExperince} ${themeClass} ${TeamSingleStyle.personalExperinceParagraph}`}>
+         Doloremque quam. Exercitation totam or cupidatat culpa but autem.
+         In labore so nostrud asper natur officia magna, so quasi. 
+         Sit nequeporro dolor Iure. Pellentesque lorem mauris, 
+         vehicula vel nulla nec. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+         Tenetur ab ad dolor repudiandae consequatur voluptates neque, 
+         soluta atque sit sapiente dolores numquam, quos corrupti illum facilis tempora ducimus ratione nostrum! 
+         Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+         Porro maxime atque reprehenderit provident velit non voluptatem eum delectus, 
+         minus eos voluptas quia? Iste sit accusantium similique quos, omnis harum nulla! 
+         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae quas vel, dolores animi, 
+         asperiores fugiat quis ipsa sequi quos, 
+         obcaecati optio similique temporibus modi labore. Eaque illum nisi modi consequatur!
+        </div>
+        {/* <div className={TeamSingleStyle.PersonalExperience}>
+            <div className={TeamSingleStyle.personalExperienceContainer}>
 
-            <div className={TeamSingleStyle.content}>
-                <h5>Personal Experience</h5>
-                <p>Doloremque quam. Exercitation totam or cupidatat culpa but autem. In labore so nostrud asper natur officia magna, so quasi. Sit nequeporro dolor Iure. Pellentesque lorem mauris, vehicula vel nulla nec.</p>
-            </div>
-            
-            <div className={TeamSingleStyle.contentpart2}>
-                <div className={TeamSingleStyle.left}>
-                    <p> INTERNET CONNECTION<span>93%</span></p>
-                    <div  className={`${TeamSingleStyle.progress} ${TeamSingleStyle.pg1}`}></div>
-
-                    <p> IPTV INSTALLATION<span>90%</span></p>
-                    <div className={`${TeamSingleStyle.progress} ${TeamSingleStyle.pg2}`}></div>
-
-                    <p> VOIP SETUP<span>98%</span></p>
-                    <div  className={`${TeamSingleStyle.progress} ${TeamSingleStyle.pg3}`}></div>
-
-                    <p> SALES MANAGING<span>93%</span></p>
-                    <div className={`${TeamSingleStyle.progress} ${TeamSingleStyle.pg4}`}></div>
+                <div className={TeamSingleStyle.content}>
+                    <h5>Personal Experience</h5>
+                    <p>Doloremque quam. Exercitation totam or cupidatat culpa but autem. In labore so nostrud asper natur officia magna, so quasi. Sit nequeporro dolor Iure. Pellentesque lorem mauris, vehicula vel nulla nec.</p>
                 </div>
+                
+                <div className={TeamSingleStyle.contentpart2}>
+                    <div className={TeamSingleStyle.left}>
+                        <p> INTERNET CONNECTION<span>93%</span></p>
+                        <div  className={`${TeamSingleStyle.progress} ${TeamSingleStyle.pg1}`}></div>
 
-                <div className={TeamSingleStyle.right}>
-                    <p>Rem explicabo proident, and culpa and proident for iste and modi. Tot am aliqua but exercitation. Tiam ut bibendum leo.</p>
-                    <p>Lorem and ex, and incidunt. Ad cons equuntur. Laboriosam conse quatur ad. Ipsa perspiciatis, but laboris and omnis. Excepteur quia totam or cupidatat.</p>
+                        <p> IPTV INSTALLATION<span>90%</span></p>
+                        <div className={`${TeamSingleStyle.progress} ${TeamSingleStyle.pg2}`}></div>
+
+                        <p> VOIP SETUP<span>98%</span></p>
+                        <div  className={`${TeamSingleStyle.progress} ${TeamSingleStyle.pg3}`}></div>
+
+                        <p> SALES MANAGING<span>93%</span></p>
+                        <div className={`${TeamSingleStyle.progress} ${TeamSingleStyle.pg4}`}></div>
+                    </div>
+
+                    <div className={TeamSingleStyle.right}>
+                        <p>Rem explicabo proident, and culpa and proident for iste and modi. Tot am aliqua but exercitation. Tiam ut bibendum leo.</p>
+                        <p>Lorem and ex, and incidunt. Ad cons equuntur. Laboriosam conse quatur ad. Ipsa perspiciatis, but laboris and omnis. Excepteur quia totam or cupidatat.</p>
+                    </div>
+                    
                 </div>
                 
             </div>
-            
-        </div>
-        </div>
+        </div> 
 
-                <h5 className={TeamSingleStyle.contactTitle}>Contact Me</h5>
+                 <h5 className={TeamSingleStyle.contactTitle}>Contact Me</h5>
                 <form  className={TeamSingleStyle.row}>
 
                     <div className={`${TeamSingleStyle.col_xs_12} ${TeamSingleStyle.col_md_6} ${TeamSingleStyle.col_lg_6} ${TeamSingleStyle.group}`}>      
-                        <input className={TeamSingleStyle.input} type="text" name="fullname"  id="name" placeholder='FULL NAME' ></input>
+                        <input type="text" name="fullname"  id="name" placeholder='FULL NAME' ></input>
                         <label for="name" className={TeamSingleStyle.label}><FontAwesomeIcon icon={faUser} className={TeamSingleStyle.icon}></FontAwesomeIcon></label>    
                     </div>
                     <div className={`${TeamSingleStyle.col_xs_12} ${TeamSingleStyle.col_md_6} ${TeamSingleStyle.col_lg_6} ${TeamSingleStyle.group}`} >      
-                        <input className={TeamSingleStyle.input} type="text" name="email"id="name" placeholder='EMAIL ADDRESS' required="email"></input>
+                        <input type="text" name="email"id="name" placeholder='EMAIL ADDRESS' required="email"></input>
                         <label for="name" className={TeamSingleStyle.label}><FontAwesomeIcon icon={faEnvelope} className={TeamSingleStyle.icon}></FontAwesomeIcon></label>
                     </div>      
                     
 
                     <div className={`${TeamSingleStyle.col_xs_12} ${TeamSingleStyle.col_md_6} ${TeamSingleStyle.col_lg_6} ${TeamSingleStyle.group}`}>      
-                        <input className={TeamSingleStyle.input} type="tel"  name="phone" id="number" placeholder='YOUR PHONE' required="phone"></input>
+                        <input type="tel"  name="phone" id="number" placeholder='YOUR PHONE' required="phone"></input>
                         <label for="name" className={TeamSingleStyle.label}><FontAwesomeIcon icon={faPhone} className={TeamSingleStyle.icon}></FontAwesomeIcon></label>
                     </div>
 
                     <div className={`${TeamSingleStyle.col_xs_12} ${TeamSingleStyle.col_md_6} ${TeamSingleStyle.col_lg_6} ${TeamSingleStyle.group}`}>      
-                        <input className={TeamSingleStyle.input} type="text" name="topic" id="name" placeholder='YOUR TOPIC'></input>
+                        <input type="text" name="topic" id="name" placeholder='YOUR TOPIC'></input>
                         <label for="name" className={TeamSingleStyle.label}><FontAwesomeIcon icon={faLink} className={TeamSingleStyle.icon}></FontAwesomeIcon></label>
                     </div>
 
@@ -162,10 +179,8 @@ function teamSingle(teamSingleContent) {
                     </div>
 
                     
-                </form>
+                </form> */}
         </div>
     </div>
   )
 }
-
-export default teamSingle

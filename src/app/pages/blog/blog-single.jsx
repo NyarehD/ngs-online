@@ -1,4 +1,4 @@
-import React,{useState, useEffect} from "react";
+import React,{useState, useEffect, useContext} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import Comments from "./comments";
 
@@ -9,15 +9,19 @@ import BlogStyle from "./blog-single.module.sass"
 import quote from "../../../assets/blog/quote-icon.png"
 import relateImg01 from "../../../assets/blog/related-post01.jpg"
 import relateImg02 from "../../../assets/blog/related-post02.jpg"
+import { Context } from "../../../App";
 
 export default function Blog(){
-
+    const [{mode}] = useContext(Context)
     const [blog, setBlog]=useState()
     const [like, setLike]=useState(false)
     const [likeCount, setLikeCount]=useState(0)
     const [viewCount, setViewCount]=useState(0)
     const [nOComment, setNOComment]=useState(0)
-
+    const themeStyle = mode === 'dark'?{'background':BlogStyle.darkBackground,'color':BlogStyle.darkTextColor,'InputBox':BlogStyle.darkInputBox}:{}
+    console.log(themeStyle)
+    console.log(mode)
+    console.log(themeStyle?.color)
 
     //Retrieve data from api
     useEffect(()=>{
@@ -51,7 +55,7 @@ export default function Blog(){
             <section>
             
                 <div className={BlogStyle.container}>
-                    <div className={BlogStyle.content}>
+                    <div className={`${BlogStyle.content}  ${themeStyle?.background}`}>
                         <div className={BlogStyle.main_photo}>
                             <img 
                                 src={blog.mainImage} 
@@ -69,7 +73,7 @@ export default function Blog(){
                                             >
 
                                         </FontAwesomeIcon>
-                                        <span className={BlogStyle.react_title}>{blog.date}, {blog.month}, {blog.year}</span>
+                                        <span className={`${BlogStyle.react_title} ${themeStyle?.color}`}>{blog.date}, {blog.month}, {blog.year}</span>
                                     </a>
                                 </div>
                                 <div className={BlogStyle.author}>
@@ -80,7 +84,7 @@ export default function Blog(){
                                             >
 
                                         </FontAwesomeIcon>
-                                        <span className={BlogStyle.react_title}>{blog.authorRole}</span>
+                                        <span className={`${BlogStyle.react_title} ${themeStyle?.color}`}>{blog.authorRole}</span>
                                     </a>
                                 </div>
                                 <div className={BlogStyle.view_count}>
@@ -91,7 +95,7 @@ export default function Blog(){
                                             >
 
                                         </FontAwesomeIcon>
-                                        <span className={BlogStyle.react_title}>{viewCount} views</span>
+                                        <span className={`${BlogStyle.react_title} ${themeStyle?.color}`}>{viewCount} views</span>
                                     </a>
                                 </div>
                                 <div className={BlogStyle.comment_counts}>
@@ -102,7 +106,7 @@ export default function Blog(){
                                             >
 
                                         </FontAwesomeIcon>
-                                        <span className={BlogStyle.react_title}>{nOComment} comments</span>
+                                        <span className={`${BlogStyle.react_title} ${themeStyle?.color}`}>{nOComment} comments</span>
                                     </a>
                                 </div>
                                 <div className={BlogStyle.like_counts}>
@@ -113,26 +117,26 @@ export default function Blog(){
                                             >
 
                                         </FontAwesomeIcon>
-                                        <span className={BlogStyle.react_title}>
+                                        <span className={`${BlogStyle.react_title} ${themeStyle?.color}`}>
                                         {likeCount} likes</span>
                                     </a>
                                 </div>
                             </div>
                             <hr/>
                             <div className={BlogStyle.main_blog}>
-                                <h2 className={BlogStyle.blog_title}>
+                                <h2 className={`${BlogStyle.blog_title} ${themeStyle?.color}`}>
                                     {blog.title}
                                 </h2>
-                                <p className={BlogStyle.blog_body_text}>
+                                <p className={`${BlogStyle.blog_body_text} ${themeStyle?.color}`}>
                                     {blog.para01}
                                 </p>
-                                <p className={BlogStyle.blog_body_text}>
+                                <p className={`${BlogStyle.blog_body_text} ${themeStyle?.color}`}>
                                     {blog.para02}
                                 </p>
                                 <ul className={BlogStyle.blog_list}>
                                     {
                                         blog.lists.map(list=>{
-                                            return <li key={list.id} className={BlogStyle.blog_list_items}>{list.content}</li>
+                                            return <li key={list.id} className={`${BlogStyle.blog_list_items} ${themeStyle?.color}`}>{list.content}</li>
                                         })
                                     }
                                 </ul>
@@ -150,7 +154,7 @@ export default function Blog(){
                                         })
                                     }
                                 </div>
-                                <p className={BlogStyle.blog_body_text}>
+                                <p className={`${BlogStyle.blog_body_text} ${themeStyle?.color}`}>
                                     {blog.para03}
                                 </p>
                                 <blockquote className={BlogStyle.block_quote}>
@@ -162,25 +166,25 @@ export default function Blog(){
                                         </div>
                                         <div className={BlogStyle.media_body}>
                                             <p className={BlogStyle.quote_title}>{blog.quoteTitle}</p>
-                                            <h6 className={BlogStyle.quote_text}>
+                                            <h6 className={`${BlogStyle.quote_text} ${themeStyle?.color}`}>
                                                {blog.quote}
                                             </h6>
                                         </div>
                                     </div>
                                 </blockquote>
-                                <p className={BlogStyle.blog_body_text}>
+                                <p className={`${BlogStyle.blog_body_text} ${themeStyle?.color}`}>
                                     {blog.para04}
                                 </p>
-                                <p className={BlogStyle.blog_body_text}>
+                                <p className={`${BlogStyle.blog_body_text} ${themeStyle?.color}`}>
                                     {blog.para05}
                                 </p>
                                 <div className={BlogStyle.blog_reaction}>
                                     <div className={BlogStyle.blog_tags}>
-                                        <span className={BlogStyle.tags_span}>Tags:</span>
+                                        <span className={`${BlogStyle.tags_span} ${themeStyle?.color}`}>Tags:</span>
                                         <div className={BlogStyle.tag_items}>
                                             {
                                                 blog.tag.map(tag=>{
-                                                    return <a key={tag.id} className={BlogStyle.tags_item} href="#">{tag.tagIext}</a>
+                                                    return <a key={tag.id} className={`${BlogStyle.tags_item} ${themeStyle?.color}`} href="#">{tag.tagIext}</a>
                                                     
                                                 })
                                             }
@@ -202,7 +206,7 @@ export default function Blog(){
                                                     >
         
                                                     </FontAwesomeIcon>
-                                                    <span className={BlogStyle.blog_react_text}>unlike this post</span>
+                                                    <span className={`${BlogStyle.blog_react_text} ${themeStyle?.color}`}>unlike this post</span>
                                                 </span>
                                                 :
                                                 <span 
@@ -217,7 +221,7 @@ export default function Blog(){
                                                     >
     
                                                     </FontAwesomeIcon>
-                                                    <span className={BlogStyle.blog_react_text}>like this post</span>
+                                                    <span className={`${BlogStyle.blog_react_text} ${themeStyle?.color}`}>like this post</span>
                                             </span>
                                             }
                                     </div>
@@ -282,8 +286,8 @@ export default function Blog(){
                             </div>
                             <div className={BlogStyle.author_content}>
                                     <h3 className={BlogStyle.author_role}>Admin</h3>
-                                    <a href="#" className={BlogStyle.author_name}>Johan Browning</a>
-                                    <p className={BlogStyle.author_bio_text}>
+                                    <a href="#" className={`${BlogStyle.author_name} ${themeStyle?.color}`}>Johan Browning</a>
+                                    <p className={`${BlogStyle.author_bio_text} ${themeStyle?.color}`}>
                                         Consetetur sadipscing elitr sed diam nonumy eirmod tempor 
                                         invidunt ut labore dolore magna aliquyam erat sed diam voluptua.
                                     </p>
@@ -318,7 +322,7 @@ export default function Blog(){
                         </div>
                     </div>
                     <div className={BlogStyle.related_posts}>
-                        <h2 className={BlogStyle.title}>Related Posts</h2>
+                        <h2 className={`${BlogStyle.title} ${themeStyle?.color}`}>Related Posts</h2>
                         <div className={BlogStyle.relatedPost}>
                             <article className={BlogStyle.relatedPost_item}>
                                 <a href="#" className={BlogStyle.relatedPost_link}>
@@ -326,7 +330,7 @@ export default function Blog(){
                                         src={relateImg01} alt="" 
                                         className={BlogStyle.relatedPost_image}
                                     />
-                                    <p className={BlogStyle.relatedPost_description}>
+                                    <p className={`${BlogStyle.relatedPost_description} ${themeStyle?.color}`}>
                                         Lorem Ipsum Dolor Sit Amet Consectetur Adi Piscing Elitures Popinus
                                     </p>
                                     <span className={BlogStyle.relatedPost_postedOn}>March 11, 2022</span>
@@ -338,7 +342,7 @@ export default function Blog(){
                                         src={relateImg02} alt="" 
                                         className={BlogStyle.relatedPost_image}
                                     />
-                                    <p className={BlogStyle.relatedPost_description}>
+                                    <p className={`${BlogStyle.relatedPost_description} ${themeStyle?.color}`}>
                                         Integer Facilisis Accumsan Ullamcorper Inte Germanius Novus At
                                     </p>
                                     <span className={BlogStyle.relatedPost_postedOn}>March 15, 2022</span>
@@ -346,11 +350,11 @@ export default function Blog(){
                             </article>
                         </div>
                     </div>
-                    <div className={BlogStyle.comment_section}>
+                    <div className={`${BlogStyle.comment_section} ${themeStyle?.background}`}>
                         <div className={BlogStyle.comment_area}>
-                                <h2 className={BlogStyle.comment_title}>Comments</h2>
+                                <h2 className={`${BlogStyle.comment_title} ${themeStyle?.color}`}>Comments</h2>
 
-                                <Comments currentUserId="1" setNOComment={setNOComment}/>
+                                <Comments currentUserId="1" setNOComment={setNOComment} themeStyle={themeStyle}/>
 
                                 {/* 
                                 <h2 className={BlogStyle.comment_title}>Leave Your Comment</h2>

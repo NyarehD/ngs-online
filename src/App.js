@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, createContext } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import Nav from "./core/components/nav/nav";
 import Header from "./core/components/header/header";
@@ -10,8 +10,14 @@ import View from "./setup/routes-manager/view";
 import api from "./api/mockApi";
 import Preload from "./core/components/preload/preload";
 
+const config = {
+  mode:'light'
+}
+export const Context = createContext(config)
+
 function App() {
   const [loading, setLoading] = useState(false);
+  const [state, setState] = useState(Context._currentValue)
 
   useEffect(() => {
     setLoading(true);
@@ -37,18 +43,19 @@ function App() {
         <Preload /> 
 
         : 
-        
-        <div>
-          <Nav />
-          <Router>
-            <Header />
-            <View></View>
-          </Router>
-          <FooterCarousel />
-          <PageFooter />
-          <Copyright />
-          <ScrollButton />
-        </div>
+        <Context.Provider value={[state, setState]}>
+          <div className={state.mode === 'dark'?'dark':''}>
+            <Nav />
+            <Router>
+              <Header />
+              <View></View>
+            </Router>
+            <FooterCarousel />
+            <PageFooter />
+            <Copyright />
+            <ScrollButton />
+          </div>
+        </Context.Provider>
       }
     </div>
   );
