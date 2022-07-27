@@ -6,7 +6,7 @@ import CommentStyle from "./comment.module.sass"
 
 import comment03 from "../../../assets/blog/comment-03.jpg"
 
-const Comments=({currentUserId,setNOComment})=>{
+const Comments=({currentUserId,setNOComment,themeStyle})=>{
     const [backendComments, setBackendComments]= useState([])
     const [activeComment, setActiveComment] = useState(null)
     const [nOComment, setnOComment]=useState(0)
@@ -95,8 +95,8 @@ const Comments=({currentUserId,setNOComment})=>{
         },[])
     return(
         <div className={CommentStyle.comments}>
-            <div className={CommentStyle.commentsTitle}>Leave Your Comment</div>
-            <CommentForm submitLabel="Write" handleSubmit={addComment}/>
+            <div className={`${CommentStyle.commentsTitle} ${themeStyle?.color}`}>Leave Your Comment</div>
+            <CommentForm submitLabel="Write" handleSubmit={addComment} themeStyle={themeStyle}/>
             <div className={CommentStyle.commentContainer}>
                 {
                     rootComments.map(rootComment=>(
@@ -110,6 +110,7 @@ const Comments=({currentUserId,setNOComment})=>{
                             activeComment={activeComment}
                             setActiveComment={setActiveComment}
                             addComment={addComment}
+                            themeStyle={themeStyle}
                         />
                     ))
                 }

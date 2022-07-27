@@ -1,4 +1,4 @@
-import React, { useState , useEffect } from "react";
+import React, { useState , useEffect, useContext } from "react";
 import BlogListStyle from "./blog-list.module.sass";
 import Image from "../../../assets/event/01.jpg";
 import api from "../../../api/mockApi";
@@ -8,13 +8,15 @@ import { NavLink } from "react-router-dom"
 
 import HeaderStyle from "../../../core/components/header/header.module.sass";
 import HeaderCarousel from "../../../core/components/header-carousel/header-carousel";
+import { Context } from "../../../App";
 
-const Blog = ({ post }) => {
+
+const Blog = ({ post, theme }) => {
   return (
-    <div className={BlogListStyle.blog}>
+    <div className={`${BlogListStyle.blog} ${theme === 'dark'? BlogListStyle.dark_theme_post_bg:''}`}>
       <div className={BlogListStyle.imageSection}>
         <div className={BlogListStyle.blogImage}>
-          <img src={Image} alt="" />
+          <img src={Image} alt=""/>
         </div>
         <div className={BlogListStyle.authorImage}>
           <img src={Image} alt="" />
@@ -44,25 +46,25 @@ const Blog = ({ post }) => {
               </span>
             </div>
             <div className={BlogListStyle.title}>
-              <a href="#">{post.title}</a>
+              <a href="#" className={theme === 'dark'?BlogListStyle.dark_theme_text:''}>{post.title}</a>
             </div>
           </div>
         </div>
         <div className={BlogListStyle.blogBody}>
-          <p className={BlogListStyle.defaultP}>{post.body}</p>
+          <p className={`${BlogListStyle.defaultP}  ${theme === 'dark'? BlogListStyle.dark_theme_text:''}`}>{post.body}</p>
         </div>
         <div className={BlogListStyle.blogFooter}>
           <button className={BlogListStyle.blogButton}>
-            <span>Read More</span>
+            <span className={` ${theme === 'dark'? BlogListStyle.dark_theme_post_button:''}`}>Read More</span>
           </button>
           <div className={BlogListStyle.action}>
             <span className={BlogListStyle.reaction}>
               <FontAwesomeIcon icon={faComments} className={BlogListStyle.icons} />
-              <a href="#">{post.comment} COMMENTS</a>
+              <a href="#" className={` ${theme === 'dark'? BlogListStyle.dark_theme_text:''}`}>{post.comment} COMMENTS</a>
             </span>
             <span className={BlogListStyle.reaction}>
               <FontAwesomeIcon icon={faHeart} className={BlogListStyle.icons} />
-              <a href="#">{post.like} LIKES</a>
+              <a href="#" className={` ${theme === 'dark'? BlogListStyle.dark_theme_text:''}`}>{post.like} LIKES</a>
             </span>
           </div>
         </div>
@@ -71,21 +73,21 @@ const Blog = ({ post }) => {
   );
 };
 
-const BlogContainer = ({ togglePosts, currentPosts, pageNumber, paginate, currentPostsByFilter,currentPage }) => {
+const BlogContainer = ({ togglePosts, currentPosts, pageNumber, paginate, currentPostsByFilter,currentPage,theme }) => {
   return (
     <div className={BlogListStyle.blogList_left_container}>
 
       {/* start Blog Post */}
       {togglePosts
-        ? currentPostsByFilter?.map((post, i) => <Blog key={i} post={post} />)
-        : currentPosts?.map((post, i) => <Blog key={i} post={post} />)}
+        ? currentPostsByFilter?.map((post, i) => <Blog theme={theme} key={i} post={post} />)
+        : currentPosts?.map((post, i) => <Blog theme={theme} key={i} post={post} />)}
       {/* end Blog Post */}
 
       {/*start pagination */}
       <nav className={BlogListStyle.pagination_Section}>
         <ul  className={BlogListStyle.pagination_container}>
           {pageNumber?.map((num) => (
-            <li key={num}className={`${BlogListStyle.pagination_item} ${currentPage==num&&BlogListStyle.active}`} onClick={() => paginate(num)}>
+            <li key={num}className={`${BlogListStyle.pagination_item} ${currentPage==num&&BlogListStyle.active} ${theme === 'dark'?BlogListStyle.dark_theme_text:''}`} onClick={() => paginate(num)}>
               {num}
             </li>
           ))}
@@ -98,7 +100,7 @@ const BlogContainer = ({ togglePosts, currentPosts, pageNumber, paginate, curren
   );
 };
 
-const BlogHelperContainer = ({ posts, setPostsByFilter, filterByTag,setTogglePosts,setCurrentPage,filterByCategory,tags,categroies }) => {
+const BlogHelperContainer = ({ posts, setPostsByFilter, filterByTag,setTogglePosts,setCurrentPage,filterByCategory,tags,categroies,theme }) => {
   
   const showPostByCategroy = (filterName) => {
     const data = filterByCategory(filterName);
@@ -128,11 +130,11 @@ const BlogHelperContainer = ({ posts, setPostsByFilter, filterByTag,setTogglePos
 
       {/* search  */}
       <div className={`${BlogListStyle.search} ${BlogListStyle.mb}`}>
-        <h2 className={BlogListStyle.headertag}>Search</h2>
+        <h2 className={`${BlogListStyle.headertag} ${theme === 'dark'?BlogListStyle.dark_theme_text:''}`}>Search</h2>
         <form action="" className={BlogListStyle.form_search}>
           <input
             type="search"
-            className={BlogListStyle.search_box}
+            className={`${BlogListStyle.search_box} ${theme === 'dark'?BlogListStyle.dark_search_box:''}`}
             value=""
             placeholder="Search KeyWord"
           />
@@ -144,12 +146,12 @@ const BlogHelperContainer = ({ posts, setPostsByFilter, filterByTag,setTogglePos
 
       {/* category  */}
       <div className={`${BlogListStyle.category_container} ${BlogListStyle.mb}`}>
-        <h2 className={BlogListStyle.headertag}>Categories</h2>
+        <h2 className={`${BlogListStyle.headertag} ${theme === 'dark'?BlogListStyle.dark_theme_text:''}`}>Categories</h2>
         <ul className={BlogListStyle.categories}>
           {categroiesWithNoOfPost.map((category,index) => (
             <li key={index} className={BlogListStyle.category} onClick={()=>showPostByCategroy(category.catName)}>
-              <span>{ category.catName}</span>
-            <span>{category.noOfPost}</span>
+              <span className={theme === 'dark'?BlogListStyle.dark_theme_text:''}>{ category.catName}</span>
+            <span className={BlogListStyle.categoryQuantity}>{category.noOfPost}</span>
           </li>
           ))} 
           
@@ -158,7 +160,7 @@ const BlogHelperContainer = ({ posts, setPostsByFilter, filterByTag,setTogglePos
 
       {/* recent post  */}
       <div className={`${BlogListStyle.recent_post_container} ${BlogListStyle.mb}`}>
-        <h2 className={BlogListStyle.headertag}>Recent Posts</h2>
+        <h2 className={`${BlogListStyle.headertag} ${theme === 'dark'?BlogListStyle.dark_theme_text:''}`}>Recent Posts</h2>
         <ul className={BlogListStyle.recent_posts}>
           {posts
             ?.map((post, i) => (
@@ -180,7 +182,7 @@ const BlogHelperContainer = ({ posts, setPostsByFilter, filterByTag,setTogglePos
 
       {/* Recent Portfolio  */}
       <div className={`${BlogListStyle.recent_portfolio_container} ${BlogListStyle.mb}`}>
-        <h2 className={BlogListStyle.headertag}>Recent Portfolio</h2>
+        <h2 className={`${BlogListStyle.headertag} ${theme === 'dark'?BlogListStyle.dark_theme_text:''}`}>Recent Portfolio</h2>
         <div className={BlogListStyle.portfolio_photos}>
           <div className={BlogListStyle.portfolio_photo}>
             <a href="#">
@@ -217,10 +219,10 @@ const BlogHelperContainer = ({ posts, setPostsByFilter, filterByTag,setTogglePos
 
       {/* tag  */}
       <div className={`${BlogListStyle.tag_cloud_container} ${BlogListStyle.mb}`}>
-        <h2 className={BlogListStyle.headertag}>Tags</h2>
+        <h2 className={`${BlogListStyle.headertag} ${theme === 'dark'?BlogListStyle.dark_theme_text:''}`}>Tags</h2>
         <div className={BlogListStyle.tag_clouds}>
           {tags.map((tag,index)=>(
-            <span key={index} className={BlogListStyle.tag_cloud} onClick={()=>showPostByTag(tag)}>
+            <span key={index} className={`${BlogListStyle.tag_cloud} ${theme === 'dark'?BlogListStyle.dark_theme_tag_cloud:''}`} onClick={()=>showPostByTag(tag)}>
             {tag}
           </span>
           ))}
@@ -232,6 +234,7 @@ const BlogHelperContainer = ({ posts, setPostsByFilter, filterByTag,setTogglePos
 };
 
 function BlogList(blogListContent) {
+  const [value] = useContext(Context)
   const [posts, setPosts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [postPerPage] = useState(5);
@@ -303,8 +306,8 @@ function BlogList(blogListContent) {
   // console.log({ postsByFilter });
   
 
-   const BlogContainerPorps = {
-    togglePosts, currentPosts, pageNumber, paginate, currentPostsByFilter,currentPage
+   const BlogContainerProps = {
+    togglePosts, currentPosts, pageNumber, paginate, currentPostsByFilter,currentPage,
   }
   const BlogHelperContainerProps = {
         setTogglePosts,posts,setPostsByFilter,setCurrentPage,tags,categroies,filterByCategory,filterByTag
@@ -312,7 +315,7 @@ function BlogList(blogListContent) {
 
   return (
     <div>
-      <section className={HeaderStyle.box}>
+      <section className={`${HeaderStyle.box}`}>
         <HeaderCarousel />
         <div className={HeaderStyle.bannerContent}>
           <h1 className={HeaderStyle.mainHeader}>{data.mainHeader}</h1>
@@ -336,13 +339,15 @@ function BlogList(blogListContent) {
           </div>
         </div>
       </section>
-      <div className={BlogListStyle.bloglist_container}>
+      <div className={`${BlogListStyle.bloglist_container} ${value.mode === 'dark' ? BlogListStyle.bloglist_container_dark:''}`}>
         
 
         <BlogContainer
-          {...BlogContainerPorps}
+          theme={value.mode}
+          {...BlogContainerProps}
         />
         <BlogHelperContainer
+          theme={value.mode}
           {...BlogHelperContainerProps}
         />
       </div>

@@ -11,7 +11,8 @@ const CommentForm=({
     handleSubmit,
     hasCancelBtn=false,
     initialText= "",
-    handleCancel
+    handleCancel,
+    themeStyle
 })=>{
 
     const [text, setText]=useState(initialText)

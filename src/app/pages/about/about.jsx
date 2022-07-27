@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useContext } from "react";
+import { Context } from "../../../App";
 import image0 from "../../../assets/about/about.jpg";
 import image from "../../../assets/team_slide_01.jpg";
 import image2 from "../../../assets/team_slide_02.jpg";
@@ -18,8 +19,10 @@ import {useSpring, animated} from "react-spring"
 
 import HeaderStyle from "../../../core/components/header/header.module.sass";
 import HeaderCarousel from "../../../core/components/header-carousel/header-carousel";
+
 function About(aboutContent) {
-  const data = aboutContent.aboutContent
+  const [value] = useContext(Context)
+  const data = aboutContent.aboutContent;
   const information = [
     {
       id: "01",
@@ -69,8 +72,17 @@ function About(aboutContent) {
           <div className={aboutStyles.about_image}>
             <img className={aboutStyles.about_image_img} src={info.img} alt="" />
           </div>
-          <div className={aboutStyles.item_content}>
-            <h4 className={aboutStyles.content_title}>{info.title}</h4>
+          {console.log()}
+          <div className={`${aboutStyles.item_content} ${value.mode === 'dark' ? aboutStyles.darkTheme:''}`}>
+            <h4
+              className={
+                value.mode === "dark"
+                  ? aboutStyles.content_titleDark
+                  : aboutStyles.content_titleLight
+              }
+            >
+              {info.title}
+            </h4>
             <h1 className={aboutStyles.content_name}>{info.name}</h1>
             <h3 className={aboutStyles.content_service}>{info.service}</h3>
             {/* <p className={aboutStyles.content_description}>
@@ -131,11 +143,9 @@ function About(aboutContent) {
         <h3>{card.title}</h3>
       </div>
 
-      <p>{card.text}</p>
+      <p >{card.text}</p>
     </div>
   ));
-  
-  
 
   return (
     <div>
@@ -164,7 +174,11 @@ function About(aboutContent) {
         </div>
       </section>
 
-      <section className={aboutStyles.about_intro}>{content}</section>
+      <section
+        className={aboutStyles.about_intro}
+      >
+        {content}
+      </section>
 
       <div>
         <div className={aboutStyles.cards}>{cardItems}</div>
@@ -179,7 +193,7 @@ function About(aboutContent) {
                 document.getElementById("image").src = image;
               }}
             >
-              <h1 className={aboutStyles.header} >
+              <h1>
                 Ronald May <span className={aboutStyles.role}>Founder</span>
               </h1>
             </li>
@@ -188,7 +202,7 @@ function About(aboutContent) {
                 document.getElementById("image").src = image2;
               }}
             >
-              <h1 className={aboutStyles.header} >
+              <h1>
                 Natalie Thomas <span className={aboutStyles.role}>Trader</span>
               </h1>
             </li>
@@ -197,7 +211,7 @@ function About(aboutContent) {
                 document.getElementById("image").src = image3;
               }}
             >
-              <h1 className={aboutStyles.header} >
+              <h1>
                 Frank Farjado <span className={aboutStyles.role}>Manager</span>
               </h1>
             </li>
@@ -206,7 +220,7 @@ function About(aboutContent) {
                 document.getElementById("image").src = image4;
               }}
             >
-              <h1 className={aboutStyles.header} >
+              <h1>
                 Helen Freeman <span className={aboutStyles.role}>Support</span>
               </h1>
             </li>

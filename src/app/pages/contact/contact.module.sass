@@ -5,13 +5,14 @@
     display: flex
     justify-content: space-between
 
-    
+.darkTheme
+    color: #fff
 
 .contact_container
     padding: 63px 0px
-    width:100%
-    margin:4rem auto
-    display:block
+    width: 100%
+    margin: 4rem auto
+    display: block
 
 *
     font-family: Poppins, "san-serif"
@@ -20,20 +21,16 @@
     box-sizing: border-box
 
 .contact_form_container
-    width:100%
-    padding:0px 30px
+    width: 100%
+    padding: 0px 30px
     margin-bottom: 30px
-    h1
-        margin-bottom: 15px
-        color: #4c4c4c
-        opacity: 1
 
 .form_input_container
-    display:block
-        
+    display: block
+
 .form_input
     @include default_input()
-    display:block
+    display: block
     width: 100%
     height: 60px
     margin: 0 15px 15px 0
@@ -47,7 +44,7 @@
     &:focus
         box-shadow: none
 
-.form_button 
+.form_button
     color: #fff
     border-radius: 4px
     border: 0
@@ -60,103 +57,113 @@
     &:active
         transform: translateY(2px)
     &::before
-        content:"SEND MESSAGE"
+        content: "SEND MESSAGE"
         font-family: Poppins, "san-serif"
         border-radius: 4px
-        padding:1.1rem 2.4rem
-        color:#fff
-        background:transparent
+        padding: 1.1rem 2.4rem
+        color: #fff
+        background: transparent
         transition: all .35s ease .1s
     &:hover
         &::before
-            background:#fff
-            color:#4c4c4c
-
+            background: #fff
+            color: #4c4c4c
 
 .address_list_container
-    width:100%
-    padding:0px 30px
-    
-.contact_head
-    margin-bottom:20px
+    width: 100%
+    padding: 0px 30px
+
+.contact_headLight
+    margin-bottom: 20px
     font-weight: 700px
     letter-spacing: 1px
     line-height: 1.5
     word-break: break-word
     opacity: 1
-    color:#4c4c4c
+    color: #000
+
+.contact_headDark
+    @extend .contact_headLight
+    color: #fff
+
 .contact_location
     align-items: center
     -webkit-box-align: center
-    margin-bottom:10px
+    margin-bottom: 10px
 .contact_icon
-    margin-right:13px
-    border-color: #5b83cd 
-    color: #5b83cd 
+    margin-right: 13px
+    border-color: #5b83cd
+    color: #5b83cd
 .icon
     font-size: 16px
     width: 1em
-.address
+.addressLight
     // font-family: "poppins", sans-serif
     font-size: 16px
     font-weight: light
     line-height: 30px
-    color:#7F7F7F
+    color: #000
 .contact_days
     margin-top: 3rem
+
+.contact_days.darkTheme
+    color: #fff
+
 .contact_time
-    padding-left:30px
+    padding-left: 30px
     font-family: "poppins", sans-serif
     // font-size: 16px
     font-weight: 300
     line-height: 30px
 .closing_date
-    padding-left:10px
-    border-color: #4c4c4c
-    color: #4c4c4c
+    padding-left: 10px
     font-weight: 500
 
+
+.form_input.darkTheme
+  color: #fff
+  &::placeholder
+    color: #ffffff80
+
+.form_textarea.darkTheme
+  color: #fff
+  &::placeholder
+    color: #ffffff80
+
 @media (max-width:820px)
-  .address_list_container
-   margin:20px 0px
-
-
-
-
-
+.address_list_container
+    margin: 20px 0px
 
 @media (max-width:$break_point-s)
     .contact_container
-        width:100%
-    
+        width: 100%
 
 @media (min-width:$break_point-s)
     .contact_container
-        width:$max-width-s
+        width: $max-width-s
     .form_input_container
         @include flex_between
     .form_input
-        width:49%
-        
+        width: 49%
+
 @media (min-width:$break_point-md)
     .contact_container
-        width:$max-width-md
-        
-    
+        width: $max-width-md
+
 @media (min-width:$break_point-lg)
     .contact_container
-        width:$max-width-lg
+        width: $max-width-lg
         @include flex_between
     .contact_form_container
-        width:60%
+        width: 60%
         margin-bottom: 0px
     .address_list_container
         width: 40%
 
 @media (min-width:$break_point-xl)
     .contact_container
-        width:$max-width-xl
+        width: $max-width-xl
 
 @media (min-width:$break_point-xxl)
     .contact_container
-        width:$max-width-xxl
+        width: $max-width-xxl

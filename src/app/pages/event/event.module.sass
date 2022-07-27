@@ -10,12 +10,24 @@ html
     padding: 0
     box-sizing: border-box
 
+.darkTheme
+    color: #fff
+
 .container
     display: flex
     margin: 4rem auto
     flex-direction: row
     justify-content: center
     margin-bottom: 10%
+
+.placeholder
+  color: #000
+
+.placeholder.darkTheme
+  color: #fff
+  border: 1px solid #fff
+  &::placeholder
+    color: #ffffff80
 
 .left
     width: 50%
@@ -48,6 +60,7 @@ html
     margin-top: 2%
     font-size: 1.2rem
     color: #4c4c4c
+
     &:hover
         color: #0560a5
         text-decoration: none
@@ -60,8 +73,9 @@ html
 
 .datetime
     font-weight: lighter
+
+.datetime, .datetimeDark
     font-family: serif
-    color: #747373
     font-size: 80%
     font-weight: bolder
     display: flex
@@ -73,9 +87,14 @@ html
         margin-right: 5px
         color: #5b83cd !important
 
+
+
+.datetimeDark
+    color: white
+
 .item_text
-    font-size: medium
     color: #4d4d4d
+    font-size: medium
     text-align: left
     opacity: 1
     cursor: pointer
@@ -90,11 +109,11 @@ html
         background-color: transparent
         border: 2px solid #ededed
         border-radius: 5px
-        color: #808080
         border-radius: 5px
 
     & .active
         border-color: #c280bf
+
 .search
     margin: 50px 0px
 .form_event
@@ -113,9 +132,11 @@ html
     &::placeholder
         text-transform: uppercase
         letter-spacing: 1px
-        color: #0000008e
     &:focus
         outline: none
+
+.darkTheme .form_event input[type='search']
+    border:1px solid #fff
 
 .form_event button
     position: absolute
@@ -144,7 +165,7 @@ html
     padding: 18px 2px
     background: linear-gradient(to right,#007bff, #8510d8)
     color: #fff
-    border: 3px solid
+    border: none
     border-radius: 5px
 .readBtn span
     padding: 16px 50px
@@ -163,7 +184,10 @@ html
     padding: 0px 10px
     align-item: center
 .listCategory .listItem
-    color: #00000080
+    margin-bottom: 5px
+
+.listCategory .listItemDark
+    color: white
     margin-bottom: 5px
 
 .recent_portfolio
@@ -196,7 +220,6 @@ html
             &:hover
                 opacity: 0.8
 .title
-    color: #4c4c4c
     font-size: 24px
     font-weight: 700
     margin-bottom: 1rem

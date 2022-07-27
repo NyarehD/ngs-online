@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Context } from "../../../App.js";
 import EventSingleRight from "./event-single-right";
 import eventSingleStyles from "./event-single.module.sass";
 import topImg from "../../../assets/event/04.jpg";
@@ -20,9 +21,11 @@ import HeaderCarousel from "../../../core/components/header-carousel/header-caro
 import HeaderStyle from "../../../core/components/header/header.module.sass";
 
 export default function EventSingle({ eventSingleContent }) {
-  const data = eventSingleContent;
+  const [mode, setMode] = useContext(Context);
+  const data = eventSingleContent
+  const darkTheme = mode.mode === 'dark'?eventSingleStyles.darkTheme:""
   return (
-    <div>
+    <div className={darkTheme}>
       <section className={HeaderStyle.box}>
         <HeaderCarousel />
         <div className={HeaderStyle.bannerContent}>
@@ -80,8 +83,8 @@ export default function EventSingle({ eventSingleContent }) {
                 </span>
               </div>
               <hr />
-              <div className={eventSingleStyles.content}>
-                <p className={eventSingleStyles.excerpt}>
+              <div className={`${eventSingleStyles.content} ${darkTheme}`}>
+                <p className={`${eventSingleStyles.excerpt} ${darkTheme}`}>
                   At vero eos accusam justo duo dolores et rebum clita kasd
                   gubergren nosea takimata sanctus est dolor sit amet
                 </p>
@@ -108,7 +111,7 @@ export default function EventSingle({ eventSingleContent }) {
             </div>
           </article>
           <div className={eventSingleStyles.comments}>
-            <h4 className={eventSingleStyles.commentsTitle}>Comments</h4>
+            <h4 className={`${eventSingleStyles.commentsTitle} ${darkTheme}`}>Comments</h4>
             <ol className={eventSingleStyles.commentList}>
               <li className={eventSingleStyles.comment}>
                 <div className={eventSingleStyles.commentBody}>
@@ -120,7 +123,7 @@ export default function EventSingle({ eventSingleContent }) {
                       <a
                         href="#"
                         rel="nofollow"
-                        className={eventSingleStyles.commentNameLink}
+                        className={`${eventSingleStyles.commentNameLink} ${darkTheme}`}
                       >
                         Chole Denverou
                       </a>
@@ -132,7 +135,7 @@ export default function EventSingle({ eventSingleContent }) {
                         </a>
                       </span>
                     </b>
-                    <p className={eventSingleStyles.commentText}>
+                    <p className={`${eventSingleStyles.commentText} ${darkTheme}`}>
                       Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
                       sed diam nonumy eirmod tempor invidunt ut labore et dolore
                       magna aliquyam erat, sed diam voluptua.
@@ -152,7 +155,7 @@ export default function EventSingle({ eventSingleContent }) {
                         <a
                           href="#"
                           rel="nofollow"
-                          className={eventSingleStyles.commentNameLink}
+                          className={`${eventSingleStyles.commentNameLink} ${darkTheme}`}
                         >
                           Patric Knowles
                         </a>
@@ -164,7 +167,7 @@ export default function EventSingle({ eventSingleContent }) {
                           </a>
                         </span>
                       </b>
-                      <p className={eventSingleStyles.commentText}>
+                      <p className={`${eventSingleStyles.commentText} ${darkTheme}`}>
                         Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
                         sed diam nonumy eirmod tempor invidunt ut labore et
                         dolore magna aliquyam erat, sed diam voluptua.
@@ -186,7 +189,7 @@ export default function EventSingle({ eventSingleContent }) {
                       <a
                         href="#"
                         rel="nofollow"
-                        className={eventSingleStyles.commentNameLink}
+                        className={`${eventSingleStyles.commentNameLink} ${darkTheme}`}
                       >
                         Macie Williams
                       </a>
@@ -198,7 +201,7 @@ export default function EventSingle({ eventSingleContent }) {
                         </a>
                       </span>
                     </b>
-                    <p className={eventSingleStyles.commentText}>
+                    <p className={`${eventSingleStyles.commentText} ${darkTheme}`}>
                       Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
                       sed diam nonumy eirmod tempor invidunt ut labore et dolore
                       magna aliquyam erat, sed diam voluptua.
@@ -210,7 +213,7 @@ export default function EventSingle({ eventSingleContent }) {
                 </div>
               </li>
             </ol>
-            <h4 className={eventSingleStyles.commentReplyTitle}>
+            <h4 className={`${eventSingleStyles.commentReplyTitle} ${darkTheme}`}>
               Leave Your Comment
             </h4>
             <div className={eventSingleStyles.commentResponse}>
@@ -232,6 +235,7 @@ export default function EventSingle({ eventSingleContent }) {
                         type="text"
                         placeholder="Full Name"
                         required
+                        className={`${eventSingleStyles.placeholder} ${darkTheme}`}
                     />
                     </div>
                     <div className={eventSingleStyles.formInput}>
@@ -240,6 +244,7 @@ export default function EventSingle({ eventSingleContent }) {
                         className={eventSingleStyles.formInputIcon}
                     />
                     <input
+                        className={`${eventSingleStyles.placeholder} ${darkTheme}`}
                         name="author"
                         type="text"
                         placeholder="E-Mail"
@@ -255,7 +260,7 @@ export default function EventSingle({ eventSingleContent }) {
                     className={eventSingleStyles.formInputIcon}
                   />
                   <textarea
-                    className="form-control"
+                    className={`${eventSingleStyles.placeholder} ${darkTheme} form-control`}
                     id="comment"
                     name="comment"
                     cols="45"

@@ -3,13 +3,14 @@
 $grid-columns: 12
 $grid-gutter-width: 30px
 
-$container-max-widths: (sm: 540px,md: 720px,lg: 960px,xl: 1140px,xxl: 1200px)
-$grid-breakpoints: ("xs": 0,"sm": 576px,"md": 768px,"lg": 992px,"xl": 1200px,"xxl": 1300px)
+$container-max-widths: (sm: 540px, md: 720px, lg: 960px, xl: 1140px, xxl: 1200px)
+$grid-breakpoints: ("xs": 0, "sm": 576px, "md": 768px, "lg": 992px, "xl": 1200px, "xxl": 1300px)
 
 $primaryColor: #5b83cd
 $secondaryColor: #c280bf
 $textColor: #212529
 $textColor2: #4c4c4c
+$textColorDarkMode: #fff
 
 @mixin make-container()
   width: 100%
@@ -45,27 +46,27 @@ $textColor2: #4c4c4c
     color: $color2
 
 @mixin xs
-  @media (min-width: map-get($grid-breakpoints,"xs"))
+  @media (min-width: map-get($grid-breakpoints, "xs"))
     @content
 
 @mixin sm
-  @media (min-width: map-get($grid-breakpoints,"sm"))
+  @media (min-width: map-get($grid-breakpoints, "sm"))
     @content
 
 @mixin md
-  @media (min-width: map-get($grid-breakpoints,"md"))
+  @media (min-width: map-get($grid-breakpoints, "md"))
     @content
 
 @mixin lg
-  @media (min-width: map-get($grid-breakpoints,"lg"))
+  @media (min-width: map-get($grid-breakpoints, "lg"))
     @content
 
 @mixin xl
-  @media (min-width: map-get($grid-breakpoints,"xl"))
+  @media (min-width: map-get($grid-breakpoints, "xl"))
     @content
 
 @mixin breakpoints($bp: 0)
-  @media (min-width: map-get($grid-breakpoints,$bp))
+  @media (min-width: map-get($grid-breakpoints, $bp))
     @content
 
 .col
@@ -110,6 +111,12 @@ $textColor2: #4c4c4c
   margin: 0
   box-sizing: border-box
 
+body
+  font-family: Poppins, "san-serif"
+  color: $textColor
+
+h4
+  color: $textColor2
 
 a
   color: $textColor2
@@ -120,12 +127,10 @@ li
   list-style-type: none
 
 .container
-  font-family: Poppins, "san-serif"
-  color: $textColor
   @include make-container()
   @include make-container-max-widths()
-  background-color: #fff
   padding: 80px 0 70px 0
+  margin-top: -13px
   @include lg
     padding: 120px 0 130px 0
 
@@ -151,14 +156,13 @@ li
 .fa_youtube_play
   background-color: #e52d27
 
-widget_title
+h4.widget_title
   font-size: 30px
   letter-spacing: 7px
   line-height: 1
   margin-bottom: 26px !important
   text-transform: uppercase
   font-weight: 700
-  color: $textColor2
 
 .widget_social_buttons
   margin-top: 20px
@@ -175,6 +179,7 @@ widget_title
   line-height: 26px
   padding-bottom: 9px
   padding-top: 9px
+
   &:last-child
     border: none
 
@@ -215,11 +220,13 @@ widget_title
   letter-spacing: 0.2em
   text-transform: uppercase
   color: $primaryColor
+
   &:hover
     color: $secondaryColor
 
   &:last-child
     color: $secondaryColor
+
     &:hover
       color: $primaryColor
 
@@ -230,3 +237,17 @@ widget_title
 
 .small_text
   margin: 10px 0
+// Dark mode
+.containerDark
+  background-color: #666
+  width: 100%
+  color: $textColorDarkMode
+
+  h4, a
+    color: $textColorDarkMode
+
+  .links .cat_item a
+    @include hoverColor($textColorDarkMode, $primaryColor)
+
+  .services_links .cat_item a
+    @include hoverColor($textColorDarkMode, $secondaryColor)

@@ -12,13 +12,16 @@
     // margin-left: 5%
     // flex-wrap: wrap
 
-.btnItem
+.btnItem, .btnItemDark
     list-style: none
     color: #c280bf
     background-color: #f7f6fb
     cursor: pointer
     &:hover
         color: #007aff
+
+.btnItemDark
+    background-color: #3f3f3f
 
 .btnLink
     font-size: 12px
@@ -37,30 +40,43 @@
     display: flex
     justify-content: space-between
 
-.cardCon
+.cardCon, .cardConDark
     width: 100%
     height: 100%
-    background-color: #fff
+    // background-color: #fff
     color: #7f7f7f
     border: 1px solid #ededed
     box-shadow: 0 0px 10px 0px rgb(0 0 0 / 5%)
     padding: 40px 60px 40px 90px
 
-.tabContent div
+.cardConDark
+    border-color: #454545
+    background-color: #3f3f3f
+
+.tabContent div, .tabContentDark div
     box-shadow: none
     border-radius: none
 
+.tabContent div div, .tabContentDark div div
+    background: transparent !important
+
+.tabContentDark div div
+    color: #fff
+
 //Form
-.askTitle
+.askTitle, .askTitleDark
     margin: 30px 0
     color: #4c4c4c !important
     opacity: 1 !important
+
+.askTitleDark
+    color: #fff !important
 
 .form_input_container2
     display: block
     width: 100%
 
-.form_input2
+.form_input2, .form_input2Dark
     margin: 0 15px 15px 0
     transition: all 0.4s
     background-color: transparent
@@ -79,7 +95,7 @@
     &:focus
         box-shadow: none
 
-.form_textarea2
+.form_textarea2, .form_textarea2Dark
     background-color: transparent
     border: 1px solid #ededed
     border-radius: 2px
@@ -94,6 +110,13 @@
     width: 100%
     &:focus
         box-shadow: none
+
+.form_input2Dark, .form_textarea2Dark
+    border-color: #454545
+    color: #fff
+    background-color: #3f3f3f
+    &::placeholder
+        color: #ffffff80
 
 .active
     background-image: -webkit-linear-gradient(left, #5b83cd 0%, #c280bf 100%)

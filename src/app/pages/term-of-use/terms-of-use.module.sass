@@ -14,6 +14,9 @@
 .firstPara , .secondPara , .thirdPara , .fouthPara
     margin-bottom: 4rem
 
+.firstPara .textContent
+    width: 70%
+
 .header
     color: #4c4c4c
     font-size: 30px
@@ -21,20 +24,34 @@
     font-weight: 700
     letter-spacing: 1px
     line-height: 1.5
-
+.headerDark
+    color: #fff
+    font-size: 30px
+    margin-bottom: 1.5rem
+    font-weight: 700
+    letter-spacing: 1px
+    line-height: 1.5
 .description
     color: #7f7f7f
     @include defaultFont()
-
+.descriptionDark
+    color: #fff
+    @include defaultFont()
 .imageContent
     text-align: center
-    
+.image
+    width: 470px
+
 .listItems
     list-style-type: list
     color: #4c4c4c
     @include defaultFont()
     margin: 1rem auto
-    
+.listItemsDark
+    list-style-type: list
+    color: #fff
+    @include defaultFont()
+    margin: 1rem auto
 .listItem
     display: flex
     align-items: center
@@ -57,14 +74,13 @@
     .container
         width: 70%
 
-
 @media screen and (min-width: 1800px)
     .container
         width: 60%
 
     .header
         font-size: 40px
-    
+
     .description
         font-size: 20px
         line-height: 32px

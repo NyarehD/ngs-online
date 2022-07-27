@@ -1,4 +1,4 @@
-import react, { useState } from "react";
+import react, { useContext, useState } from "react";
 import IsoTopeGrid from "react-isotope";
 import galleryListStyle from "./gallery-list.module.sass";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -21,6 +21,7 @@ import image10 from "../../../../assets/gallery-list/10.jpg";
 import image11 from "../../../../assets/gallery-list/11.jpg";
 import image12 from "../../../../assets/gallery-list/12.jpg";
 import { Link } from "react-router-dom";
+import { Context } from "../../../../App";
 const defaultFilters = [
   { label: "ALL", isChecked: true },
   { label: "VOIP", isChecked: false },
@@ -127,22 +128,36 @@ function getLayouts(width) {
     case "mobile":
       return [1, window.innerWidth - 5, window.innerWidth - 80];
     case "tablet":
-      return [2, window.innerWidth / 2 + 5, Math.round(window.innerWidth / 3) + 40];
+      return [
+        2,
+        window.innerWidth / 2 + 5,
+        Math.round(window.innerWidth / 3) + 40,
+      ];
     case "laptop":
-      return [3, Math.round(window.innerWidth / 3) + 9, Math.round(window.innerWidth / 3) - 25];
+      return [
+        3,
+        Math.round(window.innerWidth / 3) + 9,
+        Math.round(window.innerWidth / 3) - 25,
+      ];
     case "computer":
       return [4, window.innerWidth / 4 + 10, window.innerWidth / 4 - 20];
     default:
       return [0, 0, 0];
   }
 }
-export default function GalleryList(galleryListContent) {
+
+function GalleryLlist(galleryListContent) {
+  const [[columns, unitWidth, unitHeight], setLayout] = useState(
+    getLayouts(window.innerWidth)
+  );
+  const [darkMode, setDarkMode] = useContext(Context);
+  const [toggleModal, setToggleModal] = useState(false);
+  const [currentImgId, setCurrentImgId] = useState(null);
+
   const data = galleryListContent.galleryListContent;
   const [filters, updateFilters] = useState(defaultFilters);
   const [tag, setTag] = useState("ALL");
-  const [toggleModal, setToggleModal] = useState(false);
-  const [currentImgId, setCurrentImgId] = useState(null);
-  const [[columns, unitWidth, unitHeight], setLayout] = useState(getLayouts(window.innerWidth));
+
   const onFilter = (event) => {
     const {
       target: { value, checked },
@@ -166,7 +181,9 @@ export default function GalleryList(galleryListContent) {
 
   //start data for Modal Component
   const ModalData =
-    tag === "ALL" ? CardLayOut : CardLayOut.filter((data) => data.tag.includes(tag));
+    tag === "ALL"
+      ? CardLayOut
+      : CardLayOut.filter((data) => data.tag.includes(tag));
   const showModal = (id) => {
     setCurrentImgId(id);
     toggleHandler();
@@ -175,9 +192,12 @@ export default function GalleryList(galleryListContent) {
     return setToggleModal((pre) => !pre);
   };
   //end data for Modal Component
-
   return (
-    <div>
+    <div
+      className={`${
+        darkMode.mode !== "light" ? galleryListStyle.darkMode : ""
+      }`}
+    >
       <section className={HeaderStyle.box}>
         <HeaderCarousel />
         <div className={HeaderStyle.bannerContent}>
@@ -185,14 +205,23 @@ export default function GalleryList(galleryListContent) {
           <div className={HeaderStyle.breakCrumb}>
             <ol className={HeaderStyle.breakCrumbLists}>
               <li className={HeaderStyle.breakCrumbList}>
-                <Link type="button" to={"/gallery"} className={HeaderStyle.link}>
+                <Link
+                  type="button"
+                  to={"/gallery"}
+                  className={HeaderStyle.link}
+                >
                   {data.firstBreakCrumb}
                 </Link>
               </li>
               <li className={HeaderStyle.breakCrumbList}>
-                <FontAwesomeIcon className={HeaderStyle.icon} icon={faAngleRight}></FontAwesomeIcon>
+                <FontAwesomeIcon
+                  className={HeaderStyle.icon}
+                  icon={faAngleRight}
+                ></FontAwesomeIcon>
               </li>
-              <li className={HeaderStyle.breakCrumbList}>{data.secondBreakCrumb}</li>
+              <li className={HeaderStyle.breakCrumbList}>
+                {data.secondBreakCrumb}
+              </li>
             </ol>
           </div>
         </div>
@@ -212,7 +241,9 @@ export default function GalleryList(galleryListContent) {
               <label
                 htmlFor={filter.label}
                 className={
-                  tag === filter.label ? galleryListStyle.basicLinkColor : galleryListStyle.tagText
+                  tag === filter.label
+                    ? galleryListStyle.basicLinkColor
+                    : galleryListStyle.tagText
                 }
               >
                 {filter.label}
@@ -223,7 +254,8 @@ export default function GalleryList(galleryListContent) {
 
         <div
           style={{
-            height: (unitHeight + 20) * Math.ceil(CardLayOut.length / columns) + "px",
+            height:
+              (unitHeight + 20) * Math.ceil(CardLayOut.length / columns) + "px",
             marginLeft: "-8px",
           }}
         >
@@ -266,7 +298,9 @@ export default function GalleryList(galleryListContent) {
                 >
                   {card.tag}
                 </p>
-                <h2 className={galleryListStyle.basicLinkColorHover}>{card.title}</h2>
+                <h2 className={galleryListStyle.basicLinkColorHover}>
+                  {card.title}
+                </h2>
               </div>
             ))}
           </IsoTopeGrid>
@@ -277,10 +311,16 @@ export default function GalleryList(galleryListContent) {
           </a>
         </div>
       </div>
-  
+
       {toggleModal && (
-        <Modal ModalData={ModalData} currentImageID={currentImgId} toggleHandler={toggleHandler} />
+        <Modal
+          ModalData={ModalData}
+          currentImageID={currentImgId}
+          toggleHandler={toggleHandler}
+        />
       )}
     </div>
   );
 }
+
+export default GalleryLlist;

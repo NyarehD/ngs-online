@@ -14,7 +14,8 @@ const SingleComment=({
     activeComment,
     addComment,
     setActiveComment,
-    parentId=null
+    parentId=null,
+    themeStyle
 })=>{
     // const fiveMinutes= 300000
     // const timePassed = new Date()-new Date(comment.createdAt) > fiveMinutes;
@@ -38,14 +39,14 @@ const SingleComment=({
             </div>
             <div className={CommentStyle.commentRightPart}>
                 <div className={CommentStyle.commentContent}>
-                    <a href="" className={CommentStyle.commentAuthor}>
+                    <a href="" className={`${CommentStyle.commentAuthor} ${themeStyle?.color}`}>
                         {comment.username}
                     </a>  
                     <a href="#" className={CommentStyle.commentMetaLink}>
                         <div className={CommentStyle.commentDate}>{createdAt}</div>
                     </a>
                 </div>
-                {!isEditing && <div className={CommentStyle.commentText}>{comment.body}</div>}
+                {!isEditing && <div className={`${CommentStyle.commentText} ${themeStyle?.color}`}>{comment.body}</div>}
                 {isEditing && (
                     <CommentForm 
                         submitLabel="Update" 
@@ -53,10 +54,10 @@ const SingleComment=({
                         initialText={comment.body}
                         handleSubmit={(text)=>updateComment(text, comment.id)}
                         handleCancel={()=>setActiveComment(null)}
-
+                        themeStyle={themeStyle}
                     />
                 )}
-                <div className={CommentStyle.commentActions}>
+                <div className={`${CommentStyle.commentActions} ${themeStyle?.color}`}>
                     {canReply && 
                         <div 
                             className={CommentStyle.commentAction}
@@ -89,7 +90,7 @@ const SingleComment=({
                         </div>}
                 </div>
                 { isReplying &&
-                    <CommentForm submitLabel="Reply" handleSubmit={(text)=> addComment(text, replyId)}/>
+                    <CommentForm submitLabel="Reply" handleSubmit={(text)=> addComment(text, replyId)} themeStyle={themeStyle}/>
                 }
                 {replies.length>0 && (
                     <div className="replies">
@@ -105,7 +106,7 @@ const SingleComment=({
                                 activeComment={activeComment}
                                 setActiveComment={setActiveComment}
                                 parentId={comment.id}
-                                
+                                themeStyle={themeStyle}
                             />
 
                         ))}

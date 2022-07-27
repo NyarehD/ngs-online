@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebookF,
@@ -22,33 +22,40 @@ import img06 from "../../../assets/team-list/06.jpg";
 import img07 from "../../../assets/team-list/07.jpg";
 
 import teamListStyle from "./team-list.module.sass";
+import { Context } from "../../../App";
 
 export default function TeamList(teamListContent) {
   const data = teamListContent.teamListContent
+  const [value] = useContext(Context)
   const navigate = useNavigate();
   const teams = [
     {
       id: 1,
+      name: "All",
+      team: "all",
+    },
+    {
+      id: 2,
       name: "Design",
       team: "design",
     },
     {
-      id: 2,
+      id: 3,
       name: "Frontend",
       team: "frontend",
     },
     {
-      id: 3,
+      id: 4,
       name: "BackendDatabaseQc",
       team: "backend",
     },
     {
-      id: 4,
+      id: 5,
       name: "Mobile",
       team: "mobile",
     },
     {
-      id: 5,
+      id: 6,
       name: "Network",
       team: "network",
     },
@@ -231,7 +238,7 @@ export default function TeamList(teamListContent) {
     }
 
       return (
-        <animated.div key={dev.id} className={teamListStyle.developer} style={transition}>
+        <animated.div key={dev.id} className={`${teamListStyle.developer} ${value.mode === 'light'?teamListStyle.light:teamListStyle.dark}`} style={transition}>
           <div className={teamListStyle.developer_media}>
             <a href={dev.detail_link} onClick={()=>sendData()}>
                 <img src={dev.img} alt="" className={teamListStyle.dev_img} />
@@ -273,7 +280,7 @@ export default function TeamList(teamListContent) {
             </a>
           </div>
           <div className={teamListStyle.developer_content}>
-            <a href="#" className={teamListStyle.dev_name}>
+            <a href="#" className={`${teamListStyle.dev_name} ${value.mode === 'light'?teamListStyle.lightName:teamListStyle.darkName}`}>
               <h5>{dev.name}</h5>
             </a>
             <p className={teamListStyle.dev_role}>{dev.role}</p>
@@ -304,7 +311,7 @@ export default function TeamList(teamListContent) {
     }
 
       return (
-        <animated.div key={dev.id} className={teamListStyle.developer} style={transition}>
+        <animated.div className={`${teamListStyle.developer} ${value.mode === 'light'?teamListStyle.light:teamListStyle.dark}`} style={transition}>
           <div className={teamListStyle.developer_media}>
             <a href={dev.detail_link} onClick={()=>sendData()}>
                 <img src={dev.img} alt="" className={teamListStyle.dev_img} />
@@ -346,7 +353,7 @@ export default function TeamList(teamListContent) {
             </a>
           </div>
           <div className={teamListStyle.developer_content}>
-            <a href="#" className={teamListStyle.dev_name}>
+            <a href="#" className={`${teamListStyle.dev_name} ${value.mode === 'light'?teamListStyle.lightName:teamListStyle.darkName}`}>
               <h5>{dev.name}</h5>
             </a>
             <p className={teamListStyle.dev_role}>{dev.role}</p>
@@ -377,7 +384,7 @@ export default function TeamList(teamListContent) {
     }
 
       return (
-        <animated.div key={dev.id} className={teamListStyle.developer} style={transition}>
+        <animated.div className={`${teamListStyle.developer} ${value.mode === 'light'?teamListStyle.light:teamListStyle.dark}`} style={transition}>
           <div className={teamListStyle.developer_media}>
             <a href={dev.detail_link} onClick={()=>sendData()}>
                 <img src={dev.img} alt="" className={teamListStyle.dev_img} />
@@ -419,7 +426,7 @@ export default function TeamList(teamListContent) {
             </a>
           </div>
           <div className={teamListStyle.developer_content}>
-            <a href="#" className={teamListStyle.dev_name}>
+            <a href="#" className={`${teamListStyle.dev_name} ${value.mode === 'light'?teamListStyle.lightName:teamListStyle.darkName}`}>
               <h5>{dev.name}</h5>
             </a>
             <p className={teamListStyle.dev_role}>{dev.role}</p>
@@ -451,7 +458,7 @@ export default function TeamList(teamListContent) {
     }
 
       return (
-        <animated.div key={dev.id} className={teamListStyle.developer} style={transition}>
+        <animated.div className={`${teamListStyle.developer} ${value.mode === 'light'?teamListStyle.light:teamListStyle.dark}`} style={transition}>
           <div className={teamListStyle.developer_media}>
             <a href={dev.detail_link} onClick={()=>sendData()}>
                 <img src={dev.img} alt="" className={teamListStyle.dev_img} />
@@ -493,7 +500,7 @@ export default function TeamList(teamListContent) {
             </a>
           </div>
           <div className={teamListStyle.developer_content}>
-            <a href="#" className={teamListStyle.dev_name}>
+            <a href="#" className={`${teamListStyle.dev_name} ${value.mode === 'light'?teamListStyle.lightName:teamListStyle.darkName}`}>
               <h5>{dev.name}</h5>
             </a>
             <p className={teamListStyle.dev_role}>{dev.role}</p>
@@ -525,7 +532,7 @@ export default function TeamList(teamListContent) {
     }
 
       return (
-        <animated.div key={dev.id} className={teamListStyle.developer} style={transition}>
+        <animated.div className={`${teamListStyle.developer} ${value.mode === 'light'?teamListStyle.light:teamListStyle.dark}`} style={transition}>
           <div className={teamListStyle.developer_media}>
             <a href={dev.detail_link} onClick={()=>sendData()}>
                 <img src={dev.img} alt="" className={teamListStyle.dev_img} />
@@ -567,7 +574,7 @@ export default function TeamList(teamListContent) {
             </a>
           </div>
           <div className={teamListStyle.developer_content}>
-            <a href="#" className={teamListStyle.dev_name}>
+            <a href="#" className={`${teamListStyle.dev_name} ${value.mode === 'light'?teamListStyle.lightName:teamListStyle.darkName}`}>
               <h5>{dev.name}</h5>
             </a>
             <p className={teamListStyle.dev_role}>{dev.role}</p>
@@ -583,13 +590,13 @@ export default function TeamList(teamListContent) {
       <NavLink
         style={({ isActive }) => {
           return {
-            color: isActive ? "#0056b3" : "",
+            color: isActive ? "#0056b3" : value.mode === 'light'? '#000000':'#fff',
             textDecoration: "none",
           };
         }}
         to={`${team.team}`}
         key={team.id}
-        className={teamListStyle.links}
+        className={`${teamListStyle.links} ${value.mode === 'light'?teamListStyle.lightLink:teamListStyle.darkLink}`}
       >
         {team.name}
       </NavLink>
@@ -619,7 +626,7 @@ export default function TeamList(teamListContent) {
         }
       
       return (
-        <animated.div key={Math.random().toString(36).substr(2,9)} className={teamListStyle.developer} style={transition}>
+        <animated.div className={`${teamListStyle.developer} ${value.mode === 'light'?teamListStyle.light:teamListStyle.dark}`} style={transition}>
           <div className={teamListStyle.developer_media}>
             <a href={dev.detail_link} onClick={() => { sendData() }}>
                 <img src={dev.img} alt="" className={teamListStyle.dev_img} />
@@ -661,7 +668,7 @@ export default function TeamList(teamListContent) {
             </a>
           </div>
           <div className={teamListStyle.developer_content}>
-            <a href="#" className={teamListStyle.dev_name}>
+            <a href="#" className={`${teamListStyle.dev_name} ${value.mode === 'light'?teamListStyle.lightName:teamListStyle.darkName}`}>
               <h5>{dev.name}</h5>
             </a>
             <p className={teamListStyle.dev_role}>{dev.role}</p>
@@ -687,23 +694,23 @@ export default function TeamList(teamListContent) {
           </div>
         </div>
       </section>
-      <section>
+      <section className={value.mode === 'light'?teamListStyle.light:teamListStyle.dark}>
         <div className={teamListStyle.container}>
           <div className={teamListStyle.menuList}>
             <div className={teamListStyle.lists}>
               <nav className={teamListStyle.nav_lists}>
-                <NavLink
+                {/* <NavLink
                   style={({ isActive }) => {
                     return {
-                      color: isActive ? "#0056b3" : "",
+                      color: true ? "#0056b3" : value.mode === 'light'? '#000000':'#fff',
                       textDecoration: "none",
                     };
                   }}
-                  to={"all"}
-                  className={teamListStyle.links}
+                  to={`all`}
+                  className={`${teamListStyle.links} ${value.mode === 'light'?teamListStyle.lightLink:teamListStyle.darkLink}`}
                 >
                   All
-                </NavLink>
+                </NavLink> */}
                 {team}
               </nav>
             </div>
@@ -720,7 +727,7 @@ export default function TeamList(teamListContent) {
           </div>
 
           <div className={teamListStyle.parent_container}>
-              <div className={teamListStyle.child_container}>
+              <div className={`${teamListStyle.child_container} ${value.mode === 'dark'?teamListStyle.darkThemeText:''}`}>
                   <p className={teamListStyle.children_p}>
                   We see ourselves as much more than just a studio, but as a
                   family of like-minded, kind and talented people who love to
