@@ -129,7 +129,7 @@ function teamSingle(teamSingleContent) {
         </div>
 
                 <h5 className={TeamSingleStyle.contactTitle}>Contact Me</h5>
-                <form  className={TeamSingleStyle.row}>
+                <form  className={`${TeamSingleStyle.row} ${TeamSingleStyle.form_team_sigle}`}>
 
                     <div className={`${TeamSingleStyle.col_xs_12} ${TeamSingleStyle.col_md_6} ${TeamSingleStyle.col_lg_6} ${TeamSingleStyle.group}`}>      
                         <input className={TeamSingleStyle.input} type="text" name="fullname"  id="name" placeholder='FULL NAME' ></input>
