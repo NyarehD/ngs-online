@@ -9,7 +9,7 @@ import portf_6 from "../../../assets/event/06.jpg";
 import portf_7 from "../../../assets/event/07.jpg";
 import portf_8 from "../../../assets/event/08.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCalendarDays, faClock, faSearch , faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import { faCalendarDays , faSearch , faAngleRight, faClockFour } from "@fortawesome/free-solid-svg-icons";
 
 import HeaderCarousel from "../../../core/components/header-carousel/header-carousel";
 import HeaderStyle from '../../../core/components/header/header.module.sass'
@@ -45,29 +45,6 @@ const Event = (eventContent) => {
     },
   ];
 
-  const tagsCloud = [
-    {
-      id: 1,
-      title: "Cable",
-    },
-    {
-      id: 2,
-      title: "IPTV",
-    },
-    {
-      id: 3,
-      title: "Internet",
-    },
-    {
-      id: 4,
-      title: "Provuder Services",
-    },
-    {
-      id: 5,
-      title: "Router setup",
-    },
-  ];
-
   const photos = portfolio.map((cont) => {
     return (
       <div key={cont.id} className={eventStyle.photo_items}>
@@ -78,13 +55,6 @@ const Event = (eventContent) => {
     );
   });
 
-  const tag = tagsCloud.map((tag) => {
-    return (
-      <a className={eventStyle.tag_cloud_link} href="#">
-        {tag.title}
-      </a>
-    );
-  });
   const items = [
     {
       image: portf_1,
@@ -163,34 +133,36 @@ const Event = (eventContent) => {
 
   const EventItems = items.map((item) => (
     <div className={eventStyle.item}>
-      <div className={eventStyle.imageBox}>
-        <img src={item.image} alt="" className={eventStyle.images} />
-      </div>
-
-      <div className={eventStyle.textBox}>
-        <div className={eventStyle.item_title}>
-          <h3>{item.title}</h3>
+      <div className={eventStyle.itemBox}>
+        <div className={eventStyle.imageBox}>
+          <img src={item.image} alt="" className={eventStyle.images} />
         </div>
 
-        <div className="">
-          <h4 className={eventStyle.datetime}>
-            <span>
-              <span className={eventStyle.icon}>
-                <FontAwesomeIcon icon={faCalendarDays} />
-              </span>
-              <span>{item.date}</span>
-            </span>
-            <span>
-              <span className={eventStyle.icon}>
-                <FontAwesomeIcon icon={faClock} />
-              </span>
-              <span>{item.time}</span>
-            </span>
-          </h4>
-        </div>
+        <div className={eventStyle.textBox}>
+          <div className={eventStyle.item_title}>
+            <h3><a href="/event-single">{item.title}</a></h3>
+          </div>
 
-        <div className={eventStyle.item_text}>
-          <p>{item.text}</p>
+          <div className="">
+            <h4 className={eventStyle.datetime}>
+              <span>
+                <span className={eventStyle.icon}>
+                  <FontAwesomeIcon icon={faCalendarDays} />
+                </span>
+                <span>{item.date}</span>
+              </span>
+              <span>
+                <span className={eventStyle.icon}>
+                  <FontAwesomeIcon icon={faClockFour} />
+                </span>
+                <span>{item.time}</span>
+              </span>
+            </h4>
+          </div>
+
+          <div className={eventStyle.item_text}>
+            <p>{item.text}</p>
+          </div>
         </div>
       </div>
     </div>
@@ -274,10 +246,6 @@ const Event = (eventContent) => {
           <div className={eventStyle.recent_portfolio}>
             <h2 className={eventStyle.title}>Recent Portfolio</h2>
             <div className={eventStyle.photo}>{photos}</div>
-          </div>
-          <div className={eventStyle.tag_cloud}>
-            <h2 className={eventStyle.title}>Tags</h2>
-            <div className={eventStyle.tags_cloud_items}>{tag}</div>
           </div>
         </div>
       </div>

@@ -75,35 +75,7 @@ const EventSingleRight = () => {
             </div>
         );
     });
-    const tagsCloud = [
-        {
-            id: 1,
-            title: "Cable",
-        },
-        {
-            id: 2,
-            title: "IPTV",
-        },
-        {
-            id: 3,
-            title: "Internet",
-        },
-        {
-            id: 4,
-            title: "Provuder Services",
-        },
-        {
-            id: 5,
-            title: "Router setup",
-        },
-    ];
-    const tag = tagsCloud.map((tag) => {
-        return (
-            <a className={eventSingleStyle.tagCloudLink} href="#">
-                {tag.title}
-            </a>
-        );
-    });
+
     return (
         <>
             <div className={eventSingleStyle.right}>
@@ -116,18 +88,6 @@ const EventSingleRight = () => {
                         </button>
                     </form>
                 </div>
-                <div className={eventSingleStyle.about}>
-                    <h2 className={eventSingleStyle.title}>About</h2>
-                    <p className={eventSingleStyle.itemText}>
-                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, At accusam aliquyam diam diam
-                        dolore dolores duo eirmos.
-                    </p>
-                </div>
-                <div className={eventSingleStyle.readDiv}>
-                    <span className={eventSingleStyle.readBtn}>
-                        <span>Read More</span>
-                    </span>
-                </div>
                 <div className={eventSingleStyle.categories}>
                     <h2 className={eventSingleStyle.title}>Categories</h2>
                     {EventCategories}
@@ -135,10 +95,6 @@ const EventSingleRight = () => {
                 <div className={eventSingleStyle.recentPortfolio}>
                     <h2 className={eventSingleStyle.title}>Recent Portfolio</h2>
                     <div className={eventSingleStyle.photo}>{photos}</div>
-                </div>
-                <div className={eventSingleStyle.tagCloud}>
-                    <h2 className={eventSingleStyle.title}>Tags</h2>
-                    <div className={eventSingleStyle.tagsCloudItems}>{tag}</div>
                 </div>
             </div>
         </>

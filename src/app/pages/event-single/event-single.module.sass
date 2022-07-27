@@ -7,7 +7,8 @@
   display: flex
   justify-content: center
   flex-wrap: nowrap
-  padding: 150px 0
+  width: 80%
+  margin: 4rem auto
 
 .title
   color: #4c4c4c
@@ -214,6 +215,7 @@
 
       .formSubmit
         @extend .fancyButton
+        width: fit-content
 
 
 .form_event
@@ -395,7 +397,7 @@
     padding: 60px
 
     .metaItems
-      text-align: center
+      text-align: left
       margin-bottom: 20px
 
       .data
@@ -512,27 +514,36 @@
 
       &:nth-child(1)
         padding-right: 0
+      
+      .inputBox
+        display: flex
+        width: 100%
 
-      .formInput
-        flex: 1 1 50%
-        position: relative
-        padding-right: 20px
-        margin-bottom: 20px
+        .formInput
+          flex: 1 1 50%
+          position: relative
+          margin: 40px 20px 20px 0
+          border: 2px solid transparent
 
-        .formInputIcon
-          position: absolute
-          left: 28px
-          top: 22px
-          color: #5b83cd
 
-        input
-          width: 100%
-          padding-left: 60px
-          color: black
+          .formInputIcon
+            position: absolute
+            left: 28px
+            top: 22px
+            color: #5b83cd
+
+          input
+            width: 100%
+            padding: 20px 0 20px 60px
+            color: black
+            border: none
+            box-shadow: 0 0px 10px 0px rgb(0 0 0 / 5%)
+            background-color: transparent
 
       .formTextArea
         position: relative
         flex: 1 1 100%
+        margin-bottom: 2rem
 
         .formInputIcon
           position: absolute
@@ -543,9 +554,18 @@
         textarea
           color: black
           width: 100%
+          font-size: 20px
+          box-shadow: 0 0px 10px 0px rgb(0 0 0 / 5%)
+          background-color: transparent
+          border: none
 
       .formSubmit
         @extend .fancyButton
+        border-radius: 10px
+        width: fit-content
+        span
+          border-radius: 5px
+          overflow: hidden
 
 
 .form_event
@@ -650,6 +670,7 @@
 @media screen and (min-width: 1000px)
   .container
     padding: 50px
+    width: 90%
   .left
     width: 60%
   .right
@@ -657,12 +678,23 @@
   .comments
     margin: 0
 
+  .metaItems
+    font-size: 14px
+
 @media screen and (max-width: 1000px)
   .container
     flex-direction: column
     justify-content: center
+    width: 100%
+    padding: 1rem
+
+  .article
+
+    .itemContent
+      padding: 2rem
+
   .left
-    width: 80%
+    width: 100%
     margin-top: 10px
   .right
     width: 80%
@@ -670,6 +702,8 @@
   .recentPortfolio
     .photo
       grid-template-columns: repeat(6, 1fr)
+  .formSubmit
+    width: fit-content
 
 @media screen and (max-width: 790px)
   .commentResponse
@@ -678,23 +712,101 @@
 
   .recentPortfolio
     .photo
-      grid-template-columns: repeat(4, 1fr)
-    justify-content: center
+      grid-template-columns: repeat(6, 1fr)
+      justify-content: center
   .left
-    width: 80%
+    width: 100%
     margin: auto
   .right
-    width: 80%
-    margin: auto
+    width: 100%
+    padding: 1rem
+    margin: 2rem auto
   .recentPortfolio
     .photo
       grid-template-columns: repeat(6, 1fr)
 
-@media screen and (max-width: 790px)
   .commentResponse
     .commentForm
       flex-direction: column
 
-  .recentPortfolio
-    .photo
-      grid-template-columns: repeat(4, 1fr)
+
+@media screen and (max-width : 475px)
+  .comments
+    padding: 1rem
+
+  .commentList
+    margin-top: 30px
+
+    .comment
+
+      // For all comments' body
+      .commentBody
+        display: flex
+        position: relative
+        justify-content: start
+        border-bottom: 1px solid #ebeaeb
+        margin: 30px 0
+
+        .commentImgContainer
+          flex: 1 1 10%
+
+          img
+            border-radius: 100%
+            width: 100%
+            height: auto
+
+        .commentContent
+          padding: 10px !important
+          flex: 1 1 80%
+
+          b
+            .commentNameLink
+              font-weight: 500
+
+            .commentMetadata
+              a::before
+                color: #4c4c4c
+                content: "o"
+                margin: 0 10px
+
+              time
+                color: #c280bf
+                font-weight: 300
+
+          .commentText
+            color: #7f7f7f
+            line-height: 30px
+            font-weight: 300
+
+        .replyIcon
+          svg:hover
+            color: #c280bf
+
+      .commentChildren
+        .commentBody
+          padding-left: 40px !important
+
+          .commentImgContainer
+            flex: 1 1 5%
+
+            img
+              width: 100%
+
+  .inputBox
+    flex-wrap: wrap
+    margin-bottom: 20px
+  
+  .formInput
+    margin:  20px 20px 0 0 !important
+  
+  .formTextArea
+    margin-bottom: 1rem !important
+
+  .right
+    padding: 0
+
+  .search
+    margin-bottom: 2rem
+
+  .photo
+    grid-template-columns: repeat(3, 1fr) !important

@@ -12,7 +12,7 @@ html
 
 .container
     display: flex
-    margin: auto
+    margin: 4rem auto
     flex-direction: row
     justify-content: center
     margin-bottom: 10%
@@ -29,31 +29,34 @@ html
     line-height: 35px
 
     .item
-        display: flex
-
+        background-color: #f7f6fb
+        border-radius: 20px 0 0 20px
+        .itemBox
+            display: flex
+            margin-bottom: 3rem
         .imageBox
-            margin-right: 5%
-            margin-bottom: 8%
-
             img
                 width: 250px
-                height: auto
+                height: 100%
                 border-radius: 20px
 
         .textBox
             width: 80%
+            padding:  2rem
 
 .item_title
     margin-top: 2%
-    font-weight: bold
     font-size: 1.2rem
     color: #4c4c4c
-
     &:hover
         color: #0560a5
         text-decoration: none
         cursor: pointer
         transition: all 0.2s ease-in-out 0s
+
+    h3
+        font-weight: 400
+
 
 .datetime
     font-weight: lighter
@@ -64,19 +67,18 @@ html
     display: flex
     justify-content: space-between
     align-items: center
+    width: 60%
 
     .icon
         margin-right: 5px
+        color: #5b83cd !important
 
 .item_text
     font-size: medium
-    color: #a0a0a0
+    color: #4d4d4d
     text-align: left
-
-    &:hover
-        opacity: 0.7
-        cursor: pointer
-        transition: all 0.2s ease-in-out 0s
+    opacity: 1
+    cursor: pointer
 
 .btns
     margin-top: 3%
@@ -166,6 +168,7 @@ html
 
 .recent_portfolio
     width: 350px
+    margin-top: 2rem
     .photo
         display: flex
         flex-wrap: wrap
@@ -174,7 +177,7 @@ html
         @include frameSize(1000px)
             grid-template-columns: repeat(6,1fr)
         @include frameSize(768px)
-            grid-template-columns: repeat(4,1fr)
+            grid-template-columns: repeat(6,1fr)
         @include frameSize(480px)
             grid-template-columns: repeat(3,1fr)
         @include frameSize(368px)
@@ -196,29 +199,7 @@ html
     color: #4c4c4c
     font-size: 24px
     font-weight: 700
-.tag_cloud
-    width: 350px
-    .tags_cloud_items
-        display: flex
-        flex-wrap: wrap
-        margin-top: 25px
-        .tag_cloud_link
-            color: #c280bf
-            font-size: 12px !important
-            font-weight: 500
-            text-align: center
-            text-decoration: none
-            text-transform: uppercase
-            transition: 0.2s
-            border: 1px solid #c280bf
-            border-radius: 1px
-            box-shadow: 0 0px 10px 0px rgb(0 0 0 / 5%)
-            display: inline-block
-            margin: 0 0 10px 5px
-            padding: 16px 33px
-            &:hover
-                color: #fff
-                background-color: #c280bf
+    margin-bottom: 1rem
 
 @media screen and (max-width : 1800px)
     .left
@@ -281,34 +262,62 @@ html
 
 @media screen and (max-width: 790px)
 
+    .left
+        width: 95%
+    
+    .items
+        padding: 1rem
+
+
     .items
         .item
             flex-direction: column
-
+            padding: 0
             .imageBox
-                text-align: center
-                margin-bottom: 5%
+                margin: 0
 
                 img
-                    border-radius: 0
-                    width: 500px
-                    height: 340px
+                    border-radius: 20px
+                    width: 100%
+                    height: 100%
 
             .textBox
-                text-align: center
+                text-align: left
                 margin: auto
-                .item_text
-                    text-align: center
+                padding: 1rem
     .btns
         margin: auto
 
     .form_event
-        margin: 10px auto
+        margin: 10px 0
     .about
         width: 100%
         text-align: center
     .readBtn
         margin: 10px
+
+    .datetime
+        width: 80%
+
+    .btns
+        text-align: left
+        margin-left: 1rem
+
+    .right
+        width: 95%
+
+    .search 
+        text-align: left
+
+    .form_event
+        width: 100%
+
+    .form_event button
+        right: 0
+        
+    .recent_portfolio
+        width: 100%
+    
 
 @media screen and (max-width: 630px)
 
@@ -332,17 +341,17 @@ html
     .items
         .item
 
-            .imageBox
-                text-align: center
-                margin: 0 0 5% 0
+        .imageBox
+            text-align: center
+            margin: 0 0 5% 0
 
-                img
-                    border-radius: 0
-                    width: 90%
-                    height: auto
+            img
+                border-radius: 20px
+                width: 100%
+                height: auto
 
-            .textBox
-                margin-bottom: 5%
+        .textBox
+            margin-bottom: 5%
     .form_event
         width: 15rem
         margin: auto
@@ -361,25 +370,60 @@ html
         padding: 12px 30px
     .recent_portfolio
         width: 300px
-@media screen and (max-width:400px)
-    .tag_cloud
-        width: 250px
+
+
 
 @media screen and (max-width: 375px)
     .container
         width: 100%
     .left
         width: 100%
+
+    .items
+        .item
+            border-radius: 20px 20px 0 0
+
+    .itemBox
+        flex-direction: column
+
+    .items
+        .item
+            flex-direction: column
+            padding: 0
+            .imageBox
+                margin: 0
+
+                img
+                    border-radius: 20px
+                    width: 100%
+                    height: 100%
+
+            .textBox
+                text-align: center
+                margin: auto
+                padding: 1rem
+                width: 100%
+
+    .datetime
+        width: 95%
+
+    .item_title
+        h3
+            a
+                font-size: 20px
+    
     .right
         width: 100%
     .form_event
-        width: 15rem
+        width: 100%
         margin: auto
     .form_event input[type="search"]
         padding: 10px 10px
+        width: 100%
         font-size: 10px
     .form_event button
-        margin: 0px 0px 0px 60px
+        float: right
+        padding: 20pxx
     .readDiv
         margin-bottom: 50px
     .readBtn
@@ -391,5 +435,3 @@ html
         font-size: 12px
     .recent_portfolio
         width: 300px
-    .tag_cloud
-        width: 250px
