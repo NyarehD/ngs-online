@@ -608,7 +608,7 @@ export default function TeamList(teamListContent) {
     return teamSelect.map((dev) => {
 
       const sendData = () => {
-        navigate('team-single',
+        navigate('/team-single',
             {
               state: {
                 id: dev.id,
@@ -691,7 +691,7 @@ export default function TeamList(teamListContent) {
         <div className={teamListStyle.container}>
           <div className={teamListStyle.menuList}>
             <div className={teamListStyle.lists}>
-              <nav>
+              <nav className={teamListStyle.nav_lists}>
                 <NavLink
                   style={({ isActive }) => {
                     return {
@@ -745,7 +745,7 @@ export default function TeamList(teamListContent) {
                   or things come up. Life happens.
                   </p>
                   <button className={teamListStyle.children_button}>
-                  Go to Events-Right Page
+                  <span className={teamListStyle.children_button_text}>Go to Events-Right Page</span>
                   </button>
               </div>
           </div>

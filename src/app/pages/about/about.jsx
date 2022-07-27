@@ -14,6 +14,7 @@ import aboutStyles from "./about.module.sass";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router-dom"
+import {useSpring, animated} from "react-spring"
 
 import HeaderStyle from "../../../core/components/header/header.module.sass";
 import HeaderCarousel from "../../../core/components/header-carousel/header-carousel";
@@ -25,7 +26,6 @@ function About(aboutContent) {
       title: "ABOUT VERTICAL SOLUTIONS",
       name: "Web Service Company In Country",
       service: "We expertise in All Web Design and Development!",
-      // description:"",
       img: image0,
 
       service_lists: [
@@ -57,12 +57,17 @@ function About(aboutContent) {
     },
   ];
 
+  const fadeUp=useSpring({
+    from: { opacity: 0, y: 100 },
+    to: { opacity: 1, y:0 },
+    delay: 500
+  });
   const content = information.map((info) => {
     return (
-      <div className={aboutStyles.container}>
+      <animated.div className={aboutStyles.container} style={fadeUp}>
         <div className={aboutStyles.about_info}>
           <div className={aboutStyles.about_image}>
-            <img src={info.img} alt="" />
+            <img className={aboutStyles.about_image_img} src={info.img} alt="" />
           </div>
           <div className={aboutStyles.item_content}>
             <h4 className={aboutStyles.content_title}>{info.title}</h4>
@@ -72,15 +77,15 @@ function About(aboutContent) {
                         {info.description} 
                     </p> */}
             <div className={aboutStyles.content_list}>
-              <ul className={aboutStyles.servise_list}>
+              <ul className={aboutStyles.servise_lists}>
                 {info.service_lists.map((serv) => {
-                  return <li>{serv.serv_title}</li>;
+                  return <li className={aboutStyles.servise_list}>{serv.serv_title}</li>;
                 })}
               </ul>
             </div>
           </div>
         </div>
-      </div>
+      </animated.div>
     );
   });
 
@@ -166,7 +171,7 @@ function About(aboutContent) {
       </div>
 
       <div className={aboutStyles.imageBox}>
-        <img src={image} alt="" id="image" />
+        <img className={aboutStyles.imageBox_img} src={image} alt="" id="image" />
         <div className={aboutStyles.name}>
           <ul>
             <li
@@ -207,6 +212,7 @@ function About(aboutContent) {
             </li>
           </ul>
         </div>
+        <span className={aboutStyles.ourTeam}>OurTeam</span>
       </div>
     </div>
   );
