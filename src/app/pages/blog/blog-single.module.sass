@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900")
+@import '../../../style/variable.module'
 
 @mixin frameSize($width)
     @media screen and (max-width:$width)
@@ -31,78 +32,71 @@ body
         color: #ffffff80
 
 .container
-    width: 100%
-    max-width: 1200px
     margin: 0 auto
-    padding: 160px 100px 130px 100px
-    @include frameSize(700px)
-        padding: 10px !important
-    @include frameSize(550px)
-        padding: 0px !important // still a bug
+    padding:0 15px
+    width: 100%
     .content
         height: auto
         width: 100%
         background-color:  #f7f6fb
-
         display: flex
         flex-direction: column
         justify-content: center
         .main_photo
             width: 100%
-            margin-bottom: 40px
             .main_photo_img
                 width: 100%
                 border-radius: 5px 5px 0 0
         .post_content
-            padding: 0 50px
+            padding: 25px 20px
             .reaction
-                width: 90%
-                margin-bottom: 40px
-                display: flex
-                justify-content: space-between
-                align-items: center
-                @include frameSize(800px)
-                    width: 100%
-                    display: grid
-                    grid-template-columns: repeat(3,1fr)
-                @include frameSize(700px)
-                    display: grid
-                    grid-template-columns: repeat(2,1fr)
-                @include frameSize(600px)
-                    display: grid
-                    grid-template-columns: repeat(1,1fr)
+                width: 100%
+                margin-bottom: 30px
+                div
+                    line-height: 20px
+                    margin: 0 5px
+                    display: inline-block
+                    &:first-child
+                        margin-left: 0
+                    &:last-child
+                        margin-right: 0
+
                     
                 .react_links
+                    font-size: 12px
                     font-weight: 500
                     letter-spacing: 0.1em
                     text-transform: uppercase
                     text-decoration: none
                     .react_icon
-                        margin-right: 10px
+                        margin-right: 5px
                         // font-size: 0.8vw
                         font-size: 12px
                         color: $reactionColor
                     .react_title
                         // font-size: 0.8vw
-                        font-size: 8px
+                        font-size: 12px
                         color: #4c4c4c
                         transition: 0.2s
+                        letter-spacing: 150%
                         &:hover
                             color: $reactionColor
             .main_blog
                 color: $blogTextColor
                 .blog_title
                     color: $blogTitleColor
-                    font-size: 1.5vw
+                    font-size: 20px
                     font-weight: 500
                     margin: 20px 0
                 .blog_body_text
                     margin-bottom: 20px
                     // font-size: 12px
-                    font-size: 1.2vw
+                    font-size: 16px
+                    font-weight: 300
                 .blog_list
                     .blog_list_items
-                        font-size: 1.2vw
+                        font-weight: 400
+                        font-size: 14px
                         letter-spacing: 1px
                         padding: 3px 0
                         color: $blogTitleColor
@@ -110,25 +104,25 @@ body
                         &::before
                             color: $purpleColor
                             content: "\25CF"
-                            font-size: 1.2vw
+                            font-size: 13px
                             padding-right: 10px
                 .post_gallery
-                    margin: 43px 0 29px
-                    display: grid
-                    grid-template-columns: repeat(3, 1fr)
-                    gap: 20px
-                    @include frameSize(950px)
-                        grid-template-columns: repeat(2, 1fr)
+                    margin:30px 0 
+                    display: flex
+                    justify-content: space-between
                     @include frameSize(800px)
-                        grid-template-columns: repeat(1, 1fr)
-                    .post_gallery_image
-                        border-radius: 5px
-                        width: 210px
-                        height: 190px
-                        margin-bottom: 20px
-                        @include frameSize(800px)
+                        display: block
+                    .post_gallery_image_container
+                        .post_gallery_image
+                            border-radius: 5px
                             width: 100%
-                            height: 100%
+                            max-width: 210px
+                            margin: 0 auto
+                            height: 190px
+                            @include frameSize(800px)
+                                max-width: 100%
+                                height: 100%
+
                 .block_quote
                     margin: 0
                     .media
@@ -149,14 +143,14 @@ body
                                     width: 20px
                         .media_body
                             .quote_title
-                                font-size: 0.9vw
+                                font-size: 12px
                                 font-weight: 500
                                 text-transform: uppercase
                                 letter-spacing: 0.42em
                                 color: $purpleColor !important
                                 margin-bottom: 35px
                             .quote_text
-                                font-size: 1.4vw
+                                font-size: 18px
                                 font-weight: 300
                                 font-style: italic
                                 color: $blogTitleColor
@@ -168,12 +162,10 @@ body
                 justify-content: space-between
                 align-items: center
                 text-transform: uppercase
-                font-size: 0.9vw
+                font-size: 12px
                 font-weight: 500
                 margin: 40px 0
-                @include frameSize(700px)
-                    flex-direction: column
-                    justify-content: space-between
+                @include frameSize(428px)
                 .blog_tags
                     display: flex
                     align-items: center
@@ -201,7 +193,6 @@ body
                 .blog_react
                     letter-spacing: 0.2em
                     @include frameSize(700px)
-                        margin-top: 20px
                         align-self: flex-end
                     .blog_react_like
                         color: $purpleColor
@@ -330,7 +321,7 @@ body
                     align-items: center
                 .author_role
                     color: $purpleColor
-                    font-size: 0.9vw
+                    font-size: 12px
                     font-weight: 500
                     letter-spacing: 0.2em
                     text-transform: uppercase
@@ -339,7 +330,7 @@ body
                     text-decoration: none
                     color: $blogTitleColor
                     font-weight: 600
-                    font-size: 1.6vw
+                    font-size: 18px
                     letter-spacing: 0.1em
                     transition: 0.2s
                     margin-bottom: 15px
@@ -348,7 +339,7 @@ body
                 .author_bio_text
                     color: $blogTextColor
                     line-height: 2em
-                    font-size: 1.2vw
+                    font-size: 14px
                     margin-bottom: 15px
                     @include frameSize(1000px)
                         text-align: center
@@ -358,27 +349,27 @@ body
                     justify-content: space-between
                     text-align: center
                     .author_social_facebook
-                        font-size: 1.05vw
+                        font-size: 13px
                         color: #3b5998
                         &:hover
                             color: #5b83cd
                     .author_social_twitter
-                        font-size: 1.05vw
+                        font-size: 13px
                         color:#55acee
                         &:hover
                             color: #85caff
                     .author_social_google
-                        font-size: 1.05vw
+                        font-size: 13px
                         color: #dd4b39
                         &:hover
                             color: #fc6551
                     .author_social_youtube
-                        font-size: 1.05vw
+                        font-size: 13px
                         color: #e52d27
                         &:hover
                             color: #ff6560
                     .author_social_linkedin
-                        font-size: 1.05vw
+                        font-size: 13px
                         color:  #0976b4
                         &:hover
                             color:  #31a3e6
@@ -387,7 +378,7 @@ body
         margin-bottom: 40px
         .title
             color: $blogTitleColor
-            font-size:2.5vw
+            font-size:20px
             letter-spacing: 0
             line-height: 1
             margin-bottom: 40px
@@ -422,7 +413,7 @@ body
                             opacity: 0.85
                     .relatedPost_description
                         color: $blogTitleColor
-                        font-size: 1.2vw
+                        font-size: 13px
                         font-weight: 500
                         margin-bottom: 10px
                         transition: 0.2s
@@ -430,7 +421,7 @@ body
                             color: $reactionColor
                     .relatedPost_postedOn
                         color: $purpleColor
-                        font-size: 1.2vw
+                        font-size: 13px
                         font-weight: 500
                         margin-bottom: 10px
                         &:hover
@@ -446,10 +437,38 @@ body
             justify-content: center
             padding: 55px 50px  
             .comment_title
-                font-size: 2.2vw
+                font-size: 24px
                 font-weight: 700
                 color: $blogTitleColor
                 margin-bottom: 30px
 
                                 
-                            
+@media (max-width:$break_point-s)
+    .container
+        width:100%
+
+@media (min-width:$break_point-s)
+    .container
+        width:$max-width-s
+        
+@media (min-width:$break_point-md)
+    .container
+        width:$max-width-md
+        .post_content
+            padding: 50px !important
+            .reaction
+                div
+                    margin: 0 12px !important
+
+@media (min-width:$break_point-lg)
+    .container
+        width:$max-width-lg
+        padding: 0 8% !important
+
+@media (min-width:$break_point-xl)
+    .container
+        width:$max-width-xl
+
+@media (min-width:$break_point-xxl)
+    .container
+        width:$max-width-xxl

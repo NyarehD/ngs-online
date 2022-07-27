@@ -3,8 +3,14 @@ import BlogListStyle from "./blog-list.module.sass";
 import Image from "../../../assets/event/01.jpg";
 import api from "../../../api/mockApi";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTags, faComments, faHeart, faMagnifyingGlass ,faAngleRight } from "@fortawesome/free-solid-svg-icons";
-import { NavLink } from "react-router-dom"
+import {
+  faTags,
+  faComments,
+  faHeart,
+  faMagnifyingGlass,
+  faAngleRight,
+} from "@fortawesome/free-solid-svg-icons";
+import { NavLink } from "react-router-dom";
 
 import HeaderStyle from "../../../core/components/header/header.module.sass";
 import HeaderCarousel from "../../../core/components/header-carousel/header-carousel";
@@ -76,7 +82,6 @@ const Blog = ({ post, theme }) => {
 const BlogContainer = ({ togglePosts, currentPosts, pageNumber, paginate, currentPostsByFilter,currentPage,theme }) => {
   return (
     <div className={BlogListStyle.blogList_left_container}>
-
       {/* start Blog Post */}
       {togglePosts
         ? currentPostsByFilter?.map((post, i) => <Blog theme={theme} key={i} post={post} />)
@@ -85,7 +90,7 @@ const BlogContainer = ({ togglePosts, currentPosts, pageNumber, paginate, curren
 
       {/*start pagination */}
       <nav className={BlogListStyle.pagination_Section}>
-        <ul  className={BlogListStyle.pagination_container}>
+        <ul className={BlogListStyle.pagination_container}>
           {pageNumber?.map((num) => (
             <li key={num}className={`${BlogListStyle.pagination_item} ${currentPage==num&&BlogListStyle.active} ${theme === 'dark'?BlogListStyle.dark_theme_text:''}`} onClick={() => paginate(num)}>
               {num}
@@ -94,14 +99,21 @@ const BlogContainer = ({ togglePosts, currentPosts, pageNumber, paginate, curren
         </ul>
       </nav>
       {/*end pagination */}
-
-
     </div>
   );
 };
 
-const BlogHelperContainer = ({ posts, setPostsByFilter, filterByTag,setTogglePosts,setCurrentPage,filterByCategory,tags,categroies,theme }) => {
-  
+const BlogHelperContainer = ({
+  posts,
+  setPostsByFilter,
+  filterByTag,
+  setTogglePosts,
+  setCurrentPage,
+  filterByCategory,
+  tags,
+  categroies,
+  theme
+}) => {
   const showPostByCategroy = (filterName) => {
     const data = filterByCategory(filterName);
     showFilterPostProcess(data);
@@ -110,24 +122,22 @@ const BlogHelperContainer = ({ posts, setPostsByFilter, filterByTag,setTogglePos
   const showPostByTag = (tagName) => {
     const data = filterByTag(tagName);
     showFilterPostProcess(data);
-  }
+  };
 
   const showFilterPostProcess = (data) => {
     setPostsByFilter(data);
-    setCurrentPage(1)
+    setCurrentPage(1);
     setTogglePosts(true);
-  }
+  };
 
-
-  // generate Cat Name and no of post with that cat name 
-  const categroiesWithNoOfPost = categroies.map(cat => {
+  // generate Cat Name and no of post with that cat name
+  const categroiesWithNoOfPost = categroies.map((cat) => {
     const noOfPost = filterByCategory(cat);
-    return {catName:cat,noOfPost:noOfPost.length}
-  })
+    return { catName: cat, noOfPost: noOfPost.length };
+  });
 
   return (
     <div className={BlogListStyle.blogList_right_container}>
-
       {/* search  */}
       <div className={`${BlogListStyle.search} ${BlogListStyle.mb}`}>
         <h2 className={`${BlogListStyle.headertag} ${theme === 'dark'?BlogListStyle.dark_theme_text:''}`}>Search</h2>
@@ -228,7 +238,6 @@ const BlogHelperContainer = ({ posts, setPostsByFilter, filterByTag,setTogglePos
           ))}
         </div>
       </div>
-
     </div>
   );
 };
@@ -242,76 +251,83 @@ function BlogList(blogListContent) {
 
   const [postsByFilter, setPostsByFilter] = useState([]);
   const [tags, setTags] = useState([]);
-  const [categroies,setCategories] = useState([])
+  const [categroies, setCategories] = useState([]);
 
-  const data = blogListContent.blogListContent
-  console.log(data)
+  const data = blogListContent.blogListContent;
+  console.log(data);
 
-
-   //start filter function By tag or category  
+  //start filter function By tag or category
   const filterByCategory = (categoryName) => {
-    const filterByCategoryPost = posts.filter(post => post.category === categoryName);
+    const filterByCategoryPost = posts.filter((post) => post.category === categoryName);
     return filterByCategoryPost;
-  }
+  };
 
   const filterByTag = (tagName) => {
     const filterByTagPosts = posts.filter((post) => post.tag.includes(tagName));
     return filterByTagPosts;
-  }
-    //end filter function By tag or category
- 
-    
-    // start fetch api insturction 
-    const fetchData = async (url, set) => {
-     try {
-       const { data } = await api.get(url);
-       set(data);
-     } catch (error) {
-      console.log({error})
-     }
+  };
+  //end filter function By tag or category
+
+  // start fetch api insturction
+  const fetchData = async (url, set) => {
+    try {
+      const { data } = await api.get(url);
+      set(data);
+    } catch (error) {
+      console.log({ error });
     }
+  };
   // end fetch api insturction
 
-
-
-
   useEffect(() => {
-    fetchData('/blog-posts', setPosts);
+    fetchData("/blog-posts", setPosts);
     fetchData(`/tags`, setTags);
-    fetchData(`/categories`,setCategories)
-  }, [])
+    fetchData(`/categories`, setCategories);
+  }, []);
 
   // console.log({ categroies,posts,tags });
 
-  // start pagination instruction 
+  // start pagination instruction
   const indexOfLastPost = currentPage * postPerPage;
   const indexOfFirstPost = indexOfLastPost - postPerPage;
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
   const currentPostsByFilter = postsByFilter.slice(indexOfFirstPost, indexOfLastPost);
   const pageNumber = [];
-        //--->for dynamic pagination by tag name 
-  const paginationLength = togglePosts ? postsByFilter.length / postPerPage:posts.length / postPerPage;
-  
+  //--->for dynamic pagination by tag name
+  const paginationLength = togglePosts
+    ? postsByFilter.length / postPerPage
+    : posts.length / postPerPage;
+
   // console.log({paginationLength});
-  
+
   for (let i = 1; i <= Math.ceil(paginationLength); i++) {
     pageNumber.push(i);
   }
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
-   // end pagination instruction
-
+  // end pagination instruction
 
   // console.log({ postsByFilter });
-  
 
-   const BlogContainerProps = {
-    togglePosts, currentPosts, pageNumber, paginate, currentPostsByFilter,currentPage,
-  }
+  const BlogContainerPorps = {
+    togglePosts,
+    currentPosts,
+    pageNumber,
+    paginate,
+    currentPostsByFilter,
+    currentPage,
+  };
   const BlogHelperContainerProps = {
-        setTogglePosts,posts,setPostsByFilter,setCurrentPage,tags,categroies,filterByCategory,filterByTag
-  }
+    setTogglePosts,
+    posts,
+    setPostsByFilter,
+    setCurrentPage,
+    tags,
+    categroies,
+    filterByCategory,
+    filterByTag,
+  };
 
   return (
     <div>
@@ -327,14 +343,9 @@ function BlogList(blogListContent) {
                 </NavLink>
               </li>
               <li className={HeaderStyle.breakCrumbList}>
-                <FontAwesomeIcon
-                  className={HeaderStyle.icon}
-                  icon={faAngleRight}
-                ></FontAwesomeIcon>
+                <FontAwesomeIcon className={HeaderStyle.icon} icon={faAngleRight}></FontAwesomeIcon>
               </li>
-              <li className={HeaderStyle.breakCrumbList}>
-                {data.secondBreakCrumb}
-              </li>
+              <li className={HeaderStyle.breakCrumbList}>{data.secondBreakCrumb}</li>
             </ol>
           </div>
         </div>
@@ -344,7 +355,7 @@ function BlogList(blogListContent) {
 
         <BlogContainer
           theme={value.mode}
-          {...BlogContainerProps}
+          {...BlogContainerPorps}
         />
         <BlogHelperContainer
           theme={value.mode}

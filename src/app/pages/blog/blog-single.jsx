@@ -146,12 +146,14 @@ export default function Blog(){
                                     {
                                         blog.postImage.map(images=>{
                                             return(
-                                                <img 
+                                                <div className={BlogStyle.post_gallery_image_container}>
+                                                    <img 
                                                     src={images.img} 
                                                     key={images.id}
                                                     alt=""
                                                     className={BlogStyle.post_gallery_image} 
                                                 />
+                                                </div>
                                             )
                                         })
                                     }

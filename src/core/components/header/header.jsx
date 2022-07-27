@@ -40,44 +40,29 @@ function Header() {
         }
       >
         <ul>
-          <li
-            onClick={() => setIndex(0)}
-          >
-            <Link className={`${index === 0 ? `${Style.navActive}` : ``}`} type="button" to={"/"} >Home</Link>
+          <li>
+            <Link className={`${locationPath.pathname === "/"  ? `${Style.navActive}` : ''}`} type="button" to={"/"} >Home</Link>
           </li>
-          <li
-            onClick={() => setIndex(1)}
-          >
-            <Link className={`${index === 1 ? `${Style.navActive}` : ``}`}type="button" to={"/team-list"}>Team</Link>
+          <li>
+            <Link className={`${locationPath.pathname === "/team-list"  ? `${Style.navActive}` : ''}`}type="button" to={"/team-list"}>Team</Link>
           </li>
-          <li
-            
-            onClick={() => setIndex(2)}
-          >
-            <Link className={`${index === 2 ? `${Style.navActive}` : ``}`}type="button" to={"/event-list"}>Event</Link>
+          <li>
+            <Link className={`${locationPath.pathname === "/event-list"  ? `${Style.navActive}` : ''}`}type="button" to={"/event-list"}>Event</Link>
           </li>
-          <li
-            
-            onClick={() => setIndex(3)}
-          >
-            <Link className={`${index === 3 ? `${Style.navActive}` : ``}`}type="button" to={"/about"}>About</Link>
+          <li>
+            <Link className={`${locationPath.pathname === "/about"  ? `${Style.navActive}` : ''}`}type="button" to={"/about"}>About</Link>
           </li>
-          <li
-            
-            onClick={() => setIndex(4)}
-          >
-            <Link className={`${index === 4 ? `${Style.navActive}` : ``}`}type="button" to={"/contact"}>Contact</Link>
+          <li>
+            <Link className={`${locationPath.pathname === "/contact"  ? `${Style.navActive}` : ''}`}type="button" to={"/contact"}>Contact</Link>
           </li>
           <li
             
             onClick={() => setIndex(5)}
           >
-            <Link className={`${index === 5 ? `${Style.navActive}` : ``}`}type="button" to={"/blog"}>Blog</Link>
+            <Link className={`${locationPath.pathname === "/blog" ? `${Style.navActive}` : ''}`}type="button" to={"/blog"}>Blog</Link>
           </li>
-          <li
-            onClick={() => setIndex(6)}
-          >
-            <Link className={`${index === 6 ? `${Style.navActive}` : ``}`}type="button" to={"/faq"} >Faq</Link>
+          <li>
+            <Link className={`${locationPath.pathname === "/faq"  ? `${Style.navActive}` : ''}`} type="button" to={"/faq"} >Faq</Link>
           </li>
           <li >
             <a 

@@ -190,10 +190,10 @@ function Nav() {
             <a href="/">Home</a>
           </li>
           <li>
-            <a href="/team">Team</a>
+            <a href="/team-list">Team</a>
           </li>
           <li>
-            <a href="/event">Event</a>
+            <a href="/event-list">Event</a>
           </li>
           <li>
             <a href="/about">About</a>
