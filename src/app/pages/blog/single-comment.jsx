@@ -17,8 +17,6 @@ const SingleComment=({
     parentId=null,
     themeStyle
 })=>{
-    // const fiveMinutes= 300000
-    // const timePassed = new Date()-new Date(comment.createdAt) > fiveMinutes;
     const canReply = Boolean(currentUserId)
     const canEdit = currentUserId === comment.userId
     const canDelete = currentUserId === comment.userId
@@ -32,6 +30,7 @@ const SingleComment=({
         activeComment.type === "editing" &&
         activeComment.id === comment.id
     const replyId = parentId? parentId : comment.id
+    const darkMode = themeStyle === 'dark'?{'background':CommentStyle.darkBackground,'color':CommentStyle.darkTextColor,'InputBox':CommentStyle.darkInputBox}:{}
     return(
         <div className={CommentStyle.comment}>
             <div className={CommentStyle.commentImageContainer}>
@@ -39,14 +38,14 @@ const SingleComment=({
             </div>
             <div className={CommentStyle.commentRightPart}>
                 <div className={CommentStyle.commentContent}>
-                    <a href="" className={`${CommentStyle.commentAuthor} ${themeStyle?.color}`}>
+                    <a href="" className={`${CommentStyle.commentAuthor} ${darkMode?.color}`}>
                         {comment.username}
                     </a>  
                     <a href="#" className={CommentStyle.commentMetaLink}>
                         <div className={CommentStyle.commentDate}>{createdAt}</div>
                     </a>
                 </div>
-                {!isEditing && <div className={`${CommentStyle.commentText} ${themeStyle?.color}`}>{comment.body}</div>}
+                {!isEditing && <div className={`${CommentStyle.commentText} ${darkMode?.color}`}>{comment.body}</div>}
                 {isEditing && (
                     <CommentForm 
                         submitLabel="Update" 
@@ -55,9 +54,10 @@ const SingleComment=({
                         handleSubmit={(text)=>updateComment(text, comment.id)}
                         handleCancel={()=>setActiveComment(null)}
                         themeStyle={themeStyle}
+                        isEditing={isEditing}
                     />
                 )}
-                <div className={`${CommentStyle.commentActions} ${themeStyle?.color}`}>
+                <div className={`${CommentStyle.commentActions} ${darkMode?.color}`}>
                     {canReply && 
                         <div 
                             className={CommentStyle.commentAction}

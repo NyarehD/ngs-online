@@ -11,6 +11,7 @@ const Comments=({currentUserId,setNOComment,themeStyle})=>{
     const [activeComment, setActiveComment] = useState(null)
     const [nOComment, setnOComment]=useState(0)
     const rootComments=backendComments.filter((backendComment)=>backendComment.parentId===null)
+    const darkMode = themeStyle === 'dark'?{'background':CommentStyle.darkBackground,'color':CommentStyle.darkTextColor,'InputBox':CommentStyle.darkInputBox}:{}
     const getReplies=(commentId)=>{
         return backendComments.filter(backendComment=>backendComment.parentId===commentId)
         .sort(
@@ -21,11 +22,13 @@ const Comments=({currentUserId,setNOComment,themeStyle})=>{
     const createComment = async (text, parentId = null) => {
         const updateComments={
             id: Math.random().toString(36).substr(2,9),
-            body: text,
+            name: text.name,
+            email: text.email,
+            body: text.text,
             parentId,
             userId: "1",
             username: "Jack",
-            authorImg:comment03,
+            authorImg:comment03,    
             createdAt: new Date().toISOString(),
         }
         setnOComment(prevCom=>prevCom+1)
@@ -45,7 +48,7 @@ const Comments=({currentUserId,setNOComment,themeStyle})=>{
         const response=await api.get("/blog-single")
         const updateComments=backendComments.map((backendComment)=>{
             if(backendComment.id === commentId){
-                return { ...backendComment, body: text}
+                return { ...backendComment, body: text.text}
             }else{ return backendComment }
         })
         const useData={...response.data,comments: updateComments}
@@ -65,8 +68,8 @@ const Comments=({currentUserId,setNOComment,themeStyle})=>{
     const deleteComment=async(commentId)=>{
         if(window.confirm('Are you sure that you want to delete comment')){
             const updateBackendComments= backendComments.filter(
-                backendComment=>backendComment.id !==commentId
-                )
+                backendComment=>backendComment.id !== commentId
+                ).filter(backendComment=>backendComment.parentId !== commentId)
             setnOComment(prevCom=>prevCom-1)
             const response=await api.get("/blog-single")
             const useData={...response.data, NOComment : nOComment-1, comments : updateBackendComments}
@@ -95,8 +98,6 @@ const Comments=({currentUserId,setNOComment,themeStyle})=>{
         },[])
     return(
         <div className={CommentStyle.comments}>
-            <div className={`${CommentStyle.commentsTitle} ${themeStyle?.color}`}>Leave Your Comment</div>
-            <CommentForm submitLabel="Write" handleSubmit={addComment} themeStyle={themeStyle}/>
             <div className={CommentStyle.commentContainer}>
                 {
                     rootComments.map(rootComment=>(
@@ -112,9 +113,11 @@ const Comments=({currentUserId,setNOComment,themeStyle})=>{
                             addComment={addComment}
                             themeStyle={themeStyle}
                         />
-                    ))
-                }
+                        ))
+                    }
             </div>
+            <div className={`${CommentStyle.commentsTitle} ${darkMode?.color}`}>Leave Your Comment</div>
+            <CommentForm submitLabel="submit" handleSubmit={addComment} themeStyle={themeStyle}/>
         </div>
     )
 
