@@ -60,14 +60,21 @@
 .tabContent div div, .tabContentDark div div
     background: transparent !important
 
+.tabContent div div div svg, .tabContentDark div div div svg
+    color: #c280bf
+
 .tabContentDark div div
     color: #fff
+
+.tabContentDark div div div div div p
+    color: #c7c7c7
 
 //Form
 .askTitle, .askTitleDark
     margin: 30px 0
     color: #4c4c4c !important
     opacity: 1 !important
+    font-weight: 500
 
 .askTitleDark
     color: #fff !important
@@ -88,12 +95,32 @@
     height: 60px
     letter-spacing: 0.1em
     padding-bottom: 9px
-    padding-left: 20px
+    padding-left: 60px
     padding-right: 20px
     padding-top: 9px
     width: 100%
     &:focus
         box-shadow: none
+        outline: none
+
+.IconCon, .messageCon
+    position: relative
+    overflow: hidden
+
+.IconCon
+    width: 49%
+
+.form_input2Icon, .form_input2IconDark
+    position: absolute
+    color: #5b83cd
+    top: 30%
+    left: 25px
+
+.form_input2MessageIconDark, .form_input2MessageIcon
+    position: absolute
+    color: #5b83cd
+    top: 20px
+    left: 25px
 
 .form_textarea2, .form_textarea2Dark
     background-color: transparent
@@ -104,19 +131,23 @@
     font-size: 12px
     letter-spacing: 0.1em
     padding-bottom: 9px
-    padding-left: 20px
+    padding-left: 60px
     padding-right: 20px
     padding-top: 9px
     width: 100%
     &:focus
         box-shadow: none
+        outline: none
 
 .form_input2Dark, .form_textarea2Dark
-    border-color: #454545
+    border: 0
     color: #fff
     background-color: #3f3f3f
     &::placeholder
         color: #ffffff80
+    &:focus
+        border: none
+        outline: none
 
 .active
     background-image: -webkit-linear-gradient(left, #5b83cd 0%, #c280bf 100%)
@@ -164,12 +195,19 @@
         width: 100%
     .btnLink
         font-size: 10px
-    .cardCon
+    .cardCon, .cardConDark
         width: 100%
-        padding: 20px 40px 20px 40px
+        padding: 20px 0 !important
+    .askTitle, .askTitleDark
+        font-size: 28px
+        margin-left: -20px
+    .IconCon
+        width: 100%
+
 @media (max-width:1250px)
     .faqBtnGp
         grid-template-columns: repeat(2,1fr)
+
 @media (max-width:631px)
     .faqBtnGp
         grid-template-columns: repeat(1,1fr)

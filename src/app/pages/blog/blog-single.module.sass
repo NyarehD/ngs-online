@@ -16,7 +16,6 @@ body
     padding: 0
     box-sizing: border-box
     font-family: "poppins", sans-serif
-    // background-color: #4c4c4c
 
 .darkBackground
     background: rgba(255,255,255,0.05) !important
@@ -32,7 +31,7 @@ body
         color: #ffffff80
 
 .container
-    margin: 0 auto
+    margin: 9rem auto
     padding:0 15px
     width: 100%
     .content
@@ -60,8 +59,6 @@ body
                         margin-left: 0
                     &:last-child
                         margin-right: 0
-
-                    
                 .react_links
                     font-size: 12px
                     font-weight: 500
@@ -93,19 +90,23 @@ body
                     // font-size: 12px
                     font-size: 16px
                     font-weight: 300
+                    @include frameSize($break_point-s)
+                        font-size: 14px
                 .blog_list
                     .blog_list_items
+                        display: flex
+                        align-items: center
                         font-weight: 400
                         font-size: 14px
                         letter-spacing: 1px
                         padding: 3px 0
                         color: $blogTitleColor
                         list-style: none
-                        &::before
-                            color: $purpleColor
-                            content: "\25CF"
-                            font-size: 13px
-                            padding-right: 10px
+                        margin-bottom: 7px
+                    .blog_list_itemsCircle
+                        color: $purpleColor
+                        font-size: 13px
+                        margin-right: .8rem
                 .post_gallery
                     margin:30px 0 
                     display: flex
@@ -139,6 +140,9 @@ body
                                 display: flex
                                 justify-content: center
                                 align-items: center
+                                @include frameSize($break_point-s)
+                                    width: 45px
+                                    height: 45px
                                 .quote_content_img
                                     width: 20px
                         .media_body
@@ -157,6 +161,8 @@ body
                                 letter-spacing: 1px
                                 line-height: 1.5
                                 margin-bottom: 35px
+                                @include frameSize($break_point-s)
+                                    font-size: 16px
             .blog_reaction
                 display: flex
                 justify-content: space-between
@@ -165,7 +171,9 @@ body
                 font-size: 12px
                 font-weight: 500
                 margin: 40px 0
-                @include frameSize(428px)
+                @include frameSize(700px)
+                    flex-direction: column
+                    justify-content: space-between  
                 .blog_tags
                     display: flex
                     align-items: center
@@ -180,7 +188,7 @@ body
                         display: grid
                         grid-template-columns: repeat(3,1fr)
                         gap: 5px
-                        .tags_item
+                        .tags_item, .tagsDark_item
                             color: $purpleColor
                             text-decoration: none
                             margin-left: 10px
@@ -188,12 +196,16 @@ body
                                 color: $blogTitleColor
                             &::after
                                 content: ","
-                                color: $blogTitleColor
+                                color: $blogTitleColor  
+                        .tagsDark_item
+                            &::after
+                                color: #fff !important 
 
                 .blog_react
                     letter-spacing: 0.2em
                     @include frameSize(700px)
-                        align-self: flex-end
+                        margin-top: 20px
+                        align-self: flex-start
                     .blog_react_like
                         color: $purpleColor
                         cursor: pointer
@@ -203,14 +215,11 @@ body
                             &:hover
                                 color: $reactionColor
         .social
-            display: grid
-            grid-template-columns: repeat(6,1fr)
-            @include frameSize(768px)
-                grid-template-columns: repeat(3,1fr)
+            display: flex
             margin-bottom: 25px 
+            overflow: hidden
             &:first-child
                 border-radius: 0 0 0 5px 
-
             &:last-child
                 margin: 0
                 border-radius: 0 0 5px 0
@@ -218,7 +227,7 @@ body
                 text-decoration: none
                 width: 100%
                 text-align: center
-                padding: 20px 40px
+                padding: 20px
                 margin: 0 1px 0 0
                 border-radius: 0 0 0 5px //maybe change later
                 color: #fff
@@ -227,13 +236,11 @@ body
                 background-color: #3b5998
                 &:hover
                     background-color: #5b83cd
-                @include frameSize(768px)
-                    border-radius: 0
             .social_media_links_twitter
                 text-decoration: none
                 width: 100%
                 text-align: center
-                padding: 20px 40px
+                padding: 20px
                 margin: 0 1px 0 0
                 color: #fff
                 font-size: 15px
@@ -245,7 +252,7 @@ body
                 text-decoration: none
                 width: 100%
                 text-align: center
-                padding: 20px 40px
+                padding: 20px
                 margin: 0 1px 0 0
                 color: #fff
                 font-size: 15px
@@ -257,7 +264,7 @@ body
                 text-decoration: none
                 width: 100%
                 text-align: center
-                padding: 20px 40px
+                padding: 20px
                 margin: 0 1px 0 0
                 color: #fff
                 font-size: 15px
@@ -265,13 +272,11 @@ body
                 background-color: #e4405f
                 &:hover
                     background-color: #ff6a85
-                @include frameSize(768px)
-                    border-radius: 0 0 0 5px
             .social_media_links_youtube
                 text-decoration: none
                 width: 100%
                 text-align: center
-                padding: 20px 40px
+                padding: 20px
                 margin: 0 1px 0 0
                 color: #fff
                 font-size: 15px
@@ -283,7 +288,7 @@ body
                 text-decoration: none
                 width: 100%
                 text-align: center
-                padding: 20px 40px
+                padding: 20px
                 border-radius: 0 0 5px 0 //mar be change later
                 margin: 0               //mar be change later
                 color: #fff
@@ -435,17 +440,21 @@ body
             display: flex
             flex-direction: column
             justify-content: center
-            padding: 55px 50px  
+            padding: 55px 50px
+            @include frameSize($break_point-s)
+                padding: 40px 30px
             .comment_title
                 font-size: 24px
                 font-weight: 700
                 color: $blogTitleColor
-                margin-bottom: 30px
+                padding-bottom: 30px
+                border-bottom: 1px solid #ebeaeb
 
                                 
 @media (max-width:$break_point-s)
     .container
         width:100%
+        // height: 50px
 
 @media (min-width:$break_point-s)
     .container

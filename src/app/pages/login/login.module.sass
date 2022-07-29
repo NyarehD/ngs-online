@@ -53,11 +53,12 @@
 
 .usernameInputSection , .passwordInputSection , .fullnameInputSection, .phoneNumberInputSection , .eMailInputSection , .confirmPasswordInputSection , .submitButtonSection
     position: relative
-    // width: 50%
+    overflow: hidden
+    // width: 100%
 
 .usernameInput , .passwordInput  , .fullnameInput , .phoneNumberInput , .eMailInput , .confirmPasswordInput,
 .usernameInputDark , .passwordInputDark  , .fullnameInputDark , .phoneNumberInputDark , .eMailInputDark , .confirmPasswordInputDark
-    width: 350px 
+    width: 100% 
     padding: 17px
     outline:0
     font-size: 13px
@@ -74,7 +75,8 @@
     border-color: #454545
     color: #fff
 
-.usernameInputDark, .passwordInputDark  , .fullnameInputDark , .phoneNumberInputDark , .eMailInputDark , .confirmPasswordInputDark
+
+.usernameInputDark, .passwordInputDark  , .fullnameInputDark , .phoneNumberInputDark , .eMailInputDark , .confirmPasswordInputDark  
     &::placeholder
         color: #fff
 
@@ -133,11 +135,17 @@
         width: 100%
 
     .content, .contentDark
+        height: 60%
+
+
+    .content, .contentDark
         padding: 1.5rem
         border-radius: 7px 7px 0 0
 
     .image
         border-radius: 0 0 7px 7px
+        height: 60%
+
 
     
     // .form

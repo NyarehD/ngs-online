@@ -62,6 +62,11 @@
     color: #c280bf
     margin-right: .8rem
 
+@media screen and (max-width : 768px)
+    .description, .listItem
+        font-size: 14px
+    .header
+        font-size: 25px
 @media screen and (max-width : 990px)
     .container
         width: 90%
@@ -69,7 +74,10 @@
 
     .firstPara
         flex-wrap: wrap
+        .textContent
+            width: 100%
         .imageContent
+            margin-top: 50px
             img
                 width: 100% !important
 
