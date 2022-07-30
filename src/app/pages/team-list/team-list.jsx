@@ -8,7 +8,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import {faAngleRight} from "@fortawesome/free-solid-svg-icons";
 import {useSpring, animated} from "react-spring";
-import {Route, Routes, NavLink, Link, useNavigate} from "react-router-dom";
+import {Route, Routes, NavLink, Link, useNavigate } from "react-router-dom";
 import HeaderStyle from '../../../core/components/header/header.module.sass'
 import HeaderCarousel from "../../../core/components/header-carousel/header-carousel";
 
@@ -29,6 +29,7 @@ import Img3 from "../../../assets/team-list/carousel/database.png";
 import Img4 from "../../../assets/team-list/carousel/design.png";
 import Img5 from "../../../assets/team-list/carousel/domain.jpg";
 import Img6 from "../../../assets/team-list/carousel/teamwork.png";
+import {Select, MenuItem, FormControl} from "@mui/material";
 
 export default function TeamList(teamListContent) {
     const data = teamListContent.teamListContent
@@ -246,7 +247,8 @@ export default function TeamList(teamListContent) {
             return (
                 <animated.div key={dev.id}
                               className={`${teamListStyle.developer} ${value.mode === 'light' ? teamListStyle.light : teamListStyle.dark}`}
-                              style={transition}>
+                              style={transition}
+                >
                     <div className={teamListStyle.developer_media}>
                         <a href={dev.detail_link} onClick={() => sendData()}>
                             <img src={dev.img} alt="" className={teamListStyle.dev_img}/>
@@ -664,7 +666,27 @@ export default function TeamList(teamListContent) {
         )
     }
 
-    const team = teams.map((team) => {
+    const [currentTeam, setCurrentTeam] = useState("all");
+    const [windowInnerWidth, setWindowInnerWidth] = useState(0)
+
+    function handleCurrentTeamChange(event) {
+        setCurrentTeam(event.target.value)
+    }
+
+    function changeWindowSize() {
+        setWindowInnerWidth(window.innerWidth)
+    }
+
+    useEffect(() => {
+        navigate(`${currentTeam}`)
+    }, [currentTeam])
+    useEffect(() => {
+        document.addEventListener("resize", changeWindowSize)
+        return () => {
+            document.removeEventListener("resize", changeWindowSize)
+        }
+    }, [windowInnerWidth])
+    const team = window.innerWidth >= 500 ? teams.map((team) => {
         return (
             <NavLink
                 style={({isActive}) => {
@@ -680,7 +702,26 @@ export default function TeamList(teamListContent) {
                 {team.name}
             </NavLink>
         );
-    });
+    }) : (
+        <FormControl sx={{m: 1, minWidth: 120}}>
+            <Select
+                value={currentTeam}
+                onChange={handleCurrentTeamChange}
+                displayEmpty
+                classes={{
+                    select: value.mode === "dark" ? teamListStyle.selectTeamRootDark : "",
+                }}
+                MenuProps={{classes: {list: value.mode === "dark" ? teamListStyle.selectTeamListDark : ""}}}
+                variant={"outlined"}
+            >
+                {teams.map((team, index) => (
+                    <MenuItem value={team.team} key={`${team.team}${index}`}>
+                        {team.name}
+                    </MenuItem>
+                ))}
+            </Select>
+        </FormControl>
+    )
 
     /** team display from selectioin */
     const Alldev = () => {
