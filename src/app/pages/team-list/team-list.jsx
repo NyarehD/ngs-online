@@ -322,7 +322,9 @@ export default function TeamList(teamListContent) {
             return (
                 <animated.div
                     className={`${teamListStyle.developer} ${value.mode === 'light' ? teamListStyle.light : teamListStyle.dark}`}
-                    style={transition}>
+                    style={transition}
+                    key={`${dev.name}${dev.id}`}
+                >
                     <div className={teamListStyle.developer_media}>
                         <a href={dev.detail_link} onClick={() => sendData()}>
                             <img src={dev.img} alt="" className={teamListStyle.dev_img}/>
@@ -398,7 +400,9 @@ export default function TeamList(teamListContent) {
             return (
                 <animated.div
                     className={`${teamListStyle.developer} ${value.mode === 'light' ? teamListStyle.light : teamListStyle.dark}`}
-                    style={transition}>
+                    style={transition}
+                    key={`${dev.name}${dev.id}`}
+                >
                     <div className={teamListStyle.developer_media}>
                         <a href={dev.detail_link} onClick={() => sendData()}>
                             <img src={dev.img} alt="" className={teamListStyle.dev_img}/>
@@ -475,7 +479,9 @@ export default function TeamList(teamListContent) {
             return (
                 <animated.div
                     className={`${teamListStyle.developer} ${value.mode === 'light' ? teamListStyle.light : teamListStyle.dark}`}
-                    style={transition}>
+                    style={transition}
+                    key={`${dev.name}${dev.id}`}
+                >
                     <div className={teamListStyle.developer_media}>
                         <a href={dev.detail_link} onClick={() => sendData()}>
                             <img src={dev.img} alt="" className={teamListStyle.dev_img}/>
@@ -552,7 +558,9 @@ export default function TeamList(teamListContent) {
             return (
                 <animated.div
                     className={`${teamListStyle.developer} ${value.mode === 'light' ? teamListStyle.light : teamListStyle.dark}`}
-                    style={transition}>
+                    style={transition}
+                    key={`${dev.name}${dev.id}`}
+                >
                     <div className={teamListStyle.developer_media}>
                         <a href={dev.detail_link} onClick={() => sendData()}>
                             <img src={dev.img} alt="" className={teamListStyle.dev_img}/>
@@ -628,7 +636,7 @@ export default function TeamList(teamListContent) {
                     }
                 },
                 {
-                    breakpoint: 990,
+                    breakpoint: 820,
                     settings: {
                         slidesToShow: 1
                     }
@@ -699,7 +707,7 @@ export default function TeamList(teamListContent) {
             return (
                 <animated.div
                     className={`${teamListStyle.developer} ${value.mode === 'light' ? teamListStyle.light : teamListStyle.dark}`}
-                    style={transition}>
+                    style={transition} key={`${dev.name}${dev.id}`}>
                     <div className={teamListStyle.developer_media}>
                         <a href={dev.detail_link} onClick={() => {
                             sendData()
@@ -779,18 +787,6 @@ export default function TeamList(teamListContent) {
                     <div className={teamListStyle.menuList}>
                         <div className={teamListStyle.lists}>
                             <nav className={teamListStyle.nav_lists}>
-                                {/* <NavLink
-                  style={({ isActive }) => {
-                    return {
-                      color: true ? "#0056b3" : value.mode === 'light'? '#000000':'#fff',
-                      textDecoration: "none",
-                    };
-                  }}
-                  to={`all`}
-                  className={`${teamListStyle.links} ${value.mode === 'light'?teamListStyle.lightLink:teamListStyle.darkLink}`}
-                >
-                  All
-                </NavLink> */}
                                 {team}
                             </nav>
                         </div>
