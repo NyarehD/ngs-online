@@ -5,110 +5,114 @@
     @media screen and (max-width:$width)
         @content
 
+.tsContainer
+    padding: 150px 300px
+
+.tsRow
+    display: flex
 
 .teamSingleMemberPhoto
     width: 100%
     height: 100%
     object-fit: cover 
+    border-radius: 5px
     @include frameSize(768px )
-    
-.socialIconContainer
-    margin-top: 43px
-    letter-spacing: 0
+
+.teamSingleMemberName
+    font-weight: 500 !important
+    color: #4c4c4c
+    letter-spacing: 1px
+    line-height: 1.5
+    word-break: break-word
+
+.socialCon
     display: flex
-    a
-        margin-right: 13px
-        border-radius: 50%
-        background-color: #f4f4f5
-        display: inline-block
-        width: 2.9rem
-        height: 2.9em
-        line-height: 3rem  
-        position: relative  
-        svg
-            margin:2px 3px 3px 2px
-            width:14px
-            position: absolute
-            top: 50%
-            left: 50%
-            transform: translate(-50%, -50%)
-            margin:0
+    align-items: center
+    margin-top: 1.5rem
+
+.socialIconCon
+    width: 40px
+    height: 40px
+    border-radius: 50%
+    background-color: #f4f4f5
+    display: flex
+    justify-content: center
+    align-items: center
+    margin-right: 10px 
+
+.socialIcon
+    font-size: 13px
+    transition: .3s
+
+.facebook
+    color: #3b5998
+
+.twitter
+    color: #55acee
+
+.google
+    color: #dd4b39
+
+.youtube
+    color: #e52d27
+
+.instagram
+    color: #3f729b
+
+.socialIconConFb:hover
+    background: #3b5998
+    .socialIcon
+        color: #fff
+
+.socialIconConTwitter:hover
+    background: #55acee
+    .socialIcon
+        color: #fff
+
+.socialIconConRed:hover
+    background: #dd4b39
+    .socialIcon
+        color: #fff
+
+.introCon
+    margin-top: 1.5rem
+    display: flex
+    div .introOneCon
+        border-top: 1px solid #eceeef
+        border-bottom: 1px solid #eceeef
+        padding: 0.75rem 0
         
-
-.table 
-    width: 85%
-    max-width: 100%
-    margin-bottom: 1rem
-    background-color: #fff
-    text-align: left
-
-.link_a a
-    color:#7f7f7f
-    &:hover
-        color: #55acee
-
-.table th
-    color:#4c4c4c
-    font-weight: 500
-
-.table th, .table td 
-  padding: 0.75rem
-  vertical-align: top
-  border-top: 1px solid #eceeef
-.table td 
-  color:#7f7f7f
-
-.table tbody + tbody 
-  border-top: 2px solid #eceeef
+        h4
+            font-weight: 500
+        div
+            margin-left: 10px
+            color:#7f7f7f
 
 @media screen and (max-width: 480px)
-    .displaySmBlock
-        display: block
+    .introCon
+        div .introOneCon
+            font-size: 15px
+    
 
 @media screen and (max-width: 780px)
-    .displayLgNone
-        display: none
-    
-.divider-20
-    margin-top: 20px
+    .tsContainer
+        padding: 100px 0px
 
-.itemContent
-    padding: 40px 40px 40px 0px
-    h4
-        font-size: 30px            
+    .tsRow
+        flex-direction: column
 
-.facebook:hover
-    background-color: #3b5998
-    svg
-        fill: white
+@media screen and (max-width: 1100px)
+    .tsContainer
+        padding: 100px 0px
 
-
-.twitter:hover
-    background-color: #55acee
-    svg
-        fill: white
-
-
-.google:hover
-    background-color: #dd4b39
-    svg
-        fill: white
-
-
-.youtube:hover
-    background-color: #e52d27
-    svg
-        fill: white
-
-
-.instagram:hover
-    background-color: #e4405f
-    svg
-        fill: white
+    .tsRow
+        flex-direction: column
 
 
 //Sass by Ma Yee Mon
 
+.PersonalExperience
+    padding: 0 30px
 
 .personalExperience
     font-family: "poppins", sans-serif
@@ -116,13 +120,6 @@
     display: flex
     justify-content: center
     align-items: center
-
-.container
-    width: 100%
-    max-width: 1200px
-    margin: 0 auto
-    padding: 160px 15px 130px
-
 
 .content
     margin-top:50px
@@ -146,203 +143,3 @@
         margin-block-end: 1em
         margin-inline-start: 0px
         margin-inline-end: 0px
-
-
-    // background-color: hotpink
-// .personalExperience .personalExperienceContainer .content h3
-//     color: #444040
-//     font-weight: bolder
-//     letter-spacing: 1px
-//     line-height: 1.5
-
-
-// .contentpart2
-//     display: flex
-
-// .contentpart2 .left
-//     width: 60%
-//     margin-right: 50px
-
-// .contentpart2 .left p
-//     color: #363232
-//     font-size: 14px
-//     font-weight: 800
-//     letter-spacing: 0.2em
-//     text-transform: uppercase
-//     margin-bottom: 20px
-//     position: relative
-
-// .contentpart2 .left span
-//     position: absolute
-//     right: 0
-
-// .contentpart2 .left .progress
-//     width: 100%
-//     height: 4px
-//     background: #e5e5e5
-//     margin-bottom: 20px
-//     position: relative
-
-// .contentpart2 .left .progress::before
-//     content: ''
-//     height: 100%
-
-//     position: absolute
-//     left: 0
-//     top: 0
-//     background-color: red
-
-// .contentpart2 .left .pg1::before
-//     content: ''
-//     width: 93%
-//     background-color: #ff497c
-
-// .contentpart2 .left .pg2::before
-//     content: ''
-//     width: 90%
-//     background-color: #a0ce4e
-
-// .contentpart2 .left .pg3::before
-//     content: ''
-//     width: 98%
-//     background-color: #00bea3
-
-// .contentpart2 .left .pg4::before
-//     content: ''
-//     width: 93%
-//     background-color: #f1894c
-
-// .contentpart2 .right
-//     width: 40%
-//     p
-//         margin-bottom: 10px
-//         line-height: 2
-
-// .body .container .contentpart2 .right p
-//     line-height: 2
-//     color: #7f7f7f
-//     font-size: 17px
-//     font-weight: 300
-//     word-spacing: 1px
-//     margin: 0px 0px 10px 0px
-//     padding: 0
-
-// @media screen and (max-width:990px)
-//     .contentpart2
-//         display: block
-
-//     .contentpart2 .left
-//         width: 100%
-//         margin-bottom: 30px
-
-//     .contentpart2 .right
-//         width: 100%
-
-
-
-// .contactTitle
-//     font-size: 24px
-//     margin-bottom: 23px
-//     margin-top: 43px
-
-// form
-//     width: 100%
-//     max-width: 1000px
-//     border: none
-.form_team_sigle
-    width: 100%
-    max-width: 1000px
-    border: none
-
-//     button
-//         margin: 0
-//         padding: 0
-
-
-// .group
-//     position: relative
-//     margin-bottom: 20px
-
-// .input
-//     width: 100% !important
-//     padding: 17px
-//     outline:0
-//     border: 2px solid #eee
-//     font-size: 13px
-//     padding-left: 50px
-//     border: 2px solid #ededed
-//     border-radius:2px
-//     color: #f8f9fa
-
-
-// textarea
-//     width: 100%
-//     height: 30vh
-//     padding: 16px
-//     outline:0
-//     border: 2px solid #eee
-//     font-size: 13px
-//     padding-left: 50px
-//     font-weight: 300
-//     color: #f8f9fa
-
-
-// .label
-//     height: 100%
-//     position: absolute
-//     left: 20px
-//     top: 0
-//     padding: 18px
-//     padding-left: 30px
-//     color: #4c4c4c
-//     font-size: 12px
-//     font-weight: 500
-//     letter-spacing: 0.2em
-
-
-// .submitFormButton
-//     border: 0
-//     color: #eee
-//     outline: none
-//     background-image: linear-gradient(to right, #5b83cd 0%, #c280bf 100%)
-//     width: 150px
-//     height: 50px
-//     margin-right: 20px
-//     padding: 2px
-//     border-radius: 5px
-//     cursor: pointer
-//     transition: 0.3s
-//     &:disabled
-//         opacity: 0.7
-//         cursor: default
-//         .form_submit_text
-//             &:hover
-//                 color: #eee
-//                 background: none
-//     .form_submit_text
-//         align-items: center
-//         border-radius: 4px
-//         -webkit-box-align: center
-//         -webkit-box-pack: center
-//         display: flex
-//         font-size: 1vw
-//         font-weight: 500
-//         height: 100%
-//         justify-content: center
-//         letter-spacing: 0
-//         text-transform: uppercase
-//         box-shadow:  0 0 3px 1px #c280bf, 0 0 5px 1px #5b83cd    
-//         transition: 0.3s
-//         width: 100%
-//         &:hover
-//             color: #4c4c4c
-//             background-color: #fff
-
-// .icon
-//     color: #c280bf
-//     margin-right: px
-//     font-size:13px
-
-
-// .group
-//     width: 49%
