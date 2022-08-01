@@ -8,7 +8,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import {faAngleRight} from "@fortawesome/free-solid-svg-icons";
 import {useSpring, animated} from "react-spring";
-import {Route, Routes, NavLink, Link, useNavigate } from "react-router-dom";
+import {Route, Routes, NavLink, Link, useNavigate} from "react-router-dom";
 import HeaderStyle from '../../../core/components/header/header.module.sass'
 import HeaderCarousel from "../../../core/components/header-carousel/header-carousel";
 
@@ -677,6 +677,7 @@ export default function TeamList(teamListContent) {
         setWindowInnerWidth(window.innerWidth)
     }
 
+    let isDarkMode = value.mode === "dark";
     useEffect(() => {
         navigate(`${currentTeam}`)
     }, [currentTeam])
@@ -709,10 +710,11 @@ export default function TeamList(teamListContent) {
                 onChange={handleCurrentTeamChange}
                 displayEmpty
                 classes={{
-                    select: value.mode === "dark" ? teamListStyle.selectTeamRootDark : "",
+                    select: isDarkMode ? teamListStyle.selectTeamRootDark : "",
                 }}
-                MenuProps={{classes: {list: value.mode === "dark" ? teamListStyle.selectTeamListDark : ""}}}
+                MenuProps={{classes: {list: isDarkMode ? teamListStyle.selectTeamListDark : ""}}}
                 variant={"outlined"}
+                sx={{color: isDarkMode ? "white" : ""}}
             >
                 {teams.map((team, index) => (
                     <MenuItem value={team.team} key={`${team.team}${index}`}>
