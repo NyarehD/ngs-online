@@ -116,6 +116,9 @@
     display: flex
     align-items: center
 
+.selectContainer.selectContainerDark
+    color: #fff
+
 .flag
     width: 30px
     height: 20px
@@ -123,6 +126,9 @@
 
 .language 
     margin-right: .5rem
+
+li.menuItemDark
+    background-color: #666 !important
 
 .asideMenu
     display: none
@@ -163,6 +169,13 @@
     padding: 0!important
     margin: 0 auto !important
 
+.languageMenu
+    div
+        ul
+            background-color: red
+
+.languageButton
+    background-color: transparent
 
 @media (max-width:$break_point-lg)
     .stickyBar
@@ -215,6 +228,12 @@
 
     .asideMenu.menuOnStickyBar
         top: .8rem
+
+    .asideMenu.dark
+        background: transparent
+
+    .asideMenu.menuOnStickyBar.dark
+        background-color: transparent
 
     .asideBar ul .loginSignUp
         display: block
@@ -272,10 +291,24 @@
         display: block
         top: 1.8rem
         right: 0
+
+    .flag
+        width: 20px
+        height: 10px
+        margin-right: .2rem
+    
+    .language
+        font-size: 14px
+
+    .languageButton
+        width: 45%
+        margin-right: 2rem
+        div
+            div
+                padding: .5rem
         
     .asideBar ul .loginSignUp
         display: block !important
-        margin-right: 10%
 
 // dark Theme
 .darkText
@@ -287,6 +320,12 @@
     span
         border: 1px solid #fff
         color: #000
+        margin: auto
+.LogoName.stickyBar.dark
+    background-color: #666
+    height: 70px
+    display: flex
+    justify-content: center
 
 .darkIcon
     border: 1px solid #fff !important
@@ -307,3 +346,6 @@
     .register
         li:hover
             color: #78a1f5
+
+.asideMenu.menuOnSickyBar.dark
+    background-color: transparent

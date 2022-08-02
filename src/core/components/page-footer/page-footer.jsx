@@ -1,20 +1,21 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import {
   faFacebookF,
   faTwitter,
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
-import { faEnvelope, faMapMarker } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope, faMapMarker , faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
 import pageFooterStyles from "./page-footer.module.sass";
-import {Context} from "../../../App";
+import { Context } from "../../../App";
 
 const PageFooter = () => {
-  const [value, setValue] = useContext(Context)
+  const [value, setValue] = useContext(Context);
   return (
-    <div className={value.mode ==='dark'?pageFooterStyles.containerDark:""}>
-      
+    <div
+      className={value.mode === "dark" ? pageFooterStyles.containerDark : ""}
+    >
       <div className={`${pageFooterStyles.container}`}>
         <div className={pageFooterStyles.row}>
           <div
@@ -25,8 +26,8 @@ const PageFooter = () => {
             >
               <h4 class={pageFooterStyles.widget_title}>About</h4>
               <p>
-                Welcome largest broadband and Internet services provider where you
-                can choose the best plan ever.
+                At VSG, we build websites,<br /> e-commerance app, websites hosting,
+                selling domain, writing creativer content and database portal.
               </p>
               <div
                 class={`${pageFooterStyles.widget} ${pageFooterStyles.widget_social_buttons}`}
@@ -42,8 +43,8 @@ const PageFooter = () => {
                   href="#"
                   class={`${pageFooterStyles.fa_twitter} ${pageFooterStyles.color_bg_icon} ${pageFooterStyles.rounded_icon}`}
                   title="twitter"
-                  >
-                    <FontAwesomeIcon icon={faTwitter} />
+                >
+                  <FontAwesomeIcon icon={faTwitter} />
                 </a>
                 <a
                   href="#"
@@ -58,24 +59,25 @@ const PageFooter = () => {
 
           <div
             className={`${pageFooterStyles.col_xs_12} ${pageFooterStyles.col_md_6} ${pageFooterStyles.col_lg_3}`}
-            >
+          >
             <div class={`${pageFooterStyles.widget} ${pageFooterStyles.links}`}>
               <h4 class={pageFooterStyles.widget_title}>Links</h4>
               <ul>
                 <li class={pageFooterStyles.cat_item}>
-                  <a href="blog-right.html">Packages</a>
+                  <FontAwesomeIcon className={pageFooterStyles.icon} icon={faAngleRight} />
+                  <a href="/">Home</a>
                 </li>
                 <li class={pageFooterStyles.cat_item}>
-                  <a href="blog-right.html">MaxiNet Media</a>
+                  <FontAwesomeIcon className={pageFooterStyles.icon} icon={faAngleRight} />
+                  <a href="/team-list">Team</a>
                 </li>
                 <li class={pageFooterStyles.cat_item}>
-                  <a href="blog-right.html">Connection</a>
+                  <FontAwesomeIcon className={pageFooterStyles.icon} icon={faAngleRight} />
+                  <a href="/about">About</a>
                 </li>
                 <li class={pageFooterStyles.cat_item}>
-                  <a href="blog-right.html">Support</a>
-                </li>
-                <li class={pageFooterStyles.cat_item}>
-                  <a href="blog-right.html">Video Tutorials</a>
+                  <FontAwesomeIcon className={pageFooterStyles.icon} icon={faAngleRight} />
+                  <a href="/contact">Contact</a>
                 </li>
               </ul>
             </div>
@@ -83,26 +85,31 @@ const PageFooter = () => {
 
           <div
             className={`${pageFooterStyles.col_xs_12} ${pageFooterStyles.col_md_6} ${pageFooterStyles.col_lg_3}`}
-            >
+          >
             <div
               class={`${pageFooterStyles.widget} ${pageFooterStyles.services_links}`}
-              >
+            >
               <h4 class={pageFooterStyles.widget_title}>Services</h4>
               <ul>
                 <li class={pageFooterStyles.cat_item}>
-                  <a href="blog-right.html">4K Cable TV</a>
+                  <FontAwesomeIcon className={pageFooterStyles.icon} icon={faAngleRight} />
+                  <a href="blog-right.html">Web Development</a>
                 </li>
                 <li class={pageFooterStyles.cat_item}>
-                  <a href="blog-right.html">Dedicated Server</a>
+                  <FontAwesomeIcon className={pageFooterStyles.icon} icon={faAngleRight} />
+                  <a href="blog-right.html">Web Hosting</a>
                 </li>
                 <li class={pageFooterStyles.cat_item}>
-                  <a href="blog-right.html">High Speed Internet</a>
+                  <FontAwesomeIcon className={pageFooterStyles.icon} icon={faAngleRight} />
+                  <a href="blog-right.html">Content Writing</a>
                 </li>
                 <li class={pageFooterStyles.cat_item}>
-                  <a href="blog-right.html">Smartphone Service</a>
+                  <FontAwesomeIcon className={pageFooterStyles.icon} icon={faAngleRight} />
+                  <a href="blog-right.html">Domain Service</a>
                 </li>
                 <li class={pageFooterStyles.cat_item}>
-                  <a href="blog-right.html">Dedicated Server</a>
+                  <FontAwesomeIcon className={pageFooterStyles.icon} icon={faAngleRight} />
+                  <a href="blog-right.html">Database Portal</a>
                 </li>
               </ul>
             </div>
@@ -110,7 +117,7 @@ const PageFooter = () => {
 
           <div
             className={`${pageFooterStyles.col_xs_12} ${pageFooterStyles.col_md_6} ${pageFooterStyles.col_lg_3}`}
-            >
+          >
             <div
               class={`${pageFooterStyles.widget} ${pageFooterStyles.widget_icons_list}`}
             >

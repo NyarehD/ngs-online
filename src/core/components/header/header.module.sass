@@ -49,6 +49,7 @@
 
 .btnAppointment
     margin-right: 50px
+    border: none
     color: #eee
     outline: none
     background-image: linear-gradient(to right, #5b83cd 0%, #c280bf 100%)
@@ -66,6 +67,22 @@
 .container.stickyBar 
     .navActive
         padding-top: 19px
+
+.menu.menuDark
+    div
+        ul
+            background-color: #4c4c4c
+            li
+                a
+                    color: #fff
+
+.menu.menuDark.stickyBar
+    div
+        ul
+            background-color: #666
+            li
+                a
+                    color: #fff
 
 
 @media (max-width:$break_point-s)
@@ -125,7 +142,7 @@
         justify-content: end
 
     .btnAppointment
-        margin: 1rem 1rem 1rem 0
+        margin: .8rem 1rem 1rem 0
 
     .container ul
         display: none
@@ -281,8 +298,11 @@
         font-size: 40px
 
 .containerDark
-    background: #4c4c4c
+    background: #4c4c4c !important
     ul
         li
             a
               color: #fff
+
+.container.stickyBar.containerDark
+    background-color: #666 !important

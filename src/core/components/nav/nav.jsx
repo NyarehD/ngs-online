@@ -36,6 +36,8 @@ function Nav() {
   const handleChange = (e) => {
     setLanguage(e.target.value);
   };
+  
+  
 
   const setFixedSidebar = () => {
     if (window.scrollY >= 65) {
@@ -47,23 +49,23 @@ function Nav() {
 
   const myanmarLanguage = () => {
     return (
-      <div className={Headerstyle.selectContainer}>
+      <div className={`${Headerstyle.selectContainer} ${value.mode!== 'light' ? Headerstyle.selectContainerDark : ''}`}>
         <img className={Headerstyle.flag} src={mmFlag} alt="Myanmar Flag" />
         <span className={Headerstyle.language}>Myanmar</span>
-        {/* <FontAwesomeIcon className={Headerstyle.icon} icon={faSortDown} /> */}
       </div>
     );
   };
 
   const englishLanguage = () => {
     return (
-      <div className={Headerstyle.selectContainer}>
+      <div className={`${Headerstyle.selectContainer} ${value.mode!== 'light' ? Headerstyle.selectContainerDark : ''}`}>
         <img className={Headerstyle.flag} src={usFlag} alt="US Flag" />
         <span className={Headerstyle.language}>English</span>
-        {/* <FontAwesomeIcon className={Headerstyle.icon} icon={faSortDown} /> */}
       </div>
     );
   };
+
+  
 
   window.addEventListener("scroll", setFixedSidebar);
   return (
@@ -76,8 +78,9 @@ function Nav() {
         </h3>
 
         <div className={`${Headerstyle.register} ${value.mode === 'dark'?Headerstyle.darkli: ''}`}>
-          <FormControl sx={{ m: 1, minWidth: "auto" }}>
+          <FormControl className={Headerstyle.languageButton} sx={{ m: 1, minWidth: "auto" }}>
             <Select
+              className={Headerstyle.language}
               value={language}
               onChange={handleChange}
               id="demo-simple-select-autowidth"
@@ -85,8 +88,8 @@ function Nav() {
               displayEmpty
               inputProps={{ "aria-label": "Without label" }}
             >
-              <MenuItem value={"myanmar"}>{myanmarLanguage()}</MenuItem>
-              <MenuItem value={""}>{englishLanguage()}</MenuItem>
+              <MenuItem className={`${value.mode === "dark" ? Headerstyle.menuItemDark : Headerstyle.menuItem}`} value={"myanmar"}>{myanmarLanguage()}</MenuItem>
+              <MenuItem className={`${value.mode === "dark" ? Headerstyle.menuItemDark : Headerstyle.menuItem}`} value={""}>{englishLanguage()}</MenuItem>
             </Select>
           </FormControl>
 
@@ -117,7 +120,7 @@ function Nav() {
         <div
           className={
             fix
-              ? `${Headerstyle.LogoName} ${Headerstyle.stickyBar}`
+              ? `${Headerstyle.LogoName} ${Headerstyle.stickyBar} ${value.mode === 'light' ? '':Headerstyle.dark}`
               : `${Headerstyle.LogoName} ${value.mode === 'light' ? '':Headerstyle.dark}`
           }
         >
@@ -155,8 +158,8 @@ function Nav() {
       <div
         className={
           fix
-            ? `${Headerstyle.asideMenu} ${Headerstyle.menuOnStickyBar} `
-            : `${Headerstyle.asideMenu}`
+            ? `${Headerstyle.asideMenu} ${Headerstyle.menuOnStickyBar} ${value.mode === 'light' ? '':Headerstyle.dark} `
+            : `${Headerstyle.asideMenu} ${value.mode === 'light' ? '':Headerstyle.dark}`
         }
       >
         <FontAwesomeIcon
