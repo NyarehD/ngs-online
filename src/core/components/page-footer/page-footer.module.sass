@@ -176,12 +176,19 @@ h4.widget_title
   width: 200px
   border-bottom: 1px solid #e1e1e1
   display: flex
+  align-items: center
   line-height: 26px
   padding-bottom: 9px
   padding-top: 9px
 
   &:last-child
     border: none
+
+.icon
+  margin-right: .5rem
+  color: $primaryColor
+  font-size: 14px
+
 
 .links .cat_item a
   @include hoverColor($secondaryColor, $primaryColor)
@@ -198,14 +205,14 @@ h4.widget_title
   @include md
     align-items: start
 
-.links ul li a:before,
-.services_links ul li a:before
-  color: $primaryColor
-  content: "\f054"
-  font-family: "FontAwesome"
-  font-size: 14px
-  padding-right: 10px
-  position: relative
+// .links ul li a:before,
+// .services_links ul li a:before
+//   color: $primaryColor
+//   content: "\f054"
+//   font-family: "FontAwesome"
+//   font-size: 14px
+//   padding-right: 10px
+//   position: relative
 
 .widget_icons_list h4
   margin-bottom: 13px
@@ -224,11 +231,7 @@ h4.widget_title
   &:hover
     color: $secondaryColor
 
-  &:last-child
-    color: $secondaryColor
 
-    &:hover
-      color: $primaryColor
 
 .fa_map_marker,
 .fa_envelope_o
