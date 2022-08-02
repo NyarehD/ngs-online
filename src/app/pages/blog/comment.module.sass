@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900")
+@import '../../../style/variable.module'
 
 @mixin frameSize($width)
     @media screen and (max-width:$width)
@@ -15,13 +16,28 @@ body
     box-sizing: border-box
     font-family: "poppins", sans-se
 
-.comments
+.darkBackground
+    background: rgba(255,255,255,0.05) !important
 
+.darkTextColor
+    color: #fff !important
+
+.darkInputBox
+    background: #3f3f3f
+    color: #fff
+    border: 1px solid #454545
+    &::placeholder
+        color: #ffffff80
+.comment
+    // border-bottom: 1px solid #adadad      
 .commentsTitle
     color: $blogTitleColor
-    font-size: 14px
-    font-weight: 500
-    margin: 20px 0
+    font-size: 24px
+    font-weight: 700
+    margin: 30px 0
+    @include frameSize(400px)
+        font-size: 20px
+        margin-left: -10px
 
 .commentContainer
     margin-top: 40px
@@ -40,20 +56,17 @@ body
         .response_name
             margin-bottom: 20px
             position: relative
-            width: 50%
-            padding-right: 20px
+            width: 49%
             @include frameSize(768px)
                 width: 100%
-            
-            // .response_name_label //hiden
-            //     position: absolute
+        
             .response_name_icon
                 position: absolute
                 font-size: 12px
                 color: $reactionColor
                 border-color: $reactionColor
-                left: 5%
-                top: 30%
+                left: 17px
+                top: 35%
                 text-align: center
                 width: 1em
                 
@@ -61,19 +74,20 @@ body
                 border: none
                 border-radius: 5px
                 box-shadow: 0  0 10px 1px rgba(0, 0, 0, 0.07)
-                padding: 9px 20px 9px 60px
+                padding: 9px 20px 9px 50px
                 outline: none
                 width: 100%
                 height: 50px
                 color: $blogTextColor
                 font-size: 12px
                 font-weight: 400
+                @include frameSize($break_point-s)
+                    padding: 9px 20px 9px 40px
 
         .response_email
             margin-bottom: 20px
             position: relative
-            width: 50%
-            padding-right: 20px
+            width: 49%
             @include frameSize(768px)
                 width: 100%
             // .response_email_label //hidden
@@ -82,34 +96,35 @@ body
                 font-size: 12px
                 color: $reactionColor
                 border-color: $reactionColor
-                left: 5%
-                top: 30%
+                left: 17px
+                top: 35%
                 text-align: center
                 width: 1em
             .response_email_input
                 border: none
                 border-radius: 5px
                 box-shadow: 0  0 10px 1px rgba(0, 0, 0, 0.07)
-                padding: 9px 20px 9px 60px
+                padding: 9px 20px 9px 50px
                 outline: none
                 width: 100%
                 height: 50px
                 color: $blogTextColor
                 font-size: 12px
                 font-weight: 400
+                @include frameSize($break_point-s)
+                    padding: 9px 20px 9px 40px
     .response_comment      
         margin-bottom: 20px
         position: relative
         width: 100%
-        padding-right: 20px
         // .response_comment_label
         .response_comment_icon
             position: absolute
             font-size: 12px
             color: $reactionColor
             border-color: $reactionColor
-            left: 3%
-            top: 7%
+            left: 17px
+            top: 17px
             text-align: center
             width: 1em
     .commentFormTextarea
@@ -117,15 +132,22 @@ body
         border-radius: 5px
         outline: none
         box-shadow: 0  0 10px 1px rgba(0, 0, 0, 0.07)
-        padding: 9px 20px 9px 60px
+        padding: 9px 20px 9px 50px
         width: 100%
         height: 100px
         margin-bottom: 10px
         color: $blogTextColor
         font-size: 12px
         font-weight: 400
+        @include frameSize($break_point-s)
+            padding: 9px 20px 9px 40px
 
+.submitBtnGroup
+    display: flex
+    justify-content: flex-start
+    align-items: center
 .commentFormButton
+    display: block
     border: 0
     color: #eee
     outline: none
@@ -183,6 +205,7 @@ body
                 max-height: 50px
     .commentRightPart
         width: 100%
+        overflow: hidden
         .commentContent
             display: flex
             .commentAuthor

@@ -7,7 +7,8 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import { faAngleRight, faUserLarge, faPhone, faEnvelope, faPaperclip } from "@fortawesome/free-solid-svg-icons";
+import { faPenToSquare } from "@fortawesome/free-regular-svg-icons"
 
 import HeaderStyle from "../../../core/components/header/header.module.sass";
 import HeaderCarousel from "../../../core/components/header-carousel/header-carousel";
@@ -257,59 +258,111 @@ const MyFaq = (faqContent) => {
         </h1>
         <form>
           <div className={style.form_input_container2}>
-            <input
-              className={
-                value.mode === "light"
-                  ? style.form_input2
-                  : style.form_input2Dark
-              }
-              type="text"
-              placeholder="FULL NAME"
-              required="required"
-
-            />
-            <input
-              className={
-                value.mode === "light"
-                  ? style.form_input2
-                  : style.form_input2Dark
-              }
-              type="text"
-              placeholder="PHONE NUMBER"
-              required="required"
-            />
+            <div className={style.IconCon}>
+              <FontAwesomeIcon
+                icon={faUserLarge}
+                className={
+                  value.mode === "light"
+                    ? style.form_input2Icon
+                    : style.form_input2IconDark
+                }
+              >
+              </FontAwesomeIcon>
+              <input
+                className={
+                  value.mode === "light"
+                    ? style.form_input2
+                    : style.form_input2Dark
+                }
+                type="text"
+                placeholder="FULL NAME"
+                required="required"
+              />
+            </div>
+            <div className={style.IconCon}>
+              <FontAwesomeIcon
+                icon={faEnvelope}
+                className={
+                  value.mode === "light"
+                    ? style.form_input2Icon
+                    : style.form_input2IconDark
+                }
+              >
+              </FontAwesomeIcon>
+              <input
+                className={
+                  value.mode === "light"
+                    ? style.form_input2
+                    : style.form_input2Dark
+                }
+                type="email"
+                placeholder="EMAIL"
+                required="required"
+              />
+            </div>
           </div>
           <div className={style.form_input_container2}>
-            <input
-              className={
-                value.mode === "light"
-                  ? style.form_input2
-                  : style.form_input2Dark
-              }
-              type="email"
-              placeholder="EMAIL"
-              required="required"
+          <div className={style.IconCon}>
+              <FontAwesomeIcon
+                icon={faPhone}
+                className={
+                  value.mode === "light"
+                    ? style.form_input2Icon
+                    : style.form_input2IconDark
+                }
+              >
+              </FontAwesomeIcon>
+              <input
+                className={
+                  value.mode === "light"
+                    ? style.form_input2
+                    : style.form_input2Dark
+                }
+                type="text"
+                placeholder="PHONE NUMBER"
+                required="required"
+              />
+            </div>
+            <div className={style.IconCon}>
+              <FontAwesomeIcon
+                icon={faPaperclip}
+                className={
+                  value.mode === "light"
+                    ? style.form_input2Icon
+                    : style.form_input2IconDark
+                }
+              >
+              </FontAwesomeIcon>
+              <input
+                className={
+                  value.mode === "light"
+                    ? style.form_input2
+                    : style.form_input2Dark
+                }
+                type="text"
+                placeholder="SUBJECT"
+                required="required"
 
-            />
-            <input
-              className={
-                value.mode === "light"
-                  ? style.form_input2
-                  : style.form_input2Dark
-              }
-              type="text"
-              placeholder="SUBJECT"
-              required="required"
-
-            />
+              />
+            </div>
           </div>
           <div
             className={
-              value.mode === "light"
+              `${style.messageCon}
+              ${value.mode === "light"
                 ? style.form_input_container2
-                : style.form_input_container2Dark
+                : style.form_input_container2Dark}`
             }
           >
+            <FontAwesomeIcon
+                icon={faPenToSquare}
+                className={
+                  value.mode === "light"
+                    ? style.form_input2MessageIcon
+                    : style.form_input2MessageIconDark
+                }
+              >
+              </FontAwesomeIcon>
             <textarea
               className={
                 value.mode === "light"
