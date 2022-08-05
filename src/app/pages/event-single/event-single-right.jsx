@@ -36,8 +36,8 @@ const EventSingleRight = () => {
             amount: "6",
         },
     ];
-    const EventCategories = categories.map((category) => (
-        <ul>
+    const EventCategories = categories.map((category , index) => (
+        <ul key={index}>
             <li className={`${eventSingleStyle.listCategory} ${darkTheme}`} key={category.index}>
                 <span className={
             `${eventSingleStyle.listItemLight} ${darkTheme}`

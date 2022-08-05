@@ -4,10 +4,8 @@ import Headerstyle from "./nav.module.sass";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUser,
-  faLock,
   faLocationDot,
   faPhone,
-  faSortDown,
   faBars,
   faX,
 } from "@fortawesome/free-solid-svg-icons";
@@ -21,7 +19,7 @@ import { Context } from '../../../App'
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
-import InputLabel from "@mui/material/InputLabel";
+// import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
@@ -173,6 +171,7 @@ function Nav() {
           }}
         ></FontAwesomeIcon>
       </div>
+      
       <div className={Headerstyle.asideBar} id="asidebar">
         <div className={Headerstyle.closeContainer}>
           <div className={Headerstyle.closeButton}>
@@ -210,7 +209,6 @@ function Nav() {
           <li>
             <a href="/faq">Faq</a>
           </li>
-          <li>
             <Accordion className={Headerstyle.asideAccordion}>
               <AccordionSummary
                 className={Headerstyle.asideAccordion}
@@ -234,7 +232,6 @@ function Nav() {
                 </li>
               </AccordionDetails>
             </Accordion>
-          </li>
         </ul>
       </div>
     </div>

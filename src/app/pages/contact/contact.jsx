@@ -1,4 +1,4 @@
-import React, { useState,useContext } from "react";
+import React, { useContext } from "react";
 import { Context } from "../../../App.js";
 import ContactStyle from "./contact.module.sass";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

@@ -7,8 +7,14 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleRight, faUserLarge, faPhone, faEnvelope, faPaperclip } from "@fortawesome/free-solid-svg-icons";
-import { faPenToSquare } from "@fortawesome/free-regular-svg-icons"
+import {
+  faAngleRight,
+  faUserLarge,
+  faPhone,
+  faEnvelope,
+  faPaperclip,
+} from "@fortawesome/free-solid-svg-icons";
+import { faPenToSquare } from "@fortawesome/free-regular-svg-icons";
 
 import HeaderStyle from "../../../core/components/header/header.module.sass";
 import HeaderCarousel from "../../../core/components/header-carousel/header-carousel";
@@ -16,7 +22,7 @@ import { Link } from "react-router-dom";
 import { Context } from "../../../App";
 
 const MyFaq = (faqContent) => {
-  const [value, setValue] = useContext(Context);
+  const [value] = useContext(Context);
   const data = faqContent.faqContent;
   const [index, setIndex] = useState(0);
 
@@ -266,8 +272,7 @@ const MyFaq = (faqContent) => {
                     ? style.form_input2Icon
                     : style.form_input2IconDark
                 }
-              >
-              </FontAwesomeIcon>
+              ></FontAwesomeIcon>
               <input
                 className={
                   value.mode === "light"
@@ -287,8 +292,7 @@ const MyFaq = (faqContent) => {
                     ? style.form_input2Icon
                     : style.form_input2IconDark
                 }
-              >
-              </FontAwesomeIcon>
+              ></FontAwesomeIcon>
               <input
                 className={
                   value.mode === "light"
@@ -302,7 +306,7 @@ const MyFaq = (faqContent) => {
             </div>
           </div>
           <div className={style.form_input_container2}>
-          <div className={style.IconCon}>
+            <div className={style.IconCon}>
               <FontAwesomeIcon
                 icon={faPhone}
                 className={
@@ -310,8 +314,7 @@ const MyFaq = (faqContent) => {
                     ? style.form_input2Icon
                     : style.form_input2IconDark
                 }
-              >
-              </FontAwesomeIcon>
+              ></FontAwesomeIcon>
               <input
                 className={
                   value.mode === "light"
@@ -331,8 +334,7 @@ const MyFaq = (faqContent) => {
                     ? style.form_input2Icon
                     : style.form_input2IconDark
                 }
-              >
-              </FontAwesomeIcon>
+              ></FontAwesomeIcon>
               <input
                 className={
                   value.mode === "light"
@@ -342,27 +344,25 @@ const MyFaq = (faqContent) => {
                 type="text"
                 placeholder="SUBJECT"
                 required="required"
-
               />
             </div>
           </div>
           <div
-            className={
-              `${style.messageCon}
-              ${value.mode === "light"
-                ? style.form_input_container2
-                : style.form_input_container2Dark}`
-            }
+            className={`${style.messageCon}
+              ${
+                value.mode === "light"
+                  ? style.form_input_container2
+                  : style.form_input_container2Dark
+              }`}
           >
             <FontAwesomeIcon
-                icon={faPenToSquare}
-                className={
-                  value.mode === "light"
-                    ? style.form_input2MessageIcon
-                    : style.form_input2MessageIconDark
-                }
-              >
-              </FontAwesomeIcon>
+              icon={faPenToSquare}
+              className={
+                value.mode === "light"
+                  ? style.form_input2MessageIcon
+                  : style.form_input2MessageIconDark
+              }
+            ></FontAwesomeIcon>
             <textarea
               className={
                 value.mode === "light"

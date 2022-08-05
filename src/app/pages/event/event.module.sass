@@ -21,13 +21,13 @@ html
     margin-bottom: 10%
 
 .placeholder
-  color: #000
+    color: #000
 
 .placeholder.darkTheme
-  color: #fff
-  border: 1px solid #fff
-  &::placeholder
-    color: #ffffff80
+    color: #fff
+    border: 1px solid #fff
+    &::placeholder
+        color: #ffffff80
 
 .left
     width: 50%
@@ -39,10 +39,9 @@ html
     width: fit-content
     padding: 5%
     line-height: 35px
-
-    .item
-        background-color: #f7f6fb
-        border-radius: 20px 0 0 20px
+    .itemDark
+        background-color: #7f7f7f
+        border-radius: 20px
         .itemBox
             display: flex
             margin-bottom: 3rem
@@ -54,22 +53,46 @@ html
 
         .textBox
             width: 80%
-            padding:  2rem
+            padding: 2rem
+    .item
+        background-color: #f7f6fb
+        border-radius: 20px
+        .itemBox
+            display: flex
+            margin-bottom: 3rem
+        .imageBox
+            img
+                width: 250px
+                height: 100%
+                border-radius: 20px
 
-.item_title
+        .textBox
+            width: 80%
+            padding: 2rem
+
+.item_titleDark
     margin-top: 2%
     font-size: 1.2rem
-    color: #4c4c4c
-
+    color: #fff
     &:hover
         color: #0560a5
         text-decoration: none
         cursor: pointer
         transition: all 0.2s ease-in-out 0s
-
     h3
         font-weight: 400
 
+.item_title
+    margin-top: 2%
+    font-size: 1.2rem
+    color: #4c4c4c
+    &:hover
+        color: #0560a5
+        text-decoration: none
+        cursor: pointer
+        transition: all 0.2s ease-in-out 0s
+    h3
+        font-weight: 400
 
 .datetime
     font-weight: lighter
@@ -81,16 +104,21 @@ html
     display: flex
     justify-content: space-between
     align-items: center
-    width: 60%
+    width: 70%
 
     .icon
         margin-right: 5px
         color: #5b83cd !important
 
-
-
 .datetimeDark
     color: white
+
+.item_textDark
+    color: #fff
+    font-size: medium
+    text-align: left
+    opacity: 1
+    cursor: pointer
 
 .item_text
     color: #4d4d4d
@@ -99,20 +127,25 @@ html
     opacity: 1
     cursor: pointer
 
-.btns
-    margin-top: 3%
-    margin-left: 7%
+.btns , .darkThemePaginationBtns
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 80%
+    height: 40px
 
-    & button
-        margin-right: 1%
-        padding: 10px 15px
-        background-color: transparent
-        border: 2px solid #ededed
-        border-radius: 5px
-        border-radius: 5px
+.darkThemePaginationBtns a,.btns a
+    padding: 10px 15px
+    margin: 1px
+    background-color: transparent
+    border: 2px solid #ededed
+    border-radius: 5px
+    cursor: pointer
+.darkThemePaginationBtns a
+    color: #fff
 
-    & .active
-        border-color: #c280bf
+.activePaginate a
+    border-color: #c280bf
 
 .search
     margin: 50px 0px
@@ -136,11 +169,11 @@ html
         outline: none
 
 .darkTheme .form_event input[type='search']
-    border:1px solid #fff
+    border: 1px solid #fff
 
 .form_event button
     position: absolute
-    margin-left: 250px
+    margin-left: 273px
     padding: 20px 40px
     border: transparent
     background-color: #007bff
@@ -265,8 +298,7 @@ html
 
     .imageBox
         img
-            width: 82%
-            height: 60%
+            width: 220px !important
             border-radius: 0
             float: none
 
@@ -284,31 +316,32 @@ html
     .btns
         text-align: center
 
-@media screen and (max-width: 790px)
+@media screen and (max-width: 820px)
 
     .left
         width: 95%
-    
+
     .items
         padding: 1rem
-
-
-    .items
+        width: 95%
+        margin: auto
         .item
             flex-direction: column
+            margin-top: 20px!important
             padding: 0
             .imageBox
                 margin: 0
-
                 img
                     border-radius: 20px
-                    width: 100%
-                    height: 100%
+                    width: 220px
+                    border-radius: 20px
+                    float: none
 
             .textBox
                 text-align: left
                 margin: auto
-                padding: 1rem
+    .btns , .darkThemePaginationBtns
+        width: 100%
     .btns
         margin: auto
 
@@ -323,27 +356,28 @@ html
     .datetime
         width: 80%
 
-    .btns
-        text-align: left
-        margin-left: 1rem
-
     .right
         width: 95%
-
-    .search 
-        text-align: left
-
     .form_event
-        width: 100%
-
-    .form_event button
-        right: 0
-        
+        border: none !important
+    .search
+        text-align: center
+        display: flex
+        justify-content: center
+        align-items: center
+        flex-direction: column
+        .form_event
+            position: relative
+            .btnSearch
+                position: absolute
+                margin-left: 265px
     .recent_portfolio
         width: 100%
-    
+    .photo
+        display: flex!important
+        flex-wrap: wrap !important
 
-@media screen and (max-width: 630px)
+@media screen and (max-width: 680px)
 
     .left
         width: 100%
@@ -362,28 +396,31 @@ html
         button
             margin-left: 10px
             padding: 10px 20px
+    .datetime, .datetimeDark
+        width: 100%
     .items
-        .item
-
+        .item,.itemDark
+            .itemBox
+                flex-direction: column!important
         .imageBox
             text-align: center
-            margin: 0 0 5% 0
-
+            width: 100%!important
             img
+                width: 100%!important
                 border-radius: 20px
-                width: 100%
-                height: auto
-
         .textBox
-            margin-bottom: 5%
+            padding-top: 5px!important
+            width: 100%!important
+            margin: auto
     .form_event
         width: 15rem
         margin: auto
     .form_event input[type="search"]
         padding: 10px 10px
         font-size: 10px
-    .form_event button
-        margin: 0px 0px 0px 60px
+    .form_event .btnSearch
+        margin-left: 220px!important
+        margin-top: 8px
     .readDiv
         margin-bottom: 50px
     .readBtn
@@ -394,8 +431,6 @@ html
         padding: 12px 30px
     .recent_portfolio
         width: 300px
-
-
 
 @media screen and (max-width: 375px)
     .container
@@ -416,7 +451,6 @@ html
             padding: 0
             .imageBox
                 margin: 0
-
                 img
                     border-radius: 20px
                     width: 100%
@@ -435,19 +469,19 @@ html
         h3
             a
                 font-size: 20px
-    
+
     .right
         width: 100%
     .form_event
         width: 100%
         margin: auto
     .form_event input[type="search"]
+        border-radius: 5px
         padding: 10px 10px
-        width: 100%
         font-size: 10px
     .form_event button
         float: right
-        padding: 20pxx
+        padding: 10px
     .readDiv
         margin-bottom: 50px
     .readBtn
@@ -458,4 +492,4 @@ html
         padding: 10px 24px
         font-size: 12px
     .recent_portfolio
-        width: 300px
+        width: 100%

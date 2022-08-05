@@ -13,16 +13,18 @@ function Scroll() {
   const [{mode}, setValue] = useContext(Context)
   return (
     window.addEventListener("scroll", function () {
+      let scrollBtn = document.getElementById("scrollBtn")
+      let themeBtn = document.getElementById("themeBtn")
       var currScrollPos = window.pageYOffset;
 
       if (currScrollPos >= 500) {
-        document.getElementById("scrollBtn").style.opacity = 1;
-        document.getElementById("scrollBtn").style.zIndex = "1";
-        document.getElementById("themeBtn").style.bottom = '65px'
+        scrollBtn.style.opacity = "1";
+        scrollBtn.style.zIndex = "1";
+        themeBtn.style.bottom = '65px'
       } else {
-        document.getElementById("scrollBtn").style.opacity = -1;
-        document.getElementById("scrollBtn").style.zIndex = "-1";
-        document.getElementById("themeBtn").style.bottom = 0
+        scrollBtn.style.opacity = "-1";
+        scrollBtn.style.zIndex = "-1";
+        themeBtn.style.bottom = 0
       }
     }),
     (

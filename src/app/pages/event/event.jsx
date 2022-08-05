@@ -1,4 +1,4 @@
-import React, { useContext, useState, createContext } from "react";
+import React, { useContext, useState } from "react";
 import eventStyle from "./event.module.sass";
 import portf_1 from "../../../assets/event/01.jpg";
 import portf_2 from "../../../assets/event/02.jpg";
@@ -9,17 +9,30 @@ import portf_6 from "../../../assets/event/06.jpg";
 import portf_7 from "../../../assets/event/07.jpg";
 import portf_8 from "../../../assets/event/08.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCalendarDays , faSearch , faAngleRight, faClock } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCalendarDays,
+  faSearch,
+  faAngleRight,
+  faClock,
+} from "@fortawesome/free-solid-svg-icons";
 
 import HeaderCarousel from "../../../core/components/header-carousel/header-carousel";
 import HeaderStyle from "../../../core/components/header/header.module.sass";
 import { Link } from "react-router-dom";
 import { Context } from "../../../App";
+import ReactPaginate from "react-paginate";
 
 const Event = (eventContent) => {
-  const [value, setValue] = useContext(Context);
+  const [value] = useContext(Context);
+  const [pageNumber, setPageNumber] = useState(0);
   const data = eventContent.eventContent;
-  const theme = value.mode === 'dark'? eventStyle.darkTheme : ''
+  const theme = value.mode === "dark" ? eventStyle.darkTheme : "";
+
+
+  const [searchTerm, setSearchTerm] = useState("");
+  const userPage = 5;
+  const pagesVisited = pageNumber * userPage;
+
   const portfolio = [
     {
       id: 1,
@@ -60,6 +73,7 @@ const Event = (eventContent) => {
   const items = [
     {
       image: portf_1,
+      id: 1,
       title: "Magna aliquyam erased",
       date: "March 12, 2018",
       time: "01:15 pm - 04:30 pm",
@@ -67,6 +81,7 @@ const Event = (eventContent) => {
     },
     {
       image: portf_2,
+      id: 2,
       title: "Cupiditate ducimus ea eaque",
       date: "March 11, 2018",
       time: "02:15 pm - 03:50 pm",
@@ -74,6 +89,7 @@ const Event = (eventContent) => {
     },
     {
       image: portf_3,
+      id: 3,
       title: "Aliquam amet atque deleniti",
       date: "March 9, 2018",
       time: "03:15 pm - 05:30 pm",
@@ -81,6 +97,7 @@ const Event = (eventContent) => {
     },
     {
       image: portf_4,
+      id: 4,
       title: "Ad ipsam itaque molestias",
       date: "March 4, 2018",
       time: "03:00 pm - 04:30 pm",
@@ -88,6 +105,7 @@ const Event = (eventContent) => {
     },
     {
       image: portf_5,
+      id: 5,
       title: "Magna aliquyam erased",
       date: "March 2, 2018",
       time: "05:15 pm - 07:10 pm",
@@ -95,6 +113,7 @@ const Event = (eventContent) => {
     },
     {
       image: portf_6,
+      id: 6,
       title: "Cupiditate ducimus ea eaque ",
       date: "Jan 30, 2018",
       time: "01:15 pm - 05:30 pm",
@@ -103,6 +122,7 @@ const Event = (eventContent) => {
 
     {
       image: portf_7,
+      id: 7,
       title: "Aliquam amet atque deleniti ",
       date: "Jan 26, 2018",
       time: "05:45 pm - 04:40 pm",
@@ -111,6 +131,7 @@ const Event = (eventContent) => {
 
     {
       image: portf_8,
+      id: 8,
       title: "Ad ipsam itaque molestias ",
       date: "Jan 20, 2018",
       time: "01:55 pm - 05:30 pm",
@@ -118,6 +139,7 @@ const Event = (eventContent) => {
     },
     {
       image: portf_1,
+      id: 9,
       title: "Magna aliquyam erased",
       date: "March 16, 2018",
       time: "05:15 pm - 06:30 pm",
@@ -126,6 +148,7 @@ const Event = (eventContent) => {
 
     {
       image: portf_2,
+      id: 10,
       title: "Cupiditate ducimus ea eaque ",
       date: "Jan 10, 2018",
       time: "03:15 pm - 07:30 pm",
@@ -133,46 +156,87 @@ const Event = (eventContent) => {
     },
   ];
 
-  const EventItems = items.map((item) => (
-    <div className={eventStyle.item}>
-      <div className={eventStyle.itemBox}>
-        <div className={eventStyle.imageBox}>
-          <img src={item.image} alt="" className={eventStyle.images} />
-        </div>
+  const pageCount = Math.ceil(items.length / userPage);
+  const changePage = ({ selected }) => {
+    setPageNumber(selected);
+  };
 
-        <div className={eventStyle.textBox}>
-          <div className={eventStyle.item_title}>
-            <h3><a href="/event-single">{item.title}</a></h3>
+
+  const displayUsers = items
+    .filter((item) =>{
+      if (searchTerm === ""){
+        return item;
+      }else if ( item.title.toLowerCase().includes(searchTerm.toLowerCase())){
+        return item;
+      }
+    })
+    .slice(pagesVisited, pagesVisited + userPage)
+    .map((item, index) => {
+      return (
+        <div key={index}
+          className={
+            value.mode === "light" ? eventStyle.item : eventStyle.itemDark
+          }
+        >
+          <div className={eventStyle.itemBox}>
+            <div className={eventStyle.imageBox}>
+              <img src={item.image} alt="" className={eventStyle.images} />
+            </div>
+
+            <div className={eventStyle.textBox}>
+              <div>
+                <h3>
+                  <a
+                    href={`/event/${item.id}`}
+                    className={
+                      value.mode === "light"
+                        ? eventStyle.item_title
+                        : eventStyle.item_titleDark
+                    }
+                  >
+                    {item.title}
+                  </a>
+                </h3>
+              </div>
+              <div className="">
+                <h4
+                  className={
+                    value.mode === "light"
+                      ? eventStyle.datetime
+                      : eventStyle.datetimeDark
+                  }
+                >
+                  <span>
+                    <span className={eventStyle.icon}>
+                      <FontAwesomeIcon icon={faCalendarDays} />
+                    </span>
+                    <span>{item.date}</span>
+                  </span>
+                  <span>
+                    <span className={eventStyle.icon}>
+                      <FontAwesomeIcon icon={faClock} />
+                    </span>
+                    <span>{item.time}</span>
+                  </span>
+                </h4>
+              </div>
+              <div>
+                <p
+                  className={
+                    value.mode === "light"
+                      ? eventStyle.item_text
+                      : eventStyle.item_textDark
+                  }
+                >
+                  {item.text}
+                </p>
+              </div>
+            </div>
           </div>
-        <div className="">
-          <h4
-            className={
-              value.mode === "light"
-                ? eventStyle.datetime
-                : eventStyle.datetimeDark
-            }
-          >
-            <span>
-              <span className={eventStyle.icon}>
-                <FontAwesomeIcon icon={faCalendarDays} />
-              </span>
-              <span>{item.date}</span>
-            </span>
-            <span>
-              <span className={eventStyle.icon}>
-                <FontAwesomeIcon icon={faClock} />
-              </span>
-              <span>{item.time}</span>
-            </span>
-          </h4>
         </div>
-          <div className={eventStyle.item_text}>
-            <p>{item.text}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  ));
+      );
+    });
+
   const categories = [
     {
       name: "Internet Provider",
@@ -195,9 +259,9 @@ const Event = (eventContent) => {
       amount: "6",
     },
   ];
-  const EventCategories = categories.map((category) => (
-    <ul>
-      <li className={eventStyle.listCategory} key={category.index}>
+  const EventCategories = categories.map((category , index) => (
+    <ul key={index}>
+      <li className={eventStyle.listCategory} >
         <span
           className={
             value.mode === "light"
@@ -252,24 +316,35 @@ const Event = (eventContent) => {
 
       <div className={eventStyle.container}>
         <div className={eventStyle.left}>
-          <div className={eventStyle.items}> {EventItems} </div>
-          <div className={eventStyle.btns}>
-            <button className={theme}>
-              <span>&#60;</span>
-            </button>
-            <button className={theme}>1</button>
-            <button className={`${eventStyle.active} ${theme}`}>2</button>
-            <button className={theme}>3</button>
-            <button className={theme}>
-              <span>&#62;</span>
-            </button>
-          </div>
+          <div className={eventStyle.items}> {displayUsers} </div>
+
+          <ReactPaginate
+            previousLabel={"<"}
+            nextLabel={">"}
+            pageCount={pageCount}
+            onPageChange={changePage}
+            containerClassName={
+              value.mode === "light"
+                ? eventStyle.btns
+                : eventStyle.darkThemePaginationBtns
+            }
+            previousLinkClassName={eventStyle.buttonPaginate}
+            nextLinkClassName={eventStyle.buttonPaginate}
+            disabledClassName={eventStyle.buttonPaginateDisabled}
+            activeClassName={eventStyle.activePaginate}
+          />
         </div>
         <div className={eventStyle.right}>
           <div className={eventStyle.search}>
             <h2 className={eventStyle.title}>Search</h2>
             <form action="" className={`${eventStyle.form_event} ${theme}`}>
-              <input className={`${eventStyle.placeholder} ${theme}`} type="search" placeholder="Search Keyword" />
+              <input
+                className={`${eventStyle.placeholder} ${theme}`}
+                type="search"
+                placeholder="Search Keyword"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
               <button className={eventStyle.btnSearch}>
                 <FontAwesomeIcon icon={faSearch} />
               </button>

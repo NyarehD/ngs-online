@@ -7,7 +7,7 @@ import PageFooter from "./core/components/page-footer/page-footer";
 import Copyright from "./core/components/copy-right/copy-right";
 import ScrollButton from "./core/components/scroll-button/scroll-button";
 import View from "./setup/routes-manager/view";
-import api from "./api/mockApi";
+// import api from "./api/mockApi";
 import Preload from "./core/components/preload/preload";
 
 const config = {

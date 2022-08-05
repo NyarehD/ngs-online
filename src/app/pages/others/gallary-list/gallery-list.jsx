@@ -1,4 +1,4 @@
-import react, { useContext, useState } from "react";
+import  { useContext, useState } from "react";
 import IsoTopeGrid from "react-isotope";
 import galleryListStyle from "./gallery-list.module.sass";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

@@ -62,12 +62,12 @@ function Header() {
           <li>
             <Link
               className={`${
-                locationPath.pathname === "/team-list"
+                locationPath.pathname === "/team"
                   ? `${Style.navActive}`
                   : ""
               }`}
               type="button"
-              to={"/team-list"}
+              to={"/team"}
             >
               Team
             </Link>
@@ -75,12 +75,12 @@ function Header() {
           <li>
             <Link
               className={`${
-                locationPath.pathname === "/event-list"
+                locationPath.pathname === "/event"
                   ? `${Style.navActive}`
                   : ""
               }`}
               type="button"
-              to={"/event-list"}
+              to={"/event"}
             >
               Event
             </Link>

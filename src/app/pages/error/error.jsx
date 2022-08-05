@@ -3,7 +3,7 @@ import { Context } from "../../../App.js";
 import ErrorStyle from "./error.module.sass";
 
 function Error() {
-  const [mode, setMode] = useContext(Context);
+  const [mode] = useContext(Context);
   const darkTheme = mode.mode === 'dark'?ErrorStyle.darkTheme:''
   return (
     <div className={`${ErrorStyle.errorBox} ${darkTheme}`}>
