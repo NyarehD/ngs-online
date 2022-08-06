@@ -87,46 +87,48 @@ const AddressList = () => {
           Open Hours
         </h1>
         <table width="100%">
-          <tr>
-            <td className={ContactStyle.contact_icon}>
-              <FontAwesomeIcon
-                icon={faClock}
-                className={ContactStyle.icon}
-              ></FontAwesomeIcon>
-            </td>
-            <td className={ContactStyle.closing_date}>Monday-Friday</td>
-            <td className={ContactStyle.contact_time}>9:00 AM-5:00 PM</td>
-          </tr>
-          <tr>
-            <td className={ContactStyle.contact_icon}>
-              <FontAwesomeIcon
-                icon={faClock}
-                className={ContactStyle.icon}
-              ></FontAwesomeIcon>
-            </td>
-            <td className={ContactStyle.closing_date}>Saturday</td>
-            <td className={ContactStyle.contact_time}>10:00 AM-3:00 PM</td>
-          </tr>
-          <tr>
-            <td className={ContactStyle.contact_icon}>
-              <FontAwesomeIcon
-                icon={faClose}
-                className={ContactStyle.icon}
-              ></FontAwesomeIcon>
-            </td>
-            <td className={ContactStyle.closing_date}>Sunday</td>
-            <td className={ContactStyle.contact_time}>Closed</td>
-          </tr>
-          <tr>
-            <td className={ContactStyle.contact_icon}>
-              <FontAwesomeIcon
-                icon={faClock}
-                className={ContactStyle.icon}
-              ></FontAwesomeIcon>
-            </td>
-            <td className={ContactStyle.closing_date}>Holidays</td>
-            <td className={ContactStyle.contact_time}>10:00-13:00</td>
-          </tr>
+          <tbody>
+            <tr>
+              <td className={ContactStyle.contact_icon}>
+                <FontAwesomeIcon
+                  icon={faClock}
+                  className={ContactStyle.icon}
+                ></FontAwesomeIcon>
+              </td>
+              <td className={ContactStyle.closing_date}>Monday-Friday</td>
+              <td className={ContactStyle.contact_time}>9:00 AM-5:00 PM</td>
+            </tr>
+            <tr>
+              <td className={ContactStyle.contact_icon}>
+                <FontAwesomeIcon
+                  icon={faClock}
+                  className={ContactStyle.icon}
+                ></FontAwesomeIcon>
+              </td>
+              <td className={ContactStyle.closing_date}>Saturday</td>
+              <td className={ContactStyle.contact_time}>10:00 AM-3:00 PM</td>
+            </tr>
+            <tr>
+              <td className={ContactStyle.contact_icon}>
+                <FontAwesomeIcon
+                  icon={faClose}
+                  className={ContactStyle.icon}
+                ></FontAwesomeIcon>
+              </td>
+              <td className={ContactStyle.closing_date}>Sunday</td>
+              <td className={ContactStyle.contact_time}>Closed</td>
+            </tr>
+            <tr>
+              <td className={ContactStyle.contact_icon}>
+                <FontAwesomeIcon
+                  icon={faClock}
+                  className={ContactStyle.icon}
+                ></FontAwesomeIcon>
+              </td>
+              <td className={ContactStyle.closing_date}>Holidays</td>
+              <td className={ContactStyle.contact_time}>10:00-13:00</td>
+            </tr>
+          </tbody>
         </table>
       </div>
       {/* Opening-days end  */}

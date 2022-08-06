@@ -44,7 +44,7 @@ export default function EventSingle({ eventSingleContent }) {
                 ></FontAwesomeIcon>
               </li>
               <li className={HeaderStyle.breakCrumbList}>
-                <a href="/" className={HeaderStyle.link}>
+                <a href="/event" className={HeaderStyle.link}>
                   {data.secondBreakCrumb}
                 </a>
               </li>

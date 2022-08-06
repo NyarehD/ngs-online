@@ -43,8 +43,8 @@ const Blog = ({ post, theme }) => {
             <div className={BlogListStyle.tagList}>
               <FontAwesomeIcon icon={faTags} className={BlogListStyle.i} />
               <span className={BlogListStyle.tag_container}>
-                {post.tag.map((tag) => (
-                  <a href="#" className={BlogListStyle.tag}>
+                {post.tag.map((tag , index) => (
+                  <a key={index} href="#" className={BlogListStyle.tag}>
                     {tag}
                   </a>
                 ))}

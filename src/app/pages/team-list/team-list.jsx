@@ -1,4 +1,4 @@
-import React, { useState, useEffect,useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebookF,
@@ -6,10 +6,17 @@ import {
   faYoutube,
   faInstagram,
 } from "@fortawesome/free-brands-svg-icons";
-import {faAngleRight} from "@fortawesome/free-solid-svg-icons";
+import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { useSpring, animated } from "react-spring";
-import { BrowserRouter as Router, Route, Routes, NavLink, Link, useNavigate } from "react-router-dom";
-import HeaderStyle from '../../../core/components/header/header.module.sass'
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  NavLink,
+  Link,
+  useNavigate,
+} from "react-router-dom";
+import HeaderStyle from "../../../core/components/header/header.module.sass";
 import HeaderCarousel from "../../../core/components/header-carousel/header-carousel";
 import TeamSingle from "../team-single/team-single";
 
@@ -23,10 +30,11 @@ import img07 from "../../../assets/team-list/07.jpg";
 
 import teamListStyle from "./team-list.module.sass";
 import { Context } from "../../../App";
+import api from "../../../api/mockApi";
 
 export default function TeamList(teamListContent) {
-  const data = teamListContent.teamListContent
-  const [value] = useContext(Context)
+  const data = teamListContent.teamListContent;
+  const [value] = useContext(Context);
   const navigate = useNavigate();
   const teams = [
     {
@@ -225,62 +233,65 @@ export default function TeamList(teamListContent) {
       leave: { x: 0, y: 0, width: 50, height: 50, opacity: 0 },
     });
     return designTeam.map((dev) => {
-
       const sendData = () => {
-        navigate('/team-single',
-            {
-              state: {
-                id: dev.id,
-                name: dev.name,
-                role: dev.role
-            }
-            });
-    }
+        navigate(`/team/design/${dev.id}`, {
+          state: {
+            id: dev.id,
+            name: dev.name,
+            role: dev.role,
+          },
+        });
+      };
 
       return (
-        <animated.div key={dev.id} className={`${teamListStyle.developer} ${value.mode === 'light'?teamListStyle.light:teamListStyle.dark}`} style={transition}>
+        <animated.div
+          key={dev.id}
+          className={`${teamListStyle.developer} ${
+            value.mode === "light" ? teamListStyle.light : teamListStyle.dark
+          }`}
+          style={transition}
+        >
           <div className={teamListStyle.developer_media}>
-            <a href={dev.detail_link} onClick={()=>sendData()}>
-                <img src={dev.img} alt="" className={teamListStyle.dev_img} />
-                <div className={teamListStyle.hover}></div>
-                <div className={teamListStyle.dev_social_icons}>
-                  <a href={dev.facebook}>
-                    <div className={teamListStyle.dev_Facebook}>
-                      <FontAwesomeIcon
-                        icon={faFacebookF}
-                        className={teamListStyle.fac_icon}
-                      ></FontAwesomeIcon>
-                    </div>
-                  </a>
-                  <a href={dev.twitter}>
-                    <div className={teamListStyle.dev_Twitter}>
-                      <FontAwesomeIcon
-                        icon={faTwitter}
-                        className={teamListStyle.twi_icon}
-                      ></FontAwesomeIcon>
-                    </div>
-                  </a>
-                  <a href={dev.youtube}>
-                    <div className={teamListStyle.dev_Youtube}>
-                      <FontAwesomeIcon
-                        icon={faYoutube}
-                        className={teamListStyle.yout_icon}
-                      ></FontAwesomeIcon>
-                    </div>
-                  </a>
-                  <a href={dev.instagram}>
-                    <div className={teamListStyle.dev_Instagram}>
-                      <FontAwesomeIcon
-                        icon={faInstagram}
-                        className={teamListStyle.ins_icon}
-                      ></FontAwesomeIcon>
-                    </div>
-                  </a>
-                </div>
+            <a href={dev.detail_link} onClick={() => sendData()}>
+              <img src={dev.img} alt="" className={teamListStyle.dev_img} />
+              <div className={teamListStyle.hover}></div>
+              <div className={teamListStyle.dev_social_icons}>
+                  <div className={teamListStyle.dev_Facebook}>
+                    <FontAwesomeIcon
+                      icon={faFacebookF}
+                      className={teamListStyle.fac_icon}
+                    ></FontAwesomeIcon>
+                  </div>
+                  <div className={teamListStyle.dev_Twitter}>
+                    <FontAwesomeIcon
+                      icon={faTwitter}
+                      className={teamListStyle.twi_icon}
+                    ></FontAwesomeIcon>
+                  </div>
+                  <div className={teamListStyle.dev_Youtube}>
+                    <FontAwesomeIcon
+                      icon={faYoutube}
+                      className={teamListStyle.yout_icon}
+                    ></FontAwesomeIcon>
+                  </div>
+                  <div className={teamListStyle.dev_Instagram}>
+                    <FontAwesomeIcon
+                      icon={faInstagram}
+                      className={teamListStyle.ins_icon}
+                    ></FontAwesomeIcon>
+                  </div>
+              </div>
             </a>
           </div>
           <div className={teamListStyle.developer_content}>
-            <a href="#" className={`${teamListStyle.dev_name} ${value.mode === 'light'?teamListStyle.lightName:teamListStyle.darkName}`}>
+            <a
+              href="#"
+              className={`${teamListStyle.dev_name} ${
+                value.mode === "light"
+                  ? teamListStyle.lightName
+                  : teamListStyle.darkName
+              }`}
+            >
               <h5>{dev.name}</h5>
             </a>
             <p className={teamListStyle.dev_role}>{dev.role}</p>
@@ -297,63 +308,66 @@ export default function TeamList(teamListContent) {
       config: { duration: 250 },
       leave: { x: 0, y: 0, width: 50, height: 50, opacity: 0 },
     });
-    return frontendTeam.map((dev) => {
-
+    return frontendTeam.map((dev, index) => {
       const sendData = () => {
-        navigate('/team-single',
-            {
-              state: {
-                id: dev.id,
-                name: dev.name,
-                role: dev.role
-            }
-            });
-    }
+        navigate("/team-single", {
+          state: {
+            id: dev.id,
+            name: dev.name,
+            role: dev.role,
+          },
+        });
+      };
 
       return (
-        <animated.div className={`${teamListStyle.developer} ${value.mode === 'light'?teamListStyle.light:teamListStyle.dark}`} style={transition}>
+        <animated.div
+          key={index}
+          className={`${teamListStyle.developer} ${
+            value.mode === "light" ? teamListStyle.light : teamListStyle.dark
+          }`}
+          style={transition}
+        >
           <div className={teamListStyle.developer_media}>
-            <a href={dev.detail_link} onClick={()=>sendData()}>
-                <img src={dev.img} alt="" className={teamListStyle.dev_img} />
-                <div className={teamListStyle.hover}></div>
-                <div className={teamListStyle.dev_social_icons}>
-                  <a href={dev.facebook}>
-                    <div className={teamListStyle.dev_Facebook}>
-                      <FontAwesomeIcon
-                        icon={faFacebookF}
-                        className={teamListStyle.fac_icon}
-                      ></FontAwesomeIcon>
-                    </div>
-                  </a>
-                  <a href={dev.twitter}>
-                    <div className={teamListStyle.dev_Twitter}>
-                      <FontAwesomeIcon
-                        icon={faTwitter}
-                        className={teamListStyle.twi_icon}
-                      ></FontAwesomeIcon>
-                    </div>
-                  </a>
-                  <a href={dev.youtube}>
-                    <div className={teamListStyle.dev_Youtube}>
-                      <FontAwesomeIcon
-                        icon={faYoutube}
-                        className={teamListStyle.yout_icon}
-                      ></FontAwesomeIcon>
-                    </div>
-                  </a>
-                  <a href={dev.instagram}>
-                    <div className={teamListStyle.dev_Instagram}>
-                      <FontAwesomeIcon
-                        icon={faInstagram}
-                        className={teamListStyle.ins_icon}
-                      ></FontAwesomeIcon>
-                    </div>
-                  </a>
-                </div>
+            <a href={dev.detail_link} onClick={() => sendData()}>
+              <img src={dev.img} alt="" className={teamListStyle.dev_img} />
+              <div className={teamListStyle.hover}></div>
+              <div className={teamListStyle.dev_social_icons}>
+                  <div className={teamListStyle.dev_Facebook}>
+                    <FontAwesomeIcon
+                      icon={faFacebookF}
+                      className={teamListStyle.fac_icon}
+                    ></FontAwesomeIcon>
+                  </div>
+                  <div className={teamListStyle.dev_Twitter}>
+                    <FontAwesomeIcon
+                      icon={faTwitter}
+                      className={teamListStyle.twi_icon}
+                    ></FontAwesomeIcon>
+                  </div>
+                  <div className={teamListStyle.dev_Youtube}>
+                    <FontAwesomeIcon
+                      icon={faYoutube}
+                      className={teamListStyle.yout_icon}
+                    ></FontAwesomeIcon>
+                  </div>
+                  <div className={teamListStyle.dev_Instagram}>
+                    <FontAwesomeIcon
+                      icon={faInstagram}
+                      className={teamListStyle.ins_icon}
+                    ></FontAwesomeIcon>
+                  </div>
+              </div>
             </a>
           </div>
           <div className={teamListStyle.developer_content}>
-            <a href="#" className={`${teamListStyle.dev_name} ${value.mode === 'light'?teamListStyle.lightName:teamListStyle.darkName}`}>
+            <a
+              href="#"
+              className={`${teamListStyle.dev_name} ${
+                value.mode === "light"
+                  ? teamListStyle.lightName
+                  : teamListStyle.darkName
+              }`}
+            >
               <h5>{dev.name}</h5>
             </a>
             <p className={teamListStyle.dev_role}>{dev.role}</p>
@@ -370,63 +384,66 @@ export default function TeamList(teamListContent) {
       config: { duration: 250 },
       leave: { x: 0, y: 0, width: 50, height: 50, opacity: 0 },
     });
-    return backendTeam.map((dev) => {
-
+    return backendTeam.map((dev, index) => {
       const sendData = () => {
-        navigate('/team-single',
-            {
-              state: {
-                id: dev.id,
-                name: dev.name,
-                role: dev.role
-            }
-            });
-    }
+        navigate("/team-single", {
+          state: {
+            id: dev.id,
+            name: dev.name,
+            role: dev.role,
+          },
+        });
+      };
 
       return (
-        <animated.div className={`${teamListStyle.developer} ${value.mode === 'light'?teamListStyle.light:teamListStyle.dark}`} style={transition}>
+        <animated.div
+          key={index}
+          className={`${teamListStyle.developer} ${
+            value.mode === "light" ? teamListStyle.light : teamListStyle.dark
+          }`}
+          style={transition}
+        >
           <div className={teamListStyle.developer_media}>
-            <a href={dev.detail_link} onClick={()=>sendData()}>
-                <img src={dev.img} alt="" className={teamListStyle.dev_img} />
-                <div className={teamListStyle.hover}></div>
-                <div className={teamListStyle.dev_social_icons}>
-                  <a href={dev.facebook}>
-                    <div className={teamListStyle.dev_Facebook}>
-                      <FontAwesomeIcon
-                        icon={faFacebookF}
-                        className={teamListStyle.fac_icon}
-                      ></FontAwesomeIcon>
-                    </div>
-                  </a>
-                  <a href={dev.twitter}>
-                    <div className={teamListStyle.dev_Twitter}>
-                      <FontAwesomeIcon
-                        icon={faTwitter}
-                        className={teamListStyle.twi_icon}
-                      ></FontAwesomeIcon>
-                    </div>
-                  </a>
-                  <a href={dev.youtube}>
-                    <div className={teamListStyle.dev_Youtube}>
-                      <FontAwesomeIcon
-                        icon={faYoutube}
-                        className={teamListStyle.yout_icon}
-                      ></FontAwesomeIcon>
-                    </div>
-                  </a>
-                  <a href={dev.instagram}>
-                    <div className={teamListStyle.dev_Instagram}>
-                      <FontAwesomeIcon
-                        icon={faInstagram}
-                        className={teamListStyle.ins_icon}
-                      ></FontAwesomeIcon>
-                    </div>
-                  </a>
-                </div>
+            <a href={dev.detail_link} onClick={() => sendData()}>
+              <img src={dev.img} alt="" className={teamListStyle.dev_img} />
+              <div className={teamListStyle.hover}></div>
+              <div className={teamListStyle.dev_social_icons}>
+                  <div className={teamListStyle.dev_Facebook}>
+                    <FontAwesomeIcon
+                      icon={faFacebookF}
+                      className={teamListStyle.fac_icon}
+                    ></FontAwesomeIcon>
+                  </div>
+                  <div className={teamListStyle.dev_Twitter}>
+                    <FontAwesomeIcon
+                      icon={faTwitter}
+                      className={teamListStyle.twi_icon}
+                    ></FontAwesomeIcon>
+                  </div>
+                  <div className={teamListStyle.dev_Youtube}>
+                    <FontAwesomeIcon
+                      icon={faYoutube}
+                      className={teamListStyle.yout_icon}
+                    ></FontAwesomeIcon>
+                  </div>
+                  <div className={teamListStyle.dev_Instagram}>
+                    <FontAwesomeIcon
+                      icon={faInstagram}
+                      className={teamListStyle.ins_icon}
+                    ></FontAwesomeIcon>
+                  </div>
+              </div>
             </a>
           </div>
           <div className={teamListStyle.developer_content}>
-            <a href="#" className={`${teamListStyle.dev_name} ${value.mode === 'light'?teamListStyle.lightName:teamListStyle.darkName}`}>
+            <a
+              href="#"
+              className={`${teamListStyle.dev_name} ${
+                value.mode === "light"
+                  ? teamListStyle.lightName
+                  : teamListStyle.darkName
+              }`}
+            >
               <h5>{dev.name}</h5>
             </a>
             <p className={teamListStyle.dev_role}>{dev.role}</p>
@@ -444,63 +461,66 @@ export default function TeamList(teamListContent) {
       config: { duration: 250 },
       leave: { x: 0, y: 0, width: 50, height: 50, opacity: 0 },
     });
-    return mobileTeam.map((dev) => {
-
+    return mobileTeam.map((dev, index) => {
       const sendData = () => {
-        navigate('/team-single',
-            {
-              state: {
-                id: dev.id,
-                name: dev.name,
-                role: dev.role
-            }
-            });
-    }
+        navigate("/team-single", {
+          state: {
+            id: dev.id,
+            name: dev.name,
+            role: dev.role,
+          },
+        });
+      };
 
       return (
-        <animated.div className={`${teamListStyle.developer} ${value.mode === 'light'?teamListStyle.light:teamListStyle.dark}`} style={transition}>
+        <animated.div
+          key={index}
+          className={`${teamListStyle.developer} ${
+            value.mode === "light" ? teamListStyle.light : teamListStyle.dark
+          }`}
+          style={transition}
+        >
           <div className={teamListStyle.developer_media}>
-            <a href={dev.detail_link} onClick={()=>sendData()}>
-                <img src={dev.img} alt="" className={teamListStyle.dev_img} />
-                <div className={teamListStyle.hover}></div>
-                <div className={teamListStyle.dev_social_icons}>
-                  <a href={dev.facebook}>
-                    <div className={teamListStyle.dev_Facebook}>
-                      <FontAwesomeIcon
-                        icon={faFacebookF}
-                        className={teamListStyle.fac_icon}
-                      ></FontAwesomeIcon>
-                    </div>
-                  </a>
-                  <a href={dev.twitter}>
-                    <div className={teamListStyle.dev_Twitter}>
-                      <FontAwesomeIcon
-                        icon={faTwitter}
-                        className={teamListStyle.twi_icon}
-                      ></FontAwesomeIcon>
-                    </div>
-                  </a>
-                  <a href={dev.youtube}>
-                    <div className={teamListStyle.dev_Youtube}>
-                      <FontAwesomeIcon
-                        icon={faYoutube}
-                        className={teamListStyle.yout_icon}
-                      ></FontAwesomeIcon>
-                    </div>
-                  </a>
-                  <a href={dev.instagram}>
-                    <div className={teamListStyle.dev_Instagram}>
-                      <FontAwesomeIcon
-                        icon={faInstagram}
-                        className={teamListStyle.ins_icon}
-                      ></FontAwesomeIcon>
-                    </div>
-                  </a>
-                </div>
+            <a href={dev.detail_link} onClick={() => sendData()}>
+              <img src={dev.img} alt="" className={teamListStyle.dev_img} />
+              <div className={teamListStyle.hover}></div>
+              <div className={teamListStyle.dev_social_icons}>
+                  <div className={teamListStyle.dev_Facebook}>
+                    <FontAwesomeIcon
+                      icon={faFacebookF}
+                      className={teamListStyle.fac_icon}
+                    ></FontAwesomeIcon>
+                  </div>
+                  <div className={teamListStyle.dev_Twitter}>
+                    <FontAwesomeIcon
+                      icon={faTwitter}
+                      className={teamListStyle.twi_icon}
+                    ></FontAwesomeIcon>
+                  </div>
+                  <div className={teamListStyle.dev_Youtube}>
+                    <FontAwesomeIcon
+                      icon={faYoutube}
+                      className={teamListStyle.yout_icon}
+                    ></FontAwesomeIcon>
+                  </div>
+                  <div className={teamListStyle.dev_Instagram}>
+                    <FontAwesomeIcon
+                      icon={faInstagram}
+                      className={teamListStyle.ins_icon}
+                    ></FontAwesomeIcon>
+                  </div>
+              </div>
             </a>
           </div>
           <div className={teamListStyle.developer_content}>
-            <a href="#" className={`${teamListStyle.dev_name} ${value.mode === 'light'?teamListStyle.lightName:teamListStyle.darkName}`}>
+            <a
+              href="#"
+              className={`${teamListStyle.dev_name} ${
+                value.mode === "light"
+                  ? teamListStyle.lightName
+                  : teamListStyle.darkName
+              }`}
+            >
               <h5>{dev.name}</h5>
             </a>
             <p className={teamListStyle.dev_role}>{dev.role}</p>
@@ -518,63 +538,66 @@ export default function TeamList(teamListContent) {
       config: { duration: 250 },
       leave: { x: 0, y: 0, width: 50, height: 50, opacity: 0 },
     });
-    return networtTeam.map((dev) => {
-
+    return networtTeam.map((dev, index) => {
       const sendData = () => {
-        navigate('/team-single',
-            {
-              state: {
-                id: dev.id,
-                name: dev.name,
-                role: dev.role
-            }
-            });
-    }
+        navigate("/team-single", {
+          state: {
+            id: dev.id,
+            name: dev.name,
+            role: dev.role,
+          },
+        });
+      };
 
       return (
-        <animated.div className={`${teamListStyle.developer} ${value.mode === 'light'?teamListStyle.light:teamListStyle.dark}`} style={transition}>
+        <animated.div
+          key={index}
+          className={`${teamListStyle.developer} ${
+            value.mode === "light" ? teamListStyle.light : teamListStyle.dark
+          }`}
+          style={transition}
+        >
           <div className={teamListStyle.developer_media}>
-            <a href={dev.detail_link} onClick={()=>sendData()}>
-                <img src={dev.img} alt="" className={teamListStyle.dev_img} />
-                <div className={teamListStyle.hover}></div>
-                <div className={teamListStyle.dev_social_icons}>
-                  <a href={dev.facebook}>
-                    <div className={teamListStyle.dev_Facebook}>
-                      <FontAwesomeIcon
-                        icon={faFacebookF}
-                        className={teamListStyle.fac_icon}
-                      ></FontAwesomeIcon>
-                    </div>
-                  </a>
-                  <a href={dev.twitter}>
-                    <div className={teamListStyle.dev_Twitter}>
-                      <FontAwesomeIcon
-                        icon={faTwitter}
-                        className={teamListStyle.twi_icon}
-                      ></FontAwesomeIcon>
-                    </div>
-                  </a>
-                  <a href={dev.youtube}>
-                    <div className={teamListStyle.dev_Youtube}>
-                      <FontAwesomeIcon
-                        icon={faYoutube}
-                        className={teamListStyle.yout_icon}
-                      ></FontAwesomeIcon>
-                    </div>
-                  </a>
-                  <a href={dev.instagram}>
-                    <div className={teamListStyle.dev_Instagram}>
-                      <FontAwesomeIcon
-                        icon={faInstagram}
-                        className={teamListStyle.ins_icon}
-                      ></FontAwesomeIcon>
-                    </div>
-                  </a>
-                </div>
+            <a href={dev.detail_link} onClick={() => sendData()}>
+              <img src={dev.img} alt="" className={teamListStyle.dev_img} />
+              <div className={teamListStyle.hover}></div>
+              <div className={teamListStyle.dev_social_icons}>
+                  <div className={teamListStyle.dev_Facebook}>
+                    <FontAwesomeIcon
+                      icon={faFacebookF}
+                      className={teamListStyle.fac_icon}
+                    ></FontAwesomeIcon>
+                  </div>
+                  <div className={teamListStyle.dev_Twitter}>
+                    <FontAwesomeIcon
+                      icon={faTwitter}
+                      className={teamListStyle.twi_icon}
+                    ></FontAwesomeIcon>
+                  </div>
+                  <div className={teamListStyle.dev_Youtube}>
+                    <FontAwesomeIcon
+                      icon={faYoutube}
+                      className={teamListStyle.yout_icon}
+                    ></FontAwesomeIcon>
+                  </div>
+                  <div className={teamListStyle.dev_Instagram}>
+                    <FontAwesomeIcon
+                      icon={faInstagram}
+                      className={teamListStyle.ins_icon}
+                    ></FontAwesomeIcon>
+                  </div>
+              </div>
             </a>
           </div>
           <div className={teamListStyle.developer_content}>
-            <a href="#" className={`${teamListStyle.dev_name} ${value.mode === 'light'?teamListStyle.lightName:teamListStyle.darkName}`}>
+            <a
+              href="#"
+              className={`${teamListStyle.dev_name} ${
+                value.mode === "light"
+                  ? teamListStyle.lightName
+                  : teamListStyle.darkName
+              }`}
+            >
               <h5>{dev.name}</h5>
             </a>
             <p className={teamListStyle.dev_role}>{dev.role}</p>
@@ -584,19 +607,26 @@ export default function TeamList(teamListContent) {
     });
   };
 
-
-  const team = teams.map((team) => {
+  const team = teams.map((team, index) => {
     return (
       <NavLink
         style={({ isActive }) => {
           return {
-            color: isActive ? "#0056b3" : value.mode === 'light'? '#000000':'#fff',
+            color: isActive
+              ? "#0056b3"
+              : value.mode === "light"
+              ? "#000000"
+              : "#fff",
             textDecoration: "none",
           };
         }}
         to={`${team.team}`}
-        key={team.id}
-        className={`${teamListStyle.links} ${value.mode === 'light'?teamListStyle.lightLink:teamListStyle.darkLink}`}
+        className={`${teamListStyle.links} ${
+          value.mode === "light"
+            ? teamListStyle.lightLink
+            : teamListStyle.darkLink
+        }`}
+        key={index}
       >
         {team.name}
       </NavLink>
@@ -612,63 +642,71 @@ export default function TeamList(teamListContent) {
       config: { duration: 250 },
       leave: { x: 0, y: 0, width: 50, height: 50, opacity: 0 },
     });
-    return teamSelect.map((dev) => {
-
+    return teamSelect.map((dev, index) => {
       const sendData = () => {
-        navigate('/team-single',
-            {
-              state: {
-                id: dev.id,
-                name: dev.name,
-                role: dev.role
-              }
-            });
-        }
-      
+        navigate("/team-single", {
+          state: {
+            id: dev.id,
+            name: dev.name,
+            role: dev.role,
+          },
+        });
+      };
+
       return (
-        <animated.div className={`${teamListStyle.developer} ${value.mode === 'light'?teamListStyle.light:teamListStyle.dark}`} style={transition}>
+        <animated.div
+          key={index}
+          className={`${teamListStyle.developer} ${
+            value.mode === "light" ? teamListStyle.light : teamListStyle.dark
+          }`}
+          style={transition}
+        >
           <div className={teamListStyle.developer_media}>
-            <a href={dev.detail_link} onClick={() => { sendData() }}>
-                <img src={dev.img} alt="" className={teamListStyle.dev_img} />
-                <div className={teamListStyle.hover}></div>
-                <div className={teamListStyle.dev_social_icons}>
-                  <a href={dev.facebook}>
-                    <div className={teamListStyle.dev_Facebook}>
-                      <FontAwesomeIcon
-                        icon={faFacebookF}
-                        className={teamListStyle.fac_icon}
-                      ></FontAwesomeIcon>
-                    </div>
-                  </a>
-                  <a href={dev.twitter}>
-                    <div className={teamListStyle.dev_Twitter}>
-                      <FontAwesomeIcon
-                        icon={faTwitter}
-                        className={teamListStyle.twi_icon}
-                      ></FontAwesomeIcon>
-                    </div>
-                  </a>
-                  <a href={dev.youtube}>
-                    <div className={teamListStyle.dev_Youtube}>
-                      <FontAwesomeIcon
-                        icon={faYoutube}
-                        className={teamListStyle.yout_icon}
-                      ></FontAwesomeIcon>
-                    </div>
-                  </a>
-                  <a href={dev.instagram}>
-                    <div className={teamListStyle.dev_Instagram}>
-                      <FontAwesomeIcon
-                        icon={faInstagram}
-                        className={teamListStyle.ins_icon}
-                      ></FontAwesomeIcon>
-                    </div>
-                  </a>
+            <a
+              href={dev.detail_link}
+              onClick={() => {
+                sendData();
+              }}
+            >
+              <img src={dev.img} alt="" className={teamListStyle.dev_img} />
+              <div className={teamListStyle.hover}></div>
+              <div className={teamListStyle.dev_social_icons}>
+                <div className={teamListStyle.dev_Facebook}>
+                  <FontAwesomeIcon
+                    icon={faFacebookF}
+                    className={teamListStyle.fac_icon}
+                  ></FontAwesomeIcon>
                 </div>
+                <div className={teamListStyle.dev_Twitter}>
+                  <FontAwesomeIcon
+                    icon={faTwitter}
+                    className={teamListStyle.twi_icon}
+                  ></FontAwesomeIcon>
+                </div>
+                <div className={teamListStyle.dev_Youtube}>
+                  <FontAwesomeIcon
+                    icon={faYoutube}
+                    className={teamListStyle.yout_icon}
+                  ></FontAwesomeIcon>
+                </div>
+                <div className={teamListStyle.dev_Instagram}>
+                  <FontAwesomeIcon
+                    icon={faInstagram}
+                    className={teamListStyle.ins_icon}
+                  ></FontAwesomeIcon>
+                </div>
+              </div>
             </a>
           </div>
           <div className={teamListStyle.developer_content}>
-            <a href="#" className={`${teamListStyle.dev_name} ${value.mode === 'light'?teamListStyle.lightName:teamListStyle.darkName}`}>
+            <a
+              href="#"
+              className={`${teamListStyle.dev_name} ${
+                value.mode === "light"
+                  ? teamListStyle.lightName
+                  : teamListStyle.darkName
+              }`}
+            >
               <h5>{dev.name}</h5>
             </a>
             <p className={teamListStyle.dev_role}>{dev.role}</p>
@@ -679,7 +717,6 @@ export default function TeamList(teamListContent) {
   };
 
   return (
-    
     <div>
       <section className={HeaderStyle.box}>
         <HeaderCarousel />
@@ -687,30 +724,37 @@ export default function TeamList(teamListContent) {
           <h1 className={HeaderStyle.mainHeader}>{data.mainHeader}</h1>
           <div className={HeaderStyle.breakCrumb}>
             <ol className={HeaderStyle.breakCrumbLists}>
-              <li className={HeaderStyle.breakCrumbList}><Link type="button" to={"/team-list"} className={HeaderStyle.link}>{data.firstBreakCrumb}</Link></li>
-              <li className={HeaderStyle.breakCrumbList} ><FontAwesomeIcon className={HeaderStyle.icon} icon={faAngleRight} ></FontAwesomeIcon></li>
-              <li className={HeaderStyle.breakCrumbList} >{data.secondBreakCrumb}</li>
+              <li className={HeaderStyle.breakCrumbList}>
+                <Link
+                  type="button"
+                  to={"/team-list"}
+                  className={HeaderStyle.link}
+                >
+                  {data.firstBreakCrumb}
+                </Link>
+              </li>
+              <li className={HeaderStyle.breakCrumbList}>
+                <FontAwesomeIcon
+                  className={HeaderStyle.icon}
+                  icon={faAngleRight}
+                ></FontAwesomeIcon>
+              </li>
+              <li className={HeaderStyle.breakCrumbList}>
+                {data.secondBreakCrumb}
+              </li>
             </ol>
           </div>
         </div>
       </section>
-      <section className={value.mode === 'light'?teamListStyle.light:teamListStyle.dark}>
+      <section
+        className={
+          value.mode === "light" ? teamListStyle.light : teamListStyle.dark
+        }
+      >
         <div className={teamListStyle.container}>
           <div className={teamListStyle.menuList}>
             <div className={teamListStyle.lists}>
               <nav className={teamListStyle.nav_lists}>
-                {/* <NavLink
-                  style={({ isActive }) => {
-                    return {
-                      color: true ? "#0056b3" : value.mode === 'light'? '#000000':'#fff',
-                      textDecoration: "none",
-                    };
-                  }}
-                  to={`all`}
-                  className={`${teamListStyle.links} ${value.mode === 'light'?teamListStyle.lightLink:teamListStyle.darkLink}`}
-                >
-                  All
-                </NavLink> */}
                 {team}
               </nav>
             </div>
@@ -727,34 +771,40 @@ export default function TeamList(teamListContent) {
           </div>
 
           <div className={teamListStyle.parent_container}>
-              <div className={`${teamListStyle.child_container} ${value.mode === 'dark'?teamListStyle.darkThemeText:''}`}>
-                  <p className={teamListStyle.children_p}>
-                  We see ourselves as much more than just a studio, but as a
-                  family of like-minded, kind and talented people who love to
-                  collaborate and make awesome sh*t together.
-                  </p>
-                  <p className={teamListStyle.children_p}>
-                  We’re definitely close-knit, but not in a weird, creepy kind of
-                  way. We genuinely like each other and like to spend time
-                  together, whether it's for a quick cappuccino break in the
-                  studio or a night out at the latest gallery or museum opening.
-                  </p>
-                  <p className={teamListStyle.children_p}>
-                  While we love what we do, we know that life is about more than
-                  work and that we each have one beyond Bolden. We value healthy
-                  boundaries and will never ask you to work late or bother you on
-                  weekends (unless it’s for something fun).
-                  </p>
-                  <p className={teamListStyle.children_p}>
-                  Expecting a delivery and need to work from home? Kid’s sick and
-                  need to jet? No problem! We’ve always had a flexible approach to
-                  working from home and totally understand if you need to stay in
-                  or things come up. Life happens.
-                  </p>
-                  <button className={teamListStyle.children_button}>
-                  <span className={teamListStyle.children_button_text}>Go to Events-Right Page</span>
-                  </button>
-              </div>
+            <div
+              className={`${teamListStyle.child_container} ${
+                value.mode === "dark" ? teamListStyle.darkThemeText : ""
+              }`}
+            >
+              <p className={teamListStyle.children_p}>
+                We see ourselves as much more than just a studio, but as a
+                family of like-minded, kind and talented people who love to
+                collaborate and make awesome sh*t together.
+              </p>
+              <p className={teamListStyle.children_p}>
+                We’re definitely close-knit, but not in a weird, creepy kind of
+                way. We genuinely like each other and like to spend time
+                together, whether it's for a quick cappuccino break in the
+                studio or a night out at the latest gallery or museum opening.
+              </p>
+              <p className={teamListStyle.children_p}>
+                While we love what we do, we know that life is about more than
+                work and that we each have one beyond Bolden. We value healthy
+                boundaries and will never ask you to work late or bother you on
+                weekends (unless it’s for something fun).
+              </p>
+              <p className={teamListStyle.children_p}>
+                Expecting a delivery and need to work from home? Kid’s sick and
+                need to jet? No problem! We’ve always had a flexible approach to
+                working from home and totally understand if you need to stay in
+                or things come up. Life happens.
+              </p>
+              <button className={teamListStyle.children_button}>
+                <span className={teamListStyle.children_button_text}>
+                  Go to Events-Right Page
+                </span>
+              </button>
+            </div>
           </div>
         </div>
       </section>

@@ -45,8 +45,8 @@ const SliderImg = ({ ModalData, index, setCurrentImgIndex }) => {
   };
   return (
     <Slider {...settings}>
-      {ModalData.map((data) => (
-        <div className={ModalStyle.slider_img}>
+      {ModalData.map((data ,index) => (
+        <div key={index} className={ModalStyle.slider_img}>
           <img srcSet={data.image} src={data.image} />
         </div>
       ))}

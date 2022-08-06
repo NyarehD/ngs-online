@@ -31,7 +31,6 @@ function Header() {
   };
 
   window.addEventListener("scroll", setFixedSidebar);
-  
 
   return (
     <>
@@ -75,7 +74,7 @@ function Header() {
           <li>
             <Link
               className={`${
-                locationPath.pathname === "/event"
+                locationPath.pathname === "/event" 
                   ? `${Style.navActive}`
                   : ""
               }`}
@@ -110,7 +109,7 @@ function Header() {
           <li onClick={() => setIndex(5)}>
             <Link
               className={`${
-                locationPath.pathname === "/blog" ? `${Style.navActive}` : ""
+                locationPath.pathname === "/blog" || locationPath.pathname === "/blog/" ? `${Style.navActive}` : ""
               }`}
               type="button"
               to={"/blog"}

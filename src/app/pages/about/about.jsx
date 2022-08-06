@@ -65,9 +65,9 @@ function About(aboutContent) {
     to: { opacity: 1, y:0 },
     delay: 500
   });
-  const content = information.map((info) => {
+  const content = information.map((info , index) => {
     return (
-      <animated.div className={aboutStyles.container} style={fadeUp}>
+      <animated.div key={index} className={aboutStyles.container} style={fadeUp}>
         <div className={aboutStyles.about_info}>
           <div className={aboutStyles.about_image}>
             <img className={aboutStyles.about_image_img} src={info.img} alt="" />
@@ -89,9 +89,9 @@ function About(aboutContent) {
                         {info.description} 
                     </p> */}
             <div className={aboutStyles.content_list}>
-              <ul className={aboutStyles.servise_lists}>
-                {info.service_lists.map((serv) => {
-                  return <li className={aboutStyles.servise_list}>{serv.serv_title}</li>;
+              <ul className={aboutStyles.service_lists}>
+                {info.service_lists.map((serv , index) => {
+                  return <li key={index} className={`${aboutStyles.service_list} ${value.mode === "dark" ? aboutStyles.darkTheme : ""}`}>{serv.serv_title}</li>;
                 })}
               </ul>
             </div>
@@ -133,8 +133,8 @@ function About(aboutContent) {
       text: "Redundant connectivity to Lanet and switch port",
     },
   ];
-  const cardItems = cards.map((card) => (
-    <div className={aboutStyles.card}>
+  const cardItems = cards.map((card , index) => (
+    <div key={index} className={aboutStyles.card}>
       <div className={aboutStyles.image}>
         <img src={card.photo} alt="icon" />
       </div>

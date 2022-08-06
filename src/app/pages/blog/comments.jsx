@@ -18,7 +18,9 @@ const Comments=({currentUserId,setNOComment,themeStyle})=>{
             (a,b)=>new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
         )
     }
-    setNOComment(nOComment)
+    useEffect(() =>{
+        setNOComment(nOComment)
+    },[])
     const createComment = async (text, parentId = null) => {
         const updateComments={
             id: Math.random().toString(36).substr(2,9),

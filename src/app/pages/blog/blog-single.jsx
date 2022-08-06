@@ -184,9 +184,9 @@ export default function Blog(blogContent){
                                     </ul>
                                     <div className={BlogStyle.post_gallery}>
                                         {
-                                            blog.postImage.map(images=>{
+                                            blog.postImage.map((images ,index)=>{
                                                 return(
-                                                    <div className={BlogStyle.post_gallery_image_container}>
+                                                    <div key={index} className={BlogStyle.post_gallery_image_container}>
                                                         <img 
                                                         src={images.img} 
                                                         key={images.id}
