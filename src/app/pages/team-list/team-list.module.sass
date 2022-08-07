@@ -1,118 +1,182 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900")
 
 @mixin frameSize($width)
-    @media screen and (max-width:$width)
-        @content
+  @media screen and (max-width: $width)
+    @content
 
 $iconBgColor: #e8e8e8
-$iconColor:#4c4c4c
-$iconHoverColor:#fff
+$iconColor: #4c4c4c
+$iconHoverColor: #fff
 
 //for all social icons containers
 @mixin iconContainer()
-    width: 35px
-    height:35px
-    border-radius: 50%
-    color:$iconColor
-    background-color: $iconBgColor
-    font-size: 12px
-    transition: 0.3s
+  width: 35px
+  height: 35px
+  border-radius: 50%
+  color: $iconColor
+  background-color: $iconBgColor
+  font-size: 12px
+  transition: 0.3s
 
+  display: flex
+  justify-content: center
+  align-items: center
+
+.light
+  background: #fff
+
+.dark
+  background: #4c4c4c
+
+.darkThemeText
+  color: #fff
+
+body
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+  font-family: "poppins", sans-serif
+
+.container
+  width: 100%
+  max-width: 1200px
+  margin: 0 auto
+  padding: 160px 15px 130px
+  overflow-x: hidden
+  @include frameSize(500px)
+    padding: 50px 0
+
+  .menuList
+    width: 100%
     display: flex
     justify-content: center
     align-items: center
+    margin-bottom: 35px
 
-.light
-    background: #fff
+    .lists
+      width: 70%
 
-.dark 
-    background: #4c4c4c
-
-.darkThemeText
-    color: #fff
-body
-    margin: 0
-    padding: 0
-    box-sizing: border-box
-    font-family: "poppins", sans-serif
-    
-.container
-    width: 100%
-    max-width: 1200px
-    margin: 0 auto
-    padding: 160px 15px 130px
-    .menuList
-        width: 100%
-        display: flex
-        justify-content: center
-        align-items: center
-        margin-bottom: 35px
-        .lists
-            width: 70%
-            .nav_lists
-                display: grid
-                grid-template-columns: repeat(6, 1fr)
-                gap: 1rem 1.5rem
-                @include frameSize(1000px)
-                    grid-template-columns: repeat(3, 1fr)
-                @include frameSize(500px)
-                    grid-template-columns: repeat(1, 1fr)
-            .links
-                text-decoration: none
-                background-color: transparent
-                font-size: 12px
-                font-weight: 500
-                letter-spacing: 0.2em
-                text-transform: uppercase
-                line-height: 10px
-                padding: 0 15px
-            .links.lightLink
-                color: #4c4c4c 
-                &:hover
-                    color: #0056b3 !important
-            .links.darkLink
-                color: #fff
-                &:hover
-                    opacity: 0.8
-
-    .teamList
-        margin: auto
-        width: 100%
+      .nav_lists
         display: grid
-        grid-template-columns: repeat(4, 1fr)
-        gap: 1.5rem 2rem
-        text-align: center
-        flex-wrap: wrap
-        @include frameSize(1200px)
-            grid-template-columns: repeat(3, 1fr) !important
-        @include frameSize(820px)
-            grid-template-columns: repeat(2, 1fr) !important
+        grid-template-columns: repeat(6, 1fr)
+        gap: 1rem 1.5rem
+        @include frameSize(1000px)
+          grid-template-columns: repeat(3, 1fr)
         @include frameSize(500px)
-            grid-template-columns: repeat(1, 1fr) !important
-        .developer.light
-            background-color: #f7f6fb
-        .developer.dark
-            background-color: #ffffff50
-            color: #fff
-        .developer
-            width: 250px
-            height: 350px
-            display: inline-block
-            text-align: center
-            border-radius: 25px
-            margin: 0 20px
-            @include frameSize(1200px)
-                width: 320px
-                height: 450px
-            &:hover
-                .developer_media
-                    .hover
-                        background-color: #7c91ee
-                        opacity: 0.5
+          grid-template-columns: repeat(1, 1fr)
 
-                    .dev_social_icons
-                        bottom: 25px
-                        opacity: 1
+      .links
+        text-decoration: none
+        background-color: transparent
+        font-size: 12px
+        font-weight: 500
+        letter-spacing: 0.2em
+        text-transform: uppercase
+        line-height: 10px
+        padding: 0 15px
+
+      .links.lightLink
+        color: #4c4c4c
+
+        &:hover
+          color: #0056b3 !important
+
+      .links.darkLink
+        color: #fff
+
+        &:hover
+          opacity: 0.8
+
+  .teamList
+    margin: auto
+    width: 100%
+    display: grid
+    grid-template-columns: repeat(4, 1fr)
+    gap: 1.5rem 2rem
+    text-align: center
+    flex-wrap: wrap
+    overflow: hidden
+    @include frameSize(1200px)
+      grid-template-columns: repeat(3, 1fr) !important
+    @include frameSize(820px)
+      grid-template-columns: repeat(2, 1fr) !important
+      gap: 1rem 1.2rem
+      padding: 0 20px
+    @include frameSize(500px)
+      grid-template-columns: repeat(1, 1fr) !important
+      gap: 1rem 0
+
+    .developer.light
+      background-color: #f7f6fb
+
+    .developer.dark
+      background-color: #ffffff50
+      color: #fff
+
+    .developer
+      display: inline-block
+      text-align: center
+      border-radius: 25px
+      margin: 0 auto
+
+      &:hover
+        .developer_media
+          .hover
+            background-color: #7c91ee
+            opacity: 0.5
+
+          .dev_social_icons
+            bottom: 25px
+            opacity: 1
+            left: 24%
+
+      .developer_media
+        position: relative
+
+        a
+          display: block
+
+        .dev_img
+          width: 100%
+          height: 100%
+          border-radius: 25px
+          object-fit: cover
+          @include frameSize(500px)
+            height: 80%
+
+        .hover
+          position: absolute
+          width: 100%
+          height: 98%
+          border-radius: 25px
+          top: 0
+          z-index: 9
+          // transition: 0.3s
+          -webkit-transition: 0.3s
+
+        .dev_social_icons
+          width: 160px
+          position: absolute
+          left: 40px
+          bottom: 10px
+          display: flex
+          justify-content: space-between
+          align-items: center
+          // transition: 0.2s
+          -webkit-transition: 0.25s
+          z-index: 10
+          opacity: 0
+
+          .dev_Facebook
+            @include iconContainer
+
+            &:hover
+              background-color: #3b5998
+              color: $iconHoverColor
+
+              .dev_social_icons
+                  bottom: 25px
+                  opacity: 1
             .developer_media
                 position: relative
                 .dev_img
@@ -145,103 +209,158 @@ body
                     -webkit-transition: 0.25s
                     z-index: 10
                     opacity: 0
+          .dev_Twitter
+            @include iconContainer
 
-                    .dev_Facebook
-                        @include iconContainer
-                        &:hover
-                            background-color: #3b5998
-                            color: $iconHoverColor
-                    .dev_Twitter
-                        @include iconContainer
-                        &:hover
-                            background-color: #55acee
-                            color: $iconHoverColor
-                    .dev_Youtube
-                        @include iconContainer
-                        &:hover
-                            background-color: #e52d27
-                            color: $iconHoverColor
-                    .dev_Instagram
-                        @include iconContainer
-                        &:hover
-                            background-color: #e4405f
-                            color: $iconHoverColor
+            &:hover
+              background-color: #55acee
+              color: $iconHoverColor
+
+          .dev_Youtube
+            @include iconContainer
+
+            &:hover
+              background-color: #e52d27
+              color: $iconHoverColor
+
+          .dev_Instagram
+            @include iconContainer
+
+            &:hover
+              background-color: #e4405f
+              color: $iconHoverColor
 
 
-            .developer_content
-                display: flex
-                flex-direction: column
-                justify-content: space-around
-                align-items: center
-                margin: 20px auto
-                .dev_name
-                    text-decoration: none
-                    font-size: 24px
-                    font-weight: 700
-                    letter-spacing: 1px
-                    line-height: 1.5
-                    word-break: break-word
-                    margin-bottom: 7px
-                    h5
-                        margin: 0
-                    &:hover
-                        opacity: 0.8
-                .dev_name.lightName
-                    color: #4c4c4c
-                .dev_name.darkName
-                    color: #fff
-                .dev_role
-                    margin: 0
-                    color: #c280bf
-                    font-size: 12px
-                    font-weight: 500
-                    letter-spacing: 0.2em
-                    text-transform: uppercase
+      .developer_content
+        display: flex
+        flex-direction: column
+        justify-content: space-around
+        align-items: center
+        margin: 20px auto
+
+        .dev_name
+          text-decoration: none
+          font-size: 24px
+          font-weight: 700
+          letter-spacing: 1px
+          line-height: 1.5
+          word-break: break-word
+          margin-bottom: 7px
+
+          h5
+            margin: 0
+
+          &:hover
+            opacity: 0.8
+
+        .dev_name.lightName
+          color: #4c4c4c
+
+        .dev_name.darkName
+          color: #fff
+
+        .dev_role
+          margin: 0
+          color: #c280bf
+          font-size: 12px
+          font-weight: 500
+          letter-spacing: 0.2em
+          text-transform: uppercase
 
 .parent_container
-    display: flex
-    width: 100%
-    justify-content: center
-    margin-bottom: 10rem
-    margin-top: 5rem
+  display: flex
+  width: 100%
+  justify-content: center
+  margin-bottom: 10rem
+  margin-top: 5rem
 
 .child_container
-    display: inline-block
-    width: 70%
-    margin-bottom: 50px
+  display: inline-block
+  width: 70%
+  margin-bottom: 50px
 
 .children_p
-    font-size: 1rem
-    color: #7f7f7f  
-    margin-bottom: 3.5rem
+  font-size: 1rem
+  color: #7f7f7f
+  margin-bottom: 3.5rem
 
-.children_button 
-    border: 0
-    color: #eee
-    outline: none
-    background-image: linear-gradient(to right, #5b83cd 0%, #c280bf 100%)
-    width: 220px
-    height: 50px
-    margin-right: 20px
-    padding: 2px
-    border-radius: 5px
-    cursor: pointer
+.children_button
+  border: 0
+  color: #eee
+  outline: none
+  background-image: linear-gradient(to right, #5b83cd 0%, #c280bf 100%)
+  width: 220px
+  height: 50px
+  margin-right: 20px
+  padding: 2px
+  border-radius: 5px
+  cursor: pointer
+  transition: 0.3s
+
+  .children_button_text
+    align-items: center
+    border-radius: 4px
+    -webkit-box-align: center
+    -webkit-box-pack: center
+    display: flex
+    font-size: 0.8rem
+    font-weight: 500
+    height: 100%
+    justify-content: center
+    letter-spacing: 0
+    text-transform: uppercase
+    box-shadow: 0 0 3px 1px #c280bf, 0 0 5px 1px #5b83cd
     transition: 0.3s
-    .children_button_text
-        align-items: center
-        border-radius: 4px
-        -webkit-box-align: center
-        -webkit-box-pack: center
-        display: flex
-        font-size: 1vw
-        font-weight: 500
-        height: 100%
-        justify-content: center
-        letter-spacing: 0
-        text-transform: uppercase
-        box-shadow:  0 0 3px 1px #c280bf, 0 0 5px 1px #5b83cd    
-        transition: 0.3s
+    width: 100%
+
+    &:hover
+      color: #4c4c4c
+      background-color: #fff
+// Carousel
+.carousel
+  padding: 0 150px
+  @include frameSize(767px)
+    padding: 0 80px
+  @include frameSize(500px)
+    padding: 0
+
+  .carouselItem
+    padding: 0 30px
+
+    .carouselImgContainer
+      position: relative
+
+      .carouselImg
         width: 100%
+        border-radius: 25px
+        height: 230px
+        object-fit: cover
+
+      .overlay
+        border-radius: 25px
+        position: absolute
+        inset: 0
+        height: 100%
+        width: 100%
+        opacity: 0
+        background-color: rgba(91, 131, 205, 0.6)
+        transition: 0.3s
+
+      &:hover
+        .overlay
+          opacity: 1
+
+    .carouselContent
+      margin-top: 10px
+
+      a
+        font-size: 1.2rem
+        font-weight: 500
+
         &:hover
-            color: #4c4c4c
-            background-color: #fff
+          color: #5b83cd
+.selectTeamRootDark
+  color: white
+.selectTeamListDark
+  color: white
+  background-color: #4c4c4c
