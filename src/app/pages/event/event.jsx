@@ -1,5 +1,14 @@
 import React, { useContext, useState } from "react";
+import { Link } from "react-router-dom";
+import { Context } from "../../../App";
+import ReactPaginate from "react-paginate";
+
+// File
+import HeaderCarousel from "../../../core/components/header-carousel/header-carousel";
 import eventStyle from "./event.module.sass";
+import HeaderStyle from "../../../core/components/header/header.module.sass";
+
+// Image
 import portf_1 from "../../../assets/event/01.jpg";
 import portf_2 from "../../../assets/event/02.jpg";
 import portf_3 from "../../../assets/event/03.jpg";
@@ -8,6 +17,8 @@ import portf_5 from "../../../assets/event/05.jpg";
 import portf_6 from "../../../assets/event/06.jpg";
 import portf_7 from "../../../assets/event/07.jpg";
 import portf_8 from "../../../assets/event/08.jpg";
+
+// Font
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCalendarDays,
@@ -16,11 +27,7 @@ import {
   faClock,
 } from "@fortawesome/free-solid-svg-icons";
 
-import HeaderCarousel from "../../../core/components/header-carousel/header-carousel";
-import HeaderStyle from "../../../core/components/header/header.module.sass";
-import { Link } from "react-router-dom";
-import { Context } from "../../../App";
-import ReactPaginate from "react-paginate";
+
 
 const Event = (eventContent) => {
   const [value] = useContext(Context);

@@ -1,10 +1,9 @@
-.circle
+@mixin circle()
     display: flex
     justify-content: center
     align-items: center
     width: 50px
     height: 50px
-    background-color: #c280bf
     border-radius: 50%
     bottom: 0px
     right: 0px
@@ -14,16 +13,22 @@
     position: fixed
     opacity: -1
     transition: 0.8s
+
+.scrollCircle
+    @include circle()
+    background-color: #ee07e2e4
     &:hover
-        background-color: #c964c4
+        background-color: #ee07e3
         transform: translateY(5px)
 
 .themeCircle
-    @extend .circle
+    @include circle()
     opacity: 1
     border: none
     font-size: 1.5rem
+    background-color: #808080bf
     &:hover
+        background-color: #808080db
         cursor: pointer
 
 body

@@ -29,7 +29,7 @@ function Scroll() {
     }),
     (
       <div>
-        <a href="#" className={styles.circle} id="scrollBtn">
+        <a href="#" className={styles.scrollCircle} id="scrollBtn">
           <FontAwesomeIcon icon={faAngleUp} />
         </a>
         <button className={styles.themeCircle} id="themeBtn" onClick={prevVal => setValue({...prevVal,mode:mode === 'light'?'dark':'light'})}>

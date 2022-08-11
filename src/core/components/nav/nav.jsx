@@ -70,9 +70,8 @@ function Nav() {
     <div>
       <div className={`${Headerstyle.header} ${value.mode!=='light'?Headerstyle.headerDark:""} `}>
         <h3>
-          <strong>
             Welcome to our site! Check our services and gain success!
-          </strong>
+
         </h3>
 
         <div className={`${Headerstyle.register} ${value.mode === 'dark'?Headerstyle.darkli: ''}`}>
@@ -192,10 +191,10 @@ function Nav() {
             <a href="/">Home</a>
           </li>
           <li>
-            <a href="/team-list">Team</a>
+            <a href="/team">Team</a>
           </li>
           <li>
-            <a href="/event-list">Event</a>
+            <a href="/event">Event</a>
           </li>
           <li>
             <a href="/about">About</a>

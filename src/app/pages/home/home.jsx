@@ -1,16 +1,20 @@
 import React, { useState, useContext } from "react";
+import { useTransition, animated } from "react-spring";
+import { Context } from "../../../App";
+
+// File
 import HomeStyle from "./home.module.sass";
 import HeaderStyle from "../../../core/components/header/header.module.sass";
-import { useTransition, animated } from "react-spring";
+import HeaderCarousel from "../../../core/components/header-carousel/header-carousel";
 
+// Image
 import img1 from "../../../assets/home-gallary/01.jpg";
 import img2 from "../../../assets/home-gallary/02.jpg";
 import img3 from "../../../assets/home-gallary/03.jpg";
 import img4 from "../../../assets/home-gallary/04.jpg";
 import img5 from "../../../assets/home-gallary/05.jpg";
 import img6 from "../../../assets/home-gallary/06.jpg";
-import HeaderCarousel from "../../../core/components/header-carousel/header-carousel";
-import { Context } from "../../../App";
+
 
 function Home(homeContent) {
   const [value, setValue] = useContext(Context);
