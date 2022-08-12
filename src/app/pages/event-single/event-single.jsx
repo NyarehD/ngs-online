@@ -1,9 +1,10 @@
-import React, {useContext} from "react";
+import React, {useContext, useState} from "react";
 import {Context} from "../../../App.js";
 
 // File
 import EventSingleRight from "./event-single-right";
 import HeaderCarousel from "../../../core/components/header-carousel/header-carousel";
+import Comments from "./comments";
 import HeaderStyle from "../../../core/components/header/header.module.sass";
 import eventSingleStyles from "./event-single.module.sass";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -11,24 +12,19 @@ import {
     faCalendarDays,
     faClock,
     faLocationDot,
-    faReply,
-    faUser,
-    faEnvelope,
-    faPenToSquare,
     faAngleRight,
 } from "@fortawesome/free-solid-svg-icons";
 
 // Image
-import commentImg1 from "../../../assets/event/comment/comment-01.jpg";
-import commentImg2 from "../../../assets/event/comment/comment-02.jpg";
-import commentImg3 from "../../../assets/event/comment/comment-03.jpg";
 import topImg from "../../../assets/event/04.jpg";
+import BlogStyle from "../blog/blog-single.module.sass";
 
 
 export default function EventSingle({eventSingleContent}) {
-    const [mode, setMode] = useContext(Context);
+    const [{mode}, setMode] = useContext(Context);
+    const [nOComment, setNOComment] = useState(0)
     const data = eventSingleContent
-    const darkTheme = mode.mode === 'dark' ? eventSingleStyles.darkTheme : ""
+    const darkTheme = mode === 'dark' ? eventSingleStyles.darkTheme : ""
     return (
         <div className={darkTheme}>
             <section className={HeaderStyle.box}>
@@ -117,171 +113,7 @@ export default function EventSingle({eventSingleContent}) {
                     </article>
                     <div className={eventSingleStyles.comments}>
                         <h4 className={`${eventSingleStyles.commentsTitle} ${darkTheme}`}>Comments</h4>
-                        <ol className={eventSingleStyles.commentList}>
-                            <li className={eventSingleStyles.comment}>
-                                <div className={eventSingleStyles.commentBody}>
-                                    <div className={eventSingleStyles.commentImgContainer}>
-                                        <img src={commentImg1} alt=""/>
-                                    </div>
-                                    <div className={eventSingleStyles.commentContent}>
-                                        <b>
-                                            <a
-                                                href="#"
-                                                rel="nofollow"
-                                                className={`${eventSingleStyles.commentNameLink} ${darkTheme}`}
-                                            >
-                                                Chole Denverou
-                                            </a>
-                                            <span className={eventSingleStyles.commentMetadata}>
-                        <a href="#">
-                          <time dateTime="2018-03-14T07:57:01+00:00">
-                            March 14, 2018
-                          </time>
-                        </a>
-                      </span>
-                                        </b>
-                                        <p className={`${eventSingleStyles.commentText} ${darkTheme}`}>
-                                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                                            sed diam nonumy eirmod tempor invidunt ut labore et dolore
-                                            magna aliquyam erat, sed diam voluptua.
-                                        </p>
-                                    </div>
-                                    <div className={eventSingleStyles.replyIcon}>
-                                        <FontAwesomeIcon icon={faReply}/>
-                                    </div>
-                                </div>
-                                <div className={eventSingleStyles.commentChildren}>
-                                    <div className={eventSingleStyles.commentBody}>
-                                        <div className={eventSingleStyles.commentImgContainer}>
-                                            <img src={commentImg2} alt=""/>
-                                        </div>
-                                        <div className={eventSingleStyles.commentContent}>
-                                            <b>
-                                                <a
-                                                    href="#"
-                                                    rel="nofollow"
-                                                    className={`${eventSingleStyles.commentNameLink} ${darkTheme}`}
-                                                >
-                                                    Patric Knowles
-                                                </a>
-                                                <span className={eventSingleStyles.commentMetadata}>
-                          <a href="#">
-                            <time dateTime="2018-03-14T07:57:01+00:00">
-                              March 14, 2018
-                            </time>
-                          </a>
-                        </span>
-                                            </b>
-                                            <p className={`${eventSingleStyles.commentText} ${darkTheme}`}>
-                                                Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                                                sed diam nonumy eirmod tempor invidunt ut labore et
-                                                dolore magna aliquyam erat, sed diam voluptua.
-                                            </p>
-                                        </div>
-                                        <div className={eventSingleStyles.replyIcon}>
-                                            <FontAwesomeIcon icon={faReply}/>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li className={eventSingleStyles.comment}>
-                                <div className={eventSingleStyles.commentBody}>
-                                    <div className={eventSingleStyles.commentImgContainer}>
-                                        <img src={commentImg3} alt=""/>
-                                    </div>
-                                    <div className={eventSingleStyles.commentContent}>
-                                        <b>
-                                            <a
-                                                href="#"
-                                                rel="nofollow"
-                                                className={`${eventSingleStyles.commentNameLink} ${darkTheme}`}
-                                            >
-                                                Macie Williams
-                                            </a>
-                                            <span className={eventSingleStyles.commentMetadata}>
-                        <a href="#">
-                          <time dateTime="2018-03-14T07:57:01+00:00">
-                            March 14, 2018
-                          </time>
-                        </a>
-                      </span>
-                                        </b>
-                                        <p className={`${eventSingleStyles.commentText} ${darkTheme}`}>
-                                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                                            sed diam nonumy eirmod tempor invidunt ut labore et dolore
-                                            magna aliquyam erat, sed diam voluptua.
-                                        </p>
-                                    </div>
-                                    <div className={eventSingleStyles.replyIcon}>
-                                        <FontAwesomeIcon icon={faReply}/>
-                                    </div>
-                                </div>
-                            </li>
-                        </ol>
-                        <h4 className={`${eventSingleStyles.commentReplyTitle} ${darkTheme}`}>
-                            Leave Your Comment
-                        </h4>
-                        <div className={eventSingleStyles.commentResponse}>
-                            <form
-                                action="/"
-                                method="post"
-                                id="commentForm"
-                                className={eventSingleStyles.commentForm}
-                            >
-
-                                <div className={eventSingleStyles.inputBox}>
-                                    <div className={eventSingleStyles.formInput}>
-                                        <FontAwesomeIcon
-                                            icon={faUser}
-                                            className={eventSingleStyles.formInputIcon}
-                                        />
-                                        <input
-                                            name="author"
-                                            type="text"
-                                            placeholder="Full Name"
-                                            required
-                                            className={`${eventSingleStyles.placeholder} ${darkTheme}`}
-                                        />
-                                    </div>
-                                    <div className={eventSingleStyles.formInput}>
-                                        <FontAwesomeIcon
-                                            icon={faEnvelope}
-                                            className={eventSingleStyles.formInputIcon}
-                                        />
-                                        <input
-                                            className={`${eventSingleStyles.placeholder} ${darkTheme}`}
-                                            name="author"
-                                            type="text"
-                                            placeholder="E-Mail"
-                                            required
-                                        />
-                                    </div>
-                                </div>
-
-
-                                <div className={eventSingleStyles.formTextArea}>
-                                    <FontAwesomeIcon
-                                        icon={faPenToSquare}
-                                        className={eventSingleStyles.formInputIcon}
-                                    />
-                                    <textarea
-                                        className={`${eventSingleStyles.placeholder} ${darkTheme} form-control`}
-                                        id="comment"
-                                        name="comment"
-                                        cols="45"
-                                        rows="8"
-                                        maxLength="65525"
-                                        aria-required="true"
-                                        required="required"
-                                        placeholder="Your Comment"
-                                    ></textarea>
-                                </div>
-                                {/* Used span instead button because of other global button style is messing with it */}
-                                <span className={eventSingleStyles.formSubmit}>
-                  <span>Submit</span>
-                </span>
-                            </form>
-                        </div>
+                        <Comments currentUserId="1" setNOComment={setNOComment} themeStyle={mode}/>
                     </div>
                 </div>
                 <EventSingleRight/>

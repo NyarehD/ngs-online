@@ -1,0 +1,249 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900")
+@import '../../../style/variable.module'
+
+@mixin frameSize($width)
+  @media screen and (max-width: $width)
+  @content
+
+$reactionColor: #5b83cd
+$blogTitleColor: #4c4c4c
+$blogTextColor: #7f7f7f
+$purpleColor: #c280bf
+
+body
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+  font-family: "poppins", sans-serif
+
+.darkBackground
+  background: rgba(255,255,255,0.05) !important
+
+.darkTextColor
+  color: #fff !important
+
+.darkInputBox
+  background: #3f3f3f
+  color: #fff
+  border: 1px solid #454545
+  &::placeholder
+    color: #ffffff80
+.commentsTitle
+  color: $blogTitleColor
+  font-size: 24px
+  font-weight: 700
+  margin: 30px 0
+  @include frameSize(400px)
+    font-size: 20px
+    margin-left: -10px
+
+.commentContainer
+  margin-top: 40px
+.sommentSubmitForm
+  display: flex
+  flex-direction: column
+  .comment_Form
+    display: flex
+    justify-content: space-between
+    align-items: center
+    margin-top: 20px
+    height: 100%
+    width: 100%
+    @include frameSize(768px)
+      flex-direction: column
+    .response_name
+      margin-bottom: 20px
+      position: relative
+      width: 49%
+      @include frameSize(768px)
+        width: 100%
+
+      .response_name_icon
+        position: absolute
+        font-size: 12px
+        color: $reactionColor
+        border-color: $reactionColor
+        left: 17px
+        top: 35%
+        text-align: center
+        width: 1em
+
+      .response_name_input
+        border: none
+        border-radius: 5px
+        box-shadow: 0  0 10px 1px rgba(0, 0, 0, 0.07)
+        padding: 9px 20px 9px 50px
+        outline: none
+        width: 100%
+        height: 50px
+        color: $blogTextColor
+        font-size: 12px
+        font-weight: 400
+        @include frameSize($break_point-s)
+          padding: 9px 20px 9px 40px
+
+    .response_email
+      margin-bottom: 20px
+      position: relative
+      width: 49%
+      @include frameSize(768px)
+        width: 100%
+      // .response_email_label //hidden
+      .response_email_icon
+        position: absolute
+        font-size: 12px
+        color: $reactionColor
+        border-color: $reactionColor
+        left: 17px
+        top: 35%
+        text-align: center
+        width: 1em
+      .response_email_input
+        border: none
+        border-radius: 5px
+        box-shadow: 0  0 10px 1px rgba(0, 0, 0, 0.07)
+        padding: 9px 20px 9px 50px
+        outline: none
+        width: 100%
+        height: 50px
+        color: $blogTextColor
+        font-size: 12px
+        font-weight: 400
+        @include frameSize($break_point-s)
+          padding: 9px 20px 9px 40px
+  .response_comment
+    margin-bottom: 20px
+    position: relative
+    width: 100%
+    // .response_comment_label
+    .response_comment_icon
+      position: absolute
+      font-size: 12px
+      color: $reactionColor
+      border-color: $reactionColor
+      left: 17px
+      top: 17px
+      text-align: center
+      width: 1em
+  .commentFormTextarea
+    border: none
+    border-radius: 5px
+    outline: none
+    box-shadow: 0  0 10px 1px rgba(0, 0, 0, 0.07)
+    padding: 9px 20px 9px 50px
+    width: 100%
+    height: 100px
+    margin-bottom: 10px
+    color: $blogTextColor
+    font-size: 12px
+    font-weight: 400
+    @include frameSize($break_point-s)
+      padding: 9px 20px 9px 40px
+
+.submitBtnGroup
+  display: flex
+  justify-content: flex-start
+  align-items: center
+.commentFormButton
+  display: block
+  border: 0
+  color: #eee
+  outline: none
+  background-image: linear-gradient(to right, #5b83cd 0%, #c280bf 100%)
+  width: 90px
+  height: 50px
+  margin-right: 20px
+  padding: 2px
+  border-radius: 5px
+  cursor: pointer
+  transition: 0.3s
+  &:disabled
+    opacity: 0.7
+    cursor: default
+    .form_submit_text
+      &:hover
+        color: #eee
+        background: none
+
+  .form_submit_text
+    align-items: center
+    border-radius: 4px
+    -webkit-box-align: center
+    -webkit-box-pack: center
+    display: flex
+    font-size: 12px
+    font-weight: 600
+    height: 100%
+    justify-content: center
+    letter-spacing: 0
+    text-transform: uppercase
+    box-shadow:  0 0 3px 1px #c280bf, 0 0 5px 1px #5b83cd
+    transition: 0.3s
+    width: 100%
+    &:hover
+      color: $blogTitleColor
+      background-color: #fff
+
+.comment
+  display: flex
+  margin-bottom: 20px
+  .commentImageContainer
+    margin-right: 15px
+    .commentImageContainerImg
+      border-radius: 50%
+      border: 5px solid #ffffff3b
+      box-shadow: 0  0 10px 1px rgba(0, 0, 0, 0.07)
+  .commentRightPart
+    width: 100%
+    overflow: hidden
+    .commentContent
+      display: flex
+      .commentAuthor
+        text-decoration: none
+        font-weight: 500
+        color: $blogTitleColor
+        font-size: 1.2rem
+        transition: 0.2s
+        &:hover
+          color: $reactionColor
+      .commentMetaLink
+        display: flex
+        align-items: center
+        &::before
+          color: #4c4c4c
+          content: "\25Cf"
+          font-size: 1rem
+          font-family: "FontAwesome", serif
+          padding: 0 7px
+          position: relative
+          top: 0
+
+        .commentDate
+          font-size: 12px
+          font-weight: 400
+          color: $purpleColor
+          &:hover
+            color: $reactionColor
+
+    .commentText
+      margin: 10px 0
+      color: $blogTextColor
+      font-size: 1rem
+      font-weight: 300
+      line-height: 30px
+
+    .commentActions
+      display: flex
+      font-size: 12px
+      color: $blogTextColor
+      cursor: pointer
+      margin-top: 8px
+      margin-bottom: 10px
+      .commentAction
+        font-size: 15px
+        margin-right: 10px
+        transition: 0.2s
+        &:hover
+          color: $reactionColor
+    .commentReply
+      margin-top: 20px

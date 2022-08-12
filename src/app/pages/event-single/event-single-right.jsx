@@ -16,8 +16,8 @@ import portf_6 from "../../../assets/event/06.jpg";
 
 
 const EventSingleRight = () => {
-    const [mode, setMode] = useContext(Context)
-    const darkTheme = mode.mode === 'dark' ? eventSingleStyle.darkTheme : ""
+    const [{mode}, setMode] = useContext(Context)
+    const darkTheme = mode === 'dark' ? eventSingleStyle.darkTheme : ""
     const categories = [
         {
             name: "Internet Provider",
@@ -40,18 +40,6 @@ const EventSingleRight = () => {
             amount: "6",
         },
     ];
-    const EventCategories = categories.map((category, index) => (
-        <ul key={index}>
-            <li className={`${eventSingleStyle.listCategory} ${darkTheme}`} key={category.index}>
-                <span className={
-                    `${eventSingleStyle.listItemLight} ${darkTheme}`
-                }>{category.name}</span>
-                <span className={
-                    `${eventSingleStyle.listItemLight} ${darkTheme}`
-                }>({category.amount})</span>
-            </li>
-        </ul>
-    ));
     const portfolio = [
         {
             id: 1,
@@ -92,7 +80,7 @@ const EventSingleRight = () => {
         <>
             <div className={eventSingleStyle.right}>
                 <div className={eventSingleStyle.search}>
-                    <h2 className={eventSingleStyle.title}>Search</h2>
+                    <h2 className={`${eventSingleStyle.title} ${darkTheme}`}>Search</h2>
                     <form action="" className={eventSingleStyle.form_event}>
                         <input type='text' placeholder="Search Keyword"/>
                         <button className={eventSingleStyle.btnSearch}>
@@ -101,8 +89,19 @@ const EventSingleRight = () => {
                     </form>
                 </div>
                 <div className={eventSingleStyle.categories}>
-                    <h2 className={eventSingleStyle.title}>Categories</h2>
-                    {EventCategories}
+                    <h2 className={`${eventSingleStyle.title} ${darkTheme}`}>Categories</h2>
+                    {
+                        categories.map((category, index) => (
+                            <ul key={index}>
+                                <li className={`${eventSingleStyle.listCategory} ${darkTheme}`} key={category.index}>
+                                    <span className={`${eventSingleStyle.listItemLight} ${darkTheme}`}>
+                                        {category.name}</span>
+                                    <span className={`${eventSingleStyle.listItemLight} ${darkTheme}`
+                                    }>({category.amount})</span>
+                                </li>
+                            </ul>
+                        ))
+                    }
                 </div>
                 <div className={eventSingleStyle.recentPortfolio}>
                     <h2 className={eventSingleStyle.title}>Recent Portfolio</h2>

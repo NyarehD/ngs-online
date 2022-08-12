@@ -108,122 +108,6 @@
   .commentsTitle.darkTheme
     color: #fff
 
-  .commentList
-    margin-top: 30px
-
-    .comment
-
-      // For all comments' body
-      .commentBody
-        display: flex
-        position: relative
-        justify-content: start
-        border-bottom: 1px solid #ebeaeb
-        margin: 30px 0
-
-        .commentImgContainer
-          flex: 1 1 10%
-
-          img
-            border-radius: 100%
-            width: 100%
-            height: auto
-
-        .commentContent
-          padding: 20px
-          flex: 1 1 80%
-
-          b
-            .commentNameLink
-              font-weight: 500
-            .commentNameLink .darkTheme
-              color: #fff
-
-            .commentMetadata
-              a::before
-                color: #4c4c4c
-                content: "o"
-                margin: 0 10px
-
-              time
-                color: #c280bf
-                font-weight: 300
-
-          .commentText
-            color: #7f7f7f
-            line-height: 30px
-            font-weight: 300
-          
-          .commentText.darkTheme
-            color: #fff
-
-        .replyIcon
-          svg:hover
-            color: #c280bf
-
-      .commentChildren
-        .commentBody
-          padding-left: 80px
-
-          .commentImgContainer
-            flex: 1 1 5%
-
-            img
-              width: 100%
-
-  .commentReplyTitle
-    color: #4c4c4c
-    margin-top: 50px
-    font-size: 30px
-  .commentReplyTitle.darkTheme
-    color: #fff
-
-  .commentResponse
-    .commentForm
-      display: flex
-      flex-wrap: wrap
-
-      &:nth-child(1)
-        padding-right: 0
-
-      .formInput
-        flex: 1 1 50%
-        position: relative
-        margin-bottom: 20px
-
-        .formInputIcon
-          position: absolute
-          left: 28px
-          top: 22px
-          color: #5b83cd
-
-        input
-          width: 100%
-          padding-left: 60px
-          color: #7f7f7f 
-          background: transparent
-
-      .formTextArea
-        position: relative
-        flex: 1 1 100%
-
-        .formInputIcon
-          position: absolute
-          left: 28px
-          top: 22px
-          color: #5b83cd
-
-        textarea
-          color: #7f7f7f
-          width: 100%
-          background: transparent
-
-      .formSubmit
-        @extend .fancyButton
-        width: fit-content
-        border: none
-  
-
 .form_event
   display: flex
   border: 1px solid #7f7f7f
@@ -546,7 +430,7 @@
         .formInput
           flex: 1 1 50%
           position: relative
-          margin: 40px 0px 20px 0
+          margin: 40px 0 20px 0
           border: 2px solid transparent
 
 
@@ -561,7 +445,7 @@
             padding: 20px 0 20px 60px
             color: black
             border: none
-            box-shadow: 0 0px 10px 0px rgb(0 0 0 / 5%)
+            box-shadow: 0 0 10px 0 rgb(0 0 0 / 5%)
             background-color: transparent
 
       .formTextArea
@@ -578,7 +462,7 @@
         textarea
           color: black
           width: 100%
-          box-shadow: 0 0px 10px 0px rgb(0 0 0 / 5%)
+          box-shadow: 0 0 10px 0 rgb(0 0 0 / 5%)
           background-color: transparent
           border: none
 
