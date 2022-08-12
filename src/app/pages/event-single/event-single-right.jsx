@@ -1,8 +1,12 @@
-import React, { useContext, useState } from "react";
-import { Context } from "../../../App";
+import React, {useContext} from "react";
+import {Context} from "../../../App";
+
+// Files
 import eventSingleStyle from "./event-single.module.sass";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faSearch} from "@fortawesome/free-solid-svg-icons";
+
+// Images
 import portf_1 from "../../../assets/event/01.jpg";
 import portf_2 from "../../../assets/event/02.jpg";
 import portf_3 from "../../../assets/event/03.jpg";
@@ -12,8 +16,8 @@ import portf_6 from "../../../assets/event/06.jpg";
 
 
 const EventSingleRight = () => {
-  const [mode, setMode] = useContext(Context)
-  const darkTheme = mode.mode === 'dark'?eventSingleStyle.darkTheme:""
+    const [mode, setMode] = useContext(Context)
+    const darkTheme = mode.mode === 'dark' ? eventSingleStyle.darkTheme : ""
     const categories = [
         {
             name: "Internet Provider",
@@ -36,15 +40,15 @@ const EventSingleRight = () => {
             amount: "6",
         },
     ];
-    const EventCategories = categories.map((category , index) => (
+    const EventCategories = categories.map((category, index) => (
         <ul key={index}>
             <li className={`${eventSingleStyle.listCategory} ${darkTheme}`} key={category.index}>
                 <span className={
-            `${eventSingleStyle.listItemLight} ${darkTheme}`
-          }>{category.name}</span>
+                    `${eventSingleStyle.listItemLight} ${darkTheme}`
+                }>{category.name}</span>
                 <span className={
-            `${eventSingleStyle.listItemLight} ${darkTheme}`
-          }>({category.amount})</span>
+                    `${eventSingleStyle.listItemLight} ${darkTheme}`
+                }>({category.amount})</span>
             </li>
         </ul>
     ));
@@ -84,98 +88,28 @@ const EventSingleRight = () => {
         );
     });
 
-  return (
-      <>
-          <div className={eventSingleStyle.right}>
-              <div className={eventSingleStyle.search}>
-                  <h2 className={eventSingleStyle.title}>Search</h2>
-                  <form action="" className={eventSingleStyle.form_event}>
-                      <input type='text' placeholder="Search Keyword"/>
-                      <button className={eventSingleStyle.btnSearch}>
-                          <FontAwesomeIcon icon={faSearch}></FontAwesomeIcon>
-                      </button>
-                  </form>
-              </div>
-              <div className={eventSingleStyle.categories}>
-                  <h2 className={eventSingleStyle.title}>Categories</h2>
-                  {EventCategories}
-              </div>
-              <div className={eventSingleStyle.recentPortfolio}>
-                  <h2 className={eventSingleStyle.title}>Recent Portfolio</h2>
-                  <div className={eventSingleStyle.photo}>{photos}</div>
-              </div>
-          </div>
-      </>
-  );
-
-  const tagsCloud = [
-    {
-      id: 1,
-      title: "Cable",
-    },
-    {
-      id: 2,
-      title: "IPTV",
-    },
-    {
-      id: 3,
-      title: "Internet",
-    },
-    {
-      id: 4,
-      title: "Provuder Services",
-    },
-    {
-      id: 5,
-      title: "Router setup",
-    },
-  ];
-  const tag = tagsCloud.map((tag) => {
     return (
-      <a className={eventSingleStyle.tagCloudLink} href="#">
-        {tag.title}
-      </a>
+        <>
+            <div className={eventSingleStyle.right}>
+                <div className={eventSingleStyle.search}>
+                    <h2 className={eventSingleStyle.title}>Search</h2>
+                    <form action="" className={eventSingleStyle.form_event}>
+                        <input type='text' placeholder="Search Keyword"/>
+                        <button className={eventSingleStyle.btnSearch}>
+                            <FontAwesomeIcon icon={faSearch}></FontAwesomeIcon>
+                        </button>
+                    </form>
+                </div>
+                <div className={eventSingleStyle.categories}>
+                    <h2 className={eventSingleStyle.title}>Categories</h2>
+                    {EventCategories}
+                </div>
+                <div className={eventSingleStyle.recentPortfolio}>
+                    <h2 className={eventSingleStyle.title}>Recent Portfolio</h2>
+                    <div className={eventSingleStyle.photo}>{photos}</div>
+                </div>
+            </div>
+        </>
     );
-  });
-
-  return (
-      <>
-        <div className={`${eventSingleStyle.right} ${darkTheme}`}>
-          <div className={eventSingleStyle.search}>
-            <h2 className={`${eventSingleStyle.title} ${darkTheme}`}>Search</h2>
-            <form action="" className={eventSingleStyle.form_event}>
-              <input type="text" className={`${eventSingleStyle.placeholder} ${darkTheme}`} placeholder="Search Keyword" />
-              <button className={eventSingleStyle.btnSearch}>
-                <FontAwesomeIcon icon={faSearch}></FontAwesomeIcon>
-              </button>
-            </form>
-          </div>
-          <div className={eventSingleStyle.about}>
-            <h2 className={`${eventSingleStyle.title} ${darkTheme}`}>About</h2>
-            <p className={eventSingleStyle.itemText}>
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, At accusam
-              aliquyam diam diam dolore dolores duo eirmos.
-            </p>
-          </div>
-          <div className={eventSingleStyle.readDiv}>
-            <span type="button" className={eventSingleStyle.readBtn}>
-              <span>Read More</span>
-            </span>
-          </div>
-          <div className={eventSingleStyle.categories}>
-            <h2 className={`${eventSingleStyle.title} ${darkTheme}`}>Categories</h2>
-            {EventCategories}
-          </div>
-          <div className={eventSingleStyle.recentPortfolio}>
-            <h2 className={`${eventSingleStyle.title} ${darkTheme}`}>Recent Portfolio</h2>
-            <div className={eventSingleStyle.photo}>{photos}</div>
-          </div>
-          <div className={eventSingleStyle.tagCloud}>
-            <h2 className={`${eventSingleStyle.title} ${darkTheme}`}>Tags</h2>
-            <div className={eventSingleStyle.tagsCloudItems}>{tag}</div>
-          </div>
-        </div>
-      </>
-  )
 }
 export default EventSingleRight;
